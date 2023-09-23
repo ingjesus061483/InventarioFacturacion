@@ -1,0 +1,43 @@
+========= Datos de Empresa ==============
+=empresa ficticia
+Nit:11
+Direccion:b/quilla
+=Tipo de regimen:Comun
+Telefono:4465
+=========================================
+========== Encabezado ====================
+Tipo de Documento: Ticket pos No. 45181,3921796065
+Fecha: 12/09/2023 9:24:44 a. m.
+Forma de pago:Contado
+Estado:Pago
+=========================================
+===== Informacion Cliente ===========
+Tipo de identificacion:Cedula
+Identifcacion: 32675171
+Nombre Completo: marta  narvaez
+Direccion: calle45b#20-99
+Telefono: 3017816510
+=====================================
+==============  Detalle   ==================
+= codigo: 001
+= Articulo: coca cola 350 ml
+Cantidad: 1,00
+Valor Unitario: $5000,00
+Total: $5000,0000
+= codigo: 002
+= Articulo: de todito 400gr
+Cantidad: 1,00
+Valor Unitario: $4000,00
+Total: $4000,0000
+=========================================
+=============== Totales ===================
+= Subtotal: $9000,0000
+= Total impuesto $1710,000000
+= Descuento $0,00
+= Total a pagar $10710,000000
+= Recibido: $11000,00
+= Cambio: $290,000000
+==========================================
+==========================================
+=          GRACIAS POR SU COMPRA         =
+==========================================

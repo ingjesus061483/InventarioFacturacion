@@ -1,0 +1,9 @@
+D:\Desktop\Backup\CodigoBarra\bin\Debug\CodigoBarra.dll
+D:\Desktop\Backup\CodigoBarra\bin\Debug\CodigoBarra.pdb
+D:\Desktop\Backup\CodigoBarra\bin\Debug\CodigoBarra.xml
+D:\Desktop\Backup\CodigoBarra\obj\Debug\CodigoBarra.Resources.resources
+D:\Desktop\Backup\CodigoBarra\obj\Debug\CodigoBarra.vbproj.GenerateResource.cache
+D:\Desktop\Backup\CodigoBarra\obj\Debug\CodigoBarra.vbproj.CoreCompileInputs.cache
+D:\Desktop\Backup\CodigoBarra\obj\Debug\CodigoBarra.dll
+D:\Desktop\Backup\CodigoBarra\obj\Debug\CodigoBarra.xml
+D:\Desktop\Backup\CodigoBarra\obj\Debug\CodigoBarra.pdb

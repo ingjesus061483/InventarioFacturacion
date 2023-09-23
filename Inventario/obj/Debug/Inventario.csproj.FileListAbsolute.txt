@@ -1,0 +1,174 @@
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Inventario.exe.config
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Inventario.exe
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Inventario.pdb
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.csprojAssemblyReference.cache
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmBusqueda.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmCategoria.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmCliente.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmCompra.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmEmpleado.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmEmpresa.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmExistencia.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmFactura.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmImpExp.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmLogin.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmPrincipal.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmProveedores.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmRole.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.Properties.Resources.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.csproj.GenerateResource.cache
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.csproj.CoreCompileInputs.cache
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.exe
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.pdb
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\DataAccess.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\EntityFramework.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\EntityFramework.SqlServer.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Models.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\DataAccess.pdb
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\DataAccess.dll.config
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\EntityFramework.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\EntityFramework.SqlServer.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Models.pdb
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.csproj.CopyComplete
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Models.dll.config
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmProducto.resources
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Helper.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Helper.pdb
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\bin\Debug\Helper.dll.config
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Inventario\obj\Debug\Inventario.frmUsuario.resources
+D:\Desktop\Backup\Inventario\bin\Debug\Inventario.exe.config
+D:\Desktop\Backup\Inventario\bin\Debug\Inventario.exe
+D:\Desktop\Backup\Inventario\bin\Debug\Inventario.pdb
+D:\Desktop\Backup\Inventario\bin\Debug\DataAccess.dll
+D:\Desktop\Backup\Inventario\bin\Debug\EntityFramework.dll
+D:\Desktop\Backup\Inventario\bin\Debug\EntityFramework.SqlServer.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Helper.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Models.dll
+D:\Desktop\Backup\Inventario\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Desktop\Backup\Inventario\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Desktop\Backup\Inventario\bin\Debug\DataAccess.pdb
+D:\Desktop\Backup\Inventario\bin\Debug\DataAccess.dll.config
+D:\Desktop\Backup\Inventario\bin\Debug\Helper.pdb
+D:\Desktop\Backup\Inventario\bin\Debug\Helper.dll.config
+D:\Desktop\Backup\Inventario\bin\Debug\Models.pdb
+D:\Desktop\Backup\Inventario\bin\Debug\Models.dll.config
+D:\Desktop\Backup\Inventario\bin\Debug\EntityFramework.xml
+D:\Desktop\Backup\Inventario\bin\Debug\EntityFramework.SqlServer.xml
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\Desktop\Backup\Inventario\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Desktop\Backup\Inventario\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.csprojAssemblyReference.cache
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmProducto.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmBusqueda.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmCategoria.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmCliente.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmCompra.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmEmpleado.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmEmpresa.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmExistencia.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmFactura.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmImpExp.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmLogin.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmPrincipal.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmProveedores.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmRole.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmUsuario.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.Properties.Resources.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.csproj.GenerateResource.cache
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.csproj.CoreCompileInputs.cache
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.csproj.CopyComplete
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.exe
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.pdb
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmVistaPrevia.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmImpuesto.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmFacturacion.resources
+D:\Desktop\Backup\Inventario\bin\Debug\CodigoBarra.dll
+D:\Desktop\Backup\Inventario\bin\Debug\CodigoBarra.pdb
+D:\Desktop\Backup\Inventario\bin\Debug\CodigoBarra.xml
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.BusquedaCliente.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.Detalles.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.UserControls.Cuestas.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmInventarioProducto.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmDetalleExistencia.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmRecibir.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmCompras.resources
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.ReportViewer.Common.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.ReportViewer.Design.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.SqlServer.Types.dll
+D:\Desktop\Backup\Inventario\bin\Debug\EnvDTE.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+D:\Desktop\Backup\Inventario\bin\Debug\stdole.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Microsoft.MSXML.dll
+D:\Desktop\Backup\Inventario\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Desktop\Backup\Inventario\bin\Debug\Reportes\ExistenciasProdocto.rdlc
+D:\Desktop\Backup\Inventario\obj\Debug\RdlCompile.cache
+D:\Desktop\Backup\Inventario\obj\Debug\RdlCompile.compiled
+D:\Desktop\Backup\Inventario\bin\Debug\Reportes\Ventas.rdlc
+D:\Desktop\Backup\Inventario\bin\Debug\Reportes\Factura.rdlc
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmInfoUsuario.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmMotivo.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmDevolucionVenta.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmDevolucionCompra.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmEnvioEmail.resources
+D:\Desktop\Backup\Inventario\obj\Debug\Inventario.frmEmail.resources

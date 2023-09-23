@@ -1,0 +1,24 @@
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\bin\Debug\Models.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\bin\Debug\Models.pdb
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\obj\Debug\Models.csprojAssemblyReference.cache
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\obj\Debug\Models.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\obj\Debug\Models.pdb
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\bin\Debug\Models.dll.config
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\bin\Debug\EntityFramework.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\bin\Debug\EntityFramework.SqlServer.dll
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\bin\Debug\EntityFramework.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\bin\Debug\EntityFramework.SqlServer.xml
+E:\Documents\herramientas de desarrollo\Nueva carpeta (2)\PROYECTO TERMINADO SENA\Backup\Models\obj\Debug\Models.csproj.CopyComplete
+D:\Desktop\Backup\Models\bin\Debug\Models.dll.config
+D:\Desktop\Backup\Models\bin\Debug\Models.dll
+D:\Desktop\Backup\Models\bin\Debug\Models.pdb
+D:\Desktop\Backup\Models\bin\Debug\EntityFramework.dll
+D:\Desktop\Backup\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\Desktop\Backup\Models\bin\Debug\EntityFramework.xml
+D:\Desktop\Backup\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\Desktop\Backup\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+D:\Desktop\Backup\Models\obj\Debug\Models.csproj.CopyComplete
+D:\Desktop\Backup\Models\obj\Debug\Models.dll
+D:\Desktop\Backup\Models\obj\Debug\Models.pdb
+D:\Desktop\Backup\Models\obj\Debug\Models.csprojAssemblyReference.cache
