@@ -258,7 +258,6 @@ namespace Inventario
             {
                 dgVer.DataSource = impuestos;
             }
-    //        Cmb(cmbColumnas, _dt);
         }
         object GetResult(string property, string search)
         {
