@@ -138,9 +138,9 @@ namespace Inventario
             this.Label3.Location = new System.Drawing.Point(1303, 103);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(114, 24);
+            this.Label3.Size = new System.Drawing.Size(116, 24);
             this.Label3.TabIndex = 106;
-            this.Label3.Text = "Factura No";
+            this.Label3.Text = "Compra No";
             // 
             // txtNofactura
             // 

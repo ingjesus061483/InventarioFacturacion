@@ -280,8 +280,7 @@ namespace Inventario
                }).ToList()               ;
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(Compras );
                 DataTable pDt = Newtonsoft.Json.JsonConvert.DeserializeObject<DataTable>(json);
-
-                         Db.Tables.Add(pDt );
+                Db.Tables.Add(pDt );
                 _compraHelp.ExportarDatos(Db);
             }
             catch (Exception ex)
