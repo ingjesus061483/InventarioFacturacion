@@ -18,6 +18,7 @@ namespace Inventario
         {
             _context = context;
             InitializeComponent();
+            
 
         }
     }

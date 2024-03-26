@@ -48,6 +48,34 @@ namespace Inventario
 
             InitializeComponent();
             cuestas1.CellClick += dgFacturas_CellContentClick;
+            cuestas1.DataSource += Cuestas1_DataSource;
+        }
+
+        private void Cuestas1_DataSource(object sender, EventArgs e)
+        {
+            var ventas = chkPeriodo.Checked ? _facturaHelp.Queryable
+                                                .Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value)
+                                                .Where(x => x.EstadoId == estado)
+                                                .AsEnumerable()
+                                                .Select(x => new
+                                                {
+                                                    x.TotalPagar,
+                                                })
+                                                .Sum(X => X.TotalPagar) :
+
+                                                _facturaHelp.Queryable                                                
+                                                   .Where(x => x.EstadoId == estado)
+                                                   .AsEnumerable()
+                                                   .Select(x => new
+                                                   {
+
+                                                       x.TotalPagar,
+                                                   }).Sum(x => x.TotalPagar);
+            txtTotalVentas .Text  = String.Format("{0:C}", ventas);
+                                                   
+
+
+
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -340,7 +368,62 @@ namespace Inventario
         {
             try
             {
-                Db.Tables.Add(cuestas1.Table);
+                var facturaEncabezados = chkPeriodo.Checked ? _facturaHelp.Queryable.
+                                    Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value && x.EstadoId == estado)
+                                    .AsEnumerable()
+                                    .Select(x => new 
+                                    {
+                                        x.Id,
+                                        x.Codigo,
+                                        Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                                        x.Observaciones,
+                                        Usuario = x.Usuario.Name,
+                                        x.UsuarioId,
+                                        Cliente = x.Cliente.NombreCompleto,
+                                        x.ClienteId,
+                                        TipoDocumento = x.TipoDocumento.Nombre,
+                                        x.TipoDocumentoId,
+                                        FormaPago = x.FormaPago.Nombre,
+                                        x.FormapagoId,
+                                        Subtotal = String.Format("{0:C}", x.Subtotal),
+                                        Descuento = String.Format("{0:C}", x.Descuento),
+                                        Impuesto = String.Format("{0:C}", x.Impuesto),
+                                        TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                                        Recibido = String.Format("{0:C}", x.Recibido),
+                                        Cambio = String.Format("{0:C}", x.Cambio),
+                                        x.EstadoId,
+                                        Estado = x.Estado.Nombre
+                                    }).ToList()
+              :
+              _facturaHelp.Queryable.
+                                    Where(x => x.EstadoId == estado)
+                                    .AsEnumerable()
+                                    .Select(x => new                                     {
+                                        x.Id,
+                                        x.Codigo,
+                                        Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                                        x.Observaciones,
+                                        Usuario = x.Usuario.Name,
+                                        x.UsuarioId,
+                                        Cliente = x.Cliente.NombreCompleto,
+                                        x.ClienteId,
+                                        TipoDocumento = x.TipoDocumento.Nombre,
+                                        x.TipoDocumentoId,
+                                        FormaPago = x.FormaPago.Nombre,
+                                        x.FormapagoId,
+                                        Subtotal = String.Format("{0:C}", x.Subtotal),
+                                        Descuento = String.Format("{0:C}", x.Descuento),
+                                        Impuesto = String.Format("{0:C}", x.Impuesto),
+                                        TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                                        Recibido = String.Format("{0:C}", x.Recibido),
+                                        Cambio = String.Format("{0:C}", x.Cambio),
+                                        x.EstadoId,
+                                        Estado = x.Estado.Nombre
+                                    }).ToList();
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(facturaEncabezados);
+                DataTable pDt = Newtonsoft.Json. JsonConvert.DeserializeObject<DataTable>(json);
+
+                Db.Tables.Add(pDt  );
                 _facturaHelp.ExportarDatos( Db);
 
 
@@ -453,11 +536,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error );
 
                 return;
             }
-            txtTotalVentas.Text = _facturaHelp.Queryable
-                                                       .Where(x => x.EstadoId == estado)
-                                                       .AsEnumerable()
-                                                       .Sum(x => x.TotalPagar)
-                                                       .ToString();
+       
             cuestas1.MostrarDatos(_facturaHelp.Queryable
                                                   .Where(x => x.EstadoId == estado)
                                                   .AsEnumerable()

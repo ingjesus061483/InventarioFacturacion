@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Helper.View;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -54,7 +55,38 @@ namespace Helper
             }
         }
 
-        protected IQueryable Queryable => throw new NotImplementedException();
+        public IQueryable<PersonaView> Queryable
+        {
+            get
+            {
+                IEnumerable<PersonaView> proveedor = _proveedorHelp.Queryable.AsEnumerable().Select(x => new PersonaView {
+                    Id = x.Id,
+                    FechaNacimiento = x.FechaNacimiento,
+                    TipoIdentificacionId = x.TipoIdentificacionId,
+                    TipoIdentificacion = x.TipoIdentificacion.Nombre,
+                    Identificacion = x.Identificacion,
+                    Nombre = x.Nombre,
+                    Apellido = x.Apellido,
+                    Direccion = x.Direccion,
+                    Telefono = x.Telefono,
+                    Email =x.Email,
+                });
+                IEnumerable<PersonaView> cliente = _clienteHelp .Queryable.AsEnumerable().Select(x => new PersonaView {
+                    Id = x.Id,
+                    FechaNacimiento = x.FechaNacimiento,
+                    TipoIdentificacionId = x.TipoIdentificacionId,
+                    TipoIdentificacion = x.TipoIdentificacion.Nombre,
+                    Identificacion = x.Identificacion,
+                    Nombre = x.Nombre,
+                    Apellido = x.Apellido,
+                    Direccion = x.Direccion,
+                    Telefono = x.Telefono,
+                    Email = x.Email,
+                });
+                return proveedor.Union(cliente).AsQueryable();
+
+            }
+        }
 
         public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
         {

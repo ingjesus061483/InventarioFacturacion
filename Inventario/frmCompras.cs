@@ -173,17 +173,56 @@ namespace Inventario
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            DataTable table;
             if(chkPeriodo .Checked)
             {
-   //           table =  _compraHelp.Busqueda("Fecha", dtpFechaInicio .Value ,dtpFechaFin .Value );
+                dgCompras.DataSource = _compraHelp.Queryable.Where(x=>  x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value) .AsEnumerable().Select(x => new {
+                    x.Id,
+                    x.Codigo,
+                    Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                    FechaEntrega = x.FechaEntrega.ToString("yyyy-MM-dd"),
+                    x.Observaciones,
+                    x.NombreUsuario,
+                    x.UsuarioId,
+                    x.NombreProveedor,
+                    x.ProveedorId,
+                    x.TipoDocumentoNombre,
+                    x.TipoDocumentoId,
+                    x.FormaPagoNombre,
+                    x.FormapagoId,
+                    Subtotal = String.Format("{0:C}", x.Subtotal),
+                    Descuento = String.Format("{0:C}", x.Descuento),
+                    Recibido = String.Format("{0:C}", x.Recibido),
+                    Impuesto = String.Format("{0:C}", x.Impuesto),
+                    TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                    x.EstadoId,
+                    x.EstadoNombre
+                }).ToList();
             }
             else
             {
-     //           table = _compraHelp.Busqueda("Codigo", txtNofactura .Text );
-            }
-       //     dgCompras.DataSource = table;
-
+                dgCompras.DataSource = _compraHelp.Queryable.Where(x=>x.Codigo .Contains(txtNofactura .Text )).AsEnumerable().Select(x => new {
+                    x.Id,
+                    x.Codigo,
+                    Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                    FechaEntrega = x.FechaEntrega.ToString("yyyy-MM-dd"),
+                    x.Observaciones,
+                    x.NombreUsuario,
+                    x.UsuarioId,
+                    x.NombreProveedor,
+                    x.ProveedorId,
+                    x.TipoDocumentoNombre,
+                    x.TipoDocumentoId,
+                    x.FormaPagoNombre,
+                    x.FormapagoId,
+                    Subtotal = String.Format("{0:C}", x.Subtotal),
+                    Descuento = String.Format("{0:C}", x.Descuento),
+                    Recibido = String.Format("{0:C}", x.Recibido),
+                    Impuesto = String.Format("{0:C}", x.Impuesto),
+                    TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                    x.EstadoId,
+                    x.EstadoNombre
+                }).ToList();                
+            }       
         }
 
         private void chkPeriodo_CheckedChanged(object sender, EventArgs e)
@@ -196,7 +235,53 @@ namespace Inventario
         {
             try
             {
-       //         Db.Tables.Add(_compraHelp.Table);
+               var Compras=chkPeriodo.Checked?  _compraHelp.Queryable.Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value).AsEnumerable().Select(x => new {
+                   x.Id,
+                   x.Codigo,
+                   Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                   FechaEntrega = x.FechaEntrega.ToString("yyyy-MM-dd"),
+                   x.Observaciones,
+                   x.NombreUsuario,
+                   x.UsuarioId,
+                   x.NombreProveedor,
+                   x.ProveedorId,
+                   x.TipoDocumentoNombre,
+                   x.TipoDocumentoId,
+                   x.FormaPagoNombre,
+                   x.FormapagoId,
+                   Subtotal = String.Format("{0:C}", x.Subtotal),
+                   Descuento = String.Format("{0:C}", x.Descuento),
+                   Recibido = String.Format("{0:C}", x.Recibido),
+                   Impuesto = String.Format("{0:C}", x.Impuesto),
+                   TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                   x.EstadoId,
+                   x.EstadoNombre
+               }).ToList(): _compraHelp.Queryable.Where(x => x.Codigo.Contains(txtNofactura .Text )).AsEnumerable().Select(x => new {
+                   x.Id,
+                   x.Codigo,
+                   Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                   FechaEntrega = x.FechaEntrega.ToString("yyyy-MM-dd"),
+                   x.Observaciones,
+                   x.NombreUsuario,
+                   x.UsuarioId,
+                   x.NombreProveedor,
+                   x.ProveedorId,
+                   x.TipoDocumentoNombre,
+                   x.TipoDocumentoId,
+                   x.FormaPagoNombre,
+                   x.FormapagoId,
+                   Subtotal = String.Format("{0:C}", x.Subtotal),
+                   Descuento = String.Format("{0:C}", x.Descuento),
+                   Recibido = String.Format("{0:C}", x.Recibido),
+                   Impuesto = String.Format("{0:C}", x.Impuesto),
+                   TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                   x.EstadoId,
+                   x.EstadoNombre
+               }).ToList()               ;
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(Compras );
+                DataTable pDt = Newtonsoft.Json.JsonConvert.DeserializeObject<DataTable>(json);
+
+                         Db.Tables.Add(pDt );
                 _compraHelp.ExportarDatos(Db);
             }
             catch (Exception ex)
@@ -209,6 +294,20 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
             {
                 Db.Tables.Clear();
             }
+        }
+
+        private void dgCompras_DataSourceChanged(object sender, EventArgs e)
+        {
+            var TotalCompras = chkPeriodo.Checked ? _compraHelp.Queryable.Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value).AsEnumerable().Select(x => new {
+              
+                x.TotalPagar,
+                
+            }).Sum(x=>x.TotalPagar ) : _compraHelp.Queryable.Where(x => x.Codigo.Contains(txtNofactura.Text)).AsEnumerable().Select(x => new {
+                
+                 x.TotalPagar,
+                
+            }).Sum(x=>x.TotalPagar);
+            txtTotalVentas.Text = String.Format("{0:C}", TotalCompras);
         }
     }
 }

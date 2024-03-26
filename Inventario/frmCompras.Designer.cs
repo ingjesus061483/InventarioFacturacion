@@ -217,6 +217,7 @@ namespace Inventario
             this.dgCompras.RowTemplate.Height = 28;
             this.dgCompras.Size = new System.Drawing.Size(1924, 369);
             this.dgCompras.TabIndex = 114;
+            this.dgCompras.DataSourceChanged += new System.EventHandler(this.dgCompras_DataSourceChanged);
             this.dgCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1

@@ -13,7 +13,6 @@ namespace Helper
     public abstract class Help
     {
         protected InventarioDbContext _context;
-       // protected abstract IQueryable Queryable { get; }
         public abstract void GetDatagrid(DataGridView gridView, string[,] columns);
         protected StreamWriter CrearArchivo()
         {
@@ -135,120 +134,6 @@ namespace Helper
             return column;
 
         }
-  /*     public DataTable Busqueda(string filtro, string  valor)
-        {
-            try
-            {
-                DataTable DatosResult = null ;
-                var columnas = Table.Columns;                
-                string tipo = "";
-                foreach (DataColumn column in columnas)
-                {
-                    if (column.ColumnName == filtro)
-                    {
-                        tipo = column.DataType.Name;
-                        break;
-                    }
-                }
-
-                switch (tipo)
-                {
-
-                    case "Int32":
-                        {
-                            var query = (from DataRow row in Table.AsEnumerable()
-                                         where row.Field<int>(filtro) == int.Parse(valor)
-                                         select row);
-
-                                DatosResult = query.Count() > 0? query.CopyToDataTable():Table ;
-                           
-                            break;
-                        }
-                    case "String":
-                        {
-                            var query = (from DataRow row in Table.AsEnumerable()
-                                         where row.Field<string>(filtro).Contains(valor.ToString())
-                                         select row);
-                            DatosResult = query.Count() > 0 ? query.CopyToDataTable() : Table;
-                            break;
-                        }
-                    default:
-                        {
-                            DatosResult = Table;
-                            break;
-                        }
-                
-            
-                }
-                return DatosResult;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public DataTable Busqueda(string filtro, object valor1,object valor2)
-        {
-            try
-            {
-                DataTable DatosResult = null;
-                var columnas = Table.Columns;
-                string tipo = "";
-                foreach (DataColumn column in columnas)
-                {
-                    if (column.ColumnName == filtro)
-                    {
-                        tipo = column.DataType.Name;
-                        break;
-                    }
-                }
-
-                switch (tipo)
-                {
-
-                    case "Int32":
-                        {
-                            var query = (from DataRow row in Table.AsEnumerable()
-                                         where row.Field<int>(filtro) == int.Parse(valor1.ToString ())
-                                         select row);
-
-                            DatosResult = query.Count() > 0 ? query.CopyToDataTable() : Table;
-
-                            break;
-                        }
-                    case "String":
-                        {
-                            var query = (from DataRow row in Table.AsEnumerable()
-                                         where row.Field<string>(filtro).Contains(valor1.ToString())
-                                         select row);
-                            DatosResult = query.Count() > 0 ? query.CopyToDataTable() : Table;
-                            break;
-                        }
-                    case "DateTime":
-                        {
-                            DateTime.TryParse(valor1.ToString(), out DateTime fecha1);
-                            DateTime.TryParse(valor2.ToString(), out DateTime fecha2);
-                            var query = (from DataRow row in Table.AsEnumerable()
-                                         where row.Field<DateTime>(filtro) >=fecha1 && row.Field<DateTime>(filtro) <=fecha2  
-                                         select row);
-                            DatosResult = query.Count() > 0 ? query.CopyToDataTable() : Table;
-                            break;
-                        }
-                    default:
-                        {
-                            DatosResult = Table;
-                            break;
-                        }
-
-
-                }
-                return DatosResult;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }*/
         public DataTable GetTable( DataGridView gridView )
         {
             DataTable table = new DataTable();

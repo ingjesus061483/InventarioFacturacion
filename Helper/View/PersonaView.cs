@@ -17,6 +17,7 @@ namespace Helper.View
        public string Apellido { get; set; }
     public string  Direccion { get; set; }
 public string Telefono { get; set; }
+        public string Email { get; set; }
         public string Usuario { get; set; }
        public int  UsuarioId { get; set; }
 

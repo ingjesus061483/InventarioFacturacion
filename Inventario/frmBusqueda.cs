@@ -16,6 +16,7 @@ namespace Inventario
     public partial class frmBusqueda : Form
     {
         List<Motivo> motivos;
+        List<PersonaView> personas;
         List<Impuesto> impuestos;
         List<Categoria> categorias;
         List<EmpresaView> empresas;
@@ -27,9 +28,17 @@ namespace Inventario
         public DataGridViewRow Row { get; set; }
 
         public int Id { get; set; }
-        public frmBusqueda()
+        public frmBusqueda(EmailHelp emailHelp)
         {
-
+            InitializeComponent();
+            personas =emailHelp . Queryable.ToList();
+            var persona  = emailHelp .Queryable.FirstOrDefault();
+            var properties = persona.GetType().GetProperties().Select(x => new
+            {
+                Id = 0,
+                Nombre = x.Name
+            }).ToList();
+            emailHelp.Cmb(cmbColumnas, properties);
         }
         public frmBusqueda(EmpresaHelp empresaHelp)
         {
@@ -221,6 +230,10 @@ namespace Inventario
         }
         private void frmBusqueda_Load(object sender, EventArgs e)
         {
+            if(personas!=null)
+            {
+                dgVer.DataSource = personas;
+            }
             if (empresas !=null )
             {
                 dgVer.DataSource = empresas;
@@ -261,6 +274,13 @@ namespace Inventario
         }
         object GetResult(string property, string search)
         {
+            if(personas!=null)
+            {
+                List<PersonaView > result = personas.Where(x => x.GetType().GetProperty(property)
+                                                                      .GetValue(x).ToString()
+                                                                      .Contains(search)).ToList();
+                return result.Count == 0 ? personas : result;
+            }
             if(empresas !=null)
             {
                 List<EmpresaView > result = empresas.Where(x => x.GetType().GetProperty(property)

@@ -11,10 +11,12 @@ namespace Inventario.UserControls
         public  ProductoHelp  ProductoHelp { get; set; }
         public FacturaHelp FacturaHelp { get; set; }
         public ExistenciaHelp ExistenciaHelp { get; set; }
+        public delegate void DataSourceChanged(object sender, EventArgs e);
         public delegate void DataGridViewCell(object sender, DataGridViewCellEventArgs e);
         public DataTable Table;
         public string[] NameButtons { get; set; }
         // Declare the event.
+        public event DataSourceChanged DataSource;
         public event DataGridViewCell CellClick;
         string[,] _existencias ={{"Id","false"} ,{"Fecha","true" },
                                  {"Concepto","true" },{ "Cantidad", "true" },
@@ -85,23 +87,8 @@ namespace Inventario.UserControls
 
         private void dgFacturas_DataSourceChanged(object sender, EventArgs e)
         {
-            DataGridView gridView = (DataGridView)sender;
-            if (FacturaHelp != null)
-            {
-                Table = FacturaHelp.GetTable(gridView);
-            }
-            else if (ProductoHelp != null)
-            {
-                Table = ProductoHelp.GetTable(gridView);
-            }
-            else if (ExistenciaHelp != null)
-            {
-                Table = ExistenciaHelp.GetTable(gridView);            
-            }
-            else if (CompraHelp != null)
-            {
-                Table = CompraHelp.GetTable(gridView);
-            }
+            DataGridView gridView = (DataGridView)sender;            
+            DataSource.Invoke(gridView, e);
         }
 
         private void Cuestas_Load(object sender, EventArgs e)

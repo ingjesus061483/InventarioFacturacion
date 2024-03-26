@@ -298,3 +298,5 @@ D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.CopyComplete
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.exe
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.pdb
+D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\Newtonsoft.Json.dll
+D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\Newtonsoft.Json.xml
