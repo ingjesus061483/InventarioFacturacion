@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.View;
 using Inventario.UserControls;
 using Microsoft.Reporting.WinForms;
 using Models;
@@ -23,7 +24,6 @@ namespace Inventario
         UnidaMedidaHelp _unidaMedidaHelp;
         ExistenciaHelp _existenciaHelp;        
         DataSet  Db;
-//        List <Producto> Productos { get; set; }
         public frmInventarioProducto( ProductoHelp productoHelp,
                                       CategoriaHelp categoriaHelp,
                                       ExistenciaHelp existenciaHelp,
@@ -35,17 +35,18 @@ namespace Inventario
             _existenciaHelp = existenciaHelp;
             InitializeComponent();
         }
-
         private void Cuestas1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView gridView = (DataGridView)sender;
-            int col = e.ColumnIndex;
+            int col = e.ColumnIndex; 
+            var codigo = gridView.Rows[e.RowIndex].Cells["codigo"].Value.ToString();
+            int.TryParse( gridView.Rows[e.RowIndex].Cells["id"].Value.ToString(),out int id);
+            var producto = _productoHelp.BuscarProducto(codigo);
             switch (col)
             {
                 case 0:
                     {
-                        var codigo = gridView.Rows[e.RowIndex].Cells[5].Value.ToString();
-                        var producto = _productoHelp.BuscarProducto(codigo);
+                     
 
                         frmDetalleExistencia frmFactura = new frmDetalleExistencia(_existenciaHelp )
                         {
@@ -54,10 +55,16 @@ namespace Inventario
                         frmFactura.ShowDialog();
                         break;
                     }
+                case 1:
+                    {
+
+                        frmExistencia frmExistencia = new frmExistencia(_productoHelp, _existenciaHelp);
+                        frmExistencia.producto = producto;
+                        frmExistencia.ShowDialog();
+                        break;
+                    }
                 case 2:
                     {
-                        var codigo = gridView.Rows[e.RowIndex].Cells[5].Value.ToString();
-                        var producto = _productoHelp.BuscarProducto(codigo);
                         frmProducto frmProducto = new frmProducto(_productoHelp,
                                               _categoriaHelp,
                                               _unidaMedidaHelp,
@@ -68,19 +75,19 @@ namespace Inventario
 
 
                     }
-                case 1:
-                    {
-                        var codigo = gridView.Rows[e.RowIndex].Cells[5].Value.ToString();
-                        frmExistencia frmExistencia = new frmExistencia(_productoHelp,_existenciaHelp );
-                        frmExistencia.producto = _productoHelp  .BuscarProducto (codigo);
-                        frmExistencia.ShowDialog();
+                case 3:
+
+                    { 
+                        DialogResult result = MessageBox.Show("Desea eliminar este producto?", "",
+                                              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            _productoHelp.EliminarProducto(id);
+                        }
                         break;
-                    }
+                    }               
             }
-
-            cmbCategoria.SelectedIndex = -1;
-           dgProdctos .DataSource =_productoHelp.Table ;
-
+            mostrarProducto();
         }
 
         private void cuestas1_Load(object sender, EventArgs e)
@@ -88,14 +95,30 @@ namespace Inventario
             Cuestas cuestas = (Cuestas)sender;
             cuestas.ProductoHelp = _productoHelp;
         }
-
+        void mostrarProducto()
+        {
+            dgProdctos.DataSource = _productoHelp.Queryable.Where(x => x.CategoriaId == categoria).AsEnumerable().Select(x => new ProductoView {
+               Id= x.Id,
+               Codigo=  x.Codigo,
+                Nombre =  x.Nombre,
+                Costo = String.Format("{0:C}", x.Costo),
+                Precio = String.Format("{0:C}", x.Precio),
+                 TotalEntrada = x.TotalEntrada,
+                TotalSalida = x.TotalSalida,
+              TotalExistencia=  x.TotalExistencia,
+               Descripcion= x.Descripcion,
+                CategoriaId = x.CategoriaId,
+                Categoria = x.Categoria.Nombre,
+               UnidadMedidaId= x.UnidadMedidaId,
+                UnidadMedida = x.UnidadMedida.Nombre
+            }).ToList();
+        }
         private void frmInventarioProducto_Load(object sender, EventArgs e)
         {
             Db = new DataSet();
+            mostrarProducto();
 
-            //Productos = _productoHelp.GetProductos(0);
-            dgProdctos.DataSource = _productoHelp.Table ;     
-            _categoriaHelp.Cmb(cmbCategoria);
+            _categoriaHelp.Cmb(cmbCategoria,_categoriaHelp.Queryable .ToList());
 
         }
 
@@ -105,14 +128,14 @@ namespace Inventario
             int.TryParse(combo.SelectedValue !=null? combo.SelectedValue.ToString():string .Empty , out categoria);
             if (categoria != 0)
             {
-               dgProdctos .DataSource = _productoHelp.Busqueda ("CategoriaId",categoria.ToString () );
+                mostrarProducto();
             }
         }
 
         private void btnexportar_Click(object sender, EventArgs e)
         {
-            Db.Tables.Add(_productoHelp .Table);
-            _productoHelp.ExportarDatos(Db);
+           // Db.Tables.Add(_productoHelp .Table);
+           // _productoHelp.ExportarDatos(Db);
 
         }
 
@@ -127,22 +150,41 @@ namespace Inventario
                 frmProducto.CategoriaId = int.Parse(cmbCategoria.SelectedValue.ToString());          
             }
             frmProducto.ShowDialog();
-            dgProdctos.DataSource = _productoHelp.Table;
+            mostrarProducto();
         }
-
+  
         private void dgProdctos_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView gridView = (DataGridView)sender;
-            txtTotalVentas.Text = _productoHelp.calucarExistencias(dgProdctos).ToString ();
+            txtTotalVentas.Text = _productoHelp.Queryable.Where(x => x.CategoriaId == categoria).AsEnumerable()
+                                                   .Sum(x => x.TotalExistencia).ToString ();
             txtNofactura.Text = string.Empty;
             txtNofactura.Focus();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            dgProdctos.DataSource = _productoHelp.Busqueda("Codigo", txtNofactura .Text );
+            dgProdctos.DataSource = _productoHelp.Queryable.Where(x => x.Codigo.Contains(txtNofactura.Text)&& x.CategoriaId ==categoria ).AsEnumerable().Select(x =>new   ProductoView {
+                Id = x.Id,
+               Codigo = x.Codigo,
+                Nombre = x.Nombre,
+                Costo = String.Format("{0:C}", x.Costo),
+                Precio = String.Format("{0:C}", x.Precio),
+                 TotalEntrada = x.TotalEntrada,
+                TotalSalida = x.TotalSalida,
+              TotalExistencia = x.TotalExistencia,
+               Descripcion = x.Descripcion,
+                CategoriaId = x.CategoriaId,
+                Categoria = x.Categoria.Nombre,
+               UnidadMedidaId = x.UnidadMedidaId,
+                UnidadMedida = x.UnidadMedida.Nombre
+            
+        }).ToList();
             if (dgProdctos.Rows.Count  == 0)
-                dgProdctos.DataSource = _productoHelp.Table;
+            {
+                mostrarProducto();
+            }
+       
 
         }
 
@@ -155,7 +197,19 @@ namespace Inventario
 
         private void btnTotatizar_Click(object sender, EventArgs e)
         {
-            List < Producto >productos  = _productoHelp.GetProductos();
+            List < Producto >productos =  _productoHelp.Queryable.Where(x => x.CategoriaId == categoria).AsEnumerable().Select(x => new Producto  {
+                Id = x.Id,
+                Codigo = x.Codigo,
+                Nombre = x.Nombre,
+                Costo = x.Costo,
+                Precio = x.Precio,
+                Existencias = x.Existencias,
+                RutaImagen = x.RutaImagen,
+                Descripcion = x.Descripcion,
+                CategoriaId = x.CategoriaId,
+                Categoria =x.Categoria ,
+                UnidadMedidaId = x.UnidadMedidaId,
+                UnidadMedida =x.UnidadMedida             }).ToList(); 
             List<ReportDataSource> reportDataSources = new List<ReportDataSource>();
             reportDataSources.Add(new ReportDataSource{ Name = "Productos",
                                                         Value = categoria != 0 ? productos.Where(x => x.CategoriaId == categoria)

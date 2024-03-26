@@ -24,7 +24,7 @@ namespace Inventario
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frmBusqueda frmBusqueda = new frmBusqueda(_impuestoHelp.Table);
+            frmBusqueda frmBusqueda = new frmBusqueda(_impuestoHelp);
             frmBusqueda.ShowDialog();
             int id = frmBusqueda.Id;
             impuesto  = _impuestoHelp .BuscarImpuesto (id);

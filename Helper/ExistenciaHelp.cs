@@ -18,7 +18,8 @@ namespace Helper
             _context = context;
         }
 
-        public override DataTable Table => throw new NotImplementedException();
+
+        protected  IQueryable Queryable => throw new NotImplementedException();
 
         public override void GetDatagrid(DataGridView gridView, string[,] columns)
         {

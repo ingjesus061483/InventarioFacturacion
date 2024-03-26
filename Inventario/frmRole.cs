@@ -32,8 +32,7 @@ namespace Inventario
         }
         private void Btnbuscar_Click(object sender, EventArgs e)
         {
-            DataTable dt = _context.Table  ;
-            frmBusqueda frmBusqueda = new frmBusqueda(dt);
+            frmBusqueda frmBusqueda = new frmBusqueda(_context);
             frmBusqueda.ShowDialog();
             int id = frmBusqueda.Id;
             role = _context.BuscarRole(id);

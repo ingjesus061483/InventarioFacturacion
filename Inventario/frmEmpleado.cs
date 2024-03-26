@@ -39,12 +39,12 @@ namespace Inventario
 
         private void frmEmpleado_Load(object sender, EventArgs e)
         {
-            _tipoIdentificacionHelp.Cmb(cmbTipoIdentificacion);
+            _tipoIdentificacionHelp.Cmb(cmbTipoIdentificacion,_tipoIdentificacionHelp.Queryable.ToList() );
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frmBusqueda frmBusqueda = new frmBusqueda(_empleadoHelp.Table);
+            frmBusqueda frmBusqueda = new frmBusqueda(_empleadoHelp);
             frmBusqueda.ShowDialog();
             empleado = _empleadoHelp.BuscarEmpleado(frmBusqueda.Id);
             if(empleado ==null)

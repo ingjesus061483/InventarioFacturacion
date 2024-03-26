@@ -29,14 +29,13 @@ namespace Inventario
 
         private void frmProveedores_Load(object sender, EventArgs e)
         {
-            _tipoIdentificacionHelp.Cmb(cmbTipoIdentificacion);
+            _tipoIdentificacionHelp.Cmb(cmbTipoIdentificacion,_tipoIdentificacionHelp.Queryable.ToList());
             Nuevo();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var dt =_proveedorHelp .Table ;
-            frmBusqueda frmBusqueda = new frmBusqueda(dt);
+            frmBusqueda frmBusqueda = new frmBusqueda(_proveedorHelp );
             frmBusqueda.ShowDialog();
             int id = frmBusqueda.Id;
             proveedor  = _proveedorHelp .BuscarProveedor(id);

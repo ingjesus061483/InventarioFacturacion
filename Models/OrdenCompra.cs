@@ -59,7 +59,7 @@ namespace Models
         {
             get
             {
-                if (Impuestos != null)
+                if(!(bool)Proveedor.PersonaNatural)                    
                 {
                     _totalImpuesto = 0;
                     foreach (Impuesto item in Impuestos)

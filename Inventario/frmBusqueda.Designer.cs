@@ -44,8 +44,7 @@ namespace Inventario
             this.btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnsalir.Font = new System.Drawing.Font("Arial Narrow", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsalir.Image = ((System.Drawing.Image)(resources.GetObject("btnsalir.Image")));
-            this.btnsalir.Location = new System.Drawing.Point(821, 475);
-            this.btnsalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnsalir.Location = new System.Drawing.Point(611, 332);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(60, 60);
             this.btnsalir.TabIndex = 50;
@@ -57,8 +56,7 @@ namespace Inventario
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(122, 77);
-            this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label3.Location = new System.Drawing.Point(158, 68);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(59, 24);
             this.Label3.TabIndex = 49;
@@ -68,8 +66,7 @@ namespace Inventario
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(-1, 35);
-            this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label2.Location = new System.Drawing.Point(27, 23);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(190, 24);
             this.Label2.TabIndex = 48;
@@ -80,19 +77,17 @@ namespace Inventario
             this.cmbColumnas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColumnas.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbColumnas.FormattingEnabled = true;
-            this.cmbColumnas.Location = new System.Drawing.Point(211, 31);
-            this.cmbColumnas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbColumnas.Location = new System.Drawing.Point(223, 20);
             this.cmbColumnas.Name = "cmbColumnas";
-            this.cmbColumnas.Size = new System.Drawing.Size(670, 31);
+            this.cmbColumnas.Size = new System.Drawing.Size(448, 31);
             this.cmbColumnas.TabIndex = 47;
             // 
             // txtFiltro
             // 
             this.txtFiltro.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFiltro.Location = new System.Drawing.Point(211, 72);
-            this.txtFiltro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFiltro.Location = new System.Drawing.Point(223, 65);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(670, 30);
+            this.txtFiltro.Size = new System.Drawing.Size(448, 30);
             this.txtFiltro.TabIndex = 46;
             this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             // 
@@ -101,28 +96,29 @@ namespace Inventario
             this.dgVer.AllowUserToAddRows = false;
             this.dgVer.AllowUserToDeleteRows = false;
             this.dgVer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgVer.Location = new System.Drawing.Point(25, 130);
-            this.dgVer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgVer.Location = new System.Drawing.Point(17, 108);
             this.dgVer.Name = "dgVer";
             this.dgVer.ReadOnly = true;
             this.dgVer.RowHeadersVisible = false;
             this.dgVer.RowHeadersWidth = 62;
             this.dgVer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgVer.Size = new System.Drawing.Size(856, 335);
+            this.dgVer.Size = new System.Drawing.Size(654, 218);
             this.dgVer.TabIndex = 45;
             this.dgVer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVer_CellContentClick);
             // 
             // frmBusqueda
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 549);
+            this.ClientSize = new System.Drawing.Size(701, 411);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cmbColumnas);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.Label3);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.dgVer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmBusqueda";
             this.Text = "frmBusqueda";
             this.Load += new System.EventHandler(this.frmBusqueda_Load);

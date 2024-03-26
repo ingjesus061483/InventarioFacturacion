@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -20,67 +21,44 @@ namespace Helper
             _existenciaHelp = existenciaHelp;
             
         }
-        IQueryable Queryable
+        public IQueryable<OrdenCompraDTO> Queryable
         {
             get
             {
-                return  (from compra in _context.OrdenCompras
-                                    join prov in _context.Proveedors on compra.ProveedorId equals prov.Id join usu in _context.Usuarios on compra.UsuarioId
-                                    equals usu.Id join formapago in _context.FormaPagos on compra.FormapagoId equals formapago.Id into fp from subformaPago in 
-                                    fp.DefaultIfEmpty() join tipodoc in _context.TipoDocumentos on compra.TipoDocumentoId equals tipodoc.Id join est in 
-                                    _context.Estados on compra.EstadoId equals est.Id
-                                    select new
-                                    {
-                                        compra.Id,
-                                        compra.Codigo,
-                                        compra.Fecha,
-                                        compra.FechaEntrega,
-                                        compra.Observaciones,
-                                        compra.Usuario,
-                                        compra.UsuarioId,
-                                        compra.ProveedorId,
-                                        compra.Proveedor,
-                                        compra.TipoDocumento,
-                                        compra.TipoDocumentoId,
-                                       formapago=subformaPago !=null? subformaPago  :null ,
-                                        compra.FormapagoId,
-                                        subtotal = _context.OrdenCompraDetalles.
-                                                                                Where(x => x.OrdenCompraId == compra.Id).
-                                                                                Select(x => new {subtotal =x.Cantidad *x.ValorUnitario }).
-                                                                                Sum (x=>x.subtotal ),    
-                                        impuesto=(bool)compra . Proveedor .PersonaNatural ?0: _context .Impuestos .
-                                                                                    Select(x=>new {impuesto=_context.OrdenCompraDetalles.
-                                                                                    Where(c => c.OrdenCompraId == compra.Id).
-                                                                                    Select(z =>new{ subtotal = z.Cantidad *
-                                                                                    z.ValorUnitario}).
-                                                                                    Sum(z => z.subtotal)*x.Valor/100 }).
-                                                                                    Sum(y=>y.impuesto ),
-                                       compra.Descuento,
-                                       TotalPagar= _context.OrdenCompraDetalles.
-                                                            Where(x => x.OrdenCompraId == compra.Id).
-                                                            Select(x => new { subtotal = x.Cantidad * x.ValorUnitario }).
-                                                            Sum(x => x.subtotal)
-                                                            +
-                                                            ((bool)compra.Proveedor.PersonaNatural ? 0 : 
-                                                                                _context.Impuestos.Select(x => new {
-                                                                                                    impuesto = _context.OrdenCompraDetalles.
-                                                                                                                        Where(c => c.OrdenCompraId == compra.Id).
-                                                                                                                        Select(z => new {subtotal = z.Cantidad *z.ValorUnitario}).
-                                                                                                                        Sum(z => z.subtotal) * x.Valor / 100 }).
-                                                                                                                        Sum(y => y.impuesto)) - compra.Descuento,
-                                        compra.Recibido,
-                                        compra.EstadoId,
-                                        compra.Estado
-                                    });
-            } 
+                return (from compra in _context.OrdenCompras
+                        join prov in _context.Proveedors on compra.ProveedorId equals prov.Id
+                        join usu in _context.Usuarios on compra.UsuarioId equals usu.Id
+                        join formapago in _context.FormaPagos on compra.FormapagoId equals formapago.Id into fp
+                        from subformaPago in fp.DefaultIfEmpty()
+                        join tipodoc in _context.TipoDocumentos on compra.TipoDocumentoId equals tipodoc.Id
+                        join est in _context.Estados on compra.EstadoId equals est.Id
+                        select new OrdenCompraDTO
+                        {
+                            Id = compra.Id,
+                            Codigo = compra.Codigo,
+                            Fecha = compra.Fecha,
+                            FechaEntrega = compra.FechaEntrega,
+                            Observaciones = compra.Observaciones,
+                            Usuario = compra.Usuario,
+                            UsuarioId = compra.UsuarioId,
+                            ProveedorId = compra.ProveedorId,
+                            Proveedor = compra.Proveedor,
+                            TipoDocumento = compra.TipoDocumento,
+                            TipoDocumentoId = compra.TipoDocumentoId,
+                            FormaPago = subformaPago,
+                            FormapagoId = compra.FormapagoId,
+                            Detalles= _context.OrdenCompraDetalles.Where(x => x.OrdenCompraId == compra.Id)
+                                                                  .ToList(),
+                            Impuestos =_context.Impuestos
+                                               .ToList (),
+                            Descuento= compra.Descuento,
+                            Recibido =  compra.Recibido,                            
+                            EstadoId = compra.EstadoId,
+                            Estado = compra.Estado
+                        });
+            }
         }
-        public override DataTable Table 
-        {
-            get
-            { 
-                return _context.GetDataTable(Queryable.ToString ()); 
-            } 
-        }
+
         public override void GetDatagrid(DataGridView gridView, string[,] columns)
         {
             gridView.DataSource = null;
@@ -149,15 +127,20 @@ namespace Helper
                 _context.SaveChanges();
             }
         }
-        public void RecibirMercancia (string codigo ,DateTime  fechaEntrega,string  observacion,int formapagoid, int estadoId)
+        public void  ActualizarCompra(string codigo,OrdenCompra compra)
         {
-            OrdenCompra compra = _context.OrdenCompras.Where(x => x.Codigo == codigo)
+            OrdenCompra  compraold = _context.OrdenCompras.Where(x => x.Codigo == codigo)
                                                       .FirstOrDefault();
-            compra.FormapagoId = formapagoid;
-            compra.EstadoId = estadoId;
-            compra.Observaciones = observacion;
-            compra.FechaEntrega = fechaEntrega;
+            compraold.FormapagoId =compra.FormapagoId ;
+            compraold.EstadoId =compra .EstadoId ;
+            compraold.Observaciones = compra .Observaciones;
+            compraold.FechaEntrega = compra .FechaEntrega ;
             _context.SaveChanges();
+
+        }
+        public void RecibirMercancia (string codigo )
+        {
+            OrdenCompra compra = BuscarCompra(codigo);
             foreach (OrdenCompraDetalle item in compra.Detalles )
             {
                 Existencia existencia = new Existencia
@@ -173,25 +156,58 @@ namespace Helper
         }
         public OrdenCompra BuscarCompra(int id)
         {
-           var compra = _context.OrdenCompras.Where(x => x.Id  == id)
-                                          .FirstOrDefault();
-            compra.Proveedor = _context.Proveedors.Where(x => x.Id == compra.ProveedorId).FirstOrDefault();
-            compra.Usuario = _context.Usuarios.Where(x => x.Id == compra.UsuarioId).FirstOrDefault();
-            compra.Impuestos = (bool)compra.Proveedor.PersonaNatural ? null : _context.Impuestos.ToList();
-            compra.Detalles = _context.OrdenCompraDetalles.Where(x => x.OrdenCompraId == compra.Id).ToList();
-
+            var compra = Queryable.Where(x => x.Id == id) .AsEnumerable().Select(
+                x => new OrdenCompra  {
+                    Id =      x.Id,
+                    Codigo= x.Codigo,
+                    Fecha=  x.Fecha,
+                    FechaEntrega=x.FechaEntrega,
+                    Observaciones = x.Observaciones,
+                    Usuario=x.Usuario,
+                    UsuarioId = x.UsuarioId,
+                    Proveedor = x.Proveedor ,
+                    ProveedorId = x.ProveedorId ,
+                    TipoDocumento=x.TipoDocumento,                    
+                    TipoDocumentoId=x.TipoDocumentoId,
+                    Impuestos=x.Impuestos,
+                    FormaPago=x. FormaPago,
+                    FormapagoId = x.FormapagoId,             
+                    Descuento=   x.Descuento ,
+                    Recibido=  x.Recibido,                
+                    Detalles=x.Detalles,
+                    EstadoId= x.EstadoId ,
+                    Estado=   x.Estado
+                }).FirstOrDefault();
+        
             return compra;
 
         }
         public OrdenCompra BuscarCompra(string  codigo)
         {
-            var compra = _context.OrdenCompras.Where(x => x.Codigo  == codigo)
-                                              .FirstOrDefault();
-            compra.Usuario = _context.Usuarios.Where(x => x.Id == compra.UsuarioId).FirstOrDefault ();
-            compra.Proveedor = _context.Proveedors.Where(x => x.Id == compra.ProveedorId).FirstOrDefault();
-            compra.Impuestos =(bool)compra.Proveedor .PersonaNatural?null:  _context.Impuestos.ToList();
-            compra.Detalles = _context.OrdenCompraDetalles.Where(x => x.OrdenCompraId == compra.Id).ToList();
-            return compra;
+            var compra =  Queryable.Where(x => x.Codigo  == codigo ).Select(
+                x => new OrdenCompra
+                {
+                    Id = x.Id,
+                    Codigo = x.Codigo,
+                    Fecha = x.Fecha,
+                    FechaEntrega = x.FechaEntrega,
+                    Observaciones = x.Observaciones,
+                    Usuario = x.Usuario,
+                    UsuarioId = x.UsuarioId,
+                    Proveedor = x.Proveedor,
+                    ProveedorId = x.ProveedorId,
+                    TipoDocumento = x.TipoDocumento,
+                    TipoDocumentoId = x.TipoDocumentoId,
+                    FormaPago = x.FormaPago,
+                    FormapagoId = x.FormapagoId,
+                    Descuento = x.Descuento,
+                    Recibido = x.Recibido,
+                    Detalles = x.Detalles,
+                    EstadoId = x.EstadoId,
+                    Estado = x.Estado
+                }).FirstOrDefault();
+
+            return compra;           
         }
         public void AnularCompra(int id, List<OrdenCompraDetalle> detalles)
         {

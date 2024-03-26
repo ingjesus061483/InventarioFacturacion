@@ -17,6 +17,7 @@ namespace Inventario
     public partial class frmCategoria : Form
     {
         readonly CategoriaHelp _context;
+        Dictionary<string, object> collection;
         string message = "";       
         private Categoria categoria;
         public frmCategoria(CategoriaHelp  context)
@@ -44,21 +45,20 @@ namespace Inventario
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            collection = new Dictionary<string, object>
+            {
+                { "nombre", txtNombre.Text },
+                { "descripcion", txtDescripcion.Text }
+            };            
             if (categoria==null)
             {
-                categoria = new Categoria
-                {
-                    Nombre = txtNombre.Text,
-                    Descripcion = txtDescripcion.Text
-                };
-                _context.GuardarCategoria(categoria);// Categorias.Add(categoria);
+                _context.Guardar(collection);// Categorias.Add(categoria);
                 message = "la categoria ha sido guardada";
                 
             }
             else
-            {    categoria.Nombre = txtNombre.Text ;
-                 categoria.Descripcion = txtDescripcion.Text;
-                _context.ActualizarCategoria(categoria.Id, categoria);
+            {
+                _context.Actualizar(categoria.Id, collection);
             
                 message = "la categoria ha sido editada";
 
@@ -75,11 +75,11 @@ namespace Inventario
         private void Button1_Click(object sender, EventArgs e)
         {
             //     string query=  _context.Categorias.AsQueryable().ToString();    
-            DataTable dt = _context .Table ;
-            frmBusqueda frmBusqueda = new frmBusqueda(dt);
+       //     DataTable dt = _context .Table ;
+            frmBusqueda frmBusqueda = new frmBusqueda(_context                );
             frmBusqueda.ShowDialog();
             int id = frmBusqueda.Id;
-            categoria = _context.BuscarCategoria (id);
+            categoria = _context.Queryable.Where(x=>x.Id == id).FirstOrDefault();
             if (categoria == null)
             {
                 Nuevo();
@@ -102,7 +102,7 @@ namespace Inventario
                  MessageBoxButtons.YesNo , MessageBoxIcon.Question);
             if (resp==DialogResult.Yes)
             {
-                _context.EliminarCategoria  (categoria.Id );
+                _context.Eliminar  (categoria.Id );
 
                 MessageBox.Show("La categoria fue eliminada", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);

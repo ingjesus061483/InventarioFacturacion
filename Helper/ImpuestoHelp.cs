@@ -16,18 +16,7 @@ namespace Helper
             _context = context;
         }
 
-       IQueryable queryable  { get { return _context.Impuestos.AsQueryable(); } }
-        public List<Impuesto>Impuestos
-        {
-            get
-            {
-                return _context.Impuestos.ToList();
-            }
-        }
-      public override    DataTable Table
-        {
-            get { return _context.GetDataTable(queryable.ToString()); }
-        }
+ public   IQueryable<Impuesto >  Queryable  { get { return _context.Impuestos.AsQueryable(); } }
         public Impuesto BuscarImpuesto(int id)
         {
             return _context.Impuestos.Find(id);

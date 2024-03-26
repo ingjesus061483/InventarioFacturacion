@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable queryable
+        public  IQueryable<UsuarioDTO > Queryable
         {
             get
             {
@@ -26,26 +27,22 @@ namespace Helper
                         on us.EmpresaId equals emp.Id
                         join role in _context.Roles on
                         us.RoleId equals role.Id
-                        select new
+                        select new UsuarioDTO
                         {
-                            us.Id,
-                            us.Name,
-                            us.Email,
-                            us.Password,
-                            emp,
-                            role
+                            Id = us.Id,
+                            Name = us.Name,
+                            Email = us.Email,
+                            Password = us.Password,
+                            Empresa = emp,
+                            Role = role,
+                            Empleados = _context.Empleados.Where(x => x.UsuarioId == us.Id).ToList(),
+                            EmpresaId = emp.Id,
+                            RoleId = role.Id
                         });
 
             }
         }
-        public override  DataTable Table
-        {
-            get
-            {
-                return _context.GetDataTable(queryable.ToString());
-            }
-        }
-        public Usuario BuscarUsuario(int id)
+       public Usuario BuscarUsuario(int id)
         {
             var usuario = _context.Usuarios.Find(id);
             return usuario;
@@ -101,48 +98,31 @@ namespace Helper
         }
         public string Encriptar(string password)
         {
-            string result = string.Empty;
             byte[] encryted = System.Text.Encoding.Unicode.GetBytes(password);
-            result = Convert.ToBase64String(encryted);
+            string result = Convert.ToBase64String(encryted);
             return result;
         }
         public Usuario login(string name ,string password)
         {
             var pass = Encriptar(password);
-            var usu = (from us in _context.Usuarios
-                           join emp in _context.Empresas
-                           on us.EmpresaId equals emp.Id
-                           join role in _context.Roles on
-                           us.RoleId equals role.Id
-                           select new
-                           {
-                               Id = us.Id,
-                               Name = us.Name,
-                               Email = us.Email,
-                               Password = us.Password,
-                               Empresa = emp,
-                               Role = role,
-                               Empleados = _context.Empleados.Where(x => x.UsuarioId == us.Id).ToList(),
-                               EmpresaId = emp.Id,
-                               RoleId = role.Id
-                           })
-                           .Where(x => x.Name == name && x.Password == pass)
-                           .FirstOrDefault();
-            Usuario usuario = null;
-            if (usu != null)
+            Usuario usuario = Queryable.Where(x => x.Name == name && x.Password == pass)
+                                       .AsEnumerable()
+                                       .Select(x => new Usuario{
+                                           Id = x.Id,
+                                           Name = x.Name,
+                                           Email = x.Email,
+                                           Password = x.Password,
+                                           Empresa = x.Empresa,
+                                           Role = x.Role,
+                                           Empleados = x.Empleados,
+                                           EmpresaId = x.EmpresaId,
+                                           RoleId = x.RoleId
+                                       }).FirstOrDefault();
+            if (usuario != null)
             {
-                usuario = new Usuario
-                {  
-                    Id = usu.Id,
-                    Name = usu.Name,
-                    Email = usu.Email,
-                    Password = usu.Password,
-                    Empresa = usu.Empresa,
-                    Role = usu.Role,
-                    Empleados = usu .Empleados ,
-                    EmpresaId = usu.EmpresaId,
-                    RoleId = usu.RoleId
-                };
+                usuario.Empresa.TipoRegimen = _context.TipoRegimens
+                                                      .Where(x => x.Id == usuario.Empresa.TipoRegimenId)
+                                                      .FirstOrDefault();                
             }
             return usuario;
         }

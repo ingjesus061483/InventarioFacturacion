@@ -12,10 +12,8 @@ namespace Helper
 {
     public abstract class Help
     {
-        protected   InventarioDbContext _context;
-
-        public abstract DataTable Table { get; }    
-
+        protected InventarioDbContext _context;
+       // protected abstract IQueryable Queryable { get; }
         public abstract void GetDatagrid(DataGridView gridView, string[,] columns);
         protected StreamWriter CrearArchivo()
         {
@@ -78,15 +76,15 @@ namespace Helper
                 throw ex;
             }
         }
-        public void Cmb(ComboBox cmb)
+        public void Cmb(ComboBox cmb,object lst)
         {
             string[] arr = { "Id", "Nombre" };
-            cmb.DataSource = Table ;
+            cmb.DataSource = lst ;
             cmb.ValueMember = arr.GetValue(0).ToString();
             cmb.DisplayMember = arr.GetValue(1).ToString();
             cmb.SelectedIndex = -1;
         }
-        public  string CargarImagen(PictureBox picture)
+        public string CargarImagen(PictureBox picture)
         {
             try
             {
@@ -112,8 +110,7 @@ namespace Helper
                 throw new Exception(ex.Message);
             }
         }
-
-   public bool EmailBienEscrito(string email)
+        public bool EmailBienEscrito(string email)
         {
             string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
             if (Regex.IsMatch(email, expresion))
@@ -138,7 +135,7 @@ namespace Helper
             return column;
 
         }
-       public DataTable Busqueda(string filtro, string  valor)
+  /*     public DataTable Busqueda(string filtro, string  valor)
         {
             try
             {
@@ -251,7 +248,7 @@ namespace Helper
             {
                 throw ex;
             }
-        }
+        }*/
         public DataTable GetTable( DataGridView gridView )
         {
             DataTable table = new DataTable();

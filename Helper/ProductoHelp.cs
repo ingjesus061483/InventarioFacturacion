@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -17,89 +18,70 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable QueryProducto 
+        public IQueryable<ProductoDTO> Queryable 
         {
             get
             {
                 return (from pro in _context.Productos
                                     join cat in _context.Categorias on pro.CategoriaId equals cat.Id
                                     join unid in _context.UnidadMedidas on pro.UnidadMedidaId equals unid.Id
-                                    select new
+                                    select new ProductoDTO
                                     {
-                                        pro.Id,
-                                        pro.Codigo,
-                                        pro.Nombre,
-                                        pro.Costo,
-                                        pro.Precio,
-                                        pro.RutaImagen,
-                                        pro.Descripcion,
-                                        TotalEntrada = _context.Existencias.Where(x => x.ProductoId == pro.Id && x.Entrada).Sum(e => e.Cantidad),
-                                        TotalSalida = _context.Existencias.Where(x => x.ProductoId == pro.Id && !x.Entrada).Sum(e => e.Cantidad),
-                                        TotalExistencia = _context.Existencias.Where(x => x.ProductoId == pro.Id && x.Entrada).Sum(e => e.Cantidad) -
-                                        _context.Existencias.Where(x => x.ProductoId == pro.Id && !x.Entrada).Sum(e => e.Cantidad),
-                                        pro.CategoriaId,
-                                        Categoria = cat.Nombre,
-                                        pro.UnidadMedidaId,
-                                        UnidadMedida = unid.Nombre
+                                       Id = pro.Id,
+                                       Codigo= pro.Codigo,
+                                        Nombre =  pro.Nombre,
+                                        Costo = pro.Costo,
+                                        Precio = pro.Precio,
+                                        Existencias=_context .Existencias .Where(x=>x.ProductoId==pro.Id ).ToList(),
+                                        RutaImagen = pro.RutaImagen,
+                                        Descripcion = pro.Descripcion,
+                                        CategoriaId = pro.CategoriaId,
+                                        Categoria = cat,
+                                        UnidadMedidaId = pro.UnidadMedidaId,
+                                        UnidadMedida = unid
                                     });
             }
         }
-        public override  DataTable Table
-        { 
-            get
-            {
-           
-                return _context.GetDataTable(QueryProducto.ToString());
-
-            } 
-        }
         public Producto BuscarProducto(string codigo)
         {
-           
-            
-     
-            var producto = _context.Productos.Where(x=> x.Codigo ==codigo ).FirstOrDefault ();
-            if (producto != null)
+            var producto = Queryable.Where(x=> x.Codigo ==codigo ).AsEnumerable().Select(x=>new Producto
             {
-                producto.Existencias = _context.Existencias.Where(x => x.ProductoId ==producto . Id).ToList();
-            }
+                Id = x.Id,
+                Codigo = x.Codigo,
+                Nombre = x.Nombre,
+                Costo = x.Costo,
+                Precio = x.Precio,
+                Existencias = x.Existencias ,
+                RutaImagen = x.RutaImagen,
+                Descripcion = x.Descripcion,
+                CategoriaId = x.CategoriaId,
+                Categoria =x. Categoria,
+                UnidadMedidaId = x.UnidadMedidaId,
+                UnidadMedida =x.UnidadMedida
+            }). FirstOrDefault ();
             return producto;
         }
         public Producto BuscarProducto(int id)
         {
-            var producto = _context.Productos.Find(id);
-            if (producto != null)
+            var producto = Queryable.Where(x => x.Id  == id).AsEnumerable().Select(x => new Producto
             {
-                producto.Existencias = _context.Existencias.Where(x => x.ProductoId == id).ToList();
-            }
+                Id = x.Id,
+                Codigo = x.Codigo,
+                Nombre = x.Nombre,
+                Costo = x.Costo,
+                Precio = x.Precio,
+                Existencias = x.Existencias,
+                RutaImagen = x.RutaImagen,
+                Descripcion = x.Descripcion,
+                CategoriaId = x.CategoriaId,
+                Categoria = x.Categoria,
+                UnidadMedidaId = x.UnidadMedidaId,
+                UnidadMedida = x.UnidadMedida
+            }).FirstOrDefault();
             return producto;
 
         }
-        public List<Producto >GetProductos()
-        {
-            List<Producto> productos = _context.Productos.ToList();
-            List<Producto> productosnew = new List<Producto>();
-            foreach (Producto producto in productos )
-            {
-                producto.Existencias = _context.Existencias.Where(x => x.ProductoId ==producto .Id  ).ToList();
-                producto.Categoria = _context.Categorias.Where(x => x.Id == producto.CategoriaId).FirstOrDefault();
-                producto.UnidadMedida = _context.UnidadMedidas.Where(x => x.Id == producto.UnidadMedidaId).FirstOrDefault();
-                productosnew.Add(producto);
-            }
-            return productosnew;
-        }
-       public  decimal calucarExistencias(DataGridView gridView )
-        {
-            decimal total = 0;
-            foreach (DataGridViewRow  row in gridView .Rows)
-            {
-                decimal existencia =!Convert.IsDBNull(row.Cells["TotalExistencia"].Value) ?
-                                     decimal.Parse  ( row.Cells["TotalExistencia"].Value.ToString ()):
-                                     0;
-                total += existencia ;
-            }
-            return total; 
-        }
+
         public void  guardarProducto(Producto producto )
         {
             if (!Validar (producto))

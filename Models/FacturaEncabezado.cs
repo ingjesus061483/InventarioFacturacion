@@ -33,7 +33,10 @@ namespace Models
         public override  int TipoDocumentoId { get; set; }
         public override  TipoDocumento TipoDocumento { get; set; }
 
-     
+        [NotMapped]
+        public Empresa Empresa { get; set; }
+
+
         public override  int? FormapagoId { get; set; }
         public override  FormaPago FormaPago { get; set; }
 
@@ -55,7 +58,7 @@ namespace Models
         {
             get 
             {
-                if(Impuestos!=null )
+                if (Empresa.TipoRegimenId == 2)
                 {
                     _totalImpuesto = 0;
                     foreach(Impuesto item in Impuestos)

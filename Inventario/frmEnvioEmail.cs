@@ -36,7 +36,7 @@ namespace Inventario
 
         private void btnTo_Click(object sender, EventArgs e)
         {
-            frmBusqueda frmbusqueda = new frmBusqueda(_emailHelp.Table);
+            frmBusqueda frmbusqueda = new frmBusqueda();
             frmbusqueda.ShowDialog();
             DataGridViewRow row = frmbusqueda.Row;
             if(row==null)

@@ -14,8 +14,10 @@ namespace Inventario
 {
     public partial class frmCliente : Form
     {
-        Cliente cliente;
+        Dictionary<string, object> collection;
+
         ClienteHelp _clienteHelp;
+        Cliente Cliente;
         TipoIdentificacionHelp _TipoIdentificacionHelp;
         public frmCliente(ClienteHelp clienteHelp,
                           TipoIdentificacionHelp tipoIdentificacionHelp)
@@ -27,30 +29,30 @@ namespace Inventario
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
-            _TipoIdentificacionHelp.Cmb(cmbTipoIdentifcacion);
+            _TipoIdentificacionHelp.Cmb(cmbTipoIdentifcacion, _TipoIdentificacionHelp.Queryable .ToList()) ;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            var dt = _clienteHelp.Table ;
-            frmBusqueda frmBusqueda = new frmBusqueda(dt);
+     //       var dt = _clienteHelp.Table ;
+            frmBusqueda frmBusqueda = new frmBusqueda(_clienteHelp );
             frmBusqueda.ShowDialog();
             int id = frmBusqueda.Id;
-            cliente = _clienteHelp.BuscarCliente(id);
-            if (cliente == null)
+            Cliente  = _clienteHelp.GetCliente(id);
+            if ( Cliente == null)
             {
                 Nuevo();
                 return;
             }
-            txtIdentificacion.Text = cliente.Identificacion;
-            txtNombre.Text = cliente.Nombre;
-            txtDireccion.Text = cliente.Direccion;
-            txtTelefono.Text = cliente.Telefono;
-            txtApellido.Text = cliente.Apellido;
-            txtEmail.Text = cliente.Email;
-            chkPersonaNatural.Checked =(bool) cliente.PersonaNatural;
-            dtpfechaNacimiento.Value = (DateTime)cliente.FechaNacimiento;
-            cmbTipoIdentifcacion.SelectedValue = cliente.TipoIdentificacionId;
+            txtIdentificacion.Text =  Cliente.Identificacion;
+            txtNombre.Text =  Cliente.Nombre;
+            txtDireccion.Text = Cliente .Direccion;
+            txtTelefono.Text =  Cliente .Telefono;
+            txtApellido.Text = Cliente .Apellido;
+            txtEmail.Text =  Cliente .Email;
+            chkPersonaNatural.Checked =(bool) Cliente .PersonaNatural;
+            dtpfechaNacimiento.Value = (DateTime) Cliente .FechaNacimiento;
+            cmbTipoIdentifcacion.SelectedValue =  Cliente .TipoIdentificacionId;
         }
         void Nuevo()
         {
@@ -62,7 +64,7 @@ namespace Inventario
             txtEmail.Text = string.Empty;
             cmbTipoIdentifcacion.SelectedIndex = -1;
             txtIdentificacion.Focus();
-            cliente = null;
+             Cliente  = null;
 
 
 
@@ -76,38 +78,31 @@ namespace Inventario
 
         private void btninsertar_Click(object sender, EventArgs e)
         {
-        
-            if (cliente == null)
+            collection = new Dictionary<string, object>
             {
-                cliente = new Cliente
-                {
-                    Identificacion = txtIdentificacion.Text,
-                    Nombre = txtNombre.Text,
-                    Apellido = txtApellido.Text,
-                    FechaNacimiento = dtpfechaNacimiento.Value ,
-                    Direccion = txtDireccion.Text,
-                    Telefono = txtTelefono.Text,
-                    Email = txtEmail.Text,
-                    TipoIdentificacionId = cmbTipoIdentifcacion.SelectedValue!=null
-                                           ?int.Parse(cmbTipoIdentifcacion.SelectedValue.ToString())
-                                           :-1,
-                    PersonaNatural=chkPersonaNatural .Checked 
-
-                };
-                _clienteHelp.GuardarCliente(cliente);               
+                {"Identificacion", txtIdentificacion.Text },
+                {"Nombre", txtNombre.Text },
+                { "Apellido", txtApellido.Text },
+                { "FechaNacimiento", dtpfechaNacimiento.Value },
+                { "Direccion", txtDireccion.Text },
+                {"Telefono", txtTelefono.Text },
+                {"Email", txtEmail.Text },
+                {"TipoIdentificacionId", cmbTipoIdentifcacion.SelectedValue != null
+                                           ? int.Parse(cmbTipoIdentifcacion.SelectedValue.ToString())
+                                           : -1 },
+                { "PersonaNatural", chkPersonaNatural.Checked }
+                
+            };
+            if ( Cliente  == null)
+            {
+                
+                _clienteHelp.Guardar(collection );               
                 Nuevo();
             }
             else
             {
-                cliente.Nombre = txtNombre.Text;
-                cliente.Apellido = txtApellido.Text;
-                cliente.Direccion = txtDireccion.Text;
-                cliente.Telefono = txtTelefono.Text;
-                cliente.Email = txtEmail.Text;
-                cliente.PersonaNatural = chkPersonaNatural.Checked;
-                cliente.FechaNacimiento = dtpfechaNacimiento.Value;
-                cliente.TipoIdentificacionId = int.Parse(cmbTipoIdentifcacion.SelectedValue.ToString());
-                _clienteHelp.ActualizarCliente(cliente.Id, cliente);               
+                
+                _clienteHelp.Actualizar(Cliente.Id,collection );               
             }
        
 

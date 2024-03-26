@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -11,51 +12,75 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class EmpresaHelp:Help
+    public class EmpresaHelp : Help
     {
-        
-        public EmpresaHelp(InventarioDbContext context )
+
+        public EmpresaHelp(InventarioDbContext context)
         {
             _context = context;
         }
-        IQueryable queryable
+       public IQueryable<EmpresaDTO> Queryable
         {
             get
             {
                 return (from empresa in _context.Empresas 
                         join tipoRegimen in _context.TipoRegimens  on empresa.TipoRegimenId  equals tipoRegimen .Id 
-                        select new
+                        select new EmpresaDTO 
                         {
-                           empresa. Id,
-                            empresa.Nit,
-                           empresa. Nombre,
-                            empresa.CamaraComercio ,
-                            empresa.Direccion ,
-                            empresa .Telefono ,
-                            empresa.Email ,
-                           empresa.Contacto ,
-                           empresa .Logo,
-                           empresa. Slogan ,
-                           empresa.TipoRegimenId ,
-                           tipoRegimen
+                          Id = empresa. Id,
+                           Nit = empresa.Nit,
+                          Nombre = empresa. Nombre,
+                            CamaraComercio = empresa.CamaraComercio ,
+                            Direccion = empresa.Direccion ,
+                            Telefono = empresa.Telefono ,
+                            Email = empresa.Email ,
+                           Contacto = empresa.Contacto ,
+                           Logo = empresa.Logo,
+                           Slogan = empresa.Slogan ,
+                           TipoRegimenId = empresa.TipoRegimenId ,
+                          TipoRegimen= tipoRegimen
                         });
-            }
-        }
-        public override DataTable Table 
-        {
-            get
-            {
-                return _context.GetDataTable(queryable.ToString());
             }
         }
         public Empresa BuscarEmpresa(int id)
         {
-            return _context.Empresas.Find(id);
+            return Queryable .Where (x=>x.Id== id).AsEnumerable().Select(x=>new Empresa
+            {
+                Id = x.Id,
+                Nit = x.Nit,
+                Nombre = x.Nombre,
+                CamaraComercio = x.CamaraComercio,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Email = x.Email,
+                Contacto = x.Contacto,
+                Logo = x.Logo,
+                Slogan = x.Slogan,
+                TipoRegimenId = x.TipoRegimenId,
+                TipoRegimen =x. TipoRegimen
+
+            }).FirstOrDefault()           ;
 
         }
         public Empresa BuscarEmpresa(string nit)
         {
-            return _context.Empresas.Where (x=>x.Nit ==nit ).FirstOrDefault ();
+
+            return Queryable.Where(x => x.Nit == nit).AsEnumerable().Select(x => new Empresa
+            {
+                Id = x.Id,
+                Nit = x.Nit,
+                Nombre = x.Nombre,
+                CamaraComercio = x.CamaraComercio,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Email = x.Email,
+                Contacto = x.Contacto,
+                Logo = x.Logo,
+                Slogan = x.Slogan,
+                TipoRegimenId = x.TipoRegimenId,
+                TipoRegimen = x.TipoRegimen
+
+            }).FirstOrDefault();
         }
         public void GuardarEmpresa(Empresa empresa) 
         {   

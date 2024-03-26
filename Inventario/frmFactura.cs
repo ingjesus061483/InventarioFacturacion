@@ -19,8 +19,7 @@ namespace Inventario
         Cliente cliente;       
         Usuario usuario;
         Producto producto;
-        decimal recibido;
-        public string _codigo;
+        decimal recibido;     
         FacturaEncabezado Factura { get; set; }
         TipoDocumentoHelp _TipoDocumentoHelp;
         FormaPagoHelp _FormaPagoHelp;
@@ -39,7 +38,7 @@ namespace Inventario
                           EmpleadoHelp empleadoHelp,
                           ProductoHelp productoHelp,
                           ImpuestoHelp impuestoHelp,
-                          FacturaHelp facturaHelp,string  codigo)
+                          FacturaHelp facturaHelp,FacturaEncabezado factura )
         {
             _FormaPagoHelp = formaPagoHelp;
             _tipoIdentificacionHelp = tipoIdentificacionHelp;
@@ -50,7 +49,7 @@ namespace Inventario
             _productoHelp = productoHelp;
             _impuestoHelp = impuestoHelp;
             _facturaHelp = facturaHelp;
-            _codigo = codigo;
+            Factura = factura;
             InitializeComponent();
             busquedaCliente1.MostrarEvent += BusquedaCliente1_MostrarEvent;
             BusquedaEmpleado.MostrarEvent += BusquedaEmpleado_MostrarEvent;
@@ -68,11 +67,12 @@ namespace Inventario
             }
             cajaTexto.Text = cambio.ToString();
         }
-        decimal GetImpuesto(List<Impuesto> impuestos,int TipoRegimenId)
+        decimal GetImpuesto(List<Impuesto> impuestos,Empresa  empresa)
         {
             decimal impuesto = 0;
-            if (TipoRegimenId == 2)
+            if (empresa.TipoRegimenId == 2)
             {
+                Factura.Empresa = empresa;
                 Factura.Impuestos = impuestos;
                 impuesto = Factura.Impuesto;
             }
@@ -153,18 +153,17 @@ namespace Inventario
         }
 
         private void frmFactura_Load(object sender, EventArgs e)
-        {      
-            Factura = _facturaHelp.GetFacturaEncabezado(_codigo);
+        {        
             if (Factura == null)
             {
                 Nuevo();
-                _TipoDocumentoHelp.Cmb(cmbTipoDocumento);
-                _FormaPagoHelp.Cmb(cmbFormapago);   
+                _TipoDocumentoHelp.Cmb(cmbTipoDocumento,_TipoDocumentoHelp.Queryable .ToList ());
+                _FormaPagoHelp.Cmb(cmbFormapago,_FormaPagoHelp.Queryable .ToList());   
             }
             else
             {
-                _TipoDocumentoHelp.Cmb(cmbTipoDocumento);
-                _FormaPagoHelp.Cmb(cmbFormapago);
+                _TipoDocumentoHelp.Cmb(cmbTipoDocumento,_TipoDocumentoHelp.Queryable.ToList());
+                _FormaPagoHelp.Cmb(cmbFormapago,_FormaPagoHelp.Queryable .ToList());
                 Cargar();
             }
             Detalles.MostrarDatos(Factura.Detalles);
@@ -179,7 +178,7 @@ namespace Inventario
             Factura.AñadirDetalles(producto, cantidad);
             decimal subtotal = Factura.Subtotal;
             txtsubtotal.Text = subtotal.ToString();
-            txtiva.Text = GetImpuesto(_impuestoHelp.Impuestos, usuario.Empresa.TipoRegimenId).ToString();
+            txtiva.Text = GetImpuesto(_impuestoHelp.Queryable.ToList(), usuario.Empresa).ToString();
             decimal totalPagar = Factura.TotalPagar;
             txttotalpagar.Text = totalPagar.ToString();
             txtvalorunit.Text = string.Empty;
@@ -195,7 +194,7 @@ namespace Inventario
             Factura.EliminarDetalles();            
             decimal subtotal = Factura.Subtotal;
             txtsubtotal.Text = subtotal.ToString();
-            txtiva.Text = GetImpuesto(_impuestoHelp.Impuestos, usuario.Empresa.TipoRegimenId).ToString();
+            txtiva.Text = GetImpuesto(_impuestoHelp.Queryable.ToList(), usuario.Empresa).ToString();
             decimal totalPagar = Factura.TotalPagar;
             txttotalpagar.Text = totalPagar.ToString();
             Detalles.MostrarDatos(Factura.Detalles);

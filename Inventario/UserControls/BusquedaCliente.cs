@@ -1,13 +1,7 @@
 ﻿using Helper;
 using Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace Inventario
@@ -100,7 +94,7 @@ namespace Inventario
         }
         private void btnMotivo_Click(object sender, EventArgs e)
         {
-            frmBusqueda frmBusqueda = new frmBusqueda(MotivoHelp.Table);
+            frmBusqueda frmBusqueda = new frmBusqueda(MotivoHelp);
             frmBusqueda.ShowDialog();
            Motivo  = MotivoHelp.BuscarMotivos (frmBusqueda.Id);
             if (Motivo  == null)
@@ -116,7 +110,7 @@ namespace Inventario
         }    
         private void btnProducto_Click(object sender, EventArgs e)
         {
-            frmBusqueda frmBusqueda = new frmBusqueda(productoHelp.Table);
+            frmBusqueda frmBusqueda = new frmBusqueda(productoHelp);
             frmBusqueda.ShowDialog();
             Producto = productoHelp.BuscarProducto(frmBusqueda.Id);
             if (Producto == null)
@@ -149,7 +143,7 @@ namespace Inventario
         private void btnProveedor_Click(object sender, EventArgs e)
         {
 
-            frmBusqueda = new frmBusqueda(proveedorHelp.Table);
+            frmBusqueda = new frmBusqueda(proveedorHelp);
             frmBusqueda.ShowDialog();
            Proveedor =proveedorHelp .BuscarProveedor (frmBusqueda.Id);
             if (Proveedor == null)
@@ -176,11 +170,11 @@ namespace Inventario
         }
         private void btnCliente_Click(object sender, EventArgs e)
         {
-            frmBusqueda = new frmBusqueda(clienteHelp .Table);
+            frmBusqueda = new frmBusqueda(clienteHelp );
 
 
             frmBusqueda.ShowDialog();
-            Cliente = clienteHelp.BuscarCliente(frmBusqueda.Id);
+            Cliente = clienteHelp.GetCliente(frmBusqueda.Id);
             if (Cliente == null)
             {                
                 txtNombre.Text = string.Empty;
@@ -195,7 +189,7 @@ namespace Inventario
         }
         private void txtIdentificacionCliente_TextChanged(object sender, EventArgs e)
         {
-            Cliente = clienteHelp.BuscarCliente(txtIdentificacion.Text);
+            Cliente = clienteHelp.GetCliente(txtIdentificacion.Text);
             if (Cliente == null)
             {
                 txtNombre.Text = string.Empty;
@@ -208,7 +202,7 @@ namespace Inventario
         }
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
-            frmBusqueda = new frmBusqueda(empleadoHelp.Table);
+            frmBusqueda = new frmBusqueda(empleadoHelp);
             frmBusqueda.ShowDialog();
             Empleado = empleadoHelp.BuscarEmpleado(frmBusqueda.Id);
             if (Empleado == null)
@@ -235,7 +229,5 @@ namespace Inventario
             txtNombre.Text = Empleado.NombreCompleto;
             MostrarEvent.Invoke(this, new EventArgs());
         }
-
-   
     }
 }

@@ -30,7 +30,7 @@ namespace Inventario
         }
         private void btnProducto_Click(object sender, EventArgs e)
         {
-            frmBusqueda frmBusqueda = new frmBusqueda(_empresaHelp.Table);
+            frmBusqueda frmBusqueda = new frmBusqueda(_empresaHelp);
             frmBusqueda.ShowDialog();
             empresa = _empresaHelp.BuscarEmpresa(frmBusqueda.Id);
             if( empresa == null) 
@@ -42,7 +42,7 @@ namespace Inventario
         }
         private void frmUsuario_Load(object sender, EventArgs e)
         {
-            _roleHelp.Cmb(cmbRole);
+            _roleHelp.Cmb(cmbRole,_roleHelp.Queryable .ToList());
             if (Usuario !=null)
             {
                 Cargar();

@@ -17,30 +17,15 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable<FormaPago> FormaPagos 
+     public  IQueryable<FormaPago> Queryable 
         {
             get
             {
                 return _context.FormaPagos .AsQueryable();
             }
         }
-        public override   DataTable Table
-        {
-            get
-            {
-                return _context.GetDataTable(FormaPagos.ToString());
-            }
-        }
 
-
-     /*   public void Cmb(ComboBox cmb)
-        {
-            string[] arr = { "Id", "Nombre" };
-            cmb.DataSource = dtFormaPago;
-            cmb.ValueMember = arr.GetValue(0).ToString();
-            cmb.DisplayMember = arr.GetValue(1).ToString();
-            cmb.SelectedIndex = -1;
-        }*/
+       
 
         public override void GetDatagrid(DataGridView gridView, string[,] columns)
         {

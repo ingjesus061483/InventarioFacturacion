@@ -17,28 +17,15 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable<TipoIdentificacion> TipoIdentificacions
+      public    IQueryable<TipoIdentificacion >  Queryable
         {
             get
             {
                 return _context.TipoIdentificacions.AsQueryable();
             }
         }
-        public override  DataTable Table
-        {
-            get
-            {
-                return _context.GetDataTable(TipoIdentificacions.ToString());
-            }
-        }
-    /*    public void Cmb(ComboBox cmb)
-        {
-            string[] arr = { "Id", "Nombre" };
-            cmb.DataSource = dtTipoIdentificacion ;
-            cmb.ValueMember = arr.GetValue(0).ToString();
-            cmb.DisplayMember = arr.GetValue(1).ToString();
-            cmb.SelectedIndex = -1;
-        }*/
+      
+ 
 
         public override void GetDatagrid(DataGridView gridView, string[,] columns)
         {

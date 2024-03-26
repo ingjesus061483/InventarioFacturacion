@@ -49,20 +49,25 @@ namespace Inventario
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (formapago ==0)
+            if (formapago == 0)
             {
-                    MessageBox.Show("El campo forma pago no puede ser vacio ", "",
-        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                
+                MessageBox.Show("El campo forma pago no puede ser vacio ", "",
+    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+
             }
-            _compraHelp.RecibirMercancia(txtCodigo.Text, dtpfechaEntrega.Value, txtObservaciones.Text,formapago , Compra.EstadoId);
+
+            Compra.FechaEntrega = dtpfechaEntrega.Value;
+            Compra.Observaciones = txtObservaciones.Text;
+            Compra.FormapagoId = formapago;
+            _compraHelp.ActualizarCompra(txtCodigo.Text, Compra);
+            _compraHelp.RecibirMercancia(txtCodigo.Text);
             this.Close();
         }
 
         private void frmRecibir_Load(object sender, EventArgs e)
         {
-            _formaPagoHelp.Cmb(cmbFormapago);
+            _formaPagoHelp.Cmb(cmbFormapago,_formaPagoHelp.Queryable .ToList());
             txtCodigo.Text = Compra.Codigo;
             dtpfechaEntrega.Value = Compra.FechaEntrega;
             decimal totalpagar = Compra.TotalPagar;

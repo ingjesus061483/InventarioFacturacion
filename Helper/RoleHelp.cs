@@ -17,28 +17,15 @@ namespace Helper
             _context = context;
 
         }
-        public  IQueryable<Role> QueryRole
+        public IQueryable<Role>  Queryable 
         {
             get
             {
                 return _context.Roles.AsQueryable();
             }
         }
-        public override  DataTable Table
-        {
-            get
-            {
-                return _context.GetDataTable(QueryRole.ToString());
-            }
-        }
-      /*  public void Cmb(ComboBox cmb)
-        {
-            string[] arr = { "Id", "Nombre" };
-            cmb.DataSource = dtRole;
-            cmb.ValueMember = arr.GetValue(0).ToString();
-            cmb.DisplayMember = arr.GetValue(1).ToString();
-            cmb.SelectedIndex = -1;
-        }*/
+  
+     
         public Role BuscarRole(int id)
         {
             return _context.Roles.Find(id);

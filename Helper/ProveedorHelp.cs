@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -18,42 +19,58 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable queryable
+       public  IQueryable<ProveedorDTO> Queryable
         {
             get
             {
                 return (from prov in _context.Proveedors 
                         join tipo in _context.TipoIdentificacions on prov.TipoIdentificacionId equals tipo.Id
-                        select new
+                        select new ProveedorDTO
                         {
-                            prov.Id,
-                            prov .Identificacion,
-                            prov .Nombre,
-                            prov .Apellido,
-                            prov .Direccion,
-                            prov .Telefono,
-                            prov.Email,
-                            prov.PersonaNatural ,
-                            prov .TipoIdentificacionId,
-                            prov .TipoIdentificacion
+                            Id = prov.Id,
+                           Identificacion = prov .Identificacion,
+                           Nombre= prov .Nombre,
+                            Apellido = prov.Apellido,
+                            Direccion = prov.Direccion,
+                            Telefono = prov.Telefono,
+                            Email = prov.Email,
+                            PersonaNatural = prov.PersonaNatural ,
+                            TipoIdentificacionId = prov.TipoIdentificacionId,
+                            TipoIdentificacion = prov.TipoIdentificacion
                         });
             }
         }
-        public override  DataTable Table
-        {
-            get
-            {
-                return _context.GetDataTable(queryable.ToString());
-            }
-        }
+   
         public Proveedor BuscarProveedor(int id)
         {
-            return _context.Proveedors.Find(id);
+            return Queryable.Where(x=> x.Id==id).AsEnumerable ().Select(x=>new Proveedor {
+                Id = x.Id,
+                Identificacion = x.Identificacion,
+                Nombre = x.Nombre,
+                Apellido = x.Apellido,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Email = x.Email,
+                PersonaNatural = x.PersonaNatural,
+                TipoIdentificacionId = x.TipoIdentificacionId,
+                TipoIdentificacion = x.TipoIdentificacion
+            }).FirstOrDefault() ;
         }
         public Proveedor BuscarProveedor(string identificacion)
         {
-            return _context.Proveedors.Where(x => x.Identificacion == identificacion)
-                                    .FirstOrDefault();
+            return Queryable.Where(x => x.Identificacion  == identificacion ).AsEnumerable().Select(x => new Proveedor
+            {
+                Id = x.Id,
+                Identificacion = x.Identificacion,
+                Nombre = x.Nombre,
+                Apellido = x.Apellido,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Email = x.Email,
+                PersonaNatural = x.PersonaNatural,
+                TipoIdentificacionId = x.TipoIdentificacionId,
+                TipoIdentificacion = x.TipoIdentificacion
+            }).FirstOrDefault();
         }
         public void GuardarProveedor(Proveedor Proveedor)
         {

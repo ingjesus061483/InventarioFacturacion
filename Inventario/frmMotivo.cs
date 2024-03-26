@@ -23,7 +23,7 @@ namespace Inventario
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frmBusqueda frmBusqueda = new frmBusqueda(_motivoHelp.Table);
+            frmBusqueda frmBusqueda = new frmBusqueda(_motivoHelp);
             frmBusqueda.ShowDialog();
             motivo = _motivoHelp.BuscarMotivos(frmBusqueda.Id);
             if( motivo==null)

@@ -13,7 +13,9 @@ namespace Helper
     {
         
 
-        public override DataTable Table => throw new NotImplementedException();
+
+        protected IQueryable Queryable => throw new NotImplementedException();
+
         public DevolucionCompraHelp(InventarioDbContext context)
         {
             _context = context;

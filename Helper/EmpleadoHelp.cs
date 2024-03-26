@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable queryable
+      public   IQueryable<EmpleadoDTO> Queryable
         {
             get
             {
@@ -26,36 +27,42 @@ namespace Helper
                         join us in _context.Usuarios on empl.UsuarioId equals us.Id
                         join empresa in _context.Empresas on us.EmpresaId equals empresa.Id
                         join role in _context.Roles on us.RoleId equals role.Id
-                        select new
+                        select new EmpleadoDTO
                         {
-                            empl.Id,
-                            empl.TipoIdentificacionId,
-                            empl.TipoIdentificacion,
-                            empl.Identificacion,
-                            empl.Nombre,
-                            empl.Apellido,
-                            empl.Direccion,
-                            empl.Telefono,
-                            us,
-                            role,
-                            empresa
+                           Id= empl.Id,
+                           FechaNacimiento=empl.FechaNacimiento ,
+                           TipoIdentificacionId= empl.TipoIdentificacionId,
+                           TipoIdentificacion= empl.TipoIdentificacion,
+                            Identificacion = empl.Identificacion,
+                            Nombre = empl.Nombre,
+                            Apellido = empl.Apellido,
+                            Direccion = empl.Direccion,
+                            Telefono = empl.Telefono,
+                          Usuario=  us,
+                          UsuarioId=us.Id ,
+                          
                         });
-            }
-        }
-        public override DataTable Table 
-        {
-            get
-            {
-                return _context.GetDataTable(queryable.ToString());
             }
         }
 
         public Empleado BuscarEmpleado(int id)
         {
-            var empleado = _context.Empleados.Find(id);
+            var empleado =Queryable.Where(x=>x.Id == id).AsEnumerable().Select(x=>new Empleado {
+                Id = x.Id,
+                TipoIdentificacionId = x.TipoIdentificacionId,
+                FechaNacimiento=x.FechaNacimiento ,
+                TipoIdentificacion = x.TipoIdentificacion,
+                Identificacion = x.Identificacion,
+                Nombre = x.Nombre,
+                Apellido = x.Apellido,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Usuario = x.Usuario,
+                UsuarioId =x.UsuarioId,
+            }).FirstOrDefault();
+
             if (empleado != null)
-            {
-                empleado.Usuario = _context.Usuarios.Find(empleado.UsuarioId);
+            {                
                 empleado.Usuario.Role = _context.Roles.Find(empleado.Usuario.RoleId);
                 empleado.Usuario.Empresa = _context.Empresas.Find(empleado.Usuario.EmpresaId);
             }
@@ -63,10 +70,21 @@ namespace Helper
         }
         public Empleado BuscarEmpleado(string identificacion)
         {
-         Empleado  empleado = _context.Empleados.Where(x=>x.Identificacion ==identificacion ).FirstOrDefault ();
+            Empleado  empleado =  Queryable.Where(x => x.Identificacion ==identificacion ).AsEnumerable().Select(x => new Empleado
+            { 
+             Id = x.Id,
+             TipoIdentificacionId = x.TipoIdentificacionId,
+             TipoIdentificacion = x.TipoIdentificacion,
+             Identificacion = x.Identificacion,
+             Nombre = x.Nombre,
+             Apellido = x.Apellido,
+             Direccion = x.Direccion,
+             Telefono = x.Telefono,
+             Usuario = x.Usuario,
+             UsuarioId = x.UsuarioId,
+            }).FirstOrDefault();
             if (empleado != null)
             {
-                empleado.Usuario = _context.Usuarios.Find(empleado.UsuarioId);
                 empleado.Usuario.Role = _context.Roles.Find(empleado.Usuario.RoleId);
                 empleado.Usuario.Empresa = _context.Empresas.Find(empleado.Usuario.EmpresaId);
             }

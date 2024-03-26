@@ -17,7 +17,9 @@ namespace Helper
             _context = context;
 
         }
-        public override DataTable Table => throw new NotImplementedException();
+
+        protected  IQueryable Queryable => throw new NotImplementedException();
+
         public void GuardarDevolucion(DevolucionVenta devolucionVenta)
         {
             _context.DevolucionVentas.Add(devolucionVenta);

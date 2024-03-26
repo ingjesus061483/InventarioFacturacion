@@ -1,4 +1,7 @@
 ﻿
+using Helper;
+using Models;
+
 namespace Inventario
 {
     partial class frmCompra
@@ -508,5 +511,20 @@ namespace Inventario
         internal System.Windows.Forms.Button btnQuitar;
         internal System.Windows.Forms.Button btnAñadir;
         private Detalles Detalles;
+        int tipodocumento;
+        Usuario usuario;
+        Producto producto;
+        Proveedor proveedor;
+        ProveedorHelp _proveedorHelp;
+        EmpleadoHelp _empleadoHelp;
+        ProductoHelp _productoHelp;
+        CompraHelp _compraHelp;
+        ImpuestoHelp _impuestoHelp;
+        UsuarioHelp _usuarioHelp;
+        FormaPagoHelp _formaPagoHelp;
+        TipoDocumentoHelp _tipoDocumentoHelp;
+        TipoIdentificacionHelp _tipoIdentificacionHelp;
+        public OrdenCompra Compra { get; set; }
     }
+  
 }

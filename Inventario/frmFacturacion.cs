@@ -17,7 +17,7 @@ namespace Inventario
     public partial class frmFacturacion : Form
     {
         DataSet Db;
-        List< FacturaEncabezado> Facturas { get; set; }
+        int estado;
         public frmFacturacion(TipoDocumentoHelp tipoDocumentoHelp,
                           FormaPagoHelp formaPagoHelp,
                           UsuarioHelp usuarioHelp,
@@ -45,6 +45,7 @@ namespace Inventario
             _impresoraHelp = impresoraHelp;
             _devolucionVentaHelp = devolucionVentaHelp;
             _motivoHelp = motivoHelp;
+
             InitializeComponent();
             cuestas1.CellClick += dgFacturas_CellContentClick;
         }
@@ -59,37 +60,123 @@ namespace Inventario
                                                       _empleadoHelp,
                                                       _productoHelp,
                                                       _impuestoHelp,
-                                                      _facturaHelp,"");
+                                                      _facturaHelp,null);
             frmFactura.ShowDialog();
-            Facturas = _facturaHelp.FacturaEncabezados;
-//            _facturaHelp.GetDatagrid(dgFacturas, _facturaHelp.FacturaEncabezado);
-  //          dgFacturas.DataSource = Facturas;
-            cuestas1.MostrarDatos(Facturas);
+            cuestas1.MostrarDatos(_facturaHelp.Queryable.Where (x=>x.EstadoId==estado). AsEnumerable().Select(x => new {
+                x.Id,
+                x.Codigo,
+                Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                x.Observaciones,
+              usuario=  x.Usuario.Name,
+                x.UsuarioId,
+                Cliente = x.Cliente.NombreCompleto,
+                x.ClienteId,
+                TipoDocumento = x.TipoDocumento.Nombre,
+                x.TipoDocumentoId,
+                FormaPago = x.FormaPago.Nombre,
+                x.FormapagoId,
+                Subtotal = String.Format("{0:C}", x.Subtotal),
+                Descuento = String.Format("{0:C}", x.Descuento),
+                Impuesto = String.Format("{0:C}", x.Impuesto),
+                TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                Recibido = String.Format("{0:C}", x.Recibido),
+                Cambio = String.Format("{0:C}", x.Cambio),
+                x.EstadoId,
+                Estado = x.Estado.Nombre
+            }).ToList());
 
         }
         private void frmFacturacion_Load(object sender, EventArgs e)
-        {
-            Facturas = _facturaHelp.FacturaEncabezados;
+        {            
             Db = new DataSet();
-            _estadoHelp.Cmb(cmbEstado);
-            txtTotalVentas.Text = _facturaHelp.TotalesFacturas .ToString(); 
-            cuestas1.MostrarDatos(Facturas);
+            _estadoHelp.Cmb(cmbEstado,_estadoHelp.Queryable.ToList());
+            cuestas1.MostrarDatos(_facturaHelp.Queryable.Where(x=>x.EstadoId==estado). AsEnumerable().Select(x => new {
+                x.Id,
+                x.Codigo,
+                Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                x.Observaciones,
+                usuario = x.Usuario.Name,
+                x.UsuarioId,
+                Cliente = x.Cliente.NombreCompleto,
+                x.ClienteId,
+                TipoDocumento = x.TipoDocumento.Nombre,
+                x.TipoDocumentoId,
+                FormaPago = x.FormaPago.Nombre,
+                x.FormapagoId,
+                Subtotal = String.Format("{0:C}", x.Subtotal),
+                Descuento = String.Format("{0:C}", x.Descuento),
+                Impuesto = String.Format("{0:C}", x.Impuesto),
+                TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                Recibido = String.Format("{0:C}", x.Recibido),
+                Cambio = String.Format("{0:C}", x.Cambio),
+                x.EstadoId,
+                Estado = x.Estado.Nombre
+            }).ToList());
 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if(chkPeriodo.Checked)
+            object Facturas;
+            if (chkPeriodo.Checked)
             {
-                Facturas = _facturaHelp.FacturaEncabezados.
-                                          Where(x => x.Fecha  >= dtpFechaInicio.Value && x.Fecha <=dtpFechaFin .Value ).
-                                          ToList();
+               Facturas = _facturaHelp.Queryable
+                                                  .Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value)
+                                                  .Where(x=>x.EstadoId==estado )
+                                                  .AsEnumerable()
+                                                  .Select(x => new {
+                                                      x.Id,
+                                                      x.Codigo,
+                                                      Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                                                      x.Observaciones,
+                                                      usuario = x.Usuario.Name,
+                                                      x.UsuarioId,
+                                                      Cliente = x.Cliente.NombreCompleto,
+                                                      x.ClienteId,
+                                                      TipoDocumento = x.TipoDocumento.Nombre,
+                                                      x.TipoDocumentoId,
+                                                      FormaPago = x.FormaPago.Nombre,
+                                                      x.FormapagoId,
+                                                      Subtotal = String.Format("{0:C}", x.Subtotal),
+                                                      Descuento = String.Format("{0:C}", x.Descuento),
+                                                      Impuesto = String.Format("{0:C}", x.Impuesto),
+                                                      TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                                                      Recibido = String.Format("{0:C}", x.Recibido),
+                                                      Cambio = String.Format("{0:C}", x.Cambio),
+                                                      x.EstadoId,
+                                                      Estado = x.Estado.Nombre
+                                                  }).ToList();
+            
             }
             else
             {
-               Facturas = _facturaHelp.FacturaEncabezados.
-                                                         Where(x => x.Codigo == txtNofactura.Text).
-                                                         ToList();
+                Facturas = _facturaHelp.Queryable
+                                                  .Where(x => x.Codigo == txtNofactura.Text)
+                                                  .Where(x=>x.EstadoId ==estado)
+                                                  .AsEnumerable()
+                                                  .Select(x => new {
+                                                      x.Id,
+                                                      x.Codigo,
+                                                      Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                                                      x.Observaciones,
+                                                      Usuario=x.Usuario.Name,
+                                                      x.UsuarioId,
+                                                      Cliente = x.Cliente.NombreCompleto,
+                                                      x.ClienteId,
+                                                      TipoDocumento = x.TipoDocumento.Nombre,
+                                                      x.TipoDocumentoId,
+                                                      FormaPago = x.FormaPago.Nombre,
+                                                      x.FormapagoId,
+                                                      Subtotal = String.Format("{0:C}", x.Subtotal),
+                                                      Descuento = String.Format("{0:C}", x.Descuento),
+                                                      Impuesto = String.Format("{0:C}", x.Impuesto),
+                                                      TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                                                      Recibido = String.Format("{0:C}", x.Recibido),
+                                                      Cambio = String.Format("{0:C}", x.Cambio),
+                                                      x.EstadoId,
+                                                      Estado = x.Estado.Nombre
+                                                  }).ToList();
+                
             }
             cuestas1.MostrarDatos(Facturas);
         }
@@ -103,13 +190,38 @@ namespace Inventario
         {
             var datagridview = (DataGridView)sender;
             int col = e.ColumnIndex;
+            var codigo = datagridview.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+            var factura = _facturaHelp.Queryable
+                                      .Where(x => x.Codigo == codigo)
+                                      .AsEnumerable()
+                                      .Select(x => new FacturaEncabezado  {
+                                         Id= x.Id,
+                                         Codigo = x.Codigo,
+                                          Fecha = x.Fecha,
+                                          Observaciones =  x.Observaciones,
+                                         Usuario = x.Usuario,
+                                          UsuarioId = x.UsuarioId,
+                                          Cliente = x.Cliente,
+                                          ClienteId = x.ClienteId,
+                                          TipoDocumento = x.TipoDocumento,
+                                          TipoDocumentoId = x.TipoDocumentoId,
+                                          FormaPago = x.FormaPago,
+                                          FormapagoId = x.FormapagoId,                                         
+                                          Descuento =  x.Descuento,
+                                          Impuestos = x.Impuestos,                                          
+                                          Recibido = x .Recibido,                                          
+                                        EstadoId=  x.EstadoId,
+                                          Estado = x.Estado,
+                                          Empresa=x.Empresa ,
+                                          Detalles=x.Detalles                                           
+                                      });
             switch (col)
             {
                 case 0:
                     {
-                        var codigo = datagridview.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
-                        var factura = Facturas.Where(x => x.Codigo == codigo).FirstOrDefault();
-                        if (factura.EstadoId == 4)
+                        
+                            
+                        if (factura.FirstOrDefault().EstadoId== 4)
                         {
                             MessageBox.Show("La Factura ya se encuentra anulada", "",
                                             MessageBoxButtons.OK,
@@ -126,15 +238,13 @@ namespace Inventario
                                                                   _productoHelp,
                                                                   _impuestoHelp,
                                                                   _facturaHelp,
-                                                                  codigo);                        
+                                                                 factura.FirstOrDefault ());                        
                         frmFactura.ShowDialog();
                         break;
                     }
                 case 1:
                     {
-                        var codigo = datagridview.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
-                        var factura = Facturas.Where(x => x.Codigo == codigo).FirstOrDefault();
-                        if (factura.EstadoId == 4)
+                        if (factura.FirstOrDefault().EstadoId == 4)
                         {
                             MessageBox.Show("La Factura ya se encuentra anulada", "",
                                             MessageBoxButtons.OK,
@@ -142,12 +252,12 @@ namespace Inventario
                             return;
                             
                         }
-                        switch(factura.TipoDocumentoId )
+                        switch(factura.FirstOrDefault() .TipoDocumentoId )
                         {
                             case 1:
                                 {
                                     List<ReportDataSource> sources = new List<ReportDataSource>();
-                                    var fact =Facturas.Where(x => x.Codigo == codigo).ToList ();
+                                    var fact=factura   .ToList ();
                                     List<Empresa> empresas = new List<Empresa>
                                     {
                                         _usuarioHelp.Login.Empresa
@@ -171,7 +281,7 @@ namespace Inventario
                                 }
                             case 2:
                                 {
-                                    _impresoraHelp.ImprimirVenta(factura);
+                                    _impresoraHelp.ImprimirVenta(factura.FirstOrDefault());
                                     break;
                                 }
 
@@ -180,9 +290,7 @@ namespace Inventario
                     }
                 case 3:
                     {
-                        var codigo = datagridview.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
-                        var factura = Facturas.Where(x => x.Codigo == codigo).FirstOrDefault();
-                        if(factura.EstadoId ==4)
+                        if(factura.FirstOrDefault(). EstadoId ==4)
                         {
                             MessageBox.Show("La Factura ya se encuentra anulada", "",
                                 MessageBoxButtons.OK,
@@ -194,15 +302,38 @@ namespace Inventario
                                                                               _devolucionVentaHelp,                                                                            
                                                                               _motivoHelp )
                         {
-                            Factura = factura
+                            Factura = factura.FirstOrDefault()
                         };
                         frmDevoluciones.ShowDialog();
 
                         break;
                     }
-            }
-            Facturas = _facturaHelp.FacturaEncabezados;
-            cuestas1.MostrarDatos(Facturas);
+            }            
+            cuestas1.MostrarDatos(_facturaHelp.Queryable                       
+                                                  .Where(x=>x.EstadoId==estado)                       
+                                                  .AsEnumerable()
+                                                  .Select(x => new {
+                                                      x.Id,
+                                                      x.Codigo,
+                                                      Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                                                      x.Observaciones,
+                                                      Usuario= x.Usuario.Name,
+                                                      x.UsuarioId,
+                                                      Cliente = x.Cliente.NombreCompleto,
+                                                      x.ClienteId,
+                                                      TipoDocumento = x.TipoDocumento.Nombre,
+                                                      x.TipoDocumentoId,
+                                                      FormaPago = x.FormaPago.Nombre,
+                                                      x.FormapagoId,
+                                                      Subtotal = String.Format("{0:C}", x.Subtotal),
+                                                      Descuento = String.Format("{0:C}", x.Descuento),
+                                                      Impuesto = String.Format("{0:C}", x.Impuesto),
+                                                      TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                                                      Recibido = String.Format("{0:C}", x.Recibido),
+                                                      Cambio = String.Format("{0:C}", x.Cambio),
+                                                      x.EstadoId,
+                                                      Estado = x.Estado.Nombre
+                                                  }).ToList());
         }
 
         private void btnexportar_Click(object sender, EventArgs e)
@@ -234,9 +365,57 @@ MessageBoxButtons.OK, MessageBoxIcon.Error );
 
         private void btnTotatizar_Click(object sender, EventArgs e)
         {
-            List<FacturaEncabezado> facturaEncabezados = chkPeriodo.Checked ? _facturaHelp.FacturaEncabezados.
-                Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value && x.EstadoId!=4).ToList() :
-                _facturaHelp.FacturaEncabezados.Where(x=>x.EstadoId !=4).ToList();
+            List<FacturaEncabezado> facturaEncabezados = chkPeriodo.Checked ? _facturaHelp.Queryable.
+                                      Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value && x.EstadoId == estado )
+                                      .AsEnumerable()
+                                      .Select(x => new FacturaEncabezado
+                                      {
+                                          Id = x.Id,
+                                          Codigo = x.Codigo,
+                                          Fecha = x.Fecha,
+                                          Observaciones = x.Observaciones,
+                                          Usuario = x.Usuario,
+                                          UsuarioId = x.UsuarioId,
+                                          Cliente = x.Cliente,
+                                          ClienteId = x.ClienteId,
+                                          TipoDocumento = x.TipoDocumento,
+                                          TipoDocumentoId = x.TipoDocumentoId,
+                                          FormaPago = x.FormaPago,
+                                          FormapagoId = x.FormapagoId,
+                                          Descuento = x.Descuento,
+                                          Impuestos = x.Impuestos,
+                                          Recibido = x.Recibido,
+                                          EstadoId = x.EstadoId,
+                                          Estado = x.Estado,
+                                          Empresa = x.Empresa,
+                                          Detalles = x.Detalles
+                                      }).ToList()
+                :
+                _facturaHelp.Queryable.
+                                      Where(x => x.EstadoId == estado )
+                                      .AsEnumerable()
+                                      .Select(x => new FacturaEncabezado
+                                      {
+                                          Id = x.Id,
+                                          Codigo = x.Codigo,
+                                          Fecha = x.Fecha,
+                                          Observaciones = x.Observaciones,
+                                          Usuario = x.Usuario,
+                                          UsuarioId = x.UsuarioId,
+                                          Cliente = x.Cliente,
+                                          ClienteId = x.ClienteId,
+                                          TipoDocumento = x.TipoDocumento,
+                                          TipoDocumentoId = x.TipoDocumentoId,
+                                          FormaPago = x.FormaPago,
+                                          FormapagoId = x.FormapagoId,
+                                          Descuento = x.Descuento,
+                                          Impuestos = x.Impuestos,
+                                          Recibido = x.Recibido,
+                                          EstadoId = x.EstadoId,
+                                          Estado = x.Estado,
+                                          Empresa = x.Empresa,
+                                          Detalles = x.Detalles
+                                      }).ToList();
             List<ReportDataSource> sources = new List<ReportDataSource>();
             List<Empresa> empresas = new List<Empresa>
             {
@@ -268,13 +447,42 @@ MessageBoxButtons.OK, MessageBoxIcon.Error );
 
         private void cmbEstado_SelectedValueChanged(object sender, EventArgs e)
         {
-            int.TryParse(cmbEstado.SelectedValue != null ? cmbEstado.SelectedValue.ToString() : string.Empty, out int estado);
+            int.TryParse(cmbEstado.SelectedValue != null ? cmbEstado.SelectedValue.ToString() : string.Empty, out estado);
             if (estado == 0)
             {
 
                 return;
             }
-            cuestas1.MostrarDatos(Facturas.Where(x => x.EstadoId == estado).ToList());
+            txtTotalVentas.Text = _facturaHelp.Queryable
+                                                       .Where(x => x.EstadoId == estado)
+                                                       .AsEnumerable()
+                                                       .Sum(x => x.TotalPagar)
+                                                       .ToString();
+            cuestas1.MostrarDatos(_facturaHelp.Queryable
+                                                  .Where(x => x.EstadoId == estado)
+                                                  .AsEnumerable()
+                                                  .Select(x => new {
+                                                      x.Id,
+                                                      x.Codigo,
+                                                      Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+                                                      x.Observaciones,
+                                                      Usuario=x.Usuario.Name,
+                                                      x.UsuarioId,
+                                                      Cliente = x.Cliente.NombreCompleto,
+                                                      x.ClienteId,
+                                                      TipoDocumento = x.TipoDocumento.Nombre,
+                                                      x.TipoDocumentoId,
+                                                      FormaPago = x.FormaPago.Nombre,
+                                                      x.FormapagoId,
+                                                      Subtotal = String.Format("{0:C}", x.Subtotal),
+                                                      Descuento = String.Format("{0:C}", x.Descuento),
+                                                      Impuesto = String.Format("{0:C}", x.Impuesto),
+                                                      TotalPagar = String.Format("{0:C}", x.TotalPagar),
+                                                      Recibido = String.Format("{0:C}", x.Recibido),
+                                                      Cambio = String.Format("{0:C}", x.Cambio),
+                                                      x.EstadoId,
+                                                      Estado = x.Estado.Nombre
+                                                  }).ToList());           
 
         }
     }

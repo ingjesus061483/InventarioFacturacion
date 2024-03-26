@@ -17,32 +17,18 @@ namespace Helper
         {
             _context = context;
         }
-        public IQueryable <UnidadMedida> QueryUnidadMedida
+        public  IQueryable <UnidadMedida> Queryable
         {
             get
             {
                 return _context.UnidadMedidas.AsQueryable();
             }
         }
-        public override  DataTable Table
-        {
-            get
-            {
-                return _context.GetDataTable(QueryUnidadMedida.ToString());
-            }
-        }
-
+ 
         public override void GetDatagrid(DataGridView gridView, string[,] columns)
         {
             throw new NotImplementedException();
         }
-        /*public void Cmb(ComboBox cmb)
-{
-   string[] arr = { "Id", "Nombre" };
-   cmb.DataSource = dtUnidadMedida ;
-   cmb.ValueMember = arr.GetValue(0).ToString();
-   cmb.DisplayMember = arr.GetValue(1).ToString();
-   cmb.SelectedIndex = -1;
-}*/
+  
     }
 }

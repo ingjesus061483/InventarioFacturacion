@@ -29,9 +29,10 @@ namespace Inventario
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInventarioProducto));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTotatizar = new System.Windows.Forms.Button();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.lbltipo = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@ namespace Inventario
             this.UnidaMedidaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoriaNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadMedidaNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnTotatizar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdctos)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +82,21 @@ namespace Inventario
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1822, 264);
             this.panel1.TabIndex = 1;
+            // 
+            // btnTotatizar
+            // 
+            this.btnTotatizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTotatizar.Font = new System.Drawing.Font("Arial Narrow", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotatizar.Image = ((System.Drawing.Image)(resources.GetObject("btnTotatizar.Image")));
+            this.btnTotatizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnTotatizar.Location = new System.Drawing.Point(1535, 180);
+            this.btnTotatizar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnTotatizar.Name = "btnTotatizar";
+            this.btnTotatizar.Size = new System.Drawing.Size(60, 60);
+            this.btnTotatizar.TabIndex = 124;
+            this.btnTotatizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTotatizar.UseVisualStyleBackColor = true;
+            this.btnTotatizar.Click += new System.EventHandler(this.btnTotatizar_Click);
             // 
             // cmbCategoria
             // 
@@ -330,7 +345,7 @@ namespace Inventario
             // 
             // TotalEntrada
             // 
-            this.TotalEntrada.DataPropertyName = "C1";
+            this.TotalEntrada.DataPropertyName = "TotalEntrada";
             this.TotalEntrada.HeaderText = "Total entrada";
             this.TotalEntrada.MinimumWidth = 8;
             this.TotalEntrada.Name = "TotalEntrada";
@@ -338,7 +353,7 @@ namespace Inventario
             // 
             // TotalSalida
             // 
-            this.TotalSalida.DataPropertyName = "C2";
+            this.TotalSalida.DataPropertyName = "TotalSalida";
             this.TotalSalida.HeaderText = "Total salida";
             this.TotalSalida.MinimumWidth = 8;
             this.TotalSalida.Name = "TotalSalida";
@@ -346,7 +361,7 @@ namespace Inventario
             // 
             // TotalExistencia
             // 
-            this.TotalExistencia.DataPropertyName = "C3";
+            this.TotalExistencia.DataPropertyName = "TotalExistencia";
             dataGridViewCellStyle1.NullValue = "0";
             this.TotalExistencia.DefaultCellStyle = dataGridViewCellStyle1;
             this.TotalExistencia.HeaderText = "Total existencia";
@@ -374,7 +389,7 @@ namespace Inventario
             // 
             // CategoriaNombre
             // 
-            this.CategoriaNombre.DataPropertyName = "Nombre1";
+            this.CategoriaNombre.DataPropertyName = "Categoria";
             this.CategoriaNombre.HeaderText = "Categoria";
             this.CategoriaNombre.MinimumWidth = 8;
             this.CategoriaNombre.Name = "CategoriaNombre";
@@ -382,26 +397,11 @@ namespace Inventario
             // 
             // UnidadMedidaNombre
             // 
-            this.UnidadMedidaNombre.DataPropertyName = "Nombre2";
+            this.UnidadMedidaNombre.DataPropertyName = "UnidadMedida";
             this.UnidadMedidaNombre.HeaderText = "Unidad Medida";
             this.UnidadMedidaNombre.MinimumWidth = 8;
             this.UnidadMedidaNombre.Name = "UnidadMedidaNombre";
             this.UnidadMedidaNombre.Width = 150;
-            // 
-            // btnTotatizar
-            // 
-            this.btnTotatizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTotatizar.Font = new System.Drawing.Font("Arial Narrow", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTotatizar.Image = ((System.Drawing.Image)(resources.GetObject("btnTotatizar.Image")));
-            this.btnTotatizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTotatizar.Location = new System.Drawing.Point(1535, 180);
-            this.btnTotatizar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnTotatizar.Name = "btnTotatizar";
-            this.btnTotatizar.Size = new System.Drawing.Size(60, 60);
-            this.btnTotatizar.TabIndex = 124;
-            this.btnTotatizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnTotatizar.UseVisualStyleBackColor = true;
-            this.btnTotatizar.Click += new System.EventHandler(this.btnTotatizar_Click);
             // 
             // frmInventarioProducto
             // 
@@ -433,6 +433,7 @@ namespace Inventario
         internal System.Windows.Forms.ComboBox cmbCategoria;
         internal System.Windows.Forms.Label lbltipo;
         private System.Windows.Forms.DataGridView dgProdctos;
+        internal System.Windows.Forms.Button btnTotatizar;
         private System.Windows.Forms.DataGridViewButtonColumn ver;
         private System.Windows.Forms.DataGridViewButtonColumn Existencia;
         private System.Windows.Forms.DataGridViewButtonColumn editar;
@@ -451,6 +452,5 @@ namespace Inventario
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidaMedidaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoriaNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedidaNombre;
-        internal System.Windows.Forms.Button btnTotatizar;
     }
 }

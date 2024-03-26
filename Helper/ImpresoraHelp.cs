@@ -22,7 +22,9 @@ namespace Helper
         }
         int linea_actual = 0;
 
-        public override DataTable Table => throw new NotImplementedException();   
+
+        protected  IQueryable Queryable => throw new NotImplementedException();
+
         public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
         {
             throw new NotImplementedException();

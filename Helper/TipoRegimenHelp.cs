@@ -17,20 +17,14 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable<TipoRegimen> queryable
+       public    IQueryable<TipoRegimen> Queryable
         {
             get
             {
                 return _context.TipoRegimens.AsQueryable();            
             }
         }
-        public override  DataTable Table 
-        {
-            get
-            {
-                return _context.GetDataTable(queryable.ToString());
-            } 
-        }
+   
 
         public override void GetDatagrid(DataGridView gridView, string[,] columns)
         {

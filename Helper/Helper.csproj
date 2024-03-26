@@ -64,6 +64,16 @@
     <Compile Include="CompraHelp.cs" />
     <Compile Include="DevolucionVentaHelp.cs" />
     <Compile Include="DevolucionCompraHelp.cs" />
+    <Compile Include="DTO\FacturaDTO.cs" />
+    <Compile Include="View\EmpresaView.cs" />
+    <Compile Include="View\PersonaView.cs" />
+    <Compile Include="DTO\ProductoDTO.cs" />
+    <Compile Include="DTO\ProveedorDTO.cs" />
+    <Compile Include="DTO\ClienteDTO.cs" />
+    <Compile Include="DTO\EmpleadoDTO.cs" />
+    <Compile Include="DTO\EmpresaDTO.cs" />
+    <Compile Include="DTO\OrdenCompraDTO.cs" />
+    <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="EmailHelp.cs" />
     <Compile Include="EmpleadoHelp.cs" />
     <Compile Include="EmpresaHelp.cs" />
@@ -84,6 +94,7 @@
     <Compile Include="TipoRegimenHelp.cs" />
     <Compile Include="UnidaMedidaHelp.cs" />
     <Compile Include="UsuarioHelp.cs" />
+    <Compile Include="View\ProductoView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodigoBarra\CodigoBarra.vbproj">
@@ -103,6 +114,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

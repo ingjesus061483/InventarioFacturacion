@@ -17,19 +17,12 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable Queryable 
+      public    IQueryable<Motivo > Queryable 
         {
             get
             {
                 return _context.Motivos.AsQueryable();
             }
-        }
-        public override DataTable Table 
-        {
-            get
-            {
-                return _context.GetDataTable(Queryable.ToString());
-            } 
         }
         public  Motivo BuscarMotivos(int id)
         {

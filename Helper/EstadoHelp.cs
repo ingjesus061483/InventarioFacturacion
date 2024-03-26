@@ -16,7 +16,7 @@ namespace Helper
             _context = context;
 
         }
-        IQueryable<Estado> Queryable 
+      public   IQueryable <Estado> Queryable 
         {
             get
             {
@@ -24,14 +24,7 @@ namespace Helper
             } 
         }
 
-        public override DataTable Table
-        {
-            get
-            {
-                return _context.GetDataTable(Queryable.ToString());
-            }
-        }
-
+ 
         public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
         {
             throw new NotImplementedException();

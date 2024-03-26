@@ -1,14 +1,8 @@
 ﻿using Helper;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Inventario.UserControls
 {
     public partial class Cuestas : UserControl
@@ -40,18 +34,17 @@ namespace Inventario.UserControls
         };
         string[,] _facturaEncabezado = { { "Id", "false" }, { "Codigo", "true" },
                                          { "Fecha", "true" },{"UsuarioId","false" },
-                                         {"Usuario","false" }, {"NombreEmpleado","true" },
-                                         {"ClienteId","false" },{"Cliente","false" },
-                                         {"NombreCliente","true" },{"TipoDocumentoId","false" },
-                                         {"TipoDocumento","false" },{"TipoDoc","true" },
-                                         {"FormapagoId","false" },{"FormaPago","false" },
-                                         {"Formapag","true" },{"Observaciones","false" },
-                                         {"Subtotal","true" },{"Impuestos","false"},
+                                         {"Usuario","true" }, 
+                                         {"ClienteId","false" },{"Cliente","true" },
+                                         {"TipoDocumentoId","false" },
+                                         {"TipoDocumento","true" },
+                                         {"FormapagoId","false" },{"FormaPago","true" },
+                                         {"Observaciones","false" },
+                                         {"Subtotal","true" },
                                          {"Impuesto","true" },{"Descuento","true" },
                                          {"Detalles","false" },{"TotalPagar","true" },
                                          {"Recibido","true" },{"Cambio","true" },
-                                         {"Estado","false" },{"EstadoId","false" },
-                                         {"EstadoNombre","true" }
+                                         {"Estado","true" },{"EstadoId","false" },                                
         };
  
 

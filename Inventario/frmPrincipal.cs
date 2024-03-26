@@ -2,22 +2,13 @@
 using Helper;
 using Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Inventario
 {
     public partial class frmPrincipal : Form
     {
         Usuario Usuario;
-        public delegate void Cerrar(object sender,FormClosingEventArgs  e);
-        public event Cerrar  CerrarForm;
 
         public frmPrincipal(ProductoHelp productContext,
                             CategoriaHelp categoriaHelp,
@@ -67,7 +58,6 @@ namespace Inventario
             _devolucionCompraHelp = devoluvionCompraHelp;
             _emailHelp = emailHelp;
             InitializeComponent();
-            CerrarForm += FrmPrincipal_CerrarForm;
         }
 
         private void FrmPrincipal_CerrarForm(object sender, FormClosingEventArgs e)
@@ -76,6 +66,7 @@ namespace Inventario
             if (resp == DialogResult.Yes)
             {
                 e.Cancel = false;
+    //            this.Close();
             }
             else 
             {
@@ -299,6 +290,7 @@ namespace Inventario
 
         private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Close();
 
         }
     }

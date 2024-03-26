@@ -16,32 +16,19 @@ namespace Helper
         {
             _context = context;
         }
-        IQueryable<TipoDocumento> TipoDocumento
+        public  IQueryable<TipoDocumento > Queryable
         {
             get
             {
                 return _context.TipoDocumentos .AsQueryable();
             }
         }
-        public override DataTable Table        
-        {
-            get
-            {
-                return _context.GetDataTable(TipoDocumento.ToString());
-            }
-        }
+    
 
         public override void GetDatagrid(DataGridView gridView, string[,] columns)
         {
             throw new NotImplementedException();
         }
-        /*public void Cmb(ComboBox cmb)
-{
-   string[] arr = { "Id", "Nombre" };
-   cmb.DataSource = dtTipoIdentificacion;
-   cmb.ValueMember = arr.GetValue(0).ToString();
-   cmb.DisplayMember = arr.GetValue(1).ToString();
-   cmb.SelectedIndex = -1;
-}*/
+ 
     }
 }

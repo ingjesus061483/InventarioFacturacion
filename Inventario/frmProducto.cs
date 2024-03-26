@@ -36,8 +36,8 @@ public Producto Producto { get; set; }
   
         private void frmArticulo_Load(object sender, EventArgs e)
         {            
-            _categoriaContext.Cmb(cmbCategoria);
-           _UnidaMedidaContext. Cmb(cmbUnidadMedida);
+            _categoriaContext.Cmb(cmbCategoria,_categoriaContext.Queryable .ToList ());
+           _UnidaMedidaContext. Cmb(cmbUnidadMedida,_UnidaMedidaContext.Queryable .ToList());
    
             if( Producto==null)
             {

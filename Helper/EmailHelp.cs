@@ -25,15 +25,6 @@ namespace Helper
             _proveedorHelp  = proveedorHelp ;
             _clienteHelp = clienteHelp;
         }
-        public override DataTable Table
-        {
-            get
-            {
-                DataTable table= _clienteHelp.Table;
-                table.Merge(_proveedorHelp.Table);
-                return table;
-            }
-        }
 
         MailAddress From
         {
@@ -62,6 +53,8 @@ namespace Helper
                 return server;
             }
         }
+
+        protected IQueryable Queryable => throw new NotImplementedException();
 
         public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
         {

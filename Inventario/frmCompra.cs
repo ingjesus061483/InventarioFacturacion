@@ -14,21 +14,6 @@ namespace Inventario
 {
     public partial class frmCompra : Form
     {
-        int tipodocumento;
-        Usuario usuario;
-        Producto producto;
-        Proveedor proveedor;
-        ProveedorHelp _proveedorHelp;
-        EmpleadoHelp _empleadoHelp;
-        ProductoHelp _productoHelp;
-        CompraHelp _compraHelp;
-        ImpuestoHelp _impuestoHelp;
-        UsuarioHelp _usuarioHelp;
-        FormaPagoHelp _formaPagoHelp;
-        TipoDocumentoHelp _tipoDocumentoHelp;
-        TipoIdentificacionHelp _tipoIdentificacionHelp;
-        public OrdenCompra Compra { get; set; }
-
         public frmCompra(ProveedorHelp proveedorHelp,
                          EmpleadoHelp empleadoHelp,
                          ProductoHelp productoHelp,
@@ -150,7 +135,7 @@ namespace Inventario
         private void frmCompra_Load(object sender, EventArgs e)
         {
 
-            _tipoDocumentoHelp.Cmb(cmbTipoDocumento);
+            _tipoDocumentoHelp.Cmb(cmbTipoDocumento,_tipoDocumentoHelp .Queryable.ToList ());
             if (Compra == null)
             {
                 Nuevo();
@@ -197,7 +182,7 @@ namespace Inventario
             Compra.AñadirDetalles(producto, cantidad);
             decimal subtotal = Compra.Subtotal;
             txtsubtotal.Text = subtotal.ToString();
-            txtiva.Text = GetImpuesto(_impuestoHelp.Impuestos, (bool)proveedor.PersonaNatural).ToString();
+            txtiva.Text = GetImpuesto(_impuestoHelp.Queryable.ToList(), (bool)proveedor.PersonaNatural).ToString();
             decimal totalPagar = Compra.TotalPagar;
             txttotalpagar.Text = totalPagar.ToString();
             txtvalorunit.Text = string.Empty;
@@ -218,7 +203,7 @@ namespace Inventario
             Compra.EliminarDetalles();
             decimal subtotal = Compra .Subtotal;
             txtsubtotal.Text = subtotal.ToString();
-            txtiva.Text = GetImpuesto(_impuestoHelp.Impuestos, (bool)proveedor.PersonaNatural ).ToString();
+            txtiva.Text = GetImpuesto(_impuestoHelp.Queryable.ToList(), (bool)proveedor.PersonaNatural ).ToString();
             decimal totalPagar = Compra .TotalPagar;
             txttotalpagar.Text = totalPagar.ToString();
             Detalles.MostrarDatos(Compra .Detalles);

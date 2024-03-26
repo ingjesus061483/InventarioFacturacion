@@ -44,11 +44,11 @@ namespace Inventario
             this.Label1 = new System.Windows.Forms.Label();
             this.txtTotalVentas = new System.Windows.Forms.TextBox();
             this.dgCompras = new System.Windows.Forms.DataGridView();
-            this.ver = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.imprimir = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.creditos = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.RecibirMercancia = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.devoluvionCompre = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompras)).BeginInit();
             this.SuspendLayout();
@@ -204,76 +204,75 @@ namespace Inventario
             this.dgCompras.AllowUserToDeleteRows = false;
             this.dgCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ver,
-            this.imprimir,
-            this.creditos,
-            this.RecibirMercancia,
-            this.devoluvionCompre});
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dgCompras.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCompras.Location = new System.Drawing.Point(0, 293);
             this.dgCompras.Name = "dgCompras";
             this.dgCompras.ReadOnly = true;
-            this.dgCompras.RowHeadersVisible = false;
             this.dgCompras.RowHeadersWidth = 62;
             this.dgCompras.RowTemplate.Height = 28;
             this.dgCompras.Size = new System.Drawing.Size(1924, 369);
             this.dgCompras.TabIndex = 114;
             this.dgCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // ver
+            // Column1
             // 
-            this.ver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ver.HeaderText = "";
-            this.ver.MinimumWidth = 8;
-            this.ver.Name = "ver";
-            this.ver.ReadOnly = true;
-            this.ver.Text = "Ver";
-            this.ver.UseColumnTextForButtonValue = true;
-            this.ver.Width = 150;
+            this.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column1.HeaderText = "";
+            this.Column1.MinimumWidth = 8;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Text = "Ver";
+            this.Column1.UseColumnTextForButtonValue = true;
+            this.Column1.Width = 150;
             // 
-            // imprimir
+            // Column2
             // 
-            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imprimir.HeaderText = "";
-            this.imprimir.MinimumWidth = 8;
-            this.imprimir.Name = "imprimir";
-            this.imprimir.ReadOnly = true;
-            this.imprimir.Text = "Imprimir";
-            this.imprimir.UseColumnTextForButtonValue = true;
-            this.imprimir.Width = 150;
+            this.Column2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column2.HeaderText = "";
+            this.Column2.MinimumWidth = 8;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Text = "Imprimir";
+            this.Column2.UseColumnTextForButtonValue = true;
+            this.Column2.Width = 150;
             // 
-            // creditos
+            // Column3
             // 
-            this.creditos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.creditos.HeaderText = "";
-            this.creditos.MinimumWidth = 8;
-            this.creditos.Name = "creditos";
-            this.creditos.ReadOnly = true;
-            this.creditos.Text = "Creditos";
-            this.creditos.UseColumnTextForButtonValue = true;
-            this.creditos.Width = 150;
+            this.Column3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column3.HeaderText = "";
+            this.Column3.MinimumWidth = 8;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Text = "Creditos";
+            this.Column3.UseColumnTextForButtonValue = true;
+            this.Column3.Width = 150;
             // 
-            // RecibirMercancia
+            // Column4
             // 
-            this.RecibirMercancia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RecibirMercancia.HeaderText = "";
-            this.RecibirMercancia.MinimumWidth = 8;
-            this.RecibirMercancia.Name = "RecibirMercancia";
-            this.RecibirMercancia.ReadOnly = true;
-            this.RecibirMercancia.Text = "Recibir mercancia";
-            this.RecibirMercancia.UseColumnTextForButtonValue = true;
-            this.RecibirMercancia.Width = 150;
+            this.Column4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column4.HeaderText = "";
+            this.Column4.MinimumWidth = 8;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Text = "Recibir Mercancia";
+            this.Column4.UseColumnTextForButtonValue = true;
+            this.Column4.Width = 150;
             // 
-            // devoluvionCompre
+            // Column5
             // 
-            this.devoluvionCompre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.devoluvionCompre.HeaderText = "";
-            this.devoluvionCompre.MinimumWidth = 8;
-            this.devoluvionCompre.Name = "devoluvionCompre";
-            this.devoluvionCompre.ReadOnly = true;
-            this.devoluvionCompre.Text = "Devoluvion de compra";
-            this.devoluvionCompre.UseColumnTextForButtonValue = true;
-            this.devoluvionCompre.Width = 150;
+            this.Column5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column5.HeaderText = "";
+            this.Column5.MinimumWidth = 8;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Text = "Devolucion de compra";
+            this.Column5.UseColumnTextForButtonValue = true;
+            this.Column5.Width = 150;
             // 
             // frmCompras
             // 
@@ -306,12 +305,6 @@ namespace Inventario
         internal System.Windows.Forms.DateTimePicker dtpFechaInicio;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.TextBox txtTotalVentas;
-        private System.Windows.Forms.DataGridView dgCompras;
-        private System.Windows.Forms.DataGridViewButtonColumn ver;
-        private System.Windows.Forms.DataGridViewButtonColumn imprimir;
-        private System.Windows.Forms.DataGridViewButtonColumn creditos;
-        private System.Windows.Forms.DataGridViewButtonColumn RecibirMercancia;
-        private System.Windows.Forms.DataGridViewButtonColumn devoluvionCompre;
 
         ProveedorHelp _proveedorHelp;
         EmpleadoHelp _empleadoHelp;
@@ -324,5 +317,11 @@ namespace Inventario
         ImpuestoHelp _impuestoHelp;
         DevolucionCompraHelp _devoluvionCompraHelp;
         MotivoHelp _motivoHelp;
+        private System.Windows.Forms.DataGridView dgCompras;
+        private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.DataGridViewButtonColumn Column2;
+        private System.Windows.Forms.DataGridViewButtonColumn Column3;
+        private System.Windows.Forms.DataGridViewButtonColumn Column4;
+        private System.Windows.Forms.DataGridViewButtonColumn Column5;
     }
 }

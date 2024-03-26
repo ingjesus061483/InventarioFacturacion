@@ -44,7 +44,29 @@ namespace Inventario
         }
         private void frmCompras_Load(object sender, EventArgs e)
         {
-            dgCompras.DataSource = _compraHelp.Table;
+            dgCompras.DataSource = _compraHelp.Queryable.AsEnumerable().Select( x=> new {
+                x.Id,
+                x.Codigo,
+                Fecha=  x.Fecha.ToString("yyyy-MM-dd"),
+                FechaEntrega=x.FechaEntrega.ToString("yyyy-MM-dd"),
+                x.Observaciones,
+                x.NombreUsuario,
+                x.UsuarioId,
+                x.NombreProveedor ,
+                x.ProveedorId ,
+                x.TipoDocumentoNombre ,
+                x.TipoDocumentoId,
+                x.FormaPagoNombre,
+                x.FormapagoId,
+                Subtotal=String .Format("{0:C}",     x.Subtotal),
+                Descuento=   String.Format("{0:C}", x.Descuento ),
+                Recibido= String.Format("{0:C}", x.Recibido),
+                Impuesto = String.Format("{0:C}", x.Impuesto),
+                TotalPagar = String.Format("{0:C}", x.TotalPagar) ,                
+                x.EstadoId ,
+                x.EstadoNombre
+            }). ToList();
+           // dgCompras.DataSource = _compraHelp.Table;
             Db = new DataSet();
         }
 
@@ -110,8 +132,29 @@ namespace Inventario
                     }
 
             }
-           dgCompras .DataSource  = _compraHelp .Table ;
-            
+           dgCompras .DataSource  = _compraHelp.Queryable.AsEnumerable().Select(x => new {
+               x.Id,
+               x.Codigo,
+               Fecha = x.Fecha.ToString("yyyy-MM-dd"),
+               FechaEntrega = x.FechaEntrega.ToString("yyyy-MM-dd"),
+               x.Observaciones,
+               x.NombreUsuario,
+               x.UsuarioId,
+               x.NombreProveedor,
+               x.ProveedorId,
+               x.TipoDocumentoNombre,
+               x.TipoDocumentoId,
+               x.FormaPagoNombre,
+               x.FormapagoId,
+               Subtotal = String.Format("{0:C}", x.Subtotal),
+               Descuento = String.Format("{0:C}", x.Descuento),
+               Recibido = String.Format("{0:C}", x.Recibido),
+               Impuesto = String.Format("{0:C}", x.Impuesto),
+               TotalPagar = String.Format("{0:C}", x.TotalPagar),
+               x.EstadoId,
+               x.EstadoNombre
+           }).ToList(); 
+
 
         }
 
@@ -133,13 +176,13 @@ namespace Inventario
             DataTable table;
             if(chkPeriodo .Checked)
             {
-              table =  _compraHelp.Busqueda("Fecha", dtpFechaInicio .Value ,dtpFechaFin .Value );
+   //           table =  _compraHelp.Busqueda("Fecha", dtpFechaInicio .Value ,dtpFechaFin .Value );
             }
             else
             {
-                table = _compraHelp.Busqueda("Codigo", txtNofactura .Text );
+     //           table = _compraHelp.Busqueda("Codigo", txtNofactura .Text );
             }
-            dgCompras.DataSource = table;
+       //     dgCompras.DataSource = table;
 
         }
 
@@ -153,7 +196,7 @@ namespace Inventario
         {
             try
             {
-                Db.Tables.Add(_compraHelp.Table);
+       //         Db.Tables.Add(_compraHelp.Table);
                 _compraHelp.ExportarDatos(Db);
             }
             catch (Exception ex)

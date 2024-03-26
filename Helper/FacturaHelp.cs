@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -19,121 +20,69 @@ namespace Helper
             _context = context;
             _existenciaHelp = existenciaHelp;
         }
-        public decimal TotalesFacturas
+       
+
+        public IQueryable<FacturaDTO> Queryable
         {
             get
             {
-                decimal total = 0;
-                foreach (var item in FacturaEncabezados.Where (x=>x.EstadoId !=4).ToList())
-                {
-                    total += item.TotalPagar;
-                }
-                return total;
+                return (from factura in _context.FacturaEncabezados
+                        join prov in _context.Clientes on factura.ClienteId equals prov.Id
+                        join usu in _context.Usuarios on factura.UsuarioId equals usu.Id
+                        join empresa in _context .Empresas on usu.EmpresaId equals empresa.Id
+                        join formapago in _context.FormaPagos on factura.FormapagoId equals formapago.Id into fp
+                        from subformaPago in fp.DefaultIfEmpty()
+                        join tipodoc in _context.TipoDocumentos on factura.TipoDocumentoId equals tipodoc.Id
+                        join est in _context.Estados on factura.EstadoId equals est.Id
+                        select new FacturaDTO
+                        {
+                            Id = factura.Id,
+                            Codigo = factura.Codigo,
+                            Fecha = factura.Fecha,                        
+                            Observaciones = factura.Observaciones,
+                            Usuario = factura.Usuario,
+                            Empresa=empresa ,
+                            UsuarioId = factura.UsuarioId,
+                            ClienteId = factura.ClienteId ,
+                            Cliente = factura.Cliente,
+                            TipoDocumento = factura.TipoDocumento,
+                            TipoDocumentoId = factura.TipoDocumentoId,
+                            FormaPago = subformaPago,
+                            FormapagoId = factura.FormapagoId,
+                            Detalles = _context.FacturaDetalles .Where(x => x.FacturaId == factura.Id)
+                                                                  .ToList(),
+                            Impuestos = _context.Impuestos
+                                               .ToList(),
+                            Descuento = factura.Descuento,
+                            Recibido = factura.Recibido,
+                            EstadoId = factura.EstadoId,
+                            Estado = factura.Estado
+                        });
             }
         }
-        public List  <FacturaEncabezado>FacturaEncabezados
+        public FacturaEncabezado Buscar (string codigo)
         {
-            get
-            {
-                var query = (from fact in _context.FacturaEncabezados join cli in _context.Clientes
-                            on fact.ClienteId equals cli.Id join usu in _context.Usuarios on fact.UsuarioId
-                            equals usu.Id  join formapago in _context.FormaPagos on fact.FormapagoId equals formapago.Id
-                            join tipodoc in _context.TipoDocumentos on fact.TipoDocumentoId equals tipodoc.Id
-                            join est in _context .Estados on fact.EstadoId equals est .Id
-                            select new
-                            {
-                                fact.Id,
-                                fact.Codigo ,                              
-                                fact.Fecha ,
-                                fact .Observaciones ,
-                                 fact .Descuento ,
-                                 fact.Recibido ,
-                                 fact.Usuario,
-                                 fact.UsuarioId ,
-                                fact.ClienteId,
-                                fact.Cliente,
-                                fact.TipoDocumento,
-                                fact.TipoDocumentoId,
-                                fact.FormaPago,
-                                fact.FormapagoId,
-                                factdetalles = _context .FacturaDetalles .Where(x=>x.FacturaId ==fact .Id )
-                                                          .ToList (),
-                                fact.EstadoId ,
-                                fact.Estado 
-                            });
-                List<FacturaEncabezado> facturas = new List<FacturaEncabezado>();
-                foreach ( var fact in query .ToList ())
-                {
-
-                    fact.Usuario.Empresa.TipoRegimen = _context.TipoRegimens.Find(fact.Usuario.Empresa.TipoRegimenId);
-                    fact.Usuario.Empleados = _context.Empleados.Where(x => x.UsuarioId == fact.UsuarioId).ToList();
-                    fact.Cliente.TipoIdentificacion = _context.TipoIdentificacions.Find(fact.Cliente.TipoIdentificacionId);
-                    foreach (var detalles in fact.factdetalles)
-                    {
-                        detalles.Producto = _context.Productos.Find(detalles.ProductoId);
-
-                    }                    
-                    FacturaEncabezado facturaEncabezado = new FacturaEncabezado
-                    {
-                        Id = fact.Id,
-                        Codigo =fact.Codigo ,
-                        ClienteId = fact.ClienteId,
-                        Cliente = fact.Cliente,
-                        TipoDocumento = fact.TipoDocumento,
-                        TipoDocumentoId = fact.TipoDocumentoId,
-                        FormaPago = fact.FormaPago,
-                        FormapagoId = fact.FormapagoId,
-                        Impuestos =  _context.Empresas.Where(x => x.Id == fact.Usuario.EmpresaId).FirstOrDefault().TipoRegimenId == 2 ? _context.Impuestos.ToList() : null,
-                        Detalles = fact.factdetalles,
-                        EstadoId = fact.EstadoId,
-                        Estado = fact.Estado,
-                        Observaciones = fact.Observaciones,
-                        Descuento = fact.Descuento,
-                        Recibido = fact.Recibido,
-                        Usuario = fact.Usuario,
-                       
-                        UsuarioId = fact.UsuarioId,
-                        Fecha = fact.Fecha,
-
-                    };
-                    facturas.Add(facturaEncabezado);                    
-                }
-                return facturas;
-            }
-
-        }
-        public override DataTable Table { get; }
-
-        public List< FacturaEncabezado> GetFacturas()
-        {
-            List <FacturaEncabezado > facturaEncabezados = _context.FacturaEncabezados.ToList();
-            List<FacturaEncabezado> facturaEncabezadosNew = new List<FacturaEncabezado>();
-            foreach (FacturaEncabezado fact in facturaEncabezados)
-            {               
-                fact.Usuario = _context.Usuarios.Find(fact.UsuarioId);
-                var empresa = _context.Empresas.Find(fact.Usuario.EmpresaId);
-                fact.Cliente = _context.Clientes.Find(fact.ClienteId);
-                fact.TipoDocumento = _context.TipoDocumentos.Find(fact.TipoDocumentoId);
-                fact.FormaPago = _context.FormaPagos.Find(fact.FormapagoId);
-                fact.Impuestos = empresa.TipoRegimenId == 2 ? _context.Impuestos.ToList() : null;
-                fact.Detalles = _context.FacturaDetalles.Where(x => x.FacturaId == fact.Id).ToList();
-                List<FacturaDetalle> detalleNew = new List<FacturaDetalle>();
-
-                foreach(FacturaDetalle detalle in fact.Detalles )
-                {
-                    detalle.Producto = _context.Productos.Find(detalle.ProductoId);
-                    detalleNew.Add(detalle);
-                    
-                }
-                fact.Detalles = detalleNew;
-                
-                facturaEncabezadosNew.Add(fact);
-            }           
-            return facturaEncabezadosNew;
-        }
-        public FacturaEncabezado GetFacturaEncabezado (string codigo)
-        {
-            var factura = FacturaEncabezados.Where(x => x.Codigo == codigo).FirstOrDefault ();
+            var factura =Queryable .Where(x => x.Codigo == codigo).AsEnumerable ().Select(x=>new FacturaEncabezado {
+                Id = x.Id,
+                Codigo = x.Codigo,
+                Fecha = x.Fecha,
+                Observaciones = x.Observaciones,
+                Usuario = x.Usuario,
+                Empresa =x. Empresa,
+                UsuarioId = x.UsuarioId,
+                ClienteId = x.ClienteId,
+                Cliente = x.Cliente,
+                TipoDocumento = x.TipoDocumento,
+                TipoDocumentoId = x.TipoDocumentoId,
+                FormaPago =x.FormaPago,
+                FormapagoId = x.FormapagoId,
+                Detalles = x.Detalles,
+                Impuestos = x.Impuestos,
+                Descuento = x.Descuento,
+                Recibido = x.Recibido,
+                EstadoId = x.EstadoId,
+                Estado = x.Estado
+            }). FirstOrDefault ();
             return factura;
         }
         bool Validar(FacturaEncabezado factura )
@@ -207,21 +156,23 @@ namespace Helper
             {
                 return;
             }
+            var detalles = factura.Detalles;
+            factura.Detalles = null;
             _context.FacturaEncabezados.Add(factura);
             _context.SaveChanges();
-            var fact = _context.FacturaEncabezados
-                                        .Where(x => x.Codigo == factura.Codigo)
-                                        .FirstOrDefault();
-            foreach(var item in  fact.Detalles)
+         
+            foreach(var item in  detalles)
             {
-                item.FacturaId = fact.Id;
+                var producto = item.Producto;
+                item.Producto = null;
+                item.FacturaId = factura.Id;
                 _context.FacturaDetalles.Add(item);
                 _context.SaveChanges();
                 Existencia existencia = new Existencia
                 {
                     Cantidad = item.Cantidad,
                     ProductoId = item.ProductoId,
-                    Concepto = "Salida " + item.Producto.Nombre,
+                    Concepto = "Salida " + producto.Nombre,
                     Entrada = false,
                     Fecha = DateTime.Now
                 };

@@ -12,54 +12,38 @@ namespace Helper
 {
     public class CategoriaHelp:Help
     {
-        //InventarioDbContext _context;
         public CategoriaHelp(InventarioDbContext context)
         {
             _context = context;
         }
-        public IQueryable<Categoria> QueryCategoria
+        public  IQueryable <Categoria> Queryable
         {
             get
             {
-                return _context.Categorias.AsQueryable();
+                return _context.Categorias;
             }
         }
-   /*     public  void Cmb(ComboBox cmb )
+        public void Guardar( Dictionary <string,object>collection)
         {
-            string[] arr = { "Id", "Nombre" };
-            cmb.DataSource = dtCategoria;
-            cmb.ValueMember = arr.GetValue(0).ToString();
-            cmb.DisplayMember = arr.GetValue(1).ToString();
-            cmb.SelectedIndex = -1;
-        }*/
-        public override  DataTable Table
-        {
-            get
+            Categoria categoria = new Categoria 
             {
-                return _context.GetDataTable(QueryCategoria.ToString());
-            }
-        }
-        public Categoria BuscarCategoria(int id)
-        {
-            var categoria = _context.Categorias.Find(id);
-            return categoria;
-        }
-        public void GuardarCategoria(Categoria categoria )
-        {
+                Nombre=collection["nombre"].ToString(),
+                Descripcion=collection["descripcion"].ToString()
+            };
             _context.Categorias.Add(categoria);
             _context.SaveChanges();
         }
-        public void ActualizarCategoria(int id ,Categoria categoria)
+        public void Actualizar(int id, Dictionary<string, object> collection)
         {
-            var category = BuscarCategoria(id);
-            category.Nombre = categoria.Nombre;
-            category.Descripcion = categoria.Descripcion;
+            var category =Queryable.Where(x=>x.Id == id).FirstOrDefault();
+            category.Nombre = collection["nombre"].ToString ();
+            category.Descripcion = collection ["descripcion"].ToString();
             _context.SaveChanges();
 
         }
-        public void  EliminarCategoria(int id)
+        public void  Eliminar(int id)
         {
-            var categoria = BuscarCategoria(id);
+            var categoria = Queryable.Where(x => x.Id == id).FirstOrDefault();
             _context.Categorias.Remove(categoria);
             _context.SaveChanges();
         }

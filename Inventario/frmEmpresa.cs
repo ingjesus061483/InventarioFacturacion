@@ -27,7 +27,7 @@ namespace Inventario
 
         private void frmEmpresa_Load(object sender, EventArgs e)
         {
-            _tipoRegimenHelp.Cmb(cmbTipoRegimen);
+            _tipoRegimenHelp.Cmb(cmbTipoRegimen,_tipoRegimenHelp.Queryable.ToList ());
             Nuevo();
         }
         void Nuevo()
@@ -48,8 +48,8 @@ namespace Inventario
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            var dt = _empresaHelp.Table ;
-            frmBusqueda frmBusqueda = new frmBusqueda(dt);
+            
+            frmBusqueda frmBusqueda = new frmBusqueda(_empresaHelp );
             frmBusqueda.ShowDialog();
             int id = frmBusqueda.Id;
             empresa = _empresaHelp.BuscarEmpresa(id);
