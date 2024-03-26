@@ -55,7 +55,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+        empresaHelp .    Cmb(cmbColumnas, properties);
             empresas  = queryable.ToList();
         }
         public frmBusqueda (ImpuestoHelp impuestoHelp)
@@ -68,7 +68,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+           impuestoHelp . Cmb(cmbColumnas, properties);
 
         }
         public frmBusqueda (MotivoHelp motivoHelp)
@@ -81,7 +81,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+           motivoHelp . Cmb(cmbColumnas, properties);
 
         }
         public frmBusqueda(ProductoHelp productoHelp)
@@ -109,7 +109,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+           productoHelp . Cmb(cmbColumnas, properties);
            productos = queryable.ToList();
         }
         public frmBusqueda(ProveedorHelp proveedorHelp)
@@ -133,7 +133,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+           proveedorHelp . Cmb(cmbColumnas, properties);
             proveedores = queryble.ToList();
         }
         public frmBusqueda (ClienteHelp clienteHelp)
@@ -157,7 +157,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+           clienteHelp . Cmb(cmbColumnas, properties);
             clientes = queryble.ToList();
         }
        public frmBusqueda(EmpleadoHelp empleadoHelp)
@@ -182,7 +182,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+           empleadoHelp . Cmb(cmbColumnas, properties);
             empleados = queryble.ToList();
             
         }
@@ -196,7 +196,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+           roleHelp . Cmb(cmbColumnas, properties);
             
 
         }
@@ -215,29 +215,9 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            Cmb(cmbColumnas, properties);
+           categoriaHelp . Cmb(cmbColumnas, properties);
           
 
-        }
-        public  void Cmb(ComboBox cmb, object lst)
-        {
-            string[] arr = { "Id", "Nombre" };
-            cmb.DataSource = lst;
-            cmb.ValueMember = arr.GetValue(0).ToString();
-            cmb.DisplayMember = arr.GetValue(1).ToString();
-            cmb.SelectedIndex = -1;
-        }
-
-        void Cmb(ComboBox cmb, DataTable table)
-        {
-            foreach (DataColumn col in table.Columns)
-            {
-                if (col.DataType.Name == "String")
-                {
-                    cmb.Items.Add(col.ColumnName);
-                }
-            }
-            cmb.SelectedIndex = 0;
         }
         private void frmBusqueda_Load(object sender, EventArgs e)
         {
@@ -349,46 +329,6 @@ namespace Inventario
                 Id = int.Parse(dgVer.Rows[e.RowIndex].Cells[0].Value.ToString());
                 Row = dgVer.Rows[e.RowIndex];
                 this.Close();
-            }
-        }
-        DataTable Busqueda(string filtro, string valor, DataTable table)
-        {
-            try {
-                DataTable DatosResult;
-                var columnas = table.Columns;
-                string tipo = "";
-                foreach (DataColumn column in columnas) {
-                    if (column.ColumnName == filtro)
-                    {
-                        tipo = column.DataType.Name;
-                        break;
-                    }
-                }
-                if (tipo != "String")
-                {
-                    var query = (from DataRow row in table.AsEnumerable()
-                                 where row.Field<double>(filtro) == double.Parse(valor)
-                                 select row);
-                    if (query.ToList().Count > 0)
-                        DatosResult = query.CopyToDataTable();
-                    else
-                        DatosResult  = table;
-                }
-                else
-                {
-                    var query = (from DataRow row in table.AsEnumerable()
-                                 where row.Field<string>(filtro).Contains(valor)
-                                 select row);
-                    if (query.ToList().Count > 0)
-                        DatosResult  = query.CopyToDataTable();
-                    else
-                        DatosResult  = table;
-                }
-                return DatosResult;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
         }
         private void txtFiltro_TextChanged(object sender, EventArgs e)
