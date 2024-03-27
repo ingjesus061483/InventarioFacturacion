@@ -1,3 +1,3 @@
-*.suo
-*.cache
-*.config
+.suo
+.cache
+.config
