@@ -22,12 +22,34 @@ namespace Inventario
         {
             _existenciaHelp = existenciaHelp;
             InitializeComponent();
+            Entradas.DataSource += Entradas_DataSource;
+            Salidas.DataSource += Salidas_DataSource;
         }
+
+        private void Salidas_DataSource(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Entradas_DataSource(object sender, EventArgs e)
+        {
+            
+        }
+
         void Llenar()
         {
             Db = new DataSet();
             Entradas.MostrarDatos( producto.Entradas  );
             Salidas. MostrarDatos ( producto.Salidas);
+            txtCategoria.Text = producto.Categoria.Nombre;
+            txtCodigo.Text = producto.Codigo;
+            txtNombre.Text = producto.Nombre;
+            txtCosto.Text = producto.Costo.ToString();
+            txtPrecio.Text = producto.Precio.ToString();
+            txtUnidaMedida.Text = producto.UnidadMedida.Nombre;
+            pbImagen.Load(producto.RutaImagen);
+
+
             txtTotalEntrada.Text = producto.TotalEntrada.ToString();
             txtToalSalida.Text = producto.TotalSalida.ToString();
             txtTotalExistencia.Text = producto.TotalExistencia.ToString();
@@ -63,6 +85,10 @@ namespace Inventario
 
         private void btnexportar_Click(object sender, EventArgs e)
         {
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(producto.Entradas );
+            DataTable pDt = Newtonsoft.Json.JsonConvert.DeserializeObject<DataTable>(json);
+            Db.Tables.Add(pDt);
+
             Db.Tables.Add(Entradas.Table);
             Db.Tables.Add(Salidas.Table);
             _existenciaHelp.ExportarDatos(Db);

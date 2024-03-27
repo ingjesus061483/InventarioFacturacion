@@ -38,10 +38,9 @@ namespace Models
         public List <FacturaEncabezado > FacturaEncabezados { get; set; }
 
         public string Encriptar(string password)
-        {
-            string result = string.Empty;
+        {           
             byte[] encryted = System.Text.Encoding.Unicode.GetBytes(password);
-            result = Convert.ToBase64String(encryted);
+            string  result = Convert.ToBase64String(encryted);
             return result;
         }
 

@@ -108,8 +108,9 @@ namespace Inventario
                                 {
 
 
-                                    frmRecibir frmRecibir = new frmRecibir(_compraHelp, _formaPagoHelp);
-                                    frmRecibir.Compra = compra;
+                                    frmRecibir frmRecibir = new frmRecibir(_compraHelp, _formaPagoHelp) {
+                                        Compra = compra,
+                                    };
                                     frmRecibir.ShowDialog();
                                     break;
                                 }

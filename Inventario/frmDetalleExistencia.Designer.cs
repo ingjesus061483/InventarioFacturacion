@@ -37,35 +37,35 @@ namespace Inventario
             this.txtTotalExistencia = new System.Windows.Forms.TextBox();
             this.Label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbltipo = new System.Windows.Forms.Label();
+            this.txtUnidaMedida = new System.Windows.Forms.TextBox();
+            this.lblcolor = new System.Windows.Forms.Label();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.Label3 = new System.Windows.Forms.Label();
+            this.txtCategoria = new System.Windows.Forms.TextBox();
+            this.lblarticulo = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.lblcodigo = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.Label2 = new System.Windows.Forms.Label();
+            this.txtCosto = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Salidas = new Inventario.UserControls.Cuestas();
+            this.Entradas = new Inventario.UserControls.Cuestas();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnexportar = new System.Windows.Forms.Button();
             this.btnsalir = new System.Windows.Forms.Button();
-            this.lbltipo = new System.Windows.Forms.Label();
-            this.Label2 = new System.Windows.Forms.Label();
-            this.lblcodigo = new System.Windows.Forms.Label();
-            this.lblarticulo = new System.Windows.Forms.Label();
-            this.Label3 = new System.Windows.Forms.Label();
-            this.lblcolor = new System.Windows.Forms.Label();
-            this.txtExistencia = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtCosto = new System.Windows.Forms.TextBox();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Entradas = new UserControls.Cuestas();
-            this.Salidas = new UserControls.Cuestas();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtToalSalida
@@ -124,13 +124,170 @@ namespace Inventario
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pbImagen);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1589, 226);
             this.panel1.TabIndex = 74;
+            // 
+            // pbImagen
+            // 
+            this.pbImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImagen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbImagen.Location = new System.Drawing.Point(1127, 0);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(462, 226);
+            this.pbImagen.TabIndex = 85;
+            this.pbImagen.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lbltipo);
+            this.panel4.Controls.Add(this.txtUnidaMedida);
+            this.panel4.Controls.Add(this.lblcolor);
+            this.panel4.Controls.Add(this.txtPrecio);
+            this.panel4.Controls.Add(this.Label3);
+            this.panel4.Controls.Add(this.txtCategoria);
+            this.panel4.Controls.Add(this.lblarticulo);
+            this.panel4.Controls.Add(this.txtCodigo);
+            this.panel4.Controls.Add(this.lblcodigo);
+            this.panel4.Controls.Add(this.txtNombre);
+            this.panel4.Controls.Add(this.Label2);
+            this.panel4.Controls.Add(this.txtCosto);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1127, 226);
+            this.panel4.TabIndex = 84;
+            // 
+            // lbltipo
+            // 
+            this.lbltipo.AutoSize = true;
+            this.lbltipo.BackColor = System.Drawing.Color.Transparent;
+            this.lbltipo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltipo.Location = new System.Drawing.Point(19, 18);
+            this.lbltipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbltipo.Name = "lbltipo";
+            this.lbltipo.Size = new System.Drawing.Size(101, 24);
+            this.lbltipo.TabIndex = 74;
+            this.lbltipo.Text = "Categoria";
+            // 
+            // txtUnidaMedida
+            // 
+            this.txtUnidaMedida.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnidaMedida.Location = new System.Drawing.Point(790, 124);
+            this.txtUnidaMedida.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtUnidaMedida.Name = "txtUnidaMedida";
+            this.txtUnidaMedida.Size = new System.Drawing.Size(319, 30);
+            this.txtUnidaMedida.TabIndex = 83;
+            // 
+            // lblcolor
+            // 
+            this.lblcolor.AutoSize = true;
+            this.lblcolor.BackColor = System.Drawing.Color.Transparent;
+            this.lblcolor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcolor.Location = new System.Drawing.Point(45, 127);
+            this.lblcolor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblcolor.Name = "lblcolor";
+            this.lblcolor.Size = new System.Drawing.Size(70, 24);
+            this.lblcolor.TabIndex = 75;
+            this.lblcolor.Text = "Precio";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecio.Location = new System.Drawing.Point(148, 124);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(400, 30);
+            this.txtPrecio.TabIndex = 82;
+            // 
+            // Label3
+            // 
+            this.Label3.AutoSize = true;
+            this.Label3.BackColor = System.Drawing.Color.Transparent;
+            this.Label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Location = new System.Drawing.Point(579, 127);
+            this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(179, 24);
+            this.Label3.TabIndex = 77;
+            this.Label3.Text = "Unidad de medida";
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoria.Location = new System.Drawing.Point(148, 15);
+            this.txtCategoria.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(399, 30);
+            this.txtCategoria.TabIndex = 78;
+            // 
+            // lblarticulo
+            // 
+            this.lblarticulo.AutoSize = true;
+            this.lblarticulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblarticulo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblarticulo.Location = new System.Drawing.Point(31, 75);
+            this.lblarticulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblarticulo.Name = "lblarticulo";
+            this.lblarticulo.Size = new System.Drawing.Size(84, 24);
+            this.lblarticulo.TabIndex = 73;
+            this.lblarticulo.Text = "Nombre";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(710, 15);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(399, 30);
+            this.txtCodigo.TabIndex = 79;
+            // 
+            // lblcodigo
+            // 
+            this.lblcodigo.AutoSize = true;
+            this.lblcodigo.BackColor = System.Drawing.Color.Transparent;
+            this.lblcodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcodigo.Location = new System.Drawing.Point(613, 18);
+            this.lblcodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblcodigo.Name = "lblcodigo";
+            this.lblcodigo.Size = new System.Drawing.Size(77, 24);
+            this.lblcodigo.TabIndex = 72;
+            this.lblcodigo.Text = "Código";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(148, 69);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(399, 30);
+            this.txtNombre.TabIndex = 80;
+            // 
+            // Label2
+            // 
+            this.Label2.AutoSize = true;
+            this.Label2.BackColor = System.Drawing.Color.Transparent;
+            this.Label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Location = new System.Drawing.Point(624, 72);
+            this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(66, 24);
+            this.Label2.TabIndex = 76;
+            this.Label2.Text = "Costo";
+            // 
+            // txtCosto
+            // 
+            this.txtCosto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCosto.Location = new System.Drawing.Point(710, 69);
+            this.txtCosto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCosto.Name = "txtCosto";
+            this.txtCosto.Size = new System.Drawing.Size(399, 30);
+            this.txtCosto.TabIndex = 81;
             // 
             // panel2
             // 
@@ -142,6 +299,64 @@ namespace Inventario
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1589, 338);
             this.panel2.TabIndex = 75;
+            // 
+            // Salidas
+            // 
+            this.Salidas.CompraHelp = null;
+            this.Salidas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Salidas.ExistenciaHelp = null;
+            this.Salidas.FacturaHelp = null;
+            this.Salidas.Location = new System.Drawing.Point(789, 47);
+            this.Salidas.Name = "Salidas";
+            this.Salidas.NameButtons = null;
+            this.Salidas.ProductoHelp = null;
+            this.Salidas.Size = new System.Drawing.Size(800, 291);
+            this.Salidas.TabIndex = 1;
+            this.Salidas.Load += new System.EventHandler(this.Salidas_Load);
+            // 
+            // Entradas
+            // 
+            this.Entradas.CompraHelp = null;
+            this.Entradas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Entradas.ExistenciaHelp = null;
+            this.Entradas.FacturaHelp = null;
+            this.Entradas.Location = new System.Drawing.Point(0, 47);
+            this.Entradas.Name = "Entradas";
+            this.Entradas.NameButtons = null;
+            this.Entradas.ProductoHelp = null;
+            this.Entradas.Size = new System.Drawing.Size(789, 291);
+            this.Entradas.TabIndex = 0;
+            this.Entradas.Load += new System.EventHandler(this.Entradas_Load);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label7);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1589, 47);
+            this.panel5.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(811, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 29);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Salidas";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 29);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Entradas";
             // 
             // panel3
             // 
@@ -189,216 +404,6 @@ namespace Inventario
             this.btnsalir.UseVisualStyleBackColor = true;
             this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
-            // lbltipo
-            // 
-            this.lbltipo.AutoSize = true;
-            this.lbltipo.BackColor = System.Drawing.Color.Transparent;
-            this.lbltipo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltipo.Location = new System.Drawing.Point(19, 18);
-            this.lbltipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbltipo.Name = "lbltipo";
-            this.lbltipo.Size = new System.Drawing.Size(101, 24);
-            this.lbltipo.TabIndex = 74;
-            this.lbltipo.Text = "Categoria";
-            // 
-            // Label2
-            // 
-            this.Label2.AutoSize = true;
-            this.Label2.BackColor = System.Drawing.Color.Transparent;
-            this.Label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(624, 72);
-            this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(66, 24);
-            this.Label2.TabIndex = 76;
-            this.Label2.Text = "Costo";
-            // 
-            // lblcodigo
-            // 
-            this.lblcodigo.AutoSize = true;
-            this.lblcodigo.BackColor = System.Drawing.Color.Transparent;
-            this.lblcodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcodigo.Location = new System.Drawing.Point(613, 18);
-            this.lblcodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblcodigo.Name = "lblcodigo";
-            this.lblcodigo.Size = new System.Drawing.Size(77, 24);
-            this.lblcodigo.TabIndex = 72;
-            this.lblcodigo.Text = "Código";
-            // 
-            // lblarticulo
-            // 
-            this.lblarticulo.AutoSize = true;
-            this.lblarticulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblarticulo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblarticulo.Location = new System.Drawing.Point(31, 75);
-            this.lblarticulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblarticulo.Name = "lblarticulo";
-            this.lblarticulo.Size = new System.Drawing.Size(84, 24);
-            this.lblarticulo.TabIndex = 73;
-            this.lblarticulo.Text = "Nombre";
-            // 
-            // Label3
-            // 
-            this.Label3.AutoSize = true;
-            this.Label3.BackColor = System.Drawing.Color.Transparent;
-            this.Label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(579, 127);
-            this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(179, 24);
-            this.Label3.TabIndex = 77;
-            this.Label3.Text = "Unidad de medida";
-            // 
-            // lblcolor
-            // 
-            this.lblcolor.AutoSize = true;
-            this.lblcolor.BackColor = System.Drawing.Color.Transparent;
-            this.lblcolor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcolor.Location = new System.Drawing.Point(45, 127);
-            this.lblcolor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblcolor.Name = "lblcolor";
-            this.lblcolor.Size = new System.Drawing.Size(70, 24);
-            this.lblcolor.TabIndex = 75;
-            this.lblcolor.Text = "Precio";
-            // 
-            // txtExistencia
-            // 
-            this.txtExistencia.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExistencia.Location = new System.Drawing.Point(148, 124);
-            this.txtExistencia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtExistencia.Name = "txtExistencia";
-            this.txtExistencia.Size = new System.Drawing.Size(400, 30);
-            this.txtExistencia.TabIndex = 82;
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(148, 15);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(399, 30);
-            this.txtCodigo.TabIndex = 78;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(710, 15);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(399, 30);
-            this.txtNombre.TabIndex = 79;
-            // 
-            // txtCosto
-            // 
-            this.txtCosto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCosto.Location = new System.Drawing.Point(148, 69);
-            this.txtCosto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(399, 30);
-            this.txtCosto.TabIndex = 80;
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(710, 69);
-            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(399, 30);
-            this.txtPrecio.TabIndex = 81;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(790, 124);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(319, 30);
-            this.textBox1.TabIndex = 83;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lbltipo);
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.lblcolor);
-            this.panel4.Controls.Add(this.txtExistencia);
-            this.panel4.Controls.Add(this.Label3);
-            this.panel4.Controls.Add(this.txtCodigo);
-            this.panel4.Controls.Add(this.lblarticulo);
-            this.panel4.Controls.Add(this.txtNombre);
-            this.panel4.Controls.Add(this.lblcodigo);
-            this.panel4.Controls.Add(this.txtCosto);
-            this.panel4.Controls.Add(this.Label2);
-            this.panel4.Controls.Add(this.txtPrecio);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1127, 226);
-            this.panel4.TabIndex = 84;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(1127, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(462, 226);
-            this.pictureBox1.TabIndex = 85;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Entradas
-            // 
-            this.Entradas.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Entradas.FacturaHelp = null;
-            this.Entradas.Location = new System.Drawing.Point(0, 47);
-            this.Entradas.Name = "Entradas";
-            this.Entradas.NameButtons = null;
-            this.Entradas.ProductoHelp = null;
-            this.Entradas.Size = new System.Drawing.Size(789, 291);
-            this.Entradas.TabIndex = 0;
-            this.Entradas.Load += new System.EventHandler(this.Entradas_Load);
-            // 
-            // Salidas
-            // 
-            this.Salidas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Salidas.FacturaHelp = null;
-            this.Salidas.Location = new System.Drawing.Point(789, 47);
-            this.Salidas.Name = "Salidas";
-            this.Salidas.NameButtons = null;
-            this.Salidas.ProductoHelp = null;
-            this.Salidas.Size = new System.Drawing.Size(800, 291);
-            this.Salidas.TabIndex = 1;
-            this.Salidas.Load += new System.EventHandler(this.Salidas_Load);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.label1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1589, 47);
-            this.panel5.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Entradas";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(811, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 29);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Salidas";
-            // 
             // frmDetalleExistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -411,14 +416,14 @@ namespace Inventario
             this.Text = "frmDetalleExistencia";
             this.Load += new System.EventHandler(this.frmDetalleExistencia_Load);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -442,13 +447,13 @@ namespace Inventario
         internal System.Windows.Forms.Label lblarticulo;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label lblcolor;
-        internal System.Windows.Forms.TextBox textBox1;
-        internal System.Windows.Forms.TextBox txtExistencia;
+        internal System.Windows.Forms.TextBox txtUnidaMedida;
+        internal System.Windows.Forms.TextBox txtPrecio;
+        internal System.Windows.Forms.TextBox txtCategoria;
         internal System.Windows.Forms.TextBox txtCodigo;
         internal System.Windows.Forms.TextBox txtNombre;
         internal System.Windows.Forms.TextBox txtCosto;
-        internal System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Panel panel4;
         private UserControls.Cuestas Salidas;
         private UserControls.Cuestas Entradas;

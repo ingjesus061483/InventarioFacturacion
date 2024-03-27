@@ -48,7 +48,7 @@ namespace Models
         {
             get
             {
-                return Existencias ==null?null: Existencias.Where(x => x.ProductoId == Id && x.Entrada == true).ToList();
+                return Existencias!=null?Existencias.Where(x => x.ProductoId == Id && x.Entrada == true).ToList(): null;
 
             }
             set 
@@ -61,7 +61,7 @@ namespace Models
         {
             get
             {
-                return Existencias == null ? null : Existencias.Where(x => x.ProductoId == Id && x.Entrada == false).ToList();
+                return Existencias!=null  ? Existencias.Where(x => x.ProductoId == Id && x.Entrada == false).ToList():null;
             }        
         }
         decimal _totalEntrada;
