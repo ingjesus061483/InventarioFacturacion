@@ -58,3 +58,5 @@ D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.CoreCom
 D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.CopyComplete
 D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.dll
 D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.pdb
+D:\Documents\GitHub\InventarioFacturacion\Helper\bin\Debug\Newtonsoft.Json.dll
+D:\Documents\GitHub\InventarioFacturacion\Helper\bin\Debug\Newtonsoft.Json.xml

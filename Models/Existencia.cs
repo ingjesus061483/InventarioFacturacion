@@ -29,12 +29,5 @@ namespace Models
         public int ProductoId { get; set; }
         public Producto Producto { get; set; }
 
-      /*  public string NombreProducto
-        {
-            get
-            {
-                return Producto.Codigo + " - " + Producto.Nombre;
-            }
-        }*/
     }
 }

@@ -10,14 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Newtonsoft.Json;
 namespace Inventario
 {
     public partial class frmDetalleExistencia : Form
     {
-        public Producto producto { get; set; }
+        public Producto Producto { get; set; }
         ExistenciaHelp _existenciaHelp;
         DataSet Db;
+
         public frmDetalleExistencia(ExistenciaHelp existenciaHelp )
         {
             _existenciaHelp = existenciaHelp;
@@ -39,29 +40,50 @@ namespace Inventario
         void Llenar()
         {
             Db = new DataSet();
-            Entradas.MostrarDatos( producto.Entradas  );
-            Salidas. MostrarDatos ( producto.Salidas);
-            txtCategoria.Text = producto.Categoria.Nombre;
-            txtCodigo.Text = producto.Codigo;
-            txtNombre.Text = producto.Nombre;
-            txtCosto.Text = producto.Costo.ToString();
-            txtPrecio.Text = producto.Precio.ToString();
-            txtUnidaMedida.Text = producto.UnidadMedida.Nombre;
-            pbImagen.Load(producto.RutaImagen);
+            var entradas = Producto.Entradas.Select(x => new {
+               x.Id,
+                x.Fecha ,
+                x.Cantidad ,
+                x.Entrada,
+                x.Concepto ,
+               Producto= Producto.Nombre,
+            }).ToList();
+            var salidas = Producto.Salidas.Select(x => new
+            {
+                x.Id,
+                x.Fecha,
+                x.Cantidad,
+                x.Entrada,
+                x.Concepto,
+                x.ProductoId ,
+                Producto = Producto.Nombre,
+            }).ToList();
+            Entradas.MostrarDatos( entradas  );
+            Salidas. MostrarDatos ( salidas);
+            txtCategoria.Text = Producto.Categoria.Nombre;
+            txtCodigo.Text = Producto.Codigo;
+            txtNombre.Text = Producto.Nombre;
+            txtCosto.Text = Producto.Costo.ToString();
+            txtPrecio.Text = Producto.Precio.ToString();
+            txtUnidaMedida.Text = Producto.UnidadMedida.Nombre;
+            pbImagen .SizeMode = PictureBoxSizeMode.StretchImage; //establecemos como se visualiza la imagen
+            pbImagen.Load(Producto.RutaImagen);
 
 
-            txtTotalEntrada.Text = producto.TotalEntrada.ToString();
-            txtToalSalida.Text = producto.TotalSalida.ToString();
-            txtTotalExistencia.Text = producto.TotalExistencia.ToString();
+            txtTotalEntrada.Text = Producto.TotalEntrada.ToString();
+            txtToalSalida.Text = Producto.TotalSalida.ToString();
+            txtTotalExistencia.Text = Producto.TotalExistencia.ToString();
         }
 
         private void frmDetalleExistencia_Load(object sender, EventArgs e)
         {
-            if (producto!=null)
+            if (Producto==null)
             {
-                Llenar();
+                this.Close();
+                
             }
-            
+            Llenar();
+
         }
 
         private void Entradas_Load(object sender, EventArgs e)
@@ -85,14 +107,29 @@ namespace Inventario
 
         private void btnexportar_Click(object sender, EventArgs e)
         {
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(producto.Entradas );
-            DataTable pDt = Newtonsoft.Json.JsonConvert.DeserializeObject<DataTable>(json);
-            Db.Tables.Add(pDt);
-
-            Db.Tables.Add(Entradas.Table);
-            Db.Tables.Add(Salidas.Table);
+            
+            var entradas = Producto.Entradas.Select(x => new {
+                x.Id,
+                x.Fecha,
+                x.Cantidad,
+                x.Entrada,
+                x.Concepto,
+                Producto = Producto.Nombre,
+            }).ToList();
+            var salidas = Producto.Salidas.Select(x => new
+            {
+                x.Id,
+                x.Fecha,
+                x.Cantidad,
+                x.Entrada,
+                x.Concepto,
+                x.ProductoId,
+                Producto = Producto.Nombre,
+            }).ToList();           
+            Db.Tables.Add(_existenciaHelp.GetTable(entradas));
+            Db.Tables.Add(_existenciaHelp.GetTable(salidas));
             _existenciaHelp.ExportarDatos(Db);
-
+            Db.Tables.Clear();
         }
     }
 }

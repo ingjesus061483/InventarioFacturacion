@@ -129,7 +129,7 @@ namespace Inventario
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1589, 226);
+            this.panel1.Size = new System.Drawing.Size(953, 226);
             this.panel1.TabIndex = 74;
             // 
             // pbImagen
@@ -139,7 +139,7 @@ namespace Inventario
             this.pbImagen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbImagen.Location = new System.Drawing.Point(1127, 0);
             this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(462, 226);
+            this.pbImagen.Size = new System.Drawing.Size(0, 226);
             this.pbImagen.TabIndex = 85;
             this.pbImagen.TabStop = false;
             // 
@@ -297,7 +297,7 @@ namespace Inventario
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 226);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1589, 338);
+            this.panel2.Size = new System.Drawing.Size(953, 338);
             this.panel2.TabIndex = 75;
             // 
             // Salidas
@@ -310,7 +310,7 @@ namespace Inventario
             this.Salidas.Name = "Salidas";
             this.Salidas.NameButtons = null;
             this.Salidas.ProductoHelp = null;
-            this.Salidas.Size = new System.Drawing.Size(800, 291);
+            this.Salidas.Size = new System.Drawing.Size(164, 291);
             this.Salidas.TabIndex = 1;
             this.Salidas.Load += new System.EventHandler(this.Salidas_Load);
             // 
@@ -335,7 +335,7 @@ namespace Inventario
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1589, 47);
+            this.panel5.Size = new System.Drawing.Size(953, 47);
             this.panel5.TabIndex = 1;
             // 
             // label7
@@ -371,7 +371,7 @@ namespace Inventario
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 564);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1589, 239);
+            this.panel3.Size = new System.Drawing.Size(953, 141);
             this.panel3.TabIndex = 76;
             // 
             // btnexportar
@@ -408,7 +408,8 @@ namespace Inventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1589, 803);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(953, 705);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

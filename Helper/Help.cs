@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 namespace Helper
 {
     public abstract class Help
@@ -134,26 +135,11 @@ namespace Helper
             return column;
 
         }
-        public DataTable GetTable( DataGridView gridView )
+        public DataTable GetTable( object lst  )
         {
-            DataTable table = new DataTable();
-            foreach (DataGridViewColumn item in gridView .Columns)
-            {
-                if (item is DataGridViewTextBoxColumn && item.Visible)
-                {
-                    table.Columns.Add(item.Name);
-                }
-            }
-            foreach (DataGridViewRow row in gridView .Rows)
-            {
-                var rowtable = table.NewRow();
-                foreach (DataColumn column in table.Columns)
-                {
-                    rowtable[column] = row.Cells[column.ColumnName].Value;
-                }
-                table.Rows.Add(rowtable);
-            }
-            return table;
+          string   json = JsonConvert.SerializeObject(lst);
+            DataTable pDt = JsonConvert.DeserializeObject<DataTable>(json);
+            return pDt;
 
         }
         public void ExportarDatos(DataSet db)

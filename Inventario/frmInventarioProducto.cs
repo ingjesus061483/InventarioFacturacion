@@ -50,7 +50,7 @@ namespace Inventario
 
                         frmDetalleExistencia frmFactura = new frmDetalleExistencia(_existenciaHelp )
                         {
-                            producto = producto
+                            Producto = producto
                         };
                         frmFactura.ShowDialog();
                         break;

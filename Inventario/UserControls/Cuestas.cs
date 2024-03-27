@@ -21,7 +21,7 @@ namespace Inventario.UserControls
         string[,] _existencias ={{"Id","false"} ,{"Fecha","true" },
                                  {"Concepto","true" },{ "Cantidad", "true" },
                                  { "Entrada", "false" }, {"ProductoId","false" },
-                                 {"Producto","false" }
+                                 {"Producto","true" }
         };
 
         string[,] _producto = {
