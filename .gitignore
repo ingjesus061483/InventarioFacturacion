@@ -1,3 +1,7 @@
 .suo
 .cache
 .config
+.vs/Inventario/v16/.suo
+.vs/Inventario/v16/.suo
+*.cache
+/Inventario/bin
