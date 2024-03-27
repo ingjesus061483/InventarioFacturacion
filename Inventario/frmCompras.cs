@@ -234,7 +234,7 @@ namespace Inventario
 
         private void btnexportar_Click(object sender, EventArgs e)
         {
-            try
+             try
             {
                var Compras=chkPeriodo.Checked?  _compraHelp.Queryable.Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value).AsEnumerable().Select(x => new {
                    x.Id,
@@ -279,10 +279,9 @@ namespace Inventario
                    x.EstadoId,
                    x.EstadoNombre
                }).ToList()               ;
-                string json = Newtonsoft.Json.JsonConvert.SerializeObject(Compras );
-                DataTable pDt = Newtonsoft.Json.JsonConvert.DeserializeObject<DataTable>(json);
-                Db.Tables.Add(pDt );
+                Db.Tables.Add(_compraHelp.GetTable (Compras) );
                 _compraHelp.ExportarDatos(Db);
+                Db.Tables.Clear();
             }
             catch (Exception ex)
             {

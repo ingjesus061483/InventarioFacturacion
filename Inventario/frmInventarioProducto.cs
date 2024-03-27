@@ -134,8 +134,26 @@ namespace Inventario
 
         private void btnexportar_Click(object sender, EventArgs e)
         {
-           // Db.Tables.Add(_productoHelp .Table);
-           // _productoHelp.ExportarDatos(Db);
+
+            var productos = _productoHelp.Queryable.Where(x => x.CategoriaId == categoria).AsEnumerable().Select(x => new ProductoView
+            {
+                Id = x.Id,
+                Codigo = x.Codigo,
+                Nombre = x.Nombre,
+                Costo = String.Format("{0:C}", x.Costo),
+                Precio = String.Format("{0:C}", x.Precio),
+                TotalEntrada = x.TotalEntrada,
+                TotalSalida = x.TotalSalida,
+                TotalExistencia = x.TotalExistencia,
+                Descripcion = x.Descripcion,
+                CategoriaId = x.CategoriaId,
+                Categoria = x.Categoria.Nombre,
+                UnidadMedidaId = x.UnidadMedidaId,
+                UnidadMedida = x.UnidadMedida.Nombre
+            }).ToList();
+            Db.Tables.Add(_productoHelp .GetTable (productos ));
+            _productoHelp.ExportarDatos(Db);
+            Db.Clear();
 
         }
 

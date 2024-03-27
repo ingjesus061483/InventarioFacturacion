@@ -420,10 +420,8 @@ namespace Inventario
                                         x.EstadoId,
                                         Estado = x.Estado.Nombre
                                     }).ToList();
-                string json = Newtonsoft.Json.JsonConvert.SerializeObject(facturaEncabezados);
-                DataTable pDt = Newtonsoft.Json. JsonConvert.DeserializeObject<DataTable>(json);
-
-                Db.Tables.Add(pDt  );
+            
+                Db.Tables.Add(_facturaHelp.GetTable(facturaEncabezados)  );
                 _facturaHelp.ExportarDatos( Db);
 
 
