@@ -100,7 +100,7 @@ namespace Inventario
         }
         void Nuevo()
         {
-            usuario = _usuarioHelp.Login;
+            usuario = _usuarioHelp.Usuario ;
             Factura = new FacturaEncabezado();
             if (usuario != null)
             {

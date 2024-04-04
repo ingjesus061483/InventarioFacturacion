@@ -290,7 +290,7 @@ namespace Inventario
                                     var fact=factura   .ToList ();
                                     List<Empresa> empresas = new List<Empresa>
                                     {
-                                        _usuarioHelp.Login.Empresa
+                                        _usuarioHelp.Usuario .Empresa
                                     };
                                     List<Cliente> clientes = new List<Cliente>
                                     {
@@ -506,7 +506,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error );
             List<ReportDataSource> sources = new List<ReportDataSource>();
             List<Empresa> empresas = new List<Empresa>
             {
-                _usuarioHelp.Login.Empresa
+                _usuarioHelp.Usuario.Empresa
             };
             sources.Add(new ReportDataSource { Name = "Facturas", Value = facturaEncabezados });
             sources.Add(new ReportDataSource { Name = "Empresa", Value =empresas  });

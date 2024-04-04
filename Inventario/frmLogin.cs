@@ -15,7 +15,7 @@ namespace Inventario
     public partial class frmLogin : Form
     {
         UsuarioHelp _usuarioHelp;
-        public Usuario Login;
+        public Usuario Usuario { get; set; }
         public frmLogin(UsuarioHelp  usuarioHelp  )
         {
             _usuarioHelp = usuarioHelp;
@@ -25,8 +25,8 @@ namespace Inventario
         private void Button2_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            Login=_usuarioHelp.login(txtUsuario.Text, txtPassword.Text);
-            if( Login==null)
+            Usuario=_usuarioHelp.Login(txtUsuario.Text, txtPassword.Text);
+            if( Usuario ==null)
             {
                 MessageBox.Show("Usuario o contraseña invalida","",MessageBoxButtons.OK ,MessageBoxIcon.Warning );
                 this.Cursor = Cursors.Default;

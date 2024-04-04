@@ -13,7 +13,7 @@ namespace Helper
 {
     public class UsuarioHelp:Help 
     {        
-        public Usuario Login { get; set; }
+        public Usuario Usuario { get; set; }
         public UsuarioHelp(InventarioDbContext context)
         {
             _context = context;
@@ -102,7 +102,7 @@ namespace Helper
             string result = Convert.ToBase64String(encryted);
             return result;
         }
-        public Usuario login(string name ,string password)
+        public Usuario Login(string name ,string password)
         {
             var pass = Encriptar(password);
             Usuario usuario = Queryable.Where(x => x.Name == name && x.Password == pass)

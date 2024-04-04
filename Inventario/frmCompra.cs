@@ -54,7 +54,7 @@ namespace Inventario
         }
         void Nuevo()
         {
-            usuario = _usuarioHelp.Login;
+            usuario = _usuarioHelp.Usuario;
             Compra = new OrdenCompra();
             if (usuario != null)
             {

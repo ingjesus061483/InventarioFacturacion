@@ -83,8 +83,8 @@ namespace Inventario
         {
             frmLogin frmLogin = new frmLogin(_usuarioHelp);
             frmLogin.ShowDialog();
-            Usuario = frmLogin.Login;
-            _usuarioHelp.Login = Usuario;
+            Usuario = frmLogin.Usuario ;
+            _usuarioHelp.Usuario = Usuario;
             if (Usuario == null)
             {
                 this.Close();
