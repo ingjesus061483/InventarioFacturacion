@@ -302,5 +302,6 @@ namespace Inventario
         MotivoHelp _motivoHelp;
         EstadoHelp _estadoHelp;
         TipoIdentificacionHelp _tipoIdentificacionHelp;
+        ExportarHelp _ImpExpHelp;
     }
 }

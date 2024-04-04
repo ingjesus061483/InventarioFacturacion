@@ -1,4 +1,8 @@
 ﻿
+using Helper.View;
+using Models;
+using System.Collections.Generic;
+
 namespace Inventario
 {
     partial class frmBusqueda
@@ -135,5 +139,15 @@ namespace Inventario
         internal System.Windows.Forms.ComboBox cmbColumnas;
         internal System.Windows.Forms.TextBox txtFiltro;
         internal System.Windows.Forms.DataGridView dgVer;
+        List<Motivo> motivos;
+        List<PersonaView> personas;
+        List<Impuesto> impuestos;
+        List<Categoria> categorias;
+        List<EmpresaView> empresas;
+        List<ProductoView> productos;
+        List<PersonaView> empleados;
+        List<PersonaView> clientes;
+        List<PersonaView> proveedores;
+        List<Role> roles;
     }
 }

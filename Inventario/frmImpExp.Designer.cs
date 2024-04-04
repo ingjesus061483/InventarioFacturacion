@@ -30,34 +30,29 @@ namespace Inventario
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmImpExp));
-            this.prgboperacion = new System.Windows.Forms.ProgressBar();
             this.btnsalir = new System.Windows.Forms.Button();
             this.taboperacion = new System.Windows.Forms.TabControl();
             this.TabPage1 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Listexportar = new System.Windows.Forms.ListBox();
-            this.CBOTABLA = new System.Windows.Forms.ComboBox();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.txtQuery = new System.Windows.Forms.TextBox();
+            this.ListExportar = new System.Windows.Forms.ListBox();
+            this.cmbTabla = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.btnexportar = new System.Windows.Forms.Button();
             this.TabPage2 = new System.Windows.Forms.TabPage();
-            this.btnimportar = new System.Windows.Forms.Button();
-            this.btnabrir = new System.Windows.Forms.Button();
             this.dvver = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbTablaImp = new System.Windows.Forms.ComboBox();
+            this.btnimportar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnabrir = new System.Windows.Forms.Button();
             this.taboperacion.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.TabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvver)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // prgboperacion
-            // 
-            this.prgboperacion.Location = new System.Drawing.Point(13, 530);
-            this.prgboperacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.prgboperacion.Name = "prgboperacion";
-            this.prgboperacion.Size = new System.Drawing.Size(748, 32);
-            this.prgboperacion.TabIndex = 23;
             // 
             // btnsalir
             // 
@@ -71,6 +66,7 @@ namespace Inventario
             this.btnsalir.TabIndex = 22;
             this.btnsalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnsalir.UseVisualStyleBackColor = true;
+            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // taboperacion
             // 
@@ -87,10 +83,10 @@ namespace Inventario
             // TabPage1
             // 
             this.TabPage1.Controls.Add(this.label2);
-            this.TabPage1.Controls.Add(this.button1);
-            this.TabPage1.Controls.Add(this.textBox1);
-            this.TabPage1.Controls.Add(this.Listexportar);
-            this.TabPage1.Controls.Add(this.CBOTABLA);
+            this.TabPage1.Controls.Add(this.btnPreview);
+            this.TabPage1.Controls.Add(this.txtQuery);
+            this.TabPage1.Controls.Add(this.ListExportar);
+            this.TabPage1.Controls.Add(this.cmbTabla);
             this.TabPage1.Controls.Add(this.Label1);
             this.TabPage1.Controls.Add(this.btnexportar);
             this.TabPage1.Location = new System.Drawing.Point(4, 29);
@@ -113,55 +109,58 @@ namespace Inventario
             this.label2.TabIndex = 11;
             this.label2.Text = "Consulta";
             // 
-            // button1
+            // btnPreview
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(682, 413);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 60);
-            this.button1.TabIndex = 10;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreview.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreview.Image = ((System.Drawing.Image)(resources.GetObject("btnPreview.Image")));
+            this.btnPreview.Location = new System.Drawing.Point(749, 112);
+            this.btnPreview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(60, 60);
+            this.btnPreview.TabIndex = 10;
+            this.btnPreview.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
-            // textBox1
+            // txtQuery
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 50);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(772, 54);
-            this.textBox1.TabIndex = 9;
+            this.txtQuery.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuery.Location = new System.Drawing.Point(37, 50);
+            this.txtQuery.Multiline = true;
+            this.txtQuery.Name = "txtQuery";
+            this.txtQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtQuery.Size = new System.Drawing.Size(772, 54);
+            this.txtQuery.TabIndex = 9;
             // 
-            // Listexportar
+            // ListExportar
             // 
-            this.Listexportar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Listexportar.FormattingEnabled = true;
-            this.Listexportar.ItemHeight = 23;
-            this.Listexportar.Location = new System.Drawing.Point(36, 202);
-            this.Listexportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Listexportar.Name = "Listexportar";
-            this.Listexportar.Size = new System.Drawing.Size(773, 188);
-            this.Listexportar.TabIndex = 6;
+            this.ListExportar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListExportar.FormattingEnabled = true;
+            this.ListExportar.ItemHeight = 23;
+            this.ListExportar.Location = new System.Drawing.Point(36, 261);
+            this.ListExportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ListExportar.Name = "ListExportar";
+            this.ListExportar.Size = new System.Drawing.Size(773, 142);
+            this.ListExportar.TabIndex = 6;
             // 
-            // CBOTABLA
+            // cmbTabla
             // 
-            this.CBOTABLA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBOTABLA.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBOTABLA.FormattingEnabled = true;
-            this.CBOTABLA.Location = new System.Drawing.Point(37, 164);
-            this.CBOTABLA.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.CBOTABLA.Name = "CBOTABLA";
-            this.CBOTABLA.Size = new System.Drawing.Size(772, 31);
-            this.CBOTABLA.TabIndex = 7;
+            this.cmbTabla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTabla.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTabla.FormattingEnabled = true;
+            this.cmbTabla.Location = new System.Drawing.Point(37, 214);
+            this.cmbTabla.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbTabla.Name = "cmbTabla";
+            this.cmbTabla.Size = new System.Drawing.Size(772, 31);
+            this.cmbTabla.TabIndex = 7;
+            this.cmbTabla.SelectedIndexChanged += new System.EventHandler(this.cmbTabla_SelectedIndexChanged);
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(33, 129);
+            this.Label1.Location = new System.Drawing.Point(33, 179);
             this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(163, 23);
@@ -180,12 +179,12 @@ namespace Inventario
             this.btnexportar.TabIndex = 1;
             this.btnexportar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnexportar.UseVisualStyleBackColor = true;
+            this.btnexportar.Click += new System.EventHandler(this.btnexportar_Click);
             // 
             // TabPage2
             // 
-            this.TabPage2.Controls.Add(this.btnimportar);
-            this.TabPage2.Controls.Add(this.btnabrir);
             this.TabPage2.Controls.Add(this.dvver);
+            this.TabPage2.Controls.Add(this.panel1);
             this.TabPage2.Location = new System.Drawing.Point(4, 29);
             this.TabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TabPage2.Name = "TabPage2";
@@ -195,18 +194,70 @@ namespace Inventario
             this.TabPage2.Text = "Importar";
             this.TabPage2.UseVisualStyleBackColor = true;
             // 
+            // dvver
+            // 
+            this.dvver.AllowUserToAddRows = false;
+            this.dvver.AllowUserToDeleteRows = false;
+            this.dvver.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvver.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dvver.Location = new System.Drawing.Point(4, 94);
+            this.dvver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dvver.Name = "dvver";
+            this.dvver.ReadOnly = true;
+            this.dvver.RowHeadersVisible = false;
+            this.dvver.RowHeadersWidth = 62;
+            this.dvver.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvver.Size = new System.Drawing.Size(824, 392);
+            this.dvver.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cmbTablaImp);
+            this.panel1.Controls.Add(this.btnimportar);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.btnabrir);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(4, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(824, 89);
+            this.panel1.TabIndex = 22;
+            // 
+            // cmbTablaImp
+            // 
+            this.cmbTablaImp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTablaImp.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTablaImp.FormattingEnabled = true;
+            this.cmbTablaImp.Location = new System.Drawing.Point(103, 42);
+            this.cmbTablaImp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbTablaImp.Name = "cmbTablaImp";
+            this.cmbTablaImp.Size = new System.Drawing.Size(612, 31);
+            this.cmbTablaImp.TabIndex = 9;
+            this.cmbTablaImp.SelectedIndexChanged += new System.EventHandler(this.cmbTablaImp_SelectedIndexChanged);
+            // 
             // btnimportar
             // 
             this.btnimportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnimportar.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnimportar.Image = ((System.Drawing.Image)(resources.GetObject("btnimportar.Image")));
-            this.btnimportar.Location = new System.Drawing.Point(764, 420);
+            this.btnimportar.Location = new System.Drawing.Point(746, 12);
             this.btnimportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnimportar.Name = "btnimportar";
             this.btnimportar.Size = new System.Drawing.Size(60, 60);
             this.btnimportar.TabIndex = 21;
             this.btnimportar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnimportar.UseVisualStyleBackColor = true;
+            this.btnimportar.Click += new System.EventHandler(this.btnimportar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(99, 14);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(163, 23);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Tablas a exportar";
             // 
             // btnabrir
             // 
@@ -214,47 +265,38 @@ namespace Inventario
             this.btnabrir.Font = new System.Drawing.Font("Arial Narrow", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnabrir.Image = ((System.Drawing.Image)(resources.GetObject("btnabrir.Image")));
             this.btnabrir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnabrir.Location = new System.Drawing.Point(696, 420);
+            this.btnabrir.Location = new System.Drawing.Point(15, 14);
             this.btnabrir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnabrir.Name = "btnabrir";
             this.btnabrir.Size = new System.Drawing.Size(60, 60);
             this.btnabrir.TabIndex = 1;
             this.btnabrir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnabrir.UseVisualStyleBackColor = true;
-            // 
-            // dvver
-            // 
-            this.dvver.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvver.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dvver.Location = new System.Drawing.Point(4, 5);
-            this.dvver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dvver.Name = "dvver";
-            this.dvver.RowHeadersWidth = 62;
-            this.dvver.Size = new System.Drawing.Size(824, 406);
-            this.dvver.TabIndex = 0;
+            this.btnabrir.Click += new System.EventHandler(this.btnabrir_Click);
             // 
             // frmImpExp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 598);
-            this.Controls.Add(this.prgboperacion);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.taboperacion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmImpExp";
             this.Text = "frmImpExp";
+            this.Load += new System.EventHandler(this.frmImpExp_Load);
             this.taboperacion.ResumeLayout(false);
             this.TabPage1.ResumeLayout(false);
             this.TabPage1.PerformLayout();
             this.TabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvver)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        internal System.Windows.Forms.ProgressBar prgboperacion;
         internal System.Windows.Forms.Button btnsalir;
         internal System.Windows.Forms.TabControl taboperacion;
         internal System.Windows.Forms.TabPage TabPage1;
@@ -263,11 +305,14 @@ namespace Inventario
         internal System.Windows.Forms.Button btnimportar;
         internal System.Windows.Forms.Button btnabrir;
         internal System.Windows.Forms.DataGridView dvver;
-        internal System.Windows.Forms.ListBox Listexportar;
-        internal System.Windows.Forms.ComboBox CBOTABLA;
+        internal System.Windows.Forms.ListBox ListExportar;
+        internal System.Windows.Forms.ComboBox cmbTabla;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Label label2;
-        internal System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        internal System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.TextBox txtQuery;
+        private System.Windows.Forms.Panel panel1;
+        internal System.Windows.Forms.ComboBox cmbTablaImp;
+        internal System.Windows.Forms.Label label3;
     }
 }

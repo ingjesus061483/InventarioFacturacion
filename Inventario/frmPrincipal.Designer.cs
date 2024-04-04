@@ -69,8 +69,8 @@ namespace Inventario
             this.SistemaToolStripMenuItem});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.MenuStrip1.Size = new System.Drawing.Size(533, 31);
+            this.MenuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.MenuStrip1.Size = new System.Drawing.Size(800, 33);
             this.MenuStrip1.TabIndex = 2;
             this.MenuStrip1.Text = "MenuStrip1";
             // 
@@ -125,6 +125,7 @@ namespace Inventario
             this.ExportarEImportarToolStripMenuItem1.Name = "ExportarEImportarToolStripMenuItem1";
             this.ExportarEImportarToolStripMenuItem1.Size = new System.Drawing.Size(273, 34);
             this.ExportarEImportarToolStripMenuItem1.Text = "Exportar e importar";
+            this.ExportarEImportarToolStripMenuItem1.Click += new System.EventHandler(this.ExportarEImportarToolStripMenuItem1_Click);
             // 
             // EmpresaToolStripMenuItem
             // 
@@ -252,12 +253,11 @@ namespace Inventario
             // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(800, 449);
             this.Controls.Add(this.MenuStrip1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "frmPrincipal";
@@ -323,5 +323,7 @@ namespace Inventario
         readonly EstadoHelp _estadoHelp;
         readonly DevolucionCompraHelp _devolucionCompraHelp;
         readonly EmailHelp _emailHelp;
+        readonly ExportarHelp _impExpHelp;
+        readonly ImportarHelp _importarHelp;
     }
 }

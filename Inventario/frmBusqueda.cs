@@ -14,17 +14,7 @@ using System.Windows.Forms;
 namespace Inventario
 {
     public partial class frmBusqueda : Form
-    {
-        List<Motivo> motivos;
-        List<PersonaView> personas;
-        List<Impuesto> impuestos;
-        List<Categoria> categorias;
-        List<EmpresaView> empresas;
-        List<ProductoView> productos;
-        List<PersonaView> empleados;
-        List<PersonaView> clientes;
-        List<PersonaView> proveedores;
-        List<Role> roles;
+    {        
         public DataGridViewRow Row { get; set; }
 
         public int Id { get; set; }

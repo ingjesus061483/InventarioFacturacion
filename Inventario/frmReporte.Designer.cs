@@ -1,7 +1,7 @@
 ﻿
 namespace Inventario
 {
-    partial class frmVistaPrevia
+    partial class frmReporte
     {
         /// <summary>
         /// Required designer variable.
@@ -29,42 +29,33 @@ namespace Inventario
         /// </summary>
         private void InitializeComponent()
         {
-            this.DgVer = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.DgVer)).BeginInit();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // DgVer
+            // reportViewer1
             // 
-            this.DgVer.AllowUserToAddRows = false;
-            this.DgVer.AllowUserToDeleteRows = false;
-            this.DgVer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgVer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgVer.Location = new System.Drawing.Point(0, 0);
-            this.DgVer.Name = "DgVer";
-            this.DgVer.ReadOnly = true;
-            this.DgVer.RowHeadersVisible = false;
-            this.DgVer.RowHeadersWidth = 62;
-            this.DgVer.RowTemplate.Height = 28;
-            this.DgVer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgVer.Size = new System.Drawing.Size(800, 450);
-            this.DgVer.TabIndex = 0;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.reportViewer1.TabIndex = 0;
             // 
             // frmVistaPrevia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.DgVer);
+            this.Controls.Add(this.reportViewer1);
             this.Name = "frmVistaPrevia";
             this.Text = "frmVistaPrevia";
             this.Load += new System.EventHandler(this.frmVistaPrevia_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DgVer)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView DgVer;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

@@ -19,12 +19,12 @@ namespace Helper
         {
             try
             {
-                string ruta = Application.StartupPath+"\\Imprimir";
+                string ruta = Application.StartupPath + "\\Imprimir";
                 if (!Directory.Exists(ruta))
                 {
                     Directory.CreateDirectory(ruta);
                 }
-                 ruta +="\\Imprimir.txt";
+                ruta += "\\Imprimir.txt";
                 if (File.Exists(ruta))
                 {
                     File.Delete(ruta);
@@ -39,11 +39,11 @@ namespace Helper
             }
         }
 
-        protected  StreamReader LeerArchivo() 
+        protected StreamReader LeerArchivo()
         {
             try
             {
-                string ruta = Application.StartupPath+"\\Imprimir";
+                string ruta = Application.StartupPath + "\\Imprimir";
                 if (!Directory.Exists(ruta))
                 {
                     Directory.CreateDirectory(ruta);
@@ -58,12 +58,12 @@ namespace Helper
                 }
                 return sReader;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw ex;
             }
         }
-        protected  void EliminarArchivo()
+        protected void EliminarArchivo()
         {
             try
             {
@@ -76,13 +76,22 @@ namespace Helper
                 throw ex;
             }
         }
-        public void Cmb(ComboBox cmb,object lst)
+        public void Cmb(ComboBox cmb, object lst)
         {
             string[] arr = { "Id", "Nombre" };
-            cmb.DataSource = lst ;
+            cmb.DataSource = lst;
             cmb.ValueMember = arr.GetValue(0).ToString();
             cmb.DisplayMember = arr.GetValue(1).ToString();
             cmb.SelectedIndex = -1;
+        }
+        public void Cmb(ComboBox cmb, DataTable table)
+        {
+
+            foreach (DataRow row in table.Rows)
+            {
+                cmb.Items.Add(row[0]);
+            }
+
         }
         public string CargarImagen(PictureBox picture)
         {
@@ -135,62 +144,20 @@ namespace Helper
             return column;
 
         }
-        public DataTable GetTable( object lst  )
+        public DataTable GetTable(object lst)
         {
-          string   json = JsonConvert.SerializeObject(lst);
+            string json = JsonConvert.SerializeObject(lst);
             DataTable pDt = JsonConvert.DeserializeObject<DataTable>(json);
             return pDt;
 
         }
-        public void ExportarDatos(DataSet db)
+        public DataTable GetTable(string query)
         {
-            try
-            {
-                int cont = 1;           
-                int iRowCnt;
-                string hoja = "Hoja";
-                int col = 1;
-                var ExcelApp = new Microsoft.Office.Interop.Excel.Application();
-                ExcelApp.Workbooks.Add();
-                foreach (DataTable table in db.Tables)
-                {
-                    Microsoft .Office.Interop .Excel .Worksheet worksheet  = ExcelApp.Sheets[hoja + cont.ToString()];
-                    worksheet.Name = table.TableName;
-                    col = 1;
-                    iRowCnt = 2;
-                    foreach (DataColumn column in table.Columns)
-                    {
-                        worksheet.Cells[iRowCnt - 1, col].value = column.ColumnName;
-                        col += 1;
-                    }
-                    foreach (DataRow row in table.Rows)
-                    {
-                        col = 1;
-                        foreach (DataColumn column2 in table.Columns)
-                        {
-                            // worksheet.Cells[iRowCnt - 1, col].value = column2.ColumnName;
-                            worksheet.Cells[iRowCnt, col] = row[column2];
-                            col += 1;
-                        }
-                        iRowCnt += 1;
-                    }
-                    
-                    //   ExcelApp.ActiveCell.Worksheet.Cells(1, 1).AutoFormat(ExcelAutoFormat.xlRangeAutoFormatList3)
-                    cont += 1;
-                    ExcelApp.Sheets.Add();
-                }
-                Microsoft .Office .Interop .Excel .Worksheet  WorkSheet = ExcelApp.Sheets[hoja + cont.ToString()];
-                WorkSheet.Delete();
-                ExcelApp.Visible = true;
-                ExcelApp = null;
-                WorkSheet = null;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+            DataTable pDt = _context.GetDataTable(query);
+            return pDt;
 
-            }
         }
-    
+
+      
     }
 }

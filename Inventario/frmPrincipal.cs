@@ -32,7 +32,9 @@ namespace Inventario
                             DevolucionVentaHelp devolucionVentaHelp ,
                             EstadoHelp estadoHelp ,
                             DevolucionCompraHelp devoluvionCompraHelp,
-                            EmailHelp emailHelp)
+                            EmailHelp emailHelp,
+                            ExportarHelp impExpHelp,
+                            ImportarHelp importarHelp                                )
         {
             _estadoHelp = estadoHelp;
             _compraHelp = compraHelp;
@@ -57,6 +59,8 @@ namespace Inventario
             _devolucionVentaHelp = devolucionVentaHelp;
             _devolucionCompraHelp = devoluvionCompraHelp;
             _emailHelp = emailHelp;
+            _impExpHelp = impExpHelp;
+            _importarHelp = importarHelp;
             InitializeComponent();
         }
 
@@ -104,8 +108,8 @@ namespace Inventario
             frmInventarioProducto frmInventarioProducto = new frmInventarioProducto(_productContext,
                                                                                     _categoryHelp,
                                                                                     _existenciaHelp,
-                                                                                    _unidaMedidaHelp);
-            frmInventarioProducto.Empresa = Usuario.Empresa; 
+                                                                                    _unidaMedidaHelp,
+                                                                                    _impExpHelp);         frmInventarioProducto.Empresa = Usuario.Empresa; 
             if (!BuscarFormulariosAbiertos(frmInventarioProducto ))
             {
                 MostrarFormulario(frmInventarioProducto );
@@ -199,7 +203,8 @@ namespace Inventario
                                                    _impresoraHelp,
                                                    _devolucionVentaHelp,
                                                    _motivoHelp,
-                                                   _estadoHelp);
+                                                   _estadoHelp,
+                                                   _impExpHelp);
             if (!BuscarFormulariosAbiertos(frmFacturacion))
             {
                 MostrarFormulario(frmFacturacion);
@@ -238,7 +243,8 @@ namespace Inventario
                                                 _formaPagoHelp ,
                                                 _tipoDocumentoHelp ,_impuestoHelp,
                                                 _devolucionCompraHelp,
-                                                _motivoHelp);
+                                                _motivoHelp,
+                                                _impExpHelp);
             if (!BuscarFormulariosAbiertos(frmCompras ))
             {
                 MostrarFormulario(frmCompras);
@@ -275,23 +281,29 @@ namespace Inventario
             frmEmail.ShowDialog();
             frmEnvioEmail frmEnvioEmail = new frmEnvioEmail(_emailHelp)
             {
-                Usuario = Usuario 
+                Usuario = Usuario
 
             };
             if (!BuscarFormulariosAbiertos(frmEnvioEmail))
             {
                 MostrarFormulario(frmEnvioEmail);
             }
-
-
-            
-
         }
-
         private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
 
+        }
+
+        private void ExportarEImportarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmImpExp frmImpExp = new frmImpExp(_impExpHelp, _importarHelp);
+            if (!BuscarFormulariosAbiertos(frmImpExp))
+            {
+                MostrarFormulario(frmImpExp);
+            }
+
+                
         }
     }
 }

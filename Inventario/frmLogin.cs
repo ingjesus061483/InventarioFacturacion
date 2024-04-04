@@ -24,14 +24,17 @@ namespace Inventario
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             Login=_usuarioHelp.login(txtUsuario.Text, txtPassword.Text);
             if( Login==null)
             {
                 MessageBox.Show("Usuario o contraseña invalida","",MessageBoxButtons.OK ,MessageBoxIcon.Warning );
+                this.Cursor = Cursors.Default;
                 return;
             }
 
             this.Close();
+            this.Cursor = Cursors.Default;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

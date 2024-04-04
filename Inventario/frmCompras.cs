@@ -26,7 +26,8 @@ namespace Inventario
                          TipoDocumentoHelp tipoDocumentoHelp,
                          ImpuestoHelp impuestoHelp,
                          DevolucionCompraHelp devoluvionCompraHelp,
-                            MotivoHelp motivoHelp)
+                            MotivoHelp motivoHelp,
+                            ExportarHelp impExpHelp)
         {
              _motivoHelp=motivoHelp ;
             _devoluvionCompraHelp = devoluvionCompraHelp;
@@ -39,7 +40,7 @@ namespace Inventario
             _productoHelp = productoHelp;
             _compraHelp = compraHelp;
             _usuarioHelp = usuarioHelp;
-
+            _ImpExpHelp = impExpHelp;
             InitializeComponent();
         }
         private void frmCompras_Load(object sender, EventArgs e)
@@ -236,6 +237,8 @@ namespace Inventario
         {
              try
             {
+                this.Cursor = Cursors.WaitCursor;
+
                var Compras=chkPeriodo.Checked?  _compraHelp.Queryable.Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value).AsEnumerable().Select(x => new {
                    x.Id,
                    x.Codigo,
@@ -279,8 +282,10 @@ namespace Inventario
                    x.EstadoId,
                    x.EstadoNombre
                }).ToList()               ;
-                Db.Tables.Add(_compraHelp.GetTable (Compras) );
-                _compraHelp.ExportarDatos(Db);
+                DataTable dt = _compraHelp.GetTable(Compras);
+                dt.TableName = "compras";
+                Db.Tables.Add(dt);
+                _ImpExpHelp.Exportar(Db);
                 Db.Tables.Clear();
             }
             catch (Exception ex)
@@ -291,6 +296,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
+                this.Cursor = Cursors.Default;
                 Db.Tables.Clear();
             }
         }

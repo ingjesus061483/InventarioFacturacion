@@ -30,8 +30,10 @@ namespace Inventario
                           ImpresoraHelp impresoraHelp ,
                           DevolucionVentaHelp devolucionVentaHelp ,
                           MotivoHelp motivoHelp,
-                          EstadoHelp estadoHelp )
+                          EstadoHelp estadoHelp,
+                          ExportarHelp impExpHelp )
         {
+
             _FormaPagoHelp = formaPagoHelp;
             _estadoHelp = estadoHelp;
             _tipoIdentificacionHelp = tipoIdentificacionHelp;
@@ -45,7 +47,7 @@ namespace Inventario
             _impresoraHelp = impresoraHelp;
             _devolucionVentaHelp = devolucionVentaHelp;
             _motivoHelp = motivoHelp;
-
+            _ImpExpHelp = impExpHelp;
             InitializeComponent();
             cuestas1.CellClick += dgFacturas_CellContentClick;
             cuestas1.DataSource += Cuestas1_DataSource;
@@ -298,7 +300,7 @@ namespace Inventario
                                     sources.Add(new ReportDataSource { Name = "Cliente", Value = clientes });
                                     sources.Add(new ReportDataSource { Name = "Detalle", Value = fact[0].Detalles });
                                     sources.Add(new ReportDataSource { Name = "Empresa", Value = empresas });
-                                    frmVistaPrevia frmVistaPrevia = new frmVistaPrevia
+                                    frmReporte frmVistaPrevia = new frmReporte
                                     {
                                         ruta = Application.StartupPath + "\\Reportes\\factura.rdlc",
                                         ReportDataSources = sources,
@@ -368,6 +370,7 @@ namespace Inventario
         {
             try
             {
+                this.Cursor = Cursors.WaitCursor;
                 var facturaEncabezados = chkPeriodo.Checked ? _facturaHelp.Queryable.
                                     Where(x => x.Fecha >= dtpFechaInicio.Value && x.Fecha <= dtpFechaFin.Value && x.EstadoId == estado)
                                     .AsEnumerable()
@@ -420,9 +423,11 @@ namespace Inventario
                                         x.EstadoId,
                                         Estado = x.Estado.Nombre
                                     }).ToList();
-            
-                Db.Tables.Add(_facturaHelp.GetTable(facturaEncabezados)  );
-                _facturaHelp.ExportarDatos( Db);
+                DataTable dt = _facturaHelp.GetTable(facturaEncabezados);
+                dt.TableName = "FacturaEncabezadoes";
+
+                Db.Tables.Add( dt );
+                _ImpExpHelp.Exportar( Db);
 
 
             }
@@ -432,8 +437,9 @@ namespace Inventario
 MessageBoxButtons.OK, MessageBoxIcon.Error );
 
             }
-            finally
+            finally 
             {
+                this.Cursor = Cursors.Default;
                 Db.Tables.Clear();
             }
 
@@ -504,7 +510,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error );
             };
             sources.Add(new ReportDataSource { Name = "Facturas", Value = facturaEncabezados });
             sources.Add(new ReportDataSource { Name = "Empresa", Value =empresas  });
-            frmVistaPrevia frmVistaPrevia = new frmVistaPrevia
+            frmReporte frmVistaPrevia = new frmReporte
             {
                 ruta =Application .StartupPath + "\\Reportes\\Ventas.rdlc",
                 ReportDataSources=sources,

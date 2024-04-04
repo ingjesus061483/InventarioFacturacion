@@ -1,6 +1,4 @@
-﻿using Microsoft.Reporting.WinForms;
-using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,22 +12,15 @@ namespace Inventario
 {
     public partial class frmVistaPrevia : Form
     {
-        public List< ReportDataSource> ReportDataSources { get; set; }
-        public string ruta { get; set; }
+         public DataTable Table { get; set; }
         public frmVistaPrevia()
         {
             InitializeComponent();
         }
+
         private void frmVistaPrevia_Load(object sender, EventArgs e)
         {
-            reportViewer1.LocalReport.ReportPath = ruta;            
-            reportViewer1.LocalReport.DataSources.Clear();
-            foreach (ReportDataSource reportDataSource in ReportDataSources)
-            {
-                reportViewer1.LocalReport.DataSources.Add(reportDataSource);
-            }
-            reportViewer1.RefreshReport();
-       
+            DgVer.DataSource = Table;
         }
     }
 }

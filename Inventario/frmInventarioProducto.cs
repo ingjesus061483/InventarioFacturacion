@@ -22,17 +22,20 @@ namespace Inventario
         ProductoHelp _productoHelp;
         CategoriaHelp _categoriaHelp;
         UnidaMedidaHelp _unidaMedidaHelp;
-        ExistenciaHelp _existenciaHelp;        
+        ExistenciaHelp _existenciaHelp;
+        ExportarHelp _impExpHelp;
         DataSet  Db;
         public frmInventarioProducto( ProductoHelp productoHelp,
                                       CategoriaHelp categoriaHelp,
                                       ExistenciaHelp existenciaHelp,
-                                      UnidaMedidaHelp unidaMedidaHelp )
+                                      UnidaMedidaHelp unidaMedidaHelp ,
+                                      ExportarHelp impExpHelp)
         {
             _unidaMedidaHelp = unidaMedidaHelp;
             _categoriaHelp = categoriaHelp;
             _productoHelp = productoHelp;
             _existenciaHelp = existenciaHelp;
+            _impExpHelp = impExpHelp;
             InitializeComponent();
         }
         private void Cuestas1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -48,7 +51,7 @@ namespace Inventario
                     {
                      
 
-                        frmDetalleExistencia frmFactura = new frmDetalleExistencia(_existenciaHelp )
+                        frmDetalleExistencia frmFactura = new frmDetalleExistencia(_existenciaHelp ,_impExpHelp)
                         {
                             Producto = producto
                         };
@@ -152,7 +155,7 @@ namespace Inventario
                 UnidadMedida = x.UnidadMedida.Nombre
             }).ToList();
             Db.Tables.Add(_productoHelp .GetTable (productos ));
-            _productoHelp.ExportarDatos(Db);
+            _impExpHelp .Exportar(Db);
             Db.Clear();
 
         }
@@ -237,7 +240,7 @@ namespace Inventario
             empresas.Add(Empresa);
             reportDataSources.Add(new ReportDataSource { Name = "Empresa", Value = empresas });
 
-            frmVistaPrevia frmVistaPrevia = new frmVistaPrevia
+            frmReporte frmVistaPrevia = new frmReporte
             {
                 ruta =Application .StartupPath + "\\Reportes\\ExistenciasProdocto.rdlc",
                 ReportDataSources = reportDataSources ,

@@ -16,11 +16,13 @@ namespace Inventario
     public partial class frmDetalleExistencia : Form
     {
         public Producto Producto { get; set; }
+        ExportarHelp _ImpExpHelp;
         ExistenciaHelp _existenciaHelp;
         DataSet Db;
 
-        public frmDetalleExistencia(ExistenciaHelp existenciaHelp )
+        public frmDetalleExistencia(ExistenciaHelp existenciaHelp,ExportarHelp impExpHelp )
         {
+            _ImpExpHelp = impExpHelp;
             _existenciaHelp = existenciaHelp;
             InitializeComponent();
             Entradas.DataSource += Entradas_DataSource;
@@ -128,7 +130,7 @@ namespace Inventario
             }).ToList();           
             Db.Tables.Add(_existenciaHelp.GetTable(entradas));
             Db.Tables.Add(_existenciaHelp.GetTable(salidas));
-            _existenciaHelp.ExportarDatos(Db);
+            _ImpExpHelp.Exportar(Db);
             Db.Tables.Clear();
         }
     }

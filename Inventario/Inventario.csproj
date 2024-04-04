@@ -155,6 +155,12 @@
     <Compile Include="frmRecibir.Designer.cs">
       <DependentUpon>frmRecibir.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVistaPrevia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVistaPrevia.Designer.cs">
+      <DependentUpon>frmVistaPrevia.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserControls\BusquedaCliente.cs">
       <SubType>UserControl</SubType>
@@ -276,11 +282,11 @@
     <Compile Include="frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVistaPrevia.cs">
+    <Compile Include="frmReporte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVistaPrevia.Designer.cs">
-      <DependentUpon>frmVistaPrevia.cs</DependentUpon>
+    <Compile Include="frmReporte.Designer.cs">
+      <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecibir.resx">
       <DependentUpon>frmRecibir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVistaPrevia.resx">
+      <DependentUpon>frmVistaPrevia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ExistenciasProdocto.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -383,8 +392,8 @@
     <EmbeddedResource Include="frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVistaPrevia.resx">
-      <DependentUpon>frmVistaPrevia.cs</DependentUpon>
+    <EmbeddedResource Include="frmReporte.resx">
+      <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

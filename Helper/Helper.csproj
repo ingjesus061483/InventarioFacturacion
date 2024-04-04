@@ -68,6 +68,8 @@
     <Compile Include="DevolucionVentaHelp.cs" />
     <Compile Include="DevolucionCompraHelp.cs" />
     <Compile Include="DTO\FacturaDTO.cs" />
+    <Compile Include="ExportarHelp.cs" />
+    <Compile Include="ImportarHelp.cs" />
     <Compile Include="View\EmpresaView.cs" />
     <Compile Include="View\PersonaView.cs" />
     <Compile Include="DTO\ProductoDTO.cs" />

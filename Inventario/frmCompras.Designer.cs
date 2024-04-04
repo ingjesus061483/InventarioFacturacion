@@ -318,6 +318,7 @@ namespace Inventario
         ImpuestoHelp _impuestoHelp;
         DevolucionCompraHelp _devoluvionCompraHelp;
         MotivoHelp _motivoHelp;
+        ExportarHelp _ImpExpHelp;
         private System.Windows.Forms.DataGridView dgCompras;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.DataGridViewButtonColumn Column2;

@@ -54,6 +54,9 @@ namespace Inventario
             services.AddScoped<DevolucionCompraHelp>();
             services.AddScoped<EstadoHelp>();
             services.AddScoped<EmailHelp>();
+            services.AddScoped<ExportarHelp>();
+            services.AddScoped<ImportarHelp>();
+
         }
     }
 }
