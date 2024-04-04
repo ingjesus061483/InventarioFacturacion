@@ -23,10 +23,8 @@ namespace DataAccess
                 using (DbDataAdapter adapter = dbFactory.CreateDataAdapter())
                 {
                     adapter.SelectCommand = cmd;
-
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
-
                     return dt;
                 }
             }
@@ -45,7 +43,6 @@ namespace DataAccess
         public static DataRow GetColumn(this DbContext context, string tableName, string column)
         {
             DbProviderFactory dbFactory = DbProviderFactories.GetFactory(context.Database.Connection);
-
             using (var cmd = dbFactory.CreateCommand())
             {
                 cmd.Connection = context.Database.Connection;
@@ -55,10 +52,8 @@ namespace DataAccess
                 using (DbDataAdapter adapter = dbFactory.CreateDataAdapter())
                 {
                     adapter.SelectCommand = cmd;
-
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
-
                     return dt.Rows[0];
                 }
             }
@@ -66,7 +61,6 @@ namespace DataAccess
         public  static DbCommand GetCommand(this DbContext context, string sqlQuery)
         {
             DbProviderFactory dbFactory = DbProviderFactories.GetFactory(context.Database.Connection);
-
             using (var cmd = dbFactory.CreateCommand())
             {
                 cmd.Connection = context.Database.Connection;
@@ -93,8 +87,6 @@ namespace DataAccess
             {
                 throw ex;
             }
-
-        }
-        
+        }        
     }
 }
