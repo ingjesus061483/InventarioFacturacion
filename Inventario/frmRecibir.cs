@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Inventario
     {
         int formapago;
 
-       public  OrdenCompra Compra { get; set; }
+       public  OrdenCompraDTO Compra { get; set; }
         FormaPagoHelp _formaPagoHelp;
         CompraHelp _compraHelp;
         public frmRecibir(CompraHelp compraHelp,FormaPagoHelp formaPagoHelp  )
@@ -60,14 +61,14 @@ namespace Inventario
             Compra.FechaEntrega = dtpfechaEntrega.Value;
             Compra.Observaciones = txtObservaciones.Text;
             Compra.FormapagoId = formapago;
-            _compraHelp.ActualizarCompra(txtCodigo.Text, Compra);
+            _compraHelp.Actualizar(Compra .Id , Compra);
             _compraHelp.RecibirMercancia(txtCodigo.Text);
             this.Close();
         }
 
         private void frmRecibir_Load(object sender, EventArgs e)
         {
-            _formaPagoHelp.Cmb(cmbFormapago,_formaPagoHelp.Queryable .ToList());
+            Utilities .Cmb(cmbFormapago,_formaPagoHelp.Queryable .ToList());
             txtCodigo.Text = Compra.Codigo;
             dtpfechaEntrega.Value = Compra.FechaEntrega;
             decimal totalpagar = Compra.TotalPagar;

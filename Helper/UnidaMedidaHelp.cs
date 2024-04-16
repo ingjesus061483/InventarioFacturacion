@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class UnidaMedidaHelp:Help
+    public class UnidaMedidaHelp:IHelp<UnidadMedida>
     {
-        
+        readonly InventarioDbContext _context;
+
         public UnidaMedidaHelp (InventarioDbContext context )
         {
             _context = context;
@@ -24,11 +25,20 @@ namespace Helper
                 return _context.UnidadMedidas.AsQueryable();
             }
         }
- 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
+
+        public void Actualizar(int id, UnidadMedida entity)
         {
             throw new NotImplementedException();
         }
-  
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Guardar(UnidadMedida entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

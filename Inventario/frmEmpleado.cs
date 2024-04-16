@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ namespace Inventario
 {
     public partial class frmEmpleado : Form
     {
-        Empleado empleado;
+        EmpleadoDTO empleado;
+        int id;
         EmpleadoHelp _empleadoHelp;
         TipoIdentificacionHelp _tipoIdentificacionHelp;
         UsuarioHelp _usuarioHelp;
@@ -39,14 +41,15 @@ namespace Inventario
 
         private void frmEmpleado_Load(object sender, EventArgs e)
         {
-            _tipoIdentificacionHelp.Cmb(cmbTipoIdentificacion,_tipoIdentificacionHelp.Queryable.ToList() );
+           Utilities .Cmb(cmbTipoIdentificacion,_tipoIdentificacionHelp.Queryable.ToList() );
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             frmBusqueda frmBusqueda = new frmBusqueda(_empleadoHelp);
             frmBusqueda.ShowDialog();
-            empleado = _empleadoHelp.BuscarEmpleado(frmBusqueda.Id);
+            id = frmBusqueda.Id;
+            empleado = _empleadoHelp.Queryable.Where(x => x.Id == id).FirstOrDefault();
             if(empleado ==null)
             {
                 Nuevo();
@@ -70,6 +73,8 @@ namespace Inventario
         }
         void Nuevo()
         {
+            id = 0;
+            empleado = null;
             txtcodigo.Text = string.Empty;
             Txtnombre.Text = string.Empty;
             txtapellido.Text = string.Empty;
@@ -77,18 +82,15 @@ namespace Inventario
             Txttelefono.Text = string.Empty;
             cmbTipoIdentificacion.SelectedIndex = -1;
             txtcodigo.Focus();
-
-
-
         }
 
         private void btninsertar_Click(object sender, EventArgs e)
         {
-            if( empleado ==null)
+            if( id ==0)
             {
                 frmUsuario frmUsuario = new frmUsuario(_usuarioHelp ,_empresaHelp ,_roleHelp  );
                 frmUsuario.ShowDialog();
-                empleado = new Empleado
+                empleado = new EmpleadoDTO
                 {
                     Identificacion = txtcodigo.Text,
                     Nombre = Txtnombre.Text,
@@ -102,7 +104,7 @@ namespace Inventario
 
 
                 };
-                _empleadoHelp.GuadarEmpleado(empleado);
+                _empleadoHelp.Guardar(empleado);
                 Nuevo();
 
             }
@@ -114,7 +116,7 @@ namespace Inventario
                 empleado.Telefono = Txttelefono.Text;
                 empleado.Direccion = txtdireccion.Text;
                 empleado.TipoIdentificacionId = cmbTipoIdentificacion.SelectedValue != null ? int.Parse(cmbTipoIdentificacion.SelectedValue.ToString()) : -1;
-                _empleadoHelp.ActualizarEmpleado(empleado.Id, empleado);
+                _empleadoHelp.Actualizar(id, empleado);
             }
         }
 

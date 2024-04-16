@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Inventario
     public partial class frmEmail : Form
     {
         EmailHelp _emailHelp;
-       public Usuario Usuario { get; set; }
+       public UsuarioDTO Usuario { get; set; }
         public frmEmail(EmailHelp emailHelp  )
         {
             _emailHelp = emailHelp;
@@ -29,7 +30,7 @@ namespace Inventario
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-           if(!_emailHelp.EmailBienEscrito(txtEmail.Text ))
+           if(!Utilities .EmailBienEscrito(txtEmail.Text ))
             {
                 return;
             }

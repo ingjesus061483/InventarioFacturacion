@@ -10,21 +10,56 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Helper
 {
-    public class EmailHelp:Help
+    public class EmailHelp
     {
         public string Remitente { get; set; }
         public string Pwd { get; set; }
-         ClienteHelp _clienteHelp;
+        ClienteHelp _clienteHelp;
         ProveedorHelp _proveedorHelp;
         public EmailHelp (ProveedorHelp proveedorHelp ,ClienteHelp   clienteHelp)
         {
             _proveedorHelp  = proveedorHelp ;
             _clienteHelp = clienteHelp;
+        }
+        public IQueryable<PersonaView> Queryable
+        {
+            get
+            {
+                IEnumerable<PersonaView> proveedor = _proveedorHelp.Queryable.AsEnumerable().Select(x => new PersonaView
+                {
+                    Id = x.Id,
+                    FechaNacimiento = x.FechaNacimiento,
+                    TipoIdentificacionId = x.TipoIdentificacionId,
+                    TipoIdentificacion = x.TipoIdentificacion.Nombre,
+                    Identificacion = x.Identificacion,
+                    Nombre = x.Nombre,
+                    Apellido = x.Apellido,
+                    Direccion = x.Direccion,
+                    Telefono = x.Telefono,
+                    Email = x.Email,
+                });
+                IEnumerable<PersonaView> cliente = _clienteHelp.Queryable.AsEnumerable().Select(x => new PersonaView
+                {
+                    Id = x.Id,
+                    FechaNacimiento = x.FechaNacimiento,
+                    TipoIdentificacionId = x.TipoIdentificacionId,
+                    TipoIdentificacion = x.TipoIdentificacion.Nombre,
+                    Identificacion = x.Identificacion,
+                    Nombre = x.Nombre,
+                    Apellido = x.Apellido,
+                    Direccion = x.Direccion,
+                    Telefono = x.Telefono,
+                    Email = x.Email,
+                });
+                return proveedor.Union(cliente).AsQueryable();
+
+            }
         }
 
         MailAddress From
@@ -53,44 +88,6 @@ namespace Helper
                 
                 return server;
             }
-        }
-
-        public IQueryable<PersonaView> Queryable
-        {
-            get
-            {
-                IEnumerable<PersonaView> proveedor = _proveedorHelp.Queryable.AsEnumerable().Select(x => new PersonaView {
-                    Id = x.Id,
-                    FechaNacimiento = x.FechaNacimiento,
-                    TipoIdentificacionId = x.TipoIdentificacionId,
-                    TipoIdentificacion = x.TipoIdentificacion.Nombre,
-                    Identificacion = x.Identificacion,
-                    Nombre = x.Nombre,
-                    Apellido = x.Apellido,
-                    Direccion = x.Direccion,
-                    Telefono = x.Telefono,
-                    Email =x.Email,
-                });
-                IEnumerable<PersonaView> cliente = _clienteHelp .Queryable.AsEnumerable().Select(x => new PersonaView {
-                    Id = x.Id,
-                    FechaNacimiento = x.FechaNacimiento,
-                    TipoIdentificacionId = x.TipoIdentificacionId,
-                    TipoIdentificacion = x.TipoIdentificacion.Nombre,
-                    Identificacion = x.Identificacion,
-                    Nombre = x.Nombre,
-                    Apellido = x.Apellido,
-                    Direccion = x.Direccion,
-                    Telefono = x.Telefono,
-                    Email = x.Email,
-                });
-                return proveedor.Union(cliente).AsQueryable();
-
-            }
-        }
-
-        public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
         }
         public List<string >Adjuntar()
         {

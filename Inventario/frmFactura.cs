@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,10 @@ namespace Inventario
         int formapago;
         int tipodocumento;
         Cliente cliente;       
-        Usuario usuario;
+        UsuarioDTO usuario;
         Producto producto;
         decimal recibido;     
-        FacturaEncabezado Factura { get; set; }
+        public FacturaDTO Factura { get; set; }
         TipoDocumentoHelp _TipoDocumentoHelp;
         FormaPagoHelp _FormaPagoHelp;
         UsuarioHelp _usuarioHelp;
@@ -38,7 +39,7 @@ namespace Inventario
                           EmpleadoHelp empleadoHelp,
                           ProductoHelp productoHelp,
                           ImpuestoHelp impuestoHelp,
-                          FacturaHelp facturaHelp,FacturaEncabezado factura )
+                          FacturaHelp facturaHelp )
         {
             _FormaPagoHelp = formaPagoHelp;
             _tipoIdentificacionHelp = tipoIdentificacionHelp;
@@ -48,8 +49,7 @@ namespace Inventario
             _TipoDocumentoHelp = tipoDocumentoHelp;
             _productoHelp = productoHelp;
             _impuestoHelp = impuestoHelp;
-            _facturaHelp = facturaHelp;
-            Factura = factura;
+            _facturaHelp = facturaHelp;            
             InitializeComponent();
             busquedaCliente1.MostrarEvent += BusquedaCliente1_MostrarEvent;
             BusquedaEmpleado.MostrarEvent += BusquedaEmpleado_MostrarEvent;
@@ -101,7 +101,7 @@ namespace Inventario
         void Nuevo()
         {
             usuario = _usuarioHelp.Usuario ;
-            Factura = new FacturaEncabezado();
+            Factura = new FacturaDTO();
             if (usuario != null)
             {
                 BusquedaEmpleado.Subir(usuario.Empleados[0].Identificacion, usuario.Empleados[0].Nombre);
@@ -121,7 +121,7 @@ namespace Inventario
                 usuario = null;
                 return;
             }
-            usuario = empleado.Usuario;
+            usuario = _usuarioHelp .Queryable .Where(x=>x.Id== empleado.Usuario.Id ).FirstOrDefault ();
             Factura.UsuarioId = usuario.Id;
         }
         private void BusquedaCliente1_MostrarEvent(object sender, EventArgs e)
@@ -157,13 +157,13 @@ namespace Inventario
             if (Factura == null)
             {
                 Nuevo();
-                _TipoDocumentoHelp.Cmb(cmbTipoDocumento,_TipoDocumentoHelp.Queryable .ToList ());
-                _FormaPagoHelp.Cmb(cmbFormapago,_FormaPagoHelp.Queryable .ToList());   
+                Utilities .Cmb(cmbTipoDocumento,_TipoDocumentoHelp.Queryable .ToList ());
+                Utilities .Cmb(cmbFormapago,_FormaPagoHelp.Queryable .ToList());   
             }
             else
             {
-                _TipoDocumentoHelp.Cmb(cmbTipoDocumento,_TipoDocumentoHelp.Queryable.ToList());
-                _FormaPagoHelp.Cmb(cmbFormapago,_FormaPagoHelp.Queryable .ToList());
+                Utilities .Cmb(cmbTipoDocumento,_TipoDocumentoHelp.Queryable.ToList());
+            Utilities .Cmb(cmbFormapago,_FormaPagoHelp.Queryable .ToList());
                 Cargar();
             }
             Detalles.MostrarDatos(Factura.Detalles);
@@ -235,7 +235,7 @@ namespace Inventario
             Factura.FormapagoId = formapago;
             Factura.TipoDocumentoId = tipodocumento;
             Factura.Fecha = dtpfecha.Value;
-            _facturaHelp.GuardarFactura(Factura);
+            _facturaHelp.Guardar(Factura);
             this.Close();
         }
         private void cmbFormapago_SelectedValueChanged(object sender, EventArgs e)

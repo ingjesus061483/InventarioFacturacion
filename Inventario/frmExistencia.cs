@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Inventario
 {
     public partial class frmExistencia : Form
     {
-        public Producto producto { get; set; }
+        public ProductoDTO producto { get; set; }
         ExistenciaHelp _ExistenciaHelp;
         public frmExistencia(ProductoHelp productoHelp ,ExistenciaHelp existenciaHelp )
         {
@@ -57,7 +58,7 @@ namespace Inventario
                 Fecha = DateTime.Now,
                 Concepto = producto != null ? "Entrada " + producto.Nombre:""
             };
-            _ExistenciaHelp.GuardarExistencias(existencia);
+            _ExistenciaHelp.Guardar(existencia);
             this.Close();
         }
 

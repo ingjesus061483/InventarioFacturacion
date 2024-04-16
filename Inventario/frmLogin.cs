@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Inventario
     public partial class frmLogin : Form
     {
         UsuarioHelp _usuarioHelp;
-        public Usuario Usuario { get; set; }
+        public UsuarioDTO Usuario { get; set; }
         public frmLogin(UsuarioHelp  usuarioHelp  )
         {
             _usuarioHelp = usuarioHelp;
@@ -25,7 +26,8 @@ namespace Inventario
         private void Button2_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            Usuario=_usuarioHelp.Login(txtUsuario.Text, txtPassword.Text);
+            string pwd = Utilities.Encriptar(txtPassword.Text);
+            Usuario=_usuarioHelp.Queryable.Where (x=>x.Name .Contains ( txtUsuario.Text)&& x.Password .Contains (pwd)).FirstOrDefault ();
             if( Usuario ==null)
             {
                 MessageBox.Show("Usuario o contraseña invalida","",MessageBoxButtons.OK ,MessageBoxIcon.Warning );

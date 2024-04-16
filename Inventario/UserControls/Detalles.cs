@@ -42,15 +42,15 @@ namespace Inventario
         {
             if (facturaHelp != null)
             {
-                facturaHelp.GetDatagrid(dgDetalles, _facturadetalle);
+                Utilities .GetDatagrid(dgDetalles, _facturadetalle);
             }
             else if(compraHelp!=null)
             {
-                compraHelp .GetDatagrid(dgDetalles, _compradetalle );
+                Utilities  .GetDatagrid(dgDetalles, _compradetalle );
             }
             else if(DevolucionVentaHelp !=null)
             {
-                DevolucionVentaHelp .GetDatagrid(dgDetalles, _devolucion);
+                Utilities  .GetDatagrid(dgDetalles, _devolucion);
             }
             dgDetalles.DataSource = datasource ;
         }

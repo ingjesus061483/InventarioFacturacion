@@ -146,8 +146,42 @@ namespace Helper.DTO
                 return Recibido - TotalPagar;
             }
         }
-        
 
+        public void EliminarDetalles()
+        {
+            if (Detalles.Count != 0)
+            {
+                OrdenCompraDetalle detalle = Detalles.Last();
+                Detalles.Remove(detalle);
+            }
+        }
+        public void AñadirDetalles(Producto Articulo, decimal cantidad)
+        {
+            try
+            {
+                if (Detalles == null)
+                {
+                    Detalles = new List<OrdenCompraDetalle>();
+                }
+                if (Detalles.Exists(x => x.Producto.Id == Articulo.Id))
+                {
+                    Detalles.RemoveAll(x => x.Producto.Id == Articulo.Id);
+                }
+                OrdenCompraDetalle ordenCompraDetalle = new OrdenCompraDetalle
+                {
+                    OrdenCompraId = Id,
+                    ProductoId = Articulo.Id,
+                    Producto = Articulo,
+                    ValorUnitario = Articulo.Precio,
+                    Cantidad = cantidad,
+                };
+                Detalles.Add(ordenCompraDetalle);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
     }

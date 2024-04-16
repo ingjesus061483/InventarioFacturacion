@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ namespace Inventario
 {
     public partial class frmProveedores : Form
     {
-        Proveedor proveedor;
+        int id;
+        ProveedorDTO proveedor;
         ProveedorHelp _proveedorHelp;
         TipoIdentificacionHelp _tipoIdentificacionHelp;
 
@@ -29,16 +31,16 @@ namespace Inventario
 
         private void frmProveedores_Load(object sender, EventArgs e)
         {
-            _tipoIdentificacionHelp.Cmb(cmbTipoIdentificacion,_tipoIdentificacionHelp.Queryable.ToList());
+            Utilities .Cmb(cmbTipoIdentificacion,_tipoIdentificacionHelp.Queryable.ToList());
             Nuevo();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmBusqueda frmBusqueda = new frmBusqueda(_proveedorHelp );
+            frmBusqueda frmBusqueda = new frmBusqueda(_proveedorHelp);
             frmBusqueda.ShowDialog();
-            int id = frmBusqueda.Id;
-            proveedor  = _proveedorHelp .BuscarProveedor(id);
+            id = frmBusqueda.Id;
+            proveedor  = _proveedorHelp .Queryable .Where (x=>x.Id == id).FirstOrDefault ();
             if (proveedor  == null)
             {
                 Nuevo();
@@ -55,6 +57,7 @@ namespace Inventario
         }
         void Nuevo()
         {
+            id = 0;
             proveedor = null;
             txtIdentificacion.Text = string.Empty;
             txtNombre.Text = string.Empty;
@@ -68,9 +71,9 @@ namespace Inventario
 
         private void btninsertar_Click(object sender, EventArgs e)
         {
-            if (proveedor == null)
+            if (id ==0)
             {
-                proveedor = new Proveedor
+                proveedor = new ProveedorDTO
                 {
                     Identificacion = txtIdentificacion.Text,
                     Nombre = txtNombre.Text,
@@ -83,7 +86,7 @@ namespace Inventario
                                            ? int.Parse(cmbTipoIdentificacion.SelectedValue.ToString())
                                            : -1
                 };
-                _proveedorHelp.GuardarProveedor(proveedor);
+                _proveedorHelp.Guardar(proveedor);
                 Nuevo();
             }
             else
@@ -95,7 +98,7 @@ namespace Inventario
                 proveedor.Email = txtEmail.Text;
                 proveedor.PersonaNatural = chkPersonaNatural.Checked;
                 proveedor.TipoIdentificacionId = int.Parse(cmbTipoIdentificacion.SelectedValue.ToString());
-                _proveedorHelp.ActualizarProveedor(proveedor.Id, proveedor);
+                _proveedorHelp.Actualizar(id, proveedor);
             }
 
         }

@@ -12,8 +12,9 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class EmpresaHelp : Help
+    public class EmpresaHelp : IHelp<EmpresaDTO>
     {
+        readonly InventarioDbContext _context;
 
         public EmpresaHelp(InventarioDbContext context)
         {
@@ -82,20 +83,33 @@ namespace Helper
 
             }).FirstOrDefault();
         }
-        public void GuardarEmpresa(Empresa empresa) 
+        public void Guardar(EmpresaDTO empresaDTO) 
         {   
-            if (!Validar(empresa))
+            if (!Validar(empresaDTO))
             {
                 return;
             }
+            Empresa empresa = new Empresa
+            {                
+                Nit = empresaDTO.Nit,
+                Nombre = empresaDTO.Nombre,
+                CamaraComercio = empresaDTO.CamaraComercio,
+                Direccion = empresaDTO.Direccion,
+                Telefono = empresaDTO.Telefono,
+                Email = empresaDTO.Email,
+                Contacto = empresaDTO.Contacto,
+                Logo = empresaDTO.Logo,
+                Slogan = empresaDTO.Slogan,
+                TipoRegimenId = empresaDTO.TipoRegimenId
+            };
             _context.Empresas.Add(empresa);
             _context.SaveChanges();
 
-            MessageBox.Show("La empresa ha sido guardada", "",
+            Utilities .GetDialogResult ("La empresa ha sido guardada", "",
   MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public void ActualizarEmpresa(int id, Empresa Empresa)
+        public void Actualizar(int id, EmpresaDTO Empresa)
         {
             if (!Validar(Empresa))
             {
@@ -112,10 +126,10 @@ namespace Helper
             empresa.Slogan = Empresa.Slogan;
             empresa.TipoRegimenId = Empresa.TipoRegimenId;
             _context.SaveChanges();
-            MessageBox.Show("La empresa ha sido Actualizada", "",
+            Utilities.GetDialogResult("La empresa ha sido Actualizada", "",
   MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        public void EliminarEmpresa(int id)
+        public void Eliminar(int id)
         {
             var empresa = BuscarEmpresa(id);
             _context.Empresas.Remove(empresa);
@@ -134,71 +148,68 @@ namespace Helper
             else
                 return false;
         }*/
-        bool Validar(Empresa empresa)
+        bool Validar(EmpresaDTO empresa)
         {
 
             if (string.IsNullOrEmpty(empresa.Nit))
             {
-                MessageBox.Show("El campo Nit no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo Nit no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);                
                 return false;
 
             }
             if (string.IsNullOrEmpty(empresa. Nombre))
             {
-                MessageBox.Show("El campo Nombre no puede ser vacio", "",
+            Utilities .GetDialogResult ("El campo Nombre no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);                
                 return false ;
             }
             if (empresa. TipoRegimenId == -1)
             {
-                MessageBox.Show("El campo tipo regimen no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo tipo regimen no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (string.IsNullOrEmpty(empresa.Direccion))
             {
-                MessageBox.Show("El campo Direccion no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo Direccion no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);                
                 return false;
             }
             if (string.IsNullOrEmpty( empresa. CamaraComercio))
             {
-                MessageBox.Show("El campo camara de comercio no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo camara de comercio no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);                
                 return false ;
             }
             if (string.IsNullOrEmpty(empresa . Email))
             {
-                MessageBox.Show("El campo email no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo email no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
                 return false ;
             }
-            if (!EmailBienEscrito(empresa. Email))
+            if (!Utilities . EmailBienEscrito(empresa. Email))
             {
-                MessageBox.Show("El campo email esta mal escrito", "",
+                Utilities .GetDialogResult ("El campo email esta mal escrito", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);                
                 return false ;
             }
             if (string.IsNullOrEmpty(empresa . Contacto))
             {
-                MessageBox.Show("El campo cotacto no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo cotacto no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);                
                 return false ;
             }
             if (string.IsNullOrEmpty(empresa . Telefono))
             {
-                MessageBox.Show("El campo telefono no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo telefono no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);                
                 return false ;
             }
             return true;
         }
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

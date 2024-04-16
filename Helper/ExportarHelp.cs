@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,12 +7,15 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Helper
 {
-    public class ExportarHelp : Help
+    public class ExportarHelp 
     {
+
+        InventarioDbContext _context;
         public DataTable Table
         {
             get
@@ -84,10 +88,23 @@ namespace Helper
                 throw ex;
 
             }
-        }      
-        public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
         }
+        public DataTable GetTable(object lst)
+        {
+            string json = JsonConvert.SerializeObject(lst);
+            DataTable pDt = JsonConvert.DeserializeObject<DataTable>(json);
+            return pDt;
+
+        }
+        public DataTable GetTable(string query)
+        {
+            DataTable pDt = _context.GetDataTable(query);
+            return pDt;
+
+        }
+        /*      public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
+              {
+                  throw new NotImplementedException();
+              }*/
     }
 }

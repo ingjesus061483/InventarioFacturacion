@@ -18,10 +18,10 @@ namespace DataAccess
         public DbSet <Empresa > Empresas { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Existencia> Existencias { get; set; }
-        public  DbSet<Categoria> Categorias { get; set; }
-        public  DbSet<Role> Roles { get; set; }
-        public  DbSet<TipoIdentificacion> TipoIdentificacions { get; set; }
-        public  DbSet<UnidadMedida> UnidadMedidas { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<TipoIdentificacion> TipoIdentificacions { get; set; }
+        public DbSet<UnidadMedida> UnidadMedidas { get; set; }
         public DbSet<TipoRegimen> TipoRegimens { get; set; }
         public DbSet<Cliente >Clientes { get; set; }
         public DbSet<Empleado> Empleados { get; set; }

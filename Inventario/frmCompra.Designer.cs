@@ -1,5 +1,6 @@
 ﻿
 using Helper;
+using Helper.DTO;
 using Models;
 
 namespace Inventario
@@ -512,7 +513,7 @@ namespace Inventario
         internal System.Windows.Forms.Button btnAñadir;
         private Detalles Detalles;
         int tipodocumento;
-        Usuario usuario;
+        UsuarioDTO usuario;
         Producto producto;
         Proveedor proveedor;
         ProveedorHelp _proveedorHelp;
@@ -524,7 +525,7 @@ namespace Inventario
         FormaPagoHelp _formaPagoHelp;
         TipoDocumentoHelp _tipoDocumentoHelp;
         TipoIdentificacionHelp _tipoIdentificacionHelp;
-        public OrdenCompra Compra { get; set; }
+        public OrdenCompraDTO Compra { get; set; }
     }
   
 }

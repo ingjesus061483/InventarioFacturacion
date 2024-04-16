@@ -16,6 +16,7 @@ namespace Inventario
     public partial class frmRole : Form
     {
        RoleHelp _context;
+        int id;
         Role role;
         string message = "";
         public frmRole(RoleHelp  context)
@@ -25,6 +26,7 @@ namespace Inventario
         }
         void Nuevo()
         {
+            id = 0;
             role = null;
             txtNombre.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
@@ -34,7 +36,7 @@ namespace Inventario
         {
             frmBusqueda frmBusqueda = new frmBusqueda(_context);
             frmBusqueda.ShowDialog();
-            int id = frmBusqueda.Id;
+             id = frmBusqueda.Id;
             role = _context.BuscarRole(id);
             if (role == null)
             {
@@ -54,31 +56,31 @@ namespace Inventario
         {
             if (string.IsNullOrEmpty(txtNombre.Text))
             {
-                MessageBox.Show("Este campo no puede ser vacio", "",
+                Utilities .GetDialogResult ("Este campo no puede ser vacio", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (role == null)
+            if (id == 0)
             {
                 role = new Role
                 {
                     Nombre = txtNombre.Text,
                     Descripcion = txtDescripcion.Text
                 };
-                _context.GuardarRole(role);
-                message = "la categoria ha sido guardada";
+                _context.Guardar(role);
+                message = "El role ha sido guardado";
 
             }
             else
             {
                 role.Nombre = txtNombre.Text;
                 role.Descripcion = txtDescripcion.Text;
-                _context.ActualizarRole(role.Id, role);
-                message = "la categoria ha sido editada";
+                _context.Actualizar(id, role);
+                message = "El role ha sido editado";
 
 
             }
-            MessageBox.Show(message, "",
+           Utilities .GetDialogResult ( message, "",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
            
             Nuevo();
@@ -89,16 +91,16 @@ namespace Inventario
         {
             if (role == null)
             {
-                MessageBox.Show("Debe seleccionar una categoria", "",
+                Utilities .GetDialogResult ("Debe seleccionar una categoria", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var resp = MessageBox.Show("Desea elminar esta categoria", "",
+            var resp = MessageBox .Show  ("Desea elminar esta categoria", "",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resp == DialogResult.Yes)
             {
-                _context.EliminarRole (role.Id );                
-                MessageBox.Show("La categoria fue eliminada", "",
+                _context.Eliminar (role.Id );                
+                Utilities .GetDialogResult ("La categoria fue eliminada", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Nuevo();

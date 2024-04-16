@@ -9,27 +9,36 @@ using System.Threading.Tasks;
 
 namespace Helper
 {
-    public class DevolucionCompraHelp : Help
+    public class DevolucionCompraHelp :IHelp<DevolucionCompra>
     {
-        
 
+
+        readonly InventarioDbContext _context;
 
         protected IQueryable Queryable => throw new NotImplementedException();
+
+        IQueryable<DevolucionCompra> IHelp<DevolucionCompra>.Queryable => throw new NotImplementedException();
 
         public DevolucionCompraHelp(InventarioDbContext context)
         {
             _context = context;
         }
-        public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
-        }
-        public void GuardarDevolucion(DevolucionCompra devolucionCompra)
+        
+        public void Guardar(DevolucionCompra devolucionCompra)
         {
             
             _context.DevolucionCompras .Add(devolucionCompra );
             _context.SaveChanges();
         }
 
+        public void Actualizar(int id, DevolucionCompra entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

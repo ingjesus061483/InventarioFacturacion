@@ -9,10 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CodigoBarra;
+using System.Windows.Forms;
+using Helper.DTO;
+
 namespace Helper
 {
 
-    public class ImpresoraHelp : Help
+    public class ImpresoraHelp 
     {
         CodigoBarras _CodigoBarras;
         private PrintDocument printer;
@@ -22,14 +25,75 @@ namespace Helper
         }
         int linea_actual = 0;
 
-
-        protected  IQueryable Queryable => throw new NotImplementedException();
-
-        public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
+        protected StreamWriter CrearArchivo()
         {
-            throw new NotImplementedException();
+            try
+            {
+                string ruta = Application.StartupPath + "\\Imprimir";
+                if (!Directory.Exists(ruta))
+                {
+                    Directory.CreateDirectory(ruta);
+                }
+                ruta += "\\Imprimir.txt";
+                if (File.Exists(ruta))
+                {
+                    File.Delete(ruta);
+                }
+                FileStream fs = File.Create(ruta);
+                StreamWriter sWriter = new StreamWriter(fs);
+                return sWriter;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-        public void ImprimirVenta(FacturaEncabezado factura)
+
+        protected StreamReader LeerArchivo()
+        {
+            try
+            {
+                string ruta = Application.StartupPath + "\\Imprimir";
+                if (!Directory.Exists(ruta))
+                {
+                    Directory.CreateDirectory(ruta);
+                }
+                ruta += "\\Imprimir.txt";
+                FileStream fs;
+                StreamReader sReader = null;
+                if (File.Exists(ruta))
+                {
+                    fs = File.OpenRead(ruta);
+                    sReader = new StreamReader(fs);
+                }
+                return sReader;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        protected void EliminarArchivo()
+        {
+            try
+            {
+                string ruta = Application.StartupPath + "\\Imprimir\\Imprimir.txt";
+                if (File.Exists(ruta))
+                    File.Delete(ruta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /*      protected  IQueryable Queryable => throw new NotImplementedException();
+
+              public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
+              {
+                  throw new NotImplementedException();
+              }*/
+        public void ImprimirVenta(FacturaDTO factura)
         {           
             StreamWriter sw = CrearArchivo();
             try
@@ -50,10 +114,10 @@ namespace Helper
                 sw.WriteLine("Telefono:" + empresa.Telefono);
                 sw.WriteLine("=========================================");
                 sw.WriteLine("========== Encabezado ====================");
-                sw.WriteLine("Tipo de Documento: " + factura.TipoDoc  + " No. " + factura.Codigo );
+                sw.WriteLine("Tipo de Documento: " + factura.TipoDocumento .Nombre   + " No. " + factura.Codigo );
                 sw.WriteLine("Fecha: " + factura.Fecha);
-                sw.WriteLine("Forma de pago:" + factura.Formapag );
-                sw.WriteLine("Estado:" + factura.EstadoNombre);
+                sw.WriteLine("Forma de pago:" + factura.FormaPago .Nombre  );
+                sw.WriteLine("Estado:" + factura.Estado .Nombre );
                 sw.WriteLine("=========================================");
                 if (cliente != null) {
                     sw.WriteLine("===== Informacion Cliente ===========");

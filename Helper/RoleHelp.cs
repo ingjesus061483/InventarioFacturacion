@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class RoleHelp:Help
+    public class RoleHelp:IHelp<Role>
     {
+        readonly InventarioDbContext _context;
+
         public RoleHelp(InventarioDbContext context  )
         {
             _context = context;
@@ -30,28 +32,23 @@ namespace Helper
         {
             return _context.Roles.Find(id);
         }
-        public void  GuardarRole(Role role)
+        public void  Guardar(Role role)
         {
             _context.Roles.Add(role);
             _context.SaveChanges();
         }
-        public void  ActualizarRole(int id ,Role rol)
+        public void  Actualizar(int id ,Role rol)
         {
             var role = BuscarRole(id);
             role.Nombre = rol.Nombre;
             role.Descripcion = rol.Descripcion;
             _context.SaveChanges();
         }
-        public void EliminarRole(int id)
+        public void Eliminar(int id)
         {
             var role = BuscarRole(id);
             _context.Roles.Remove(role);
             _context.SaveChanges();
-        }
-
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
         }
     }
 }

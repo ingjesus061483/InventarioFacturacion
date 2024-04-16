@@ -14,6 +14,7 @@ namespace Inventario
 {
     public partial class frmImpuesto : Form
     {
+        int id;
         ImpuestoHelp _impuestoHelp;
         Impuesto impuesto;
         public frmImpuesto(ImpuestoHelp impuestoHelp  )
@@ -26,7 +27,7 @@ namespace Inventario
         {
             frmBusqueda frmBusqueda = new frmBusqueda(_impuestoHelp);
             frmBusqueda.ShowDialog();
-            int id = frmBusqueda.Id;
+            id = frmBusqueda.Id;
             impuesto  = _impuestoHelp .BuscarImpuesto (id);
             if (impuesto  == null)
             {
@@ -40,6 +41,7 @@ namespace Inventario
         }
         void Nuevo()
         {
+            id = 0;
             impuesto = null;
             txtDescripcion.Text = string.Empty;
             txtNombre.Text = string.Empty;
@@ -62,19 +64,19 @@ namespace Inventario
             decimal.TryParse(txtValor.Text, out decimal valor);
             if (valor == 0)
             {
-                MessageBox.Show("Este campo no puede ser vacio", "",
+                Utilities.GetDialogResult ("Este campo no puede ser vacio", "",
                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
 
             }
             if (string .IsNullOrEmpty (txtNombre .Text))
             {
-                MessageBox.Show("Este campo no puede ser vacio", "",
+                Utilities .GetDialogResult ("Este campo no puede ser vacio", "",
            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
 
             }
-            if (impuesto == null)
+            if (id == 0)
             {
                 impuesto = new Impuesto
                 {
@@ -82,13 +84,14 @@ namespace Inventario
                     Valor = valor,
                     Descripcion = txtDescripcion.Text
                 };
-                _impuestoHelp.GuardarImpuesto(impuesto);
+                _impuestoHelp.Guardar(impuesto);
             }
             else
             {
                 impuesto.Nombre = txtNombre.Text;
                 impuesto.Valor = valor;
                 impuesto.Descripcion = txtDescripcion.Text;
+                _impuestoHelp.Actualizar(id, impuesto);
             }
             Nuevo();
         }

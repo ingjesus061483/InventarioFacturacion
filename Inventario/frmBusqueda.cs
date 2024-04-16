@@ -28,7 +28,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-            emailHelp.Cmb(cmbColumnas, properties);
+            Utilities .Cmb(cmbColumnas, properties);
         }
         public frmBusqueda(EmpresaHelp empresaHelp)
         {
@@ -54,7 +54,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-        empresaHelp .    Cmb(cmbColumnas, properties);
+        Utilities .    Cmb(cmbColumnas, properties);
             empresas  = queryable.ToList();
         }
         public frmBusqueda (ImpuestoHelp impuestoHelp)
@@ -67,7 +67,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-           impuestoHelp . Cmb(cmbColumnas, properties);
+           Utilities  . Cmb(cmbColumnas, properties);
 
         }
         public frmBusqueda (MotivoHelp motivoHelp)
@@ -80,7 +80,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-           motivoHelp . Cmb(cmbColumnas, properties);
+           Utilities  . Cmb(cmbColumnas, properties);
 
         }
         public frmBusqueda(ProductoHelp productoHelp)
@@ -108,7 +108,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-           productoHelp . Cmb(cmbColumnas, properties);
+          Utilities  . Cmb(cmbColumnas, properties);
            productos = queryable.ToList();
         }
         public frmBusqueda(ProveedorHelp proveedorHelp)
@@ -132,7 +132,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-           proveedorHelp . Cmb(cmbColumnas, properties);
+Utilities  . Cmb(cmbColumnas, properties);
             proveedores = queryble.ToList();
         }
         public frmBusqueda (ClienteHelp clienteHelp)
@@ -156,7 +156,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-           clienteHelp . Cmb(cmbColumnas, properties);
+          Utilities  . Cmb(cmbColumnas, properties);
             clientes = queryble.ToList();
         }
        public frmBusqueda(EmpleadoHelp empleadoHelp)
@@ -181,7 +181,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-           empleadoHelp . Cmb(cmbColumnas, properties);
+           Utilities  . Cmb(cmbColumnas, properties);
             empleados = queryble.ToList();
             
         }
@@ -195,7 +195,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-           roleHelp . Cmb(cmbColumnas, properties);
+         Utilities . Cmb(cmbColumnas, properties);
             
 
         }
@@ -214,7 +214,7 @@ namespace Inventario
                 Id = 0,
                 Nombre = x.Name
             }).ToList();
-           categoriaHelp . Cmb(cmbColumnas, properties);
+           Utilities  . Cmb(cmbColumnas, properties);
           
 
         }

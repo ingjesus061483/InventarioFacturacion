@@ -10,10 +10,12 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class TipoRegimenHelp:Help
+    public class TipoRegimenHelp:IHelp<TipoRegimen >
     {
-        
-        public  TipoRegimenHelp(InventarioDbContext context )
+        readonly InventarioDbContext _context;
+
+
+        public TipoRegimenHelp(InventarioDbContext context )
         {
             _context = context;
         }
@@ -24,12 +26,20 @@ namespace Helper
                 return _context.TipoRegimens.AsQueryable();            
             }
         }
-   
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
+        public void Actualizar(int id, TipoRegimen entity)
         {
             throw new NotImplementedException();
         }
-   
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Guardar(TipoRegimen entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

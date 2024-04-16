@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class TipoIdentificacionHelp:Help
+    public class TipoIdentificacionHelp:IHelp<TipoIdentificacion >
     {
-        
+        readonly InventarioDbContext _context;
+
+
         public TipoIdentificacionHelp(InventarioDbContext context)
         {
             _context = context;
@@ -24,10 +26,18 @@ namespace Helper
                 return _context.TipoIdentificacions.AsQueryable();
             }
         }
-      
- 
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
+        public void Actualizar(int id, TipoIdentificacion entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Guardar(TipoIdentificacion entity)
         {
             throw new NotImplementedException();
         }

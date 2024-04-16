@@ -111,5 +111,47 @@ namespace Helper.DTO
         }
         public int EstadoId { get; set; }
         public Estado Estado { get; set; }
+
+        public  void EliminarDetalles()
+        {
+            if (Detalles.Count != 0)
+            {
+                FacturaDetalle detalle = Detalles.Last();
+                Detalles.Remove(detalle);
+            }
+        }
+        public  void AñadirDetalles(Producto Articulo, decimal cantidad)
+        {
+            try
+            {
+                if (Detalles == null)
+                {
+                    Detalles = new List<FacturaDetalle>();
+                }
+                if (Detalles.Exists(x => x.Producto.Id == Articulo.Id))
+                {
+                    Detalles.RemoveAll(x => x.Producto.Id == Articulo.Id);
+                }
+                decimal existencia = Articulo.TotalExistencia;
+                decimal total = existencia - cantidad;
+                if (total <= 0)
+                {
+                    throw new Exception("La cantidad ha sobrepasado el limite minimo en el inventario ");
+                }
+                FacturaDetalle Facturadetalle = new FacturaDetalle
+                {
+                    FacturaId = Id,
+                    ProductoId = Articulo.Id,
+                    Producto = Articulo,
+                    ValorUnitario = Articulo.Precio,
+                    Cantidad = cantidad,
+                };
+                Detalles.Add(Facturadetalle);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

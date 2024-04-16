@@ -90,7 +90,7 @@ namespace Inventario
                                                       _empleadoHelp,
                                                       _productoHelp,
                                                       _impuestoHelp,
-                                                      _facturaHelp,null);
+                                                      _facturaHelp);
             frmFactura.ShowDialog();
             cuestas1.MostrarDatos(_facturaHelp.Queryable.Where (x=>x.EstadoId==estado). AsEnumerable().Select(x => new {
                 x.Id,
@@ -119,7 +119,7 @@ namespace Inventario
         private void frmFacturacion_Load(object sender, EventArgs e)
         {            
             Db = new DataSet();
-            _estadoHelp.Cmb(cmbEstado,_estadoHelp.Queryable.ToList());
+          Utilities .Cmb(cmbEstado,_estadoHelp.Queryable.ToList());
             cuestas1.MostrarDatos(_facturaHelp.Queryable.Where(x=>x.EstadoId==estado). AsEnumerable().Select(x => new {
                 x.Id,
                 x.Codigo,
@@ -222,29 +222,8 @@ namespace Inventario
             int col = e.ColumnIndex;
             var codigo = datagridview.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
             var factura = _facturaHelp.Queryable
-                                      .Where(x => x.Codigo == codigo)
-                                      .AsEnumerable()
-                                      .Select(x => new FacturaEncabezado  {
-                                         Id= x.Id,
-                                         Codigo = x.Codigo,
-                                          Fecha = x.Fecha,
-                                          Observaciones =  x.Observaciones,
-                                         Usuario = x.Usuario,
-                                          UsuarioId = x.UsuarioId,
-                                          Cliente = x.Cliente,
-                                          ClienteId = x.ClienteId,
-                                          TipoDocumento = x.TipoDocumento,
-                                          TipoDocumentoId = x.TipoDocumentoId,
-                                          FormaPago = x.FormaPago,
-                                          FormapagoId = x.FormapagoId,                                         
-                                          Descuento =  x.Descuento,
-                                          Impuestos = x.Impuestos,                                          
-                                          Recibido = x .Recibido,                                          
-                                        EstadoId=  x.EstadoId,
-                                          Estado = x.Estado,
-                                          Empresa=x.Empresa ,
-                                          Detalles=x.Detalles                                           
-                                      });
+                                      .Where(x => x.Codigo == codigo);
+                                     
             switch (col)
             {
                 case 0:
@@ -267,8 +246,9 @@ namespace Inventario
                                                                   _empleadoHelp,
                                                                   _productoHelp,
                                                                   _impuestoHelp,
-                                                                  _facturaHelp,
-                                                                 factura.FirstOrDefault ());                        
+                                                                  _facturaHelp);
+                        frmFactura.Factura = factura.FirstOrDefault();
+
                         frmFactura.ShowDialog();
                         break;
                     }
@@ -423,7 +403,7 @@ namespace Inventario
                                         x.EstadoId,
                                         Estado = x.Estado.Nombre
                                     }).ToList();
-                DataTable dt = _facturaHelp.GetTable(facturaEncabezados);
+                DataTable dt = Utilities .GetTable(facturaEncabezados);
                 dt.TableName = "FacturaEncabezadoes";
 
                 Db.Tables.Add( dt );

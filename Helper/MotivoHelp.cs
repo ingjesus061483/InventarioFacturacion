@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class MotivoHelp : Help
+    public class MotivoHelp : IHelp<Motivo >
     {
-        
+        readonly InventarioDbContext _context;
+
         public MotivoHelp (InventarioDbContext context  )
         {
             _context = context;
@@ -34,7 +35,7 @@ namespace Helper
             return _context.Motivos.Where(x=>x.Codigo ==codigo ).FirstOrDefault();
 
         }
-        public void GuardarMotivos(Motivo motivo)
+        public void Guardar(Motivo motivo)
         {
             if(!Validar(motivo))
             {
@@ -43,7 +44,7 @@ namespace Helper
             _context.Motivos.Add(motivo);
             _context.SaveChanges();
         }
-        public void ActualizarMotivos(int id, Motivo motivo)
+        public void Actualizar(int id, Motivo motivo)
         {
             if (!Validar(motivo))
             {
@@ -54,33 +55,29 @@ namespace Helper
             mot.Descripcion = motivo.Descripcion;            
             _context.SaveChanges();
         }
-        public void EliminarMotivos(int id)
+        public void Eliminar(int id)
         {
             var mot = BuscarMotivos(id);
             _context.Motivos.Remove(mot);
             _context.SaveChanges();
         }
-        public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
-        }
         bool Validar(Motivo motivo)
         {
             if (string .IsNullOrEmpty ( motivo.Codigo  ))
             {
-                MessageBox.Show("El campo codigo no puede ser vacio ", "",
+                Utilities .GetDialogResult ("El campo codigo no puede ser vacio ", "",
         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (string.IsNullOrEmpty(motivo.Concepto ))
             {
-                MessageBox.Show("El campo conepto no puede ser vacio ", "",
+               Utilities.GetDialogResult ("El campo conepto no puede ser vacio ", "",
         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (string.IsNullOrEmpty(motivo.Descripcion ))
             {
-                MessageBox.Show("El campo Descripcion no puede ser vacio", "",
+                Utilities.GetDialogResult ("El campo Descripcion no puede ser vacio", "",
         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }

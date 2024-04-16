@@ -29,8 +29,8 @@ D:\Documents\GitHub\InventarioFacturacion\Models\bin\Debug\EntityFramework.dll
 D:\Documents\GitHub\InventarioFacturacion\Models\bin\Debug\EntityFramework.SqlServer.dll
 D:\Documents\GitHub\InventarioFacturacion\Models\bin\Debug\EntityFramework.xml
 D:\Documents\GitHub\InventarioFacturacion\Models\bin\Debug\EntityFramework.SqlServer.xml
-D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.csprojAssemblyReference.cache
 D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
-D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.csproj.CopyComplete
 D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.dll
 D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.pdb
+D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.csproj.AssemblyReference.cache
+D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.csproj.Up2Date

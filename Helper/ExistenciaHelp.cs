@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class ExistenciaHelp:Help
+    public class ExistenciaHelp:IHelp<Existencia>
     {
-        
+        readonly InventarioDbContext _context;
+
         public ExistenciaHelp (InventarioDbContext context)
         {
             _context = context;
@@ -21,21 +22,16 @@ namespace Helper
 
         protected  IQueryable Queryable => throw new NotImplementedException();
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            gridView.DataSource = null;
-            List<DataGridViewTextBoxColumn> dataGridViewTextBoxColumns = new List<DataGridViewTextBoxColumn>();
-            int fila = columns.GetLength(0);
-            for (int i = 0; i <= fila - 1; i++)
-            {
-                var DataGridViewTextBoxColumn = GetDataGridViewTextBoxColumn(columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             bool.Parse(columns[i, 1]));
-                dataGridViewTextBoxColumns.Add(DataGridViewTextBoxColumn);
-            }
+        IQueryable<Existencia> IHelp<Existencia>.Queryable => throw new NotImplementedException();
 
-            gridView.Columns.AddRange(dataGridViewTextBoxColumns.ToArray());
+        public void Actualizar(int id, Existencia entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Existencia>  GetExistencias(int productoId)
@@ -43,7 +39,7 @@ namespace Helper
             return  _context.Existencias.Where(x => x.ProductoId == productoId).ToList();
            
         }
-        public void  GuardarExistencias(Existencia existencia)
+        public void  Guardar(Existencia existencia)
         {
             if(!Validar(existencia ))
             {
@@ -51,7 +47,7 @@ namespace Helper
             }
             _context.Existencias.Add(existencia);
             _context.SaveChanges();
-            MessageBox.Show("Se ha guardado la existencia", "",
+            Utilities .GetDialogResult("Se ha guardado la existencia", "",
     MessageBoxButtons.OK, MessageBoxIcon.Information );
 
 
@@ -60,7 +56,7 @@ namespace Helper
         {
             if (existencia.Cantidad == 0)
             {
-                MessageBox.Show("El campo existencia no puede ser vacio ni contener letras", "",
+                Utilities .GetDialogResult ("El campo existencia no puede ser vacio ni contener letras", "",
         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }

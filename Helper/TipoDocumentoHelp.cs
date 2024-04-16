@@ -10,8 +10,12 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public  class TipoDocumentoHelp:Help
+    public  class TipoDocumentoHelp:IHelp<TipoDocumento>
     {
+        readonly InventarioDbContext _context;
+
+
+
         public TipoDocumentoHelp(InventarioDbContext context)
         {
             _context = context;
@@ -23,12 +27,20 @@ namespace Helper
                 return _context.TipoDocumentos .AsQueryable();
             }
         }
-    
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
+        public void Actualizar(int id, TipoDocumento entity)
         {
             throw new NotImplementedException();
         }
- 
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Guardar(TipoDocumento entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

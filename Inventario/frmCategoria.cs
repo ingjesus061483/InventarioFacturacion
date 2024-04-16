@@ -17,7 +17,7 @@ namespace Inventario
     public partial class frmCategoria : Form
     {
         readonly CategoriaHelp _context;
-        Dictionary<string, object> collection;
+        int id;
         string message = "";       
         private Categoria categoria;
         public frmCategoria(CategoriaHelp  context)
@@ -27,6 +27,7 @@ namespace Inventario
         }
         void Nuevo()
         {
+            id = 0;
             categoria = null;
             txtNombre.Text = string.Empty;
             txtDescripcion.Text = string.Empty;
@@ -45,28 +46,30 @@ namespace Inventario
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            collection = new Dictionary<string, object>
+                       
+            if (id ==0)
             {
-                { "nombre", txtNombre.Text },
-                { "descripcion", txtDescripcion.Text }
-            };            
-            if (categoria==null)
-            {
-                _context.Guardar(collection);// Categorias.Add(categoria);
+                categoria = new Categoria
+                {
+                    Nombre = txtNombre.Text,
+                    Descripcion = txtDescripcion.Text
+                };
+                _context.Guardar(categoria);// Categorias.Add(categoria);
                 message = "la categoria ha sido guardada";
                 
             }
             else
             {
-                _context.Actualizar(categoria.Id, collection);
+                categoria.Nombre = txtNombre.Text;
+                categoria.Descripcion = txtDescripcion.Text;
+                _context.Actualizar(id, categoria );
             
                 message = "la categoria ha sido editada";
 
 
             }
-            MessageBox.Show(message, "",
+            Utilities.GetDialogResult(message, "",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-            categoria = null;
 
             Nuevo();
 
@@ -78,7 +81,7 @@ namespace Inventario
        //     DataTable dt = _context .Table ;
             frmBusqueda frmBusqueda = new frmBusqueda(_context                );
             frmBusqueda.ShowDialog();
-            int id = frmBusqueda.Id;
+           id = frmBusqueda.Id;
             categoria = _context.Queryable.Where(x=>x.Id == id).FirstOrDefault();
             if (categoria == null)
             {
@@ -94,7 +97,7 @@ namespace Inventario
         {
             if(categoria==null)
             {
-                MessageBox.Show("Debe seleccionar una categoria", "",
+                Utilities.GetDialogResult("Debe seleccionar una categoria", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -102,9 +105,9 @@ namespace Inventario
                  MessageBoxButtons.YesNo , MessageBoxIcon.Question);
             if (resp==DialogResult.Yes)
             {
-                _context.Eliminar  (categoria.Id );
+                _context.Eliminar  (id );
 
-                MessageBox.Show("La categoria fue eliminada", "",
+                Utilities.GetDialogResult("La categoria fue eliminada", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Nuevo();

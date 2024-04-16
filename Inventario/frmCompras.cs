@@ -76,7 +76,7 @@ namespace Inventario
             var datagridview = (DataGridView)sender;
 
            int id =int.Parse ( datagridview.Rows[e.RowIndex].Cells["Id"].Value.ToString());
-            var compra = _compraHelp.BuscarCompra(id);
+            var compra = _compraHelp.Queryable.Where (x=>x.Id== id).FirstOrDefault ();
             int col = e.ColumnIndex;
             switch (col)
             {
@@ -282,7 +282,7 @@ namespace Inventario
                    x.EstadoId,
                    x.EstadoNombre
                }).ToList()               ;
-                DataTable dt = _compraHelp.GetTable(Compras);
+                DataTable dt = Utilities .GetTable(Compras);
                 dt.TableName = "compras";
                 Db.Tables.Add(dt);
                 _ImpExpHelp.Exportar(Db);

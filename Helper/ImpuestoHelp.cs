@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace Helper
 {
-    public  class ImpuestoHelp:Help
-    {        
+    public  class ImpuestoHelp:IHelp<Impuesto>
+    {
+        readonly InventarioDbContext _context;
+
         public ImpuestoHelp(InventarioDbContext context)
         {
             _context = context;
@@ -22,12 +24,12 @@ namespace Helper
             return _context.Impuestos.Find(id);
 
         }
-        public  void GuardarImpuesto(Impuesto impuesto)
+        public  void Guardar(Impuesto impuesto)
         {
             _context.Impuestos.Add(impuesto);
             _context.SaveChanges();
         }
-        public void ActualizarImpuesto(int id, Impuesto impuesto)
+        public void Actualizar(int id, Impuesto impuesto)
         {
             var imp = BuscarImpuesto(id);
             imp.Nombre = impuesto.Nombre;
@@ -35,15 +37,12 @@ namespace Helper
             imp.Valor = impuesto.Valor;
             _context.SaveChanges();        
         }
-        public void EliminarImpuesto( Impuesto impuesto)
+        public void Eliminar( int id)
         {
-            _context.Impuestos.Remove(impuesto);
+            var imp = BuscarImpuesto(id);
+            _context.Impuestos.Remove(imp);
             _context.SaveChanges();
         }
 
-        public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

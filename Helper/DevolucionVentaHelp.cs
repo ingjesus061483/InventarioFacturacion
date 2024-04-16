@@ -9,39 +9,36 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Helper
 {
-   public  class DevolucionVentaHelp : Help
+   public  class DevolucionVentaHelp : IHelp<DevolucionVenta>
     {
-        
+        readonly InventarioDbContext _context;
+
         public DevolucionVentaHelp(InventarioDbContext context)
         {
             _context = context;
 
         }
 
-        protected  IQueryable Queryable => throw new NotImplementedException();
+        public   IQueryable Queryable => throw new NotImplementedException();
 
-        public void GuardarDevolucion(DevolucionVenta devolucionVenta)
+        IQueryable<DevolucionVenta> IHelp<DevolucionVenta>.Queryable => throw new NotImplementedException();
+
+        public void Actualizar(int id, DevolucionVenta entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Guardar(DevolucionVenta devolucionVenta)
         {
             _context.DevolucionVentas.Add(devolucionVenta);
             _context.SaveChanges();
         }
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            gridView.DataSource = null;
-            List<DataGridViewTextBoxColumn> dataGridViewTextBoxColumns = new List<DataGridViewTextBoxColumn>();
-            int fila = columns.GetLength(0);
-            for (int i = 0; i <= fila - 1; i++)
-            {
-                var DataGridViewTextBoxColumn = GetDataGridViewTextBoxColumn(columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             bool.Parse(columns[i, 1]));
-                dataGridViewTextBoxColumns.Add(DataGridViewTextBoxColumn);
-            }
-
-            gridView.Columns.AddRange(dataGridViewTextBoxColumns.ToArray());
-
-
-        }
+   
     }
 }

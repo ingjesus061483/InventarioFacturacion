@@ -11,10 +11,11 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class CompraHelp : Help
+    public class CompraHelp : IHelp<OrdenCompraDTO>
     {
 
         ExistenciaHelp _existenciaHelp;
+        readonly InventarioDbContext _context;
         public CompraHelp (InventarioDbContext context ,  ExistenciaHelp existenciaHelp )
         {
             _context = context;
@@ -59,67 +60,54 @@ namespace Helper
             }
         }
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            gridView.DataSource = null;
-            List<DataGridViewTextBoxColumn> dataGridViewTextBoxColumns = new List<DataGridViewTextBoxColumn>();
-            int fila = columns.GetLength(0);
-            for (int i = 0; i <= fila - 1; i++)
-            {
-                var DataGridViewTextBoxColumn = GetDataGridViewTextBoxColumn(columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             bool.Parse(columns[i, 1]));
-                dataGridViewTextBoxColumns.Add(DataGridViewTextBoxColumn);
-            }
-
-            gridView.Columns.AddRange(dataGridViewTextBoxColumns.ToArray());
-        }
-        bool Validar(OrdenCompra compra)
+        bool Validar(OrdenCompraDTO compra)
         {
             if (compra .ProveedorId  == 0)
             {
-                MessageBox.Show("El campo cliente no puede ser vacio ", "",
-    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               Utilities .GetDialogResult("El campo cliente no puede ser vacio ", "",
+                                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (compra .UsuarioId == 0)
             {
-                MessageBox.Show("El campo usuario no puede ser vacio", "",
-    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Utilities .GetDialogResult ("El campo usuario no puede ser vacio", "",
+                                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (compra .TipoDocumentoId == 0)
             {
-                MessageBox.Show("El campo tipo documento no puede ser vacio ni contener letras", "",
-    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Utilities .GetDialogResult ("El campo tipo documento no puede ser vacio ni contener letras", "",
+                                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (compra .Detalles.Count == 0)
             {
-                MessageBox.Show("No hay productos en el detalle", "",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Utilities .GetDialogResult ("No hay productos en el detalle", "",
+                                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (compra .TotalPagar <= 0)
             {
-                MessageBox.Show("El campo total pagar no puede ser vacio ni contener letras", "",
-    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Utilities .GetDialogResult ("El campo total pagar no puede ser vacio ni contener letras", "",
+                                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
         }
-        public void guardarCompra(OrdenCompra compra )
+        public void Guardar(OrdenCompraDTO compraDTO  )
         {
-            if(!Validar (compra))
+            if(!Validar (compraDTO ))
             {
                 return;
             }
+            OrdenCompra compra = new OrdenCompra
+            {
+
+            }; 
             _context.OrdenCompras .Add(compra );
             _context.SaveChanges();
-            var compr = _context.OrdenCompras
-                                            .Where(x => x.Codigo == compra .Codigo)
-                                            .FirstOrDefault();
+            var compr = Queryable.Where(x => x.Codigo == compra .Codigo)
+                                 .FirstOrDefault();
             foreach (var item in compr .Detalles)
             {
                 item.OrdenCompraId  = compr .Id;
@@ -127,20 +115,20 @@ namespace Helper
                 _context.SaveChanges();
             }
         }
-        public void  ActualizarCompra(string codigo,OrdenCompra compra)
+        public void  Actualizar(int id,OrdenCompraDTO compraDTO)
         {
-            OrdenCompra  compraold = _context.OrdenCompras.Where(x => x.Codigo == codigo)
+            OrdenCompra  compraold = _context.OrdenCompras.Where(x => x.Id  == id)
                                                       .FirstOrDefault();
-            compraold.FormapagoId =compra.FormapagoId ;
-            compraold.EstadoId =compra .EstadoId ;
-            compraold.Observaciones = compra .Observaciones;
-            compraold.FechaEntrega = compra .FechaEntrega ;
+            compraold.FormapagoId =compraDTO.FormapagoId ;
+            compraold.EstadoId =compraDTO .EstadoId ;
+            compraold.Observaciones = compraDTO .Observaciones;
+            compraold.FechaEntrega = compraDTO .FechaEntrega ;
             _context.SaveChanges();
 
         }
         public void RecibirMercancia (string codigo )
         {
-            OrdenCompra compra = BuscarCompra(codigo);
+            OrdenCompraDTO compra =Queryable.Where(x=>x.Codigo .Contains( codigo)).FirstOrDefault();
             foreach (OrdenCompraDetalle item in compra.Detalles )
             {
                 Existencia existencia = new Existencia
@@ -151,63 +139,8 @@ namespace Helper
                     Entrada = true,
                     Fecha = DateTime.Now
                 };
-                _existenciaHelp.GuardarExistencias(existencia);
+                _existenciaHelp.Guardar(existencia);
             }
-        }
-        public OrdenCompra BuscarCompra(int id)
-        {
-            var compra = Queryable.Where(x => x.Id == id) .AsEnumerable().Select(
-                x => new OrdenCompra  {
-                    Id =      x.Id,
-                    Codigo= x.Codigo,
-                    Fecha=  x.Fecha,
-                    FechaEntrega=x.FechaEntrega,
-                    Observaciones = x.Observaciones,
-                    Usuario=x.Usuario,
-                    UsuarioId = x.UsuarioId,
-                    Proveedor = x.Proveedor ,
-                    ProveedorId = x.ProveedorId ,
-                    TipoDocumento=x.TipoDocumento,                    
-                    TipoDocumentoId=x.TipoDocumentoId,
-                    Impuestos=x.Impuestos,
-                    FormaPago=x. FormaPago,
-                    FormapagoId = x.FormapagoId,             
-                    Descuento=   x.Descuento ,
-                    Recibido=  x.Recibido,                
-                    Detalles=x.Detalles,
-                    EstadoId= x.EstadoId ,
-                    Estado=   x.Estado
-                }).FirstOrDefault();
-        
-            return compra;
-
-        }
-        public OrdenCompra BuscarCompra(string  codigo)
-        {
-            var compra =  Queryable.Where(x => x.Codigo  == codigo ).Select(
-                x => new OrdenCompra
-                {
-                    Id = x.Id,
-                    Codigo = x.Codigo,
-                    Fecha = x.Fecha,
-                    FechaEntrega = x.FechaEntrega,
-                    Observaciones = x.Observaciones,
-                    Usuario = x.Usuario,
-                    UsuarioId = x.UsuarioId,
-                    Proveedor = x.Proveedor,
-                    ProveedorId = x.ProveedorId,
-                    TipoDocumento = x.TipoDocumento,
-                    TipoDocumentoId = x.TipoDocumentoId,
-                    FormaPago = x.FormaPago,
-                    FormapagoId = x.FormapagoId,
-                    Descuento = x.Descuento,
-                    Recibido = x.Recibido,
-                    Detalles = x.Detalles,
-                    EstadoId = x.EstadoId,
-                    Estado = x.Estado
-                }).FirstOrDefault();
-
-            return compra;           
         }
         public void AnularCompra(int id, List<OrdenCompraDetalle> detalles)
         {
@@ -221,7 +154,7 @@ namespace Helper
                     Entrada = false,
                     Fecha = DateTime.Now
                 };
-                _existenciaHelp.GuardarExistencias(existencia);
+                _existenciaHelp.Guardar(existencia);
             }
             var compra = _context.OrdenCompras.Find(id);
             compra .EstadoId = 4;
@@ -229,6 +162,9 @@ namespace Helper
             _context.SaveChanges();
         }
 
-
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

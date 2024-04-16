@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 
 namespace Helper
 {
-    public class EstadoHelp : Help
+    public class EstadoHelp : IHelp<Estado>
     {
-        public    EstadoHelp(InventarioDbContext context )
+        readonly InventarioDbContext _context;
+
+        public EstadoHelp(InventarioDbContext context )
         {
             _context = context;
 
@@ -24,8 +26,17 @@ namespace Helper
             } 
         }
 
- 
-        public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
+        public void Actualizar(int id, Estado entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Guardar(Estado entity)
         {
             throw new NotImplementedException();
         }

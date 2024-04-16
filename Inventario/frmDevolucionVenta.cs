@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Inventario
 {
     public partial class frmDevolucionVenta : Form
     {
-        public  FacturaEncabezado Factura{ get; set; }        
+        public  FacturaDTO Factura{ get; set; }        
         Motivo Motivo;
         FacturaHelp _facturaHelp;
         MotivoHelp _motivoHelp;
@@ -77,7 +78,7 @@ namespace Inventario
                     Motivo = Motivo,
                     MotivoId = Motivo.Id
                 };
-                _devolucionVentaHelp.GuardarDevolucion(devolucionVenta);
+                _devolucionVentaHelp.Guardar(devolucionVenta);
             }
             _facturaHelp.AnularFactura(Factura.Id,detalles  );
         }

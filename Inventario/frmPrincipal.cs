@@ -1,5 +1,6 @@
 ﻿
 using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Drawing;
@@ -8,7 +9,7 @@ namespace Inventario
 {
     public partial class frmPrincipal : Form
     {
-        Usuario Usuario;
+        UsuarioDTO Usuario;
 
         public frmPrincipal(ProductoHelp productContext,
                             CategoriaHelp categoriaHelp,

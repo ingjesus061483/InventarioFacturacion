@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -15,20 +16,18 @@ namespace Inventario
 {
     public partial class frmProducto : Form
     {
-        string ruta;
+        string ruta;       
         public int CategoriaId { get; set; }
         CategoriaHelp _categoriaContext;
         UnidaMedidaHelp _UnidaMedidaContext;
-        ExistenciaHelp  _existenciaHelp ;
         ProductoHelp _context;
-public Producto Producto { get; set; }
+public ProductoDTO Producto { get; set; }
         public frmProducto(ProductoHelp context,CategoriaHelp categoriaContext,
-                            UnidaMedidaHelp unidaMedidaContext,
-                            ExistenciaHelp existenciaHelp  )
+                            UnidaMedidaHelp unidaMedidaContext)
         {
 
             InitializeComponent();
-            _existenciaHelp  = existenciaHelp ;
+         
             _categoriaContext = categoriaContext;
             _UnidaMedidaContext = unidaMedidaContext ;
             _context = context;
@@ -36,8 +35,8 @@ public Producto Producto { get; set; }
   
         private void frmArticulo_Load(object sender, EventArgs e)
         {            
-            _categoriaContext.Cmb(cmbCategoria,_categoriaContext.Queryable .ToList ());
-           _UnidaMedidaContext. Cmb(cmbUnidadMedida,_UnidaMedidaContext.Queryable .ToList());
+            Utilities .Cmb(cmbCategoria,_categoriaContext.Queryable .ToList ());
+           Utilities . Cmb(cmbUnidadMedida,_UnidaMedidaContext.Queryable .ToList());
    
             if( Producto==null)
             {
@@ -57,7 +56,7 @@ public Producto Producto { get; set; }
 
         private void btnAbrir_Click(object sender, EventArgs e)
         {
-            ruta =_context . CargarImagen(PictureBox1);
+            ruta=Utilities  . CargarImagen(PictureBox1);
         }
 
         private void Cargar()
@@ -101,7 +100,7 @@ public Producto Producto { get; set; }
 
             if (Producto == null)
             {
-                Producto = new Producto
+                Producto = new ProductoDTO
                 {
                     RutaImagen = ruta,
                     CategoriaId = cmbCategoria.SelectedValue != null ? int.Parse(cmbCategoria.SelectedValue.ToString()) : -1,
@@ -112,7 +111,7 @@ public Producto Producto { get; set; }
                     Nombre = txtNombre.Text,
                     Descripcion = txtDescripcion.Text
                 };
-                _context.guardarProducto(Producto);
+                _context.Guardar(Producto);
             }
             else
             {
@@ -123,7 +122,7 @@ public Producto Producto { get; set; }
                 Producto.Precio = precio;
                 Producto .Nombre = txtNombre.Text;
                 Producto .Descripcion = txtDescripcion.Text;        
-                _context .ActualizarProducto(Producto.Id,Producto ) ;
+                _context .Actualizar(Producto.Id,Producto ) ;
             }
             this.Close();
         }

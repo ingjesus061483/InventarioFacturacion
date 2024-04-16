@@ -44,7 +44,7 @@ namespace Inventario
             int col = e.ColumnIndex; 
             var codigo = gridView.Rows[e.RowIndex].Cells["codigo"].Value.ToString();
             int.TryParse( gridView.Rows[e.RowIndex].Cells["id"].Value.ToString(),out int id);
-            var producto = _productoHelp.BuscarProducto(codigo);
+            var producto = _productoHelp.Queryable.Where( x=>x.Id==id).FirstOrDefault ();
             switch (col)
             {
                 case 0:
@@ -70,8 +70,7 @@ namespace Inventario
                     {
                         frmProducto frmProducto = new frmProducto(_productoHelp,
                                               _categoriaHelp,
-                                              _unidaMedidaHelp,
-                                              _existenciaHelp);
+                                              _unidaMedidaHelp);
                         frmProducto.Producto  = producto ;
                         frmProducto.ShowDialog();
                         break;
@@ -85,7 +84,7 @@ namespace Inventario
                                               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
-                            _productoHelp.EliminarProducto(id);
+                            _productoHelp.Eliminar(id);
                         }
                         break;
                     }               
@@ -121,7 +120,7 @@ namespace Inventario
             Db = new DataSet();
             mostrarProducto();
 
-            _categoriaHelp.Cmb(cmbCategoria,_categoriaHelp.Queryable .ToList());
+            Utilities .Cmb(cmbCategoria,_categoriaHelp.Queryable .ToList());
 
         }
 
@@ -154,7 +153,7 @@ namespace Inventario
                 UnidadMedidaId = x.UnidadMedidaId,
                 UnidadMedida = x.UnidadMedida.Nombre
             }).ToList();
-            Db.Tables.Add(_productoHelp .GetTable (productos ));
+            Db.Tables.Add(Utilities  .GetTable (productos ));
             _impExpHelp .Exportar(Db);
             Db.Clear();
 
@@ -162,10 +161,9 @@ namespace Inventario
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            frmProducto frmProducto =new frmProducto(_productoHelp,
+            frmProducto frmProducto = new frmProducto(_productoHelp,
                                                      _categoriaHelp,
-                                                     _unidaMedidaHelp, 
-                                                     _existenciaHelp);
+                                                     _unidaMedidaHelp);
             if(cmbCategoria.SelectedValue != null)
             {
                 frmProducto.CategoriaId = int.Parse(cmbCategoria.SelectedValue.ToString());          

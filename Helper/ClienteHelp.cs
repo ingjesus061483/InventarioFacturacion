@@ -12,13 +12,14 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class ClienteHelp:Help
+    public class ClienteHelp:IHelp<ClienteDTO>
     {
+        readonly  InventarioDbContext _context;
         public ClienteHelp (InventarioDbContext context)
         {
             _context = context;
         }
-      public   IQueryable<ClienteDTO>   Queryable
+        public  IQueryable<ClienteDTO>   Queryable
         {
             get
             {
@@ -34,17 +35,18 @@ namespace Helper
                             Direccion = cli.Direccion,
                             Telefono = cli.Telefono,
                             Email = cli.Email,
-                            FechaNacimiento=cli.FechaNacimiento ,
-                            PersonaNatural=cli .PersonaNatural ,
+                            FechaNacimiento = cli.FechaNacimiento,
+                            PersonaNatural = cli.PersonaNatural,
                             TipoIdentificacionId = cli.TipoIdentificacionId,
                             TipoIdentificacion = cli.TipoIdentificacion
                         });
+                        
             }
         }
         
 
         
-        public Cliente GetCliente(int id)
+      /*  public Cliente GetCliente(int id)
         {
             return Queryable.Where (x =>x.Id== id).AsEnumerable().Select(x=>new Cliente {
                 Id = x.Id,
@@ -59,10 +61,146 @@ namespace Helper
                 TipoIdentificacionId = x.TipoIdentificacionId,
                 TipoIdentificacion = x.TipoIdentificacion
             }).FirstOrDefault() ;
-        } 
-        public Cliente GetCliente(string  identificacion)
+        }*/ 
+      
+        public  void Guardar(ClienteDTO clienteDTO )
         {
-            return Queryable.Where(x => x.Identificacion  ==identificacion ).AsEnumerable().Select(x => new Cliente
+            if (!Validar(clienteDTO ))
+            {
+                return;
+            }
+            Cliente cliente = new Cliente
+            {
+                Identificacion = clienteDTO .Identificacion,
+                Nombre =clienteDTO.Nombre,
+                Apellido =clienteDTO.Apellido,
+                Direccion =clienteDTO .Direccion,
+                Telefono =clienteDTO .Telefono,
+                Email =clienteDTO .Email,
+                FechaNacimiento =clienteDTO .FechaNacimiento,
+                PersonaNatural= clienteDTO  .PersonaNatural,
+                TipoIdentificacionId =int.Parse (clienteDTO  .TipoIdentificacionId.ToString ()),
+            };
+            _context.Clientes.Add(cliente);
+            _context.SaveChanges();
+            Utilities .GetDialogResult ("El cliente ha sido guardado", "",
+                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void Actualizar(int id, ClienteDTO collection)
+        {
+            if (!Validar(collection ))
+            {
+                return;
+            }
+            var cliente = Queryable.Where(x => x.Id == id).AsEnumerable().Select(x => new Cliente
+            {
+                Id = x.Id,
+                Identificacion = x.Identificacion,
+                Nombre = x.Nombre,
+                Apellido = x.Apellido,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Email = x.Email,
+                FechaNacimiento = x.FechaNacimiento,
+                PersonaNatural = x.PersonaNatural,
+                TipoIdentificacionId = x.TipoIdentificacionId,
+                TipoIdentificacion = x.TipoIdentificacion
+            }).FirstOrDefault(); 
+            cliente.Nombre = collection.Nombre;
+            cliente.Apellido = collection.Apellido;
+            cliente.Direccion = collection.Direccion;
+            cliente.Telefono = collection.Telefono;
+            cliente.Email = collection.Email;
+            cliente.FechaNacimiento = collection.FechaNacimiento;
+            cliente.PersonaNatural = collection.PersonaNatural;
+            cliente.TipoIdentificacionId = collection.TipoIdentificacionId;
+            _context.SaveChanges();
+            Utilities .GetDialogResult ("El cliente ha sido actualizado", "",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public  void Eliminar(int id)
+        {
+            var cliente = Queryable.Where(x => x.Id == id).AsEnumerable().Select(x => new Cliente
+            {
+                Id = x.Id,
+                Identificacion = x.Identificacion,
+                Nombre = x.Nombre,
+                Apellido = x.Apellido,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Email = x.Email,
+                FechaNacimiento = x.FechaNacimiento,
+                PersonaNatural = x.PersonaNatural,
+                TipoIdentificacionId = x.TipoIdentificacionId,
+                TipoIdentificacion = x.TipoIdentificacion
+            }).FirstOrDefault(); 
+            _context.Clientes.Remove(cliente);
+            _context.SaveChanges();
+
+        }
+      
+        bool Validar(ClienteDTO collection )
+        {
+            if (string.IsNullOrEmpty(collection.Identificacion))
+            {
+                Utilities .GetDialogResult ("El campo identificacion no puede ser vacio", "",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);                
+                return false ;
+            }
+            if (string.IsNullOrEmpty(collection.Nombre))
+            {
+                Utilities .GetDialogResult ("El campo Nombre no puede ser vacio", "",
+                           MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+                return false ;
+
+            }
+            if (string.IsNullOrEmpty(collection.Direccion ))
+            {
+                Utilities .GetDialogResult ("El campo direccion no puede ser vacio", "",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+                return false ;
+            }
+            if (string.IsNullOrEmpty(collection.Telefono))
+            {
+                Utilities .GetDialogResult ("El campo telefono no puede ser vacio", "",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
+                return false ;
+            }
+
+            if (string.IsNullOrEmpty(collection.Email))
+            {
+                Utilities .GetDialogResult ("El campo email no puede ser vacio", "",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+                return false ;
+            }
+            if (!Utilities .EmailBienEscrito(collection.Email))
+            {
+                Utilities .GetDialogResult ("El campo email esta mal escrito", "",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+                return false ;
+            }
+            if (collection.TipoIdentificacionId== -1)
+            {
+                Utilities.GetDialogResult("Debe seleccionar un valor para el campo  tipoidentificacion ", "",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);                
+                return false ;
+            }
+            return true;
+        }
+
+        /*public  ClienteDTO Buscar(int id)
+        {
+            return 
+        }
+
+        public Cliente Buscar(string codigo)
+        {
+            return Queryable.Where(x => x.Identificacion .Contains (codigo )).AsEnumerable().Select(x => new Cliente
             {
                 Id = x.Id,
                 Identificacion = x.Identificacion,
@@ -76,116 +214,12 @@ namespace Helper
                 TipoIdentificacionId = x.TipoIdentificacionId,
                 TipoIdentificacion = x.TipoIdentificacion
             }).FirstOrDefault();
-        }
-        public void Guardar(Dictionary<string, object> collection)
-        {
-            if (!Validar(collection))
-            {
-                return;
-            }
-            Cliente cliente = new Cliente
-            {
-                Identificacion = collection["Identificacion"].ToString(),
-                Nombre = collection["Nombre"].ToString(),
-                Apellido =collection ["Apellido"].ToString(),
-                Direccion =collection["Direccion"].ToString(),
-                Telefono = collection["Telefono"].ToString(),
-                Email =collection["Email"].ToString(),
-                FechaNacimiento =(DateTime )collection["FechaNacimiento"],
-                PersonaNatural=(bool)collection["PersonaNatural"],
-                TipoIdentificacionId =int.Parse (collection["TipoIdentificacionId"].ToString()),
-            };
-            _context.Clientes.Add(cliente);
-            _context.SaveChanges();
-            MessageBox.Show("El cliente ha sido guardado", "",
-  MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        public void Actualizar(int id, Dictionary<string, object> collection)
-        {
-            if (!Validar(collection ))
-            {
-                return;
-            }
-            var cliente = GetCliente(id);
-            cliente.Nombre = collection["Nombre"].ToString();
-            cliente.Apellido = collection["Apellido"].ToString();
-            cliente.Direccion = collection["Direccion"].ToString();
-            cliente.Telefono = collection["Telefono"].ToString();
-            cliente.Email = collection["Email"].ToString();
-            cliente.FechaNacimiento = (DateTime)collection["FechaNacimiento"];
-            cliente.PersonaNatural = (bool)collection["PersonaNatural"];
-            cliente.TipoIdentificacionId = int.Parse(collection["TipoIdentificacionId"].ToString());
-            _context.SaveChanges();
+        }*/
 
-            MessageBox.Show("El cliente ha sido actualizado", "",
-  MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        public void Eliminar(int id)
-        {
-            var cliente = GetCliente(id);
-            _context.Clientes.Remove(cliente);
-            _context.SaveChanges();
-
-        }
-      
-        bool Validar(Dictionary<string, object> collection )
-        {
-            if (string.IsNullOrEmpty(collection ["Identificacion"].ToString ()))
-            {
-                MessageBox.Show("El campo identificacion no puede ser vacio", "",
-MessageBoxButtons.OK, MessageBoxIcon.Warning);                
-                return false ;
-            }
-            if (string.IsNullOrEmpty(collection["Nombre"].ToString()))
-            {
-                MessageBox.Show("El campo Nombre no puede ser vacio", "",
-MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
-                return false ;
-
-            }
-            if (string.IsNullOrEmpty(collection["Direccion"].ToString()))
-            {
-                MessageBox.Show("El campo direccion no puede ser vacio", "",
-MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
-                return false ;
-            }
-            if (string.IsNullOrEmpty(collection["Telefono"].ToString ()))
-            {
-                MessageBox.Show("El campo telefono no puede ser vacio", "",
-MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            
-                return false ;
-            }
-
-            if (string.IsNullOrEmpty(collection["Email"].ToString ()))
-            {
-                MessageBox.Show("El campo email no puede ser vacio", "",
-MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
-                return false ;
-            }
-            if (!EmailBienEscrito(collection["Email"].ToString()))
-            {
-                MessageBox.Show("El campo email esta mal escrito", "",
-MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
-                return false ;
-            }
-            if (int.Parse(collection["TipoIdentificacionId"].ToString())== -1)
-            {
-                MessageBox.Show("Debe seleccionar un valor para el campo  tipoidentificacion ", "",
-MessageBoxButtons.OK, MessageBoxIcon.Warning);                
-                return false ;
-            }
-            return true;
-        }
-
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
-        }
+        //public override void GetDatagrid(DataGridView gridView, string[,] columns)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 
 }

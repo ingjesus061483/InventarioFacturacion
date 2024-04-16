@@ -11,9 +11,10 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class ProductoHelp:Help
+    public class ProductoHelp:IHelp<ProductoDTO >
     {
-        
+        readonly InventarioDbContext _context;
+
         public ProductoHelp(InventarioDbContext context)
         {
             _context = context;
@@ -82,19 +83,29 @@ namespace Helper
 
         }
 
-        public void  guardarProducto(Producto producto )
+        public void Guardar(ProductoDTO productoDTO)
         {
-            if (!Validar (producto))
+            if (!Validar(productoDTO))
             {
                 return;
             }
+            Producto producto = new Producto {
+                Codigo =productoDTO.Codigo ,
+                RutaImagen = productoDTO.RutaImagen ,
+            CategoriaId = productoDTO.CategoriaId,
+            UnidadMedidaId = productoDTO.UnidadMedidaId,
+            Costo = productoDTO.Costo,
+            Precio = productoDTO .Precio,
+            Nombre = productoDTO .Nombre,
+            Descripcion = productoDTO .Descripcion,
+        };
             _context.Productos.Add(producto);
             _context.SaveChanges();
-            MessageBox.Show("El producto ha sido guardado", "",
+            Utilities .GetDialogResult ("El producto ha sido guardado", "",
            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-        public void ActualizarProducto(int id ,Producto  prod)
+        public void Actualizar(int id ,ProductoDTO  prod)
         {
             if (!Validar(prod))
             {
@@ -113,52 +124,52 @@ namespace Helper
             MessageBox.Show("El producto ha sido actualizado", "",
            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        public void EliminarProducto(int id)
+        public void Eliminar(int id)
         {
             var producto = BuscarProducto(id);
             _context.Productos.Remove(producto);
             _context.SaveChanges();
         }
-        bool Validar(Producto producto)
+        bool Validar(ProductoDTO producto)
         {
             if (string.IsNullOrEmpty(producto . Codigo))
             {
-                MessageBox.Show("El campo codigo no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo codigo no puede ser vacio", "",
                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
                 return false ;
             }
             if (string.IsNullOrEmpty(producto.Nombre))
             {
-                MessageBox.Show("El campo nombre no puede ser vacio", "",
+                Utilities.GetDialogResult("El campo nombre no puede ser vacio", "",
               MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
                 return false ;
             }
             if (producto .Costo == 0)
             {
-                MessageBox.Show("El campo costo  no puede ser vacio ni contener letras", "",
+                Utilities.GetDialogResult("El campo costo  no puede ser vacio ni contener letras", "",
               MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
                 return false ;
             }
             if (producto . Precio == 0)
             {
-                MessageBox.Show("El campo precio no puede ser vacio ni contener letras", "",
+                Utilities.GetDialogResult("El campo precio no puede ser vacio ni contener letras", "",
                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
                 return false ;
             }
             if (producto . CategoriaId == -1)
             {
-                MessageBox.Show("El campo categoria no puede ser vacio", "",
+                Utilities.GetDialogResult("El campo categoria no puede ser vacio", "",
                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
                 return false ;
             }
             if (producto . UnidadMedidaId == -1)
             {
-                MessageBox.Show("El campo unida medida no puede ser vacio", "",
+                Utilities.GetDialogResult("El campo unida medida no puede ser vacio", "",
                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
                 return false;
@@ -166,21 +177,6 @@ namespace Helper
             return true; 
         }
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            gridView.DataSource = null;
-            List<DataGridViewTextBoxColumn> dataGridViewTextBoxColumns = new List<DataGridViewTextBoxColumn>();
-            int fila = columns.GetLength(0);
-            for (int i = 0; i <= fila - 1; i++)
-            {
-                var DataGridViewTextBoxColumn = GetDataGridViewTextBoxColumn(columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             bool.Parse(columns[i, 1]));
-                dataGridViewTextBoxColumns.Add(DataGridViewTextBoxColumn);
-            }
-
-            gridView.Columns.AddRange(dataGridViewTextBoxColumns.ToArray());
-        }
+      
     }
 }

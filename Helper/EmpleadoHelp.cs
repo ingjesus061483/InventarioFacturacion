@@ -11,8 +11,10 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class EmpleadoHelp:Help
+    public class EmpleadoHelp:IHelp<EmpleadoDTO>
     {
+        readonly InventarioDbContext _context;
+
         public EmpleadoHelp(InventarioDbContext context)
         {
             _context = context;
@@ -90,16 +92,28 @@ namespace Helper
             }
             return empleado;
         }
-        public void GuadarEmpleado (Empleado empleado)
+        public void Guardar (EmpleadoDTO empleadoDTO )
         {
-            if(!Validar (empleado ))
+            if(!Validar (empleadoDTO ))
             {
                 return;
             }
+            Empleado empleado = new Empleado 
+            {
+                Identificacion = empleadoDTO.Identificacion,
+                Nombre = empleadoDTO.Nombre,
+                Apellido = empleadoDTO.Apellido,
+                Direccion = empleadoDTO.Direccion,
+                Telefono = empleadoDTO.Telefono,
+               /* Email = clienteDTO.Email,*/
+                FechaNacimiento = empleadoDTO.FechaNacimiento,
+                PersonaNatural = empleadoDTO.PersonaNatural,
+                TipoIdentificacionId = empleadoDTO.TipoIdentificacionId,
+            };
             _context.Empleados.Add(empleado);
             _context.SaveChanges();
         }
-        bool Validar(Empleado empleado)
+        bool Validar(EmpleadoDTO empleado)
         {
             if ( string.IsNullOrEmpty ( empleado .Nombre))
             {
@@ -133,7 +147,7 @@ namespace Helper
             }
             return true;
         }
-        public void ActualizarEmpleado(int id ,Empleado  empleado )
+        public void Actualizar(int id ,EmpleadoDTO  empleado )
         {
             if(! Validar(empleado ))
             {
@@ -148,18 +162,13 @@ namespace Helper
             _context.SaveChanges();
 
         }
-        public void EliminarEmpleado(int id)
+        public void Eliminar(int id)
         {
             var empl = BuscarEmpleado(id);
             _context.Empleados.Remove(empl);
             _context.SaveChanges();
 
 
-        }
-
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
         }
     }
 }

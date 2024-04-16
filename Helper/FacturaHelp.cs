@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class FacturaHelp:Help
+    public class FacturaHelp:IHelp<FacturaDTO>
     {
-      //  InventarioDbContext _context;
+     readonly  InventarioDbContext _context;
         ExistenciaHelp _existenciaHelp; 
         public FacturaHelp  (InventarioDbContext context,ExistenciaHelp existenciaHelp )
         {
@@ -85,47 +85,47 @@ namespace Helper
             }). FirstOrDefault ();
             return factura;
         }
-        bool Validar(FacturaEncabezado factura )
+        bool Validar(FacturaDTO factura )
         {
             if(factura.ClienteId ==0)
             {
-                MessageBox.Show("El campo cliente no puede ser vacio ", "",
+                Utilities .GetDialogResult ("El campo cliente no puede ser vacio ", "",
     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (factura .UsuarioId==0)
             {
-                MessageBox.Show("El campo usuario no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo usuario no puede ser vacio", "",
     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (factura.FormapagoId == 0)
             {
-                MessageBox.Show("El campo forma pago no puede ser vacio ", "",
+                Utilities .GetDialogResult ("El campo forma pago no puede ser vacio ", "",
     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (factura.TipoDocumentoId == 0)
             {
-                MessageBox.Show("El campo tipo documento no puede ser vacio ni contener letras", "",
+                Utilities.GetDialogResult ("El campo tipo documento no puede ser vacio ni contener letras", "",
     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if(factura .Detalles .Count == 0)
             {
-                MessageBox.Show("No hay productos en el detalle", "",
+                Utilities.GetDialogResult ("No hay productos en el detalle", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (factura.TotalPagar <= 0)
             {
-                MessageBox.Show("El campo recivido no puede ser vacio ni contener letras", "",
+                Utilities.GetDialogResult ("El campo recivido no puede ser vacio ni contener letras", "",
     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (factura .Recibido <= 0)
             {
-                MessageBox.Show("El campo recivido no puede ser vacio ni contener letras", "",
+                Utilities.GetDialogResult ("El campo recivido no puede ser vacio ni contener letras", "",
     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
@@ -143,21 +143,21 @@ namespace Helper
                     Entrada = true,
                     Fecha = DateTime.Now
                 };
-                _existenciaHelp.GuardarExistencias(existencia);
+                _existenciaHelp.Guardar(existencia);
             }
             var fact = _context.FacturaEncabezados.Find(id);
             fact.EstadoId = 4;
             fact.Observaciones = "Se ha anulado la factura";
             _context.SaveChanges();
         }
-        public void GuardarFactura(FacturaEncabezado factura)
+        public void Guardar(FacturaDTO facturaDTO)
         {
-            if(!Validar(factura))
+            if(!Validar(facturaDTO))
             {
                 return;
             }
-            var detalles = factura.Detalles;
-            factura.Detalles = null;
+            var detalles = facturaDTO.Detalles;
+            FacturaEncabezado factura = new FacturaEncabezado { };
             _context.FacturaEncabezados.Add(factura);
             _context.SaveChanges();
          
@@ -176,38 +176,19 @@ namespace Helper
                     Entrada = false,
                     Fecha = DateTime.Now
                 };
-                _existenciaHelp.GuardarExistencias(existencia);
+                _existenciaHelp.Guardar(existencia);
             }
            
         }
-        
-        public override void GetDatagrid(DataGridView gridView,string [,]columns)
-        {
-            gridView.DataSource = null;
-            List<DataGridViewTextBoxColumn> dataGridViewTextBoxColumns = new List<DataGridViewTextBoxColumn>();
-            int fila = columns.GetLength(0);
-            for (int i = 0; i <= fila  - 1; i++)
-            {
-                var DataGridViewTextBoxColumn = GetDataGridViewTextBoxColumn(columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             columns[i, 0],
-                                                                             bool.Parse(columns[i, 1]));
-                bool encontrado = false;
-                foreach(DataGridViewColumn dataGridViewColumn in gridView .Columns )
-                {
-                    if (dataGridViewColumn .Name ==DataGridViewTextBoxColumn .Name )
-                    {
-                        encontrado = true;
-                        break;
-                    }
-                }
-                if (!encontrado)
-                {
-                    gridView.Columns.Add(DataGridViewTextBoxColumn);
-                }
-                dataGridViewTextBoxColumns.Add(DataGridViewTextBoxColumn);
-            }
 
-        }     
+        public void Actualizar(int id, FacturaDTO entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

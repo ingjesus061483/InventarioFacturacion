@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -55,7 +56,7 @@ namespace Inventario
         void Nuevo()
         {
             usuario = _usuarioHelp.Usuario;
-            Compra = new OrdenCompra();
+            Compra = new OrdenCompraDTO();
             if (usuario != null)
             {
                 Empleado.Subir(usuario.Empleados[0].Identificacion, usuario.Empleados[0].Nombre);
@@ -103,7 +104,7 @@ namespace Inventario
                 usuario = null;
                 return;
             }
-            usuario = empleado.Usuario;
+            usuario =_usuarioHelp .Queryable .Where (x=>x.Id == empleado.Usuario.Id ).FirstOrDefault() ;
             Compra.UsuarioId = usuario.Id;
         }
         private void btnsalir_Click(object sender, EventArgs e)
@@ -135,7 +136,7 @@ namespace Inventario
         private void frmCompra_Load(object sender, EventArgs e)
         {
 
-            _tipoDocumentoHelp.Cmb(cmbTipoDocumento,_tipoDocumentoHelp .Queryable.ToList ());
+            Utilities .Cmb(cmbTipoDocumento,_tipoDocumentoHelp .Queryable.ToList ());
             if (Compra == null)
             {
                 Nuevo();
@@ -219,7 +220,7 @@ namespace Inventario
             Compra.TipoDocumentoId = tipodocumento;
             Compra.Fecha = dtpfecha.Value ;
             Compra.FechaEntrega = dtpFechaEntrega.Value;
-            _compraHelp.guardarCompra(Compra);
+            _compraHelp.Guardar(Compra);
             if(Compra.Fecha == Compra.FechaEntrega)
             {
 

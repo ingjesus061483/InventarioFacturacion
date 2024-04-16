@@ -70,6 +70,7 @@
     <Compile Include="DTO\FacturaDTO.cs" />
     <Compile Include="ExportarHelp.cs" />
     <Compile Include="ImportarHelp.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="View\EmpresaView.cs" />
     <Compile Include="View\PersonaView.cs" />
     <Compile Include="DTO\ProductoDTO.cs" />
@@ -86,7 +87,7 @@
     <Compile Include="ExistenciaHelp.cs" />
     <Compile Include="FacturaHelp.cs" />
     <Compile Include="FormaPagoHelp.cs" />
-    <Compile Include="Help.cs" />
+    <Compile Include="IHelp.cs" />
     <Compile Include="ImpresoraHelp.cs" />
     <Compile Include="ImpuestoHelp.cs" />
     <Compile Include="MotivoHelp.cs" />

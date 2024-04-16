@@ -12,9 +12,10 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class ProveedorHelp:Help 
+    public class ProveedorHelp:IHelp <ProveedorDTO>
     {
-        
+        readonly InventarioDbContext _context;
+
         public ProveedorHelp(InventarioDbContext context  )
         {
             _context = context;
@@ -72,19 +73,29 @@ namespace Helper
                 TipoIdentificacion = x.TipoIdentificacion
             }).FirstOrDefault();
         }
-        public void GuardarProveedor(Proveedor Proveedor)
+        public void Guardar(ProveedorDTO Proveedor)
         {
             if (!Validar(Proveedor))
             {
                 return;
             }
-            _context.Proveedors.Add(Proveedor);
+            var prov = new Proveedor
+            {
+                Identificacion=Proveedor .Identificacion ,
+                Nombre = Proveedor.Nombre,
+                Apellido = Proveedor.Apellido,
+                Direccion = Proveedor.Direccion,
+                Telefono = Proveedor.Telefono,
+                Email = Proveedor.Email,
+                TipoIdentificacionId = Proveedor.TipoIdentificacionId
+            };
+            _context.Proveedors.Add(prov );
             _context.SaveChanges();
-            MessageBox.Show("El Proveedor ha sido guardado", "",
+            Utilities.GetDialogResult ("El Proveedor ha sido guardado", "",
   MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-        public void ActualizarProveedor(int id, Proveedor Proveedor)
+        public void Actualizar(int id, ProveedorDTO Proveedor)
         {
             if (!Validar(Proveedor))
             {
@@ -99,40 +110,27 @@ namespace Helper
             prov.TipoIdentificacionId = Proveedor.TipoIdentificacionId;
             _context.SaveChanges();
 
-            MessageBox.Show("El Proveedor ha sido actualizado", "",
+            Utilities.GetDialogResult ("El Proveedor ha sido actualizado", "",
   MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        public void EliminarProveedor(int id)
+        public void Eliminar(int id)
         {
             var Proveedor = BuscarProveedor(id);
             _context.Proveedors.Remove(Proveedor);
             _context.SaveChanges();
 
         }
-    /*    public bool EmailBienEscrito(string email)
-        {
-            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(email, expresion))
-            {
-                if (Regex.Replace(email, expresion, string.Empty).Length == 0)
-                    return true;
-                else
-                    return false;
-            }
-            else
-                return false;
-        }*/
-        bool Validar(Proveedor Proveedor)
+        bool Validar(ProveedorDTO Proveedor)
         {
             if (string.IsNullOrEmpty(Proveedor.Identificacion))
             {
-                MessageBox.Show("El campo identificacion no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo identificacion no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (string.IsNullOrEmpty(Proveedor.Nombre))
             {
-                MessageBox.Show("El campo Nombre no puede ser vacio", "",
+                Utilities.GetDialogResult ("El campo Nombre no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return false;
@@ -140,14 +138,14 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             if (string.IsNullOrEmpty(Proveedor.Direccion))
             {
-                MessageBox.Show("El campo direccion no puede ser vacio", "",
+                Utilities .GetDialogResult ("El campo direccion no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return false;
             }
             if (string.IsNullOrEmpty(Proveedor.Telefono))
             {
-                MessageBox.Show("El campo telefono no puede ser vacio", "",
+                Utilities.GetDialogResult("El campo telefono no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return false;
@@ -155,30 +153,25 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             if (string.IsNullOrEmpty(Proveedor.Email))
             {
-                MessageBox.Show("El campo email no puede ser vacio", "",
+                Utilities.GetDialogResult("El campo email no puede ser vacio", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return false;
             }
-            if (!EmailBienEscrito(Proveedor.Email))
+            if (!Utilities . EmailBienEscrito(Proveedor.Email))
             {
-                MessageBox.Show("El campo email esta mal escrito", "",
+                Utilities.GetDialogResult("El campo email esta mal escrito", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return false;
             }
             if (Proveedor.TipoIdentificacionId == -1)
             {
-                MessageBox.Show("Debe seleccionar un valor para el campo  tipoidentificacion ", "",
+                Utilities.GetDialogResult("Debe seleccionar un valor para el campo  tipoidentificacion ", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
-        }
-
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
         }
     }
 }

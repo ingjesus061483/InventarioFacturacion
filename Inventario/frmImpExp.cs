@@ -28,7 +28,7 @@ namespace Inventario
 
         private void frmImpExp_Load(object sender, EventArgs e)
         {
-           _exportarHelp.Cmb(cmbTabla,_exportarHelp.Table);
+           Utilities .Cmb(cmbTabla,_exportarHelp.Table);
         }
 
         private void cmbTabla_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,10 +56,10 @@ namespace Inventario
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-         db  = new DataSet();  
+                db  = new DataSet();  
                 if(ListExportar.Items.Count==0&&string .IsNullOrEmpty(txtQuery.Text ))
                 {
-                    MessageBox.Show("", "",
+                    Utilities.GetDialogResult("", "",
 MessageBoxButtons.OK, MessageBoxIcon.Warning );
                     return;
                 }
@@ -80,7 +80,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning );
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "",
+                Utilities .GetDialogResult(ex.Message, "",
 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -107,7 +107,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
             {
                 if (string.IsNullOrEmpty(txtQuery.Text))
                 {
-                    MessageBox.Show("Digite una consulta valida  ", "",
+                    Utilities.GetDialogResult("Digite una consulta valida  ", "",
     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -118,7 +118,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "",
+                Utilities.GetDialogResult(ex.Message, "",
 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -135,7 +135,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult resp = OpenFileDialog.ShowDialog();
                 if (string.IsNullOrEmpty(OpenFileDialog.FileName))
                 {
-                    MessageBox.Show("Se ha cancelado la accion  ", "",
+                    Utilities.GetDialogResult("Se ha cancelado la accion  ", "",
     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -149,7 +149,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "",
+                Utilities.GetDialogResult(ex.Message, "",
   MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -166,7 +166,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "",
+                Utilities.GetDialogResult(ex.Message, "",
   MessageBoxButtons.OK, MessageBoxIcon.Error);
             }       
         }
@@ -180,7 +180,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "",
+                Utilities.GetDialogResult(ex.Message, "",
 MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }

@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Inventario
     public partial class frmEnvioEmail : Form
     {
         EmailHelp _emailHelp;
-        public Usuario Usuario  { get; set; }
+        public UsuarioDTO Usuario  { get; set; }
         List<string> fileNames;
         public frmEnvioEmail(EmailHelp emailHelp)
         {

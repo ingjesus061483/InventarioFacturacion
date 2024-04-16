@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Inventario
 {
     public partial class frmDevolucionCompra : Form
     {
-        public OrdenCompra Compra { get; set; }
+        public OrdenCompraDTO Compra { get; set; }
         MotivoHelp _motivoHelp;
         Motivo Motivo;
         DevolucionCompraHelp _devolucionCompraHelp;
@@ -61,7 +62,7 @@ namespace Inventario
                     Motivo = Motivo,
                     MotivoId = Motivo.Id
                 };
-                _devolucionCompraHelp .GuardarDevolucion(devolucionCompra );
+                _devolucionCompraHelp .Guardar(devolucionCompra );
             }
            _compraHelp .AnularCompra(Compra .Id , detalles);
             this.Close();

@@ -258,7 +258,6 @@ D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\pt\Microsoft.Repo
 D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csprojAssemblyReference.cache
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.frmCompras.resources
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.frmDetalleExistencia.resources
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.frmDevolucionCompra.resources
@@ -292,12 +291,12 @@ D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.frmUsu
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.frmVistaPrevia.resources
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.Properties.Resources.resources
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.GenerateResource.cache
-D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\RdlCompile.cache
-D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\RdlCompile.compiled
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.CoreCompileInputs.cache
-D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.CopyComplete
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.exe
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.pdb
 D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\Newtonsoft.Json.dll
 D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\Newtonsoft.Json.xml
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.frmReporte.resources
+D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\EnvDTE.xml
+D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.AssemblyReference.cache
+D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.Up2Date

@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,12 @@ namespace Inventario
 {
     public partial class frmUsuario : Form
     {
+
         UsuarioHelp _usuarioHelp;
         EmpresaHelp _empresaHelp;
         RoleHelp _roleHelp;
         Empresa empresa;
-        public Usuario Usuario { get; set; }
+        public UsuarioDTO Usuario { get; set; }
         public frmUsuario(UsuarioHelp usuarioHelp ,
                           EmpresaHelp empresaHelp,
                           RoleHelp roleHelp  )
@@ -42,7 +44,7 @@ namespace Inventario
         }
         private void frmUsuario_Load(object sender, EventArgs e)
         {
-            _roleHelp.Cmb(cmbRole,_roleHelp.Queryable .ToList());
+            Utilities .Cmb(cmbRole,_roleHelp.Queryable .ToList());
             if (Usuario !=null)
             {
                 Cargar();
@@ -79,7 +81,7 @@ namespace Inventario
             }
             if (Usuario == null)
             {
-                Usuario = new Usuario
+                Usuario = new UsuarioDTO
                 {
                     Name = txtUsuario.Text,
                     Email = txtEmail.Text,
@@ -87,8 +89,8 @@ namespace Inventario
                     RoleId = cmbRole.SelectedValue != null ? int.Parse(cmbRole.SelectedValue.ToString()) : -1,
                     EmpresaId =empresa!=null? empresa.Id:-1
                 };
-                _usuarioHelp.GuardarUsuario(Usuario);
-                Usuario = _usuarioHelp.BuscarUsuario(Usuario.Name);                
+                _usuarioHelp.Guardar(Usuario);
+                Usuario = _usuarioHelp.Queryable.Where (x=>x.Name .Contains ( Usuario.Name)).FirstOrDefault();                
             }
             else
             {
@@ -97,7 +99,7 @@ namespace Inventario
                 Usuario.Password = txtPassword.Text;
                 Usuario.RoleId = cmbRole.SelectedValue != null ? int.Parse(cmbRole.SelectedValue.ToString()) : -1;
                 Usuario.EmpresaId = empresa != null ? empresa.Id : -1;
-                _usuarioHelp.ActualizarUsuario(Usuario.Id, Usuario);
+                _usuarioHelp.Actualizar(Usuario.Id, Usuario);
             }
             this.Close();
         }

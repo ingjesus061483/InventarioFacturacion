@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace Inventario
     public partial class frmEmpresa : Form
     {
         string ruta = "";
-        Empresa empresa;
+        int id;
+        EmpresaDTO empresa;
         TipoRegimenHelp _tipoRegimenHelp;
         EmpresaHelp _empresaHelp;
         public frmEmpresa(TipoRegimenHelp tipoRegimenHelp ,EmpresaHelp empresaHelp )
@@ -27,11 +29,12 @@ namespace Inventario
 
         private void frmEmpresa_Load(object sender, EventArgs e)
         {
-            _tipoRegimenHelp.Cmb(cmbTipoRegimen,_tipoRegimenHelp.Queryable.ToList ());
+            Utilities .Cmb(cmbTipoRegimen,_tipoRegimenHelp.Queryable.ToList ());
             Nuevo();
         }
         void Nuevo()
         {
+            id = 0;
             empresa = null;
             txtNit.Text = string.Empty;
             txtNombre.Text = string.Empty;
@@ -51,8 +54,8 @@ namespace Inventario
             
             frmBusqueda frmBusqueda = new frmBusqueda(_empresaHelp );
             frmBusqueda.ShowDialog();
-            int id = frmBusqueda.Id;
-            empresa = _empresaHelp.BuscarEmpresa(id);
+            id = frmBusqueda.Id;
+            empresa = _empresaHelp.Queryable .Where (x=>x.Id== id).FirstOrDefault();
             if (empresa == null)
             {
                 Nuevo();
@@ -81,40 +84,14 @@ namespace Inventario
 
         private void btnAbrir_Click(object sender, EventArgs e)
         {
-            ruta = CargarImagen(PictureBox1);
+            ruta = Utilities.CargarImagen(PictureBox1);
         }
-        string CargarImagen(PictureBox picture)
-        {
-            try
-            {
-                //Dim bytes As Byte()
-                OpenFileDialog OpenFile = new OpenFileDialog { Filter = "Imagenes (JPG)|*.jpg" }; //filtro de archivos del OpenFileDialog
-                if (OpenFile.ShowDialog() == DialogResult.OK)// en caso de que se aplaste el boton cancelar salga y no haga nada
-                {
-                    picture.SizeMode = PictureBoxSizeMode.StretchImage; //establecemos como se visualiza la imagen
-                    picture.Load(OpenFile.FileName); //visualizamos abriendo el archivo seleccionado
-                    //Dim FileStream As New FileStream(OpenFile.FileName, FileMode.Open, FileAccess.Read) 'instanciamos en Stream indicandole la ruta del arvhivo,el modo de acceso y si es de lectura o escritura
-                    //ReDim bytes(FileStream.Length) 'llenamos el arreglo
-                    //FileStream.Read(bytes, 0, CInt(FileStream.Length)) 'llenamos el arreglo
-                    return OpenFile.FileName;
-                }
-                else
-                {
-                    picture.Image = null;
-                    return string.Empty;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
+     
         private void btninsertar_Click(object sender, EventArgs e)
         {
             if (empresa == null)
             {               
-                empresa = new Empresa
+                empresa = new EmpresaDTO
                 {
                     Nombre =txtNombre .Text ,
                     TipoRegimenId = cmbTipoRegimen.SelectedValue!=null?
@@ -129,7 +106,7 @@ namespace Inventario
                     Telefono= txtTelefono.Text ,
                     Logo= ruta 
                 };
-                _empresaHelp.GuardarEmpresa(empresa);  
+                _empresaHelp.Guardar(empresa);  
                 Nuevo();             
             }
             else
@@ -143,7 +120,7 @@ namespace Inventario
                 empresa.Contacto = txtContacto.Text;
                 empresa.Telefono = txtTelefono.Text;
                 empresa.Logo = ruta;
-                _empresaHelp.ActualizarEmpresa(empresa.Id, empresa);
+                _empresaHelp.Actualizar(empresa.Id, empresa);
             }
         }
 

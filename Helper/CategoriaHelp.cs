@@ -10,34 +10,31 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class CategoriaHelp:Help
+    public class CategoriaHelp:IHelp<Categoria >
     {
+        readonly   InventarioDbContext _context;
         public CategoriaHelp(InventarioDbContext context)
         {
             _context = context;
         }
-        public  IQueryable <Categoria> Queryable
+        public IQueryable <Categoria> Queryable
         {
             get
             {
                 return _context.Categorias;
             }
         }
-        public void Guardar( Dictionary <string,object>collection)
-        {
-            Categoria categoria = new Categoria 
-            {
-                Nombre=collection["nombre"].ToString(),
-                Descripcion=collection["descripcion"].ToString()
-            };
-            _context.Categorias.Add(categoria);
+        
+
+        public void Guardar( Categoria categoria )
+        {   _context.Categorias.Add(categoria);
             _context.SaveChanges();
         }
-        public void Actualizar(int id, Dictionary<string, object> collection)
+        public  void Actualizar(int id, Categoria categoria )
         {
             var category =Queryable.Where(x=>x.Id == id).FirstOrDefault();
-            category.Nombre = collection["nombre"].ToString ();
-            category.Descripcion = collection ["descripcion"].ToString();
+            category.Nombre =categoria .Nombre;
+            category.Descripcion = categoria .Descripcion;
             _context.SaveChanges();
 
         }
@@ -48,9 +45,11 @@ namespace Helper
             _context.SaveChanges();
         }
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
-        }
+   
+
+        //public override void GetDatagrid(DataGridView gridView, string[,] columns)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

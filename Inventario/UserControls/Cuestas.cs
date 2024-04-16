@@ -62,19 +62,19 @@ namespace Inventario.UserControls
         {
             if (FacturaHelp != null)
             {
-                FacturaHelp.GetDatagrid(dgFacturas, _facturaEncabezado);
+                Utilities .GetDatagrid(dgFacturas, _facturaEncabezado);
             }
             else if (ProductoHelp != null)
             {
-                ProductoHelp.GetDatagrid(dgFacturas, _producto);
+                Utilities.GetDatagrid(dgFacturas, _producto);
             }
             else if (ExistenciaHelp != null)
             {
-                ExistenciaHelp.GetDatagrid(dgFacturas, _existencias);
+                Utilities .GetDatagrid(dgFacturas, _existencias);
             }
             else if(CompraHelp != null)
             {
-                CompraHelp.GetDatagrid(dgFacturas, _existencias);
+                Utilities .GetDatagrid(dgFacturas, _existencias);
             }
             dgFacturas.DataSource = datasource;
         }

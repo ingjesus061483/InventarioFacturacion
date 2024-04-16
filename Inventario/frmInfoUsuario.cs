@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Inventario
         UsuarioHelp _usuarioHelp;
         EmpresaHelp _empresaHelp;
         RoleHelp _roleHelp;
-        public Usuario Usuario { get; set; }
+        public UsuarioDTO Usuario { get; set; }
         public frmInfoUsuario(UsuarioHelp usuarioHelp,
                           EmpresaHelp empresaHelp,
                           RoleHelp roleHelp)

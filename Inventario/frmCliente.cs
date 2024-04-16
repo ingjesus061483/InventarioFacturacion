@@ -1,4 +1,5 @@
 ﻿using Helper;
+using Helper.DTO;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,9 @@ namespace Inventario
 {
     public partial class frmCliente : Form
     {
-        Dictionary<string, object> collection;
-
+        int id;
         ClienteHelp _clienteHelp;
-        Cliente Cliente;
+        ClienteDTO Cliente;
         TipoIdentificacionHelp _TipoIdentificacionHelp;
         public frmCliente(ClienteHelp clienteHelp,
                           TipoIdentificacionHelp tipoIdentificacionHelp)
@@ -29,16 +29,15 @@ namespace Inventario
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
-            _TipoIdentificacionHelp.Cmb(cmbTipoIdentifcacion, _TipoIdentificacionHelp.Queryable .ToList()) ;
+            Utilities .Cmb(cmbTipoIdentifcacion, _TipoIdentificacionHelp.Queryable .ToList()) ;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-     //       var dt = _clienteHelp.Table ;
             frmBusqueda frmBusqueda = new frmBusqueda(_clienteHelp );
             frmBusqueda.ShowDialog();
-            int id = frmBusqueda.Id;
-            Cliente  = _clienteHelp.GetCliente(id);
+             id = frmBusqueda.Id;
+            Cliente  = _clienteHelp.Queryable .Where(x=>x.Id == id).FirstOrDefault ();
             if ( Cliente == null)
             {
                 Nuevo();
@@ -56,6 +55,7 @@ namespace Inventario
         }
         void Nuevo()
         {
+            id = 0;
             txtIdentificacion.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtDireccion.Text = string.Empty;
@@ -78,35 +78,37 @@ namespace Inventario
 
         private void btninsertar_Click(object sender, EventArgs e)
         {
-            collection = new Dictionary<string, object>
-            {
-                {"Identificacion", txtIdentificacion.Text },
-                {"Nombre", txtNombre.Text },
-                { "Apellido", txtApellido.Text },
-                { "FechaNacimiento", dtpfechaNacimiento.Value },
-                { "Direccion", txtDireccion.Text },
-                {"Telefono", txtTelefono.Text },
-                {"Email", txtEmail.Text },
-                {"TipoIdentificacionId", cmbTipoIdentifcacion.SelectedValue != null
-                                           ? int.Parse(cmbTipoIdentifcacion.SelectedValue.ToString())
-                                           : -1 },
-                { "PersonaNatural", chkPersonaNatural.Checked }
                 
-            };
-            if ( Cliente  == null)
+        
+            if ( id  == 0)
             {
+                Cliente = new ClienteDTO
+                {
+                    Identificacion = txtIdentificacion.Text,
+                    Nombre = txtNombre.Text,
+                    Apellido = txtApellido.Text,
+                    FechaNacimiento = dtpfechaNacimiento.Value,
+                    Direccion = txtDireccion.Text,
+                    Telefono = txtTelefono.Text,
+                    Email = txtEmail.Text,
+
+                    TipoIdentificacionId = cmbTipoIdentifcacion.SelectedValue != null
+                                                 ? int.Parse(cmbTipoIdentifcacion.SelectedValue.ToString())
+                                                 : -1,
+                    PersonaNatural = chkPersonaNatural.Checked
+                };
+                _clienteHelp.Guardar(Cliente  );               
                 
-                _clienteHelp.Guardar(collection );               
-                Nuevo();
             }
             else
             {
                 
-                _clienteHelp.Actualizar(Cliente.Id,collection );               
+                _clienteHelp.Actualizar(id,Cliente  );               
             }
-       
+            Nuevo();
 
-          
+
+
         }
 
         private void btnsalir_Click(object sender, EventArgs e)

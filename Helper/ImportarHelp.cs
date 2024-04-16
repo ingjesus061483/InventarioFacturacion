@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 namespace Helper
 {
-    public class ImportarHelp : Help
+    public class ImportarHelp 
     {
+        InventarioDbContext _context;
         public ImportarHelp(InventarioDbContext context)
         {
             _context = context;
         }
-        public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
+   /*     public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
         {
             throw new NotImplementedException();
-        }
+        }*/
         void AddColumn(DataTable table , Excel.Worksheet sheet)
         {
             int col = 1;

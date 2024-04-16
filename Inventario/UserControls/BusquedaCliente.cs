@@ -1,7 +1,7 @@
 ﻿using Helper;
 using Models;
 using System;
-
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Inventario
@@ -174,7 +174,22 @@ namespace Inventario
 
 
             frmBusqueda.ShowDialog();
-            Cliente = clienteHelp.GetCliente(frmBusqueda.Id);
+            Cliente = clienteHelp. Queryable.Where(x => x.Id == frmBusqueda.Id).AsEnumerable().Select(x => new Cliente
+            {
+                Id = x.Id,
+                Identificacion = x.Identificacion,
+                Nombre = x.Nombre,
+                Apellido = x.Apellido,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Email = x.Email,
+                FechaNacimiento = x.FechaNacimiento,
+                PersonaNatural = x.PersonaNatural,
+                TipoIdentificacionId = x.TipoIdentificacionId,
+                TipoIdentificacion = x.TipoIdentificacion
+            }).FirstOrDefault();
+
+            
             if (Cliente == null)
             {                
                 txtNombre.Text = string.Empty;
@@ -189,7 +204,20 @@ namespace Inventario
         }
         private void txtIdentificacionCliente_TextChanged(object sender, EventArgs e)
         {
-            Cliente = clienteHelp.GetCliente(txtIdentificacion.Text);
+            Cliente = clienteHelp.Queryable.Where  ( x=>x.Identificacion .Contains ( txtIdentificacion.Text)).AsEnumerable().Select(x => new Cliente
+            {
+                Id = x.Id,
+                Identificacion = x.Identificacion,
+                Nombre = x.Nombre,
+                Apellido = x.Apellido,
+                Direccion = x.Direccion,
+                Telefono = x.Telefono,
+                Email = x.Email,
+                FechaNacimiento = x.FechaNacimiento,
+                PersonaNatural = x.PersonaNatural,
+                TipoIdentificacionId = x.TipoIdentificacionId,
+                TipoIdentificacion = x.TipoIdentificacion
+            }).FirstOrDefault(); ;
             if (Cliente == null)
             {
                 txtNombre.Text = string.Empty;

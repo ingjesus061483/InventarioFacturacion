@@ -11,9 +11,11 @@ using System.Windows.Forms;
 
 namespace Helper
 {
-    public class UsuarioHelp:Help 
-    {        
-        public Usuario Usuario { get; set; }
+    public class UsuarioHelp:IHelp <UsuarioDTO >
+    {
+        readonly InventarioDbContext _context;
+
+        public UsuarioDTO Usuario { get; set; }
         public UsuarioHelp(InventarioDbContext context)
         {
             _context = context;
@@ -52,59 +54,62 @@ namespace Helper
             var usuario = _context.Usuarios.Where(x => x.Name == name).FirstOrDefault ();
             return usuario;
         }
-        public void GuardarUsuario(Usuario usuario)
+        public void Guardar(UsuarioDTO usuario)
         {
             if(!Validar(usuario ))
             {
                 return;
             }
-            usuario.Password = Encriptar(usuario.Password);
-            _context.Usuarios.Add(usuario);
+            var us = new Usuario
+            {
+                Name = usuario.Name ,
+                Email =usuario .Email ,               
+                Password = Utilities.Encriptar(usuario.Password),
+                EmpresaId = usuario.EmpresaId,
+                RoleId = usuario.RoleId,
+            };
+            
+            _context.Usuarios.Add(us);
             _context.SaveChanges();
         }
-        bool Validar(Usuario usuario )
+        bool Validar(UsuarioDTO usuario )
         {
             if(string .IsNullOrEmpty (  usuario .Name ))
             {
-                MessageBox.Show("El nombre del usuario es obligatorio", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              Utilities .GetDialogResult  ("El nombre del usuario es obligatorio", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (string .IsNullOrEmpty ( usuario .Email))
             {
-                MessageBox.Show("El email es obligatorio", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               Utilities .GetDialogResult ( "El email es obligatorio", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if(!EmailBienEscrito( usuario.Email ))
+            if(!Utilities . EmailBienEscrito( usuario.Email ))
             {
-                MessageBox.Show("El email no esta escrito correctamente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               Utilities.GetDialogResult( "El email no esta escrito correctamente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if(string .IsNullOrEmpty ( usuario .Password))
             {
-                MessageBox.Show("El password es obligatorio", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               Utilities.GetDialogResult("El password es obligatorio", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if(usuario .RoleId == -1)
             {
-                MessageBox.Show("El role es obligatorio", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Utilities .GetDialogResult("El role es obligatorio", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if(usuario .EmpresaId ==-1)
             {
-                MessageBox.Show("La empresa es obligatoria", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Utilities.GetDialogResult("La empresa es obligatoria", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
         }
-        public string Encriptar(string password)
-        {
-            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(password);
-            string result = Convert.ToBase64String(encryted);
-            return result;
-        }
+   
         public Usuario Login(string name ,string password)
         {
-            var pass = Encriptar(password);
+            var pass =Utilities . Encriptar(password);
             Usuario usuario = Queryable.Where(x => x.Name == name && x.Password == pass)
                                        .AsEnumerable()
                                        .Select(x => new Usuario{
@@ -126,24 +131,20 @@ namespace Helper
             }
             return usuario;
         }
-        public void ActualizarUsuario(int id, Usuario usuario)
+        public void Actualizar(int id, UsuarioDTO usuario)
         {
             var us = BuscarUsuario(id);
-            us.Password = Encriptar(usuario.Password);
+            us.Password =Utilities. Encriptar(usuario.Password);
             us.EmpresaId = usuario.EmpresaId;
             us.RoleId = usuario.RoleId;
             _context.SaveChanges();
         }
-        public void EliminarUsuario(int id)
+        public void Eliminar(int id)
         {
             Usuario usuario = BuscarUsuario(id);
             _context.Usuarios.Remove(usuario);
             _context.SaveChanges();
         }
 
-        public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

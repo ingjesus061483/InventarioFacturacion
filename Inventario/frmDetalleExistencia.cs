@@ -11,11 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Helper.DTO;
+
 namespace Inventario
 {
     public partial class frmDetalleExistencia : Form
     {
-        public Producto Producto { get; set; }
+        public ProductoDTO Producto { get; set; }
         ExportarHelp _ImpExpHelp;
         ExistenciaHelp _existenciaHelp;
         DataSet Db;
@@ -128,8 +130,8 @@ namespace Inventario
                 x.ProductoId,
                 Producto = Producto.Nombre,
             }).ToList();           
-            Db.Tables.Add(_existenciaHelp.GetTable(entradas));
-            Db.Tables.Add(_existenciaHelp.GetTable(salidas));
+            Db.Tables.Add(Utilities .GetTable(entradas));
+            Db.Tables.Add(Utilities .GetTable(salidas));
             _ImpExpHelp.Exportar(Db);
             Db.Tables.Clear();
         }
