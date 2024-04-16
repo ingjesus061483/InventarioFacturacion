@@ -34,7 +34,6 @@ namespace Helper
                 cmb.Items.Add(row[0]);
             }
         }
-
         public static string CargarImagen(PictureBox picture)
         {
             try

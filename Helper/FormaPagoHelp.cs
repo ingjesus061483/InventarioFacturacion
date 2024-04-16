@@ -13,29 +13,25 @@ namespace Helper
     public class FormaPagoHelp:IHelp<FormaPago>
     {
         readonly InventarioDbContext _context;
-
         public FormaPagoHelp(InventarioDbContext context)
         {
             _context = context;
         }
-     public  IQueryable<FormaPago> Queryable 
+        public  IQueryable<FormaPago> Queryable 
         {
             get
             {
                 return _context.FormaPagos .AsQueryable();
             }
         }
-
         public void Actualizar(int id, FormaPago entity)
         {
             throw new NotImplementedException();
         }
-
         public void Eliminar(int id)
         {
             throw new NotImplementedException();
         }
-
         public void Guardar(FormaPago entity)
         {
             throw new NotImplementedException();

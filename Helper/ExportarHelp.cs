@@ -14,7 +14,6 @@ namespace Helper
 {
     public class ExportarHelp 
     {
-
         InventarioDbContext _context;
         public DataTable Table
         {
@@ -86,7 +85,6 @@ namespace Helper
             catch (Exception ex)
             {
                 throw ex;
-
             }
         }
         public DataTable GetTable(object lst)

@@ -13,20 +13,17 @@ namespace Helper
     public class TipoRegimenHelp:IHelp<TipoRegimen >
     {
         readonly InventarioDbContext _context;
-
-
         public TipoRegimenHelp(InventarioDbContext context )
         {
             _context = context;
         }
-       public    IQueryable<TipoRegimen> Queryable
+        public IQueryable<TipoRegimen> Queryable
         {
             get
             {
                 return _context.TipoRegimens.AsQueryable();            
             }
         }
-
         public void Actualizar(int id, TipoRegimen entity)
         {
             throw new NotImplementedException();

@@ -43,13 +43,6 @@ namespace Helper
             var categoria = Queryable.Where(x => x.Id == id).FirstOrDefault();
             _context.Categorias.Remove(categoria);
             _context.SaveChanges();
-        }
-
-   
-
-        //public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        }     
     }
 }

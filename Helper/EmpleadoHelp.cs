@@ -19,7 +19,7 @@ namespace Helper
         {
             _context = context;
         }
-      public   IQueryable<EmpleadoDTO> Queryable
+        public IQueryable<EmpleadoDTO> Queryable
         {
             get
             {
@@ -46,7 +46,6 @@ namespace Helper
                         });
             }
         }
-
         public Empleado BuscarEmpleado(int id)
         {
             var empleado =Queryable.Where(x=>x.Id == id).AsEnumerable().Select(x=>new Empleado {
@@ -167,8 +166,6 @@ namespace Helper
             var empl = BuscarEmpleado(id);
             _context.Empleados.Remove(empl);
             _context.SaveChanges();
-
-
         }
     }
 }

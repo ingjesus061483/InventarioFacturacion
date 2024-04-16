@@ -58,7 +58,6 @@ namespace Helper
                     Email = x.Email,
                 });
                 return proveedor.Union(cliente).AsQueryable();
-
             }
         }
 
@@ -72,20 +71,15 @@ namespace Helper
         SmtpClient Servidor
         {
             get
-            {
-
-              //  ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                NetworkCredential credenciales = new NetworkCredential(Remitente, Pwd);
-                
+            {             
+                NetworkCredential credenciales = new NetworkCredential(Remitente, Pwd);                
                 SmtpClient server = new SmtpClient(ConfigurationManager.AppSettings["Host"],
                                     int.Parse(ConfigurationManager.AppSettings["Puerto"]))
                 {
                   
-                    Credentials = credenciales,
-                   
+                    Credentials = credenciales,                   
                     EnableSsl = true,
-                };
-                
+                };                
                 return server;
             }
         }
@@ -95,8 +89,7 @@ namespace Helper
             OpenFileDialog openFileDialog = new OpenFileDialog { Multiselect = true };
             if (openFileDialog.ShowDialog() != DialogResult.Cancel)
                 FileNames = openFileDialog.FileNames.ToList();
-            return FileNames;
-            
+            return FileNames;            
         }
         public void SendMail(Array Destinatarios, string asunto, string mensaje, List<string> datos)
         {

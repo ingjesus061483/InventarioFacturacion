@@ -18,13 +18,5 @@ namespace Helper
         void Actualizar(int id, TEntity entity);
         void Eliminar(int id);
         void Guardar(TEntity entity);
-        
-
-
-
-
-
-
-
     }
 }

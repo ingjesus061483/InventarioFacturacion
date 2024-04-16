@@ -24,8 +24,7 @@ namespace Helper
            printer  = new PrintDocument();
         }
         int linea_actual = 0;
-
-        protected StreamWriter CrearArchivo()
+        StreamWriter CrearArchivo()
         {
             try
             {
@@ -48,8 +47,7 @@ namespace Helper
                 throw ex;
             }
         }
-
-        protected StreamReader LeerArchivo()
+        StreamReader LeerArchivo()
         {
             try
             {
@@ -73,7 +71,7 @@ namespace Helper
                 throw ex;
             }
         }
-        protected void EliminarArchivo()
+        void EliminarArchivo()
         {
             try
             {
@@ -85,23 +83,14 @@ namespace Helper
             {
                 throw ex;
             }
-        }
-
-        /*      protected  IQueryable Queryable => throw new NotImplementedException();
-
-              public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
-              {
-                  throw new NotImplementedException();
-              }*/
+        }       
         public void ImprimirVenta(FacturaDTO factura)
         {           
             StreamWriter sw = CrearArchivo();
             try
             {
-
                 if (factura  == null)
                 {
-
                     return;
                 }
                 var cliente = factura.Cliente;
@@ -161,7 +150,6 @@ namespace Helper
                 sw.WriteLine("==========================================");
                 sw.WriteLine("=          GRACIAS POR SU COMPRA         =");
                 sw.WriteLine("==========================================");
-
             }
             catch (Exception ex)
             {
@@ -171,17 +159,13 @@ namespace Helper
             {
                 sw.Close();
                 printer.PrintPage += Printer_PrintPage;
-
                 printer.Print();
-
             }
         }
-       public  void ImprimirCodigoBarras( CodigoBarras codigoBarras )
-        {
-           
+        public  void ImprimirCodigoBarras( CodigoBarras codigoBarras )
+        {           
             _CodigoBarras=codigoBarras;
-
-            printer.PrintPage += Printer_PrintPage1;
+            printer.PrintPage += Printer_PrintPage_1;
             printer.Print();
         }
 
@@ -189,7 +173,6 @@ namespace Helper
         {
             throw new NotImplementedException();
         }
-
         private void Printer_PrintPage_1(object sender, PrintPageEventArgs e)
         {
             int pagina = 0;

@@ -13,11 +13,9 @@ namespace Helper
     public class RoleHelp:IHelp<Role>
     {
         readonly InventarioDbContext _context;
-
         public RoleHelp(InventarioDbContext context  )
         {
             _context = context;
-
         }
         public IQueryable<Role>  Queryable 
         {
@@ -25,9 +23,7 @@ namespace Helper
             {
                 return _context.Roles.AsQueryable();
             }
-        }
-  
-     
+        }  
         public Role BuscarRole(int id)
         {
             return _context.Roles.Find(id);

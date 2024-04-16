@@ -13,15 +13,13 @@ namespace Helper
 {
     public class FacturaHelp:IHelp<FacturaDTO>
     {
-     readonly  InventarioDbContext _context;
+        readonly  InventarioDbContext _context;
         ExistenciaHelp _existenciaHelp; 
         public FacturaHelp  (InventarioDbContext context,ExistenciaHelp existenciaHelp )
         {
             _context = context;
             _existenciaHelp = existenciaHelp;
         }
-       
-
         public IQueryable<FacturaDTO> Queryable
         {
             get
@@ -180,7 +178,6 @@ namespace Helper
             }
            
         }
-
         public void Actualizar(int id, FacturaDTO entity)
         {
             throw new NotImplementedException();

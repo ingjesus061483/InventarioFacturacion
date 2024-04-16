@@ -15,12 +15,11 @@ namespace Helper
     public class ProveedorHelp:IHelp <ProveedorDTO>
     {
         readonly InventarioDbContext _context;
-
         public ProveedorHelp(InventarioDbContext context  )
         {
             _context = context;
         }
-       public  IQueryable<ProveedorDTO> Queryable
+        public  IQueryable<ProveedorDTO> Queryable
         {
             get
             {
@@ -29,8 +28,8 @@ namespace Helper
                         select new ProveedorDTO
                         {
                             Id = prov.Id,
-                           Identificacion = prov .Identificacion,
-                           Nombre= prov .Nombre,
+                            Identificacion = prov .Identificacion,
+                            Nombre= prov .Nombre,
                             Apellido = prov.Apellido,
                             Direccion = prov.Direccion,
                             Telefono = prov.Telefono,
@@ -41,7 +40,6 @@ namespace Helper
                         });
             }
         }
-   
         public Proveedor BuscarProveedor(int id)
         {
             return Queryable.Where(x=> x.Id==id).AsEnumerable ().Select(x=>new Proveedor {

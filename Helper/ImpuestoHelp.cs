@@ -12,17 +12,14 @@ namespace Helper
     public  class ImpuestoHelp:IHelp<Impuesto>
     {
         readonly InventarioDbContext _context;
-
         public ImpuestoHelp(InventarioDbContext context)
         {
             _context = context;
         }
-
- public   IQueryable<Impuesto >  Queryable  { get { return _context.Impuestos.AsQueryable(); } }
+        public IQueryable<Impuesto >  Queryable  { get { return _context.Impuestos.AsQueryable(); } }
         public Impuesto BuscarImpuesto(int id)
         {
             return _context.Impuestos.Find(id);
-
         }
         public  void Guardar(Impuesto impuesto)
         {
@@ -43,6 +40,5 @@ namespace Helper
             _context.Impuestos.Remove(imp);
             _context.SaveChanges();
         }
-
     }
 }

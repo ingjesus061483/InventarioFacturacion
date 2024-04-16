@@ -18,7 +18,7 @@ namespace Helper
             _context = context;
 
         }
-      public   IQueryable <Estado> Queryable 
+        public IQueryable <Estado> Queryable 
         {
             get
             {

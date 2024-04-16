@@ -14,7 +14,6 @@ namespace Helper
     public class UsuarioHelp:IHelp <UsuarioDTO >
     {
         readonly InventarioDbContext _context;
-
         public UsuarioDTO Usuario { get; set; }
         public UsuarioHelp(InventarioDbContext context)
         {
@@ -105,8 +104,7 @@ namespace Helper
                 return false;
             }
             return true;
-        }
-   
+        }   
         public Usuario Login(string name ,string password)
         {
             var pass =Utilities . Encriptar(password);

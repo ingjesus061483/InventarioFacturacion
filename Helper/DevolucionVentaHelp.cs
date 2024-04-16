@@ -12,16 +12,11 @@ namespace Helper
    public  class DevolucionVentaHelp : IHelp<DevolucionVenta>
     {
         readonly InventarioDbContext _context;
-
         public DevolucionVentaHelp(InventarioDbContext context)
         {
             _context = context;
-
         }
-
-        public   IQueryable Queryable => throw new NotImplementedException();
-
-        IQueryable<DevolucionVenta> IHelp<DevolucionVenta>.Queryable => throw new NotImplementedException();
+        public IQueryable<DevolucionVenta>  Queryable => throw new NotImplementedException();
 
         public void Actualizar(int id, DevolucionVenta entity)
         {

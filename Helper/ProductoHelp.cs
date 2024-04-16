@@ -14,7 +14,6 @@ namespace Helper
     public class ProductoHelp:IHelp<ProductoDTO >
     {
         readonly InventarioDbContext _context;
-
         public ProductoHelp(InventarioDbContext context)
         {
             _context = context;
@@ -82,7 +81,6 @@ namespace Helper
             return producto;
 
         }
-
         public void Guardar(ProductoDTO productoDTO)
         {
             if (!Validar(productoDTO))
@@ -175,8 +173,6 @@ namespace Helper
                 return false;
             }
             return true; 
-        }
-
-      
+        }     
     }
 }

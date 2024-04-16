@@ -13,12 +13,11 @@ namespace Helper
     public class MotivoHelp : IHelp<Motivo >
     {
         readonly InventarioDbContext _context;
-
         public MotivoHelp (InventarioDbContext context  )
         {
             _context = context;
         }
-      public    IQueryable<Motivo > Queryable 
+        public IQueryable<Motivo > Queryable 
         {
             get
             {
@@ -28,12 +27,10 @@ namespace Helper
         public  Motivo BuscarMotivos(int id)
         {
             return _context.Motivos.Find(id);
-
         }
         public Motivo BuscarMotivos(string codigo)
         {
             return _context.Motivos.Where(x=>x.Codigo ==codigo ).FirstOrDefault();
-
         }
         public void Guardar(Motivo motivo)
         {

@@ -13,14 +13,12 @@ namespace Helper
 {
     public class CompraHelp : IHelp<OrdenCompraDTO>
     {
-
         ExistenciaHelp _existenciaHelp;
         readonly InventarioDbContext _context;
         public CompraHelp (InventarioDbContext context ,  ExistenciaHelp existenciaHelp )
         {
             _context = context;
-            _existenciaHelp = existenciaHelp;
-            
+            _existenciaHelp = existenciaHelp;            
         }
         public IQueryable<OrdenCompraDTO> Queryable
         {
@@ -161,7 +159,6 @@ namespace Helper
             compra .Observaciones = "Se ha anulado la compra";
             _context.SaveChanges();
         }
-
         public void Eliminar(int id)
         {
             throw new NotImplementedException();

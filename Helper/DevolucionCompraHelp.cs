@@ -11,14 +11,8 @@ namespace Helper
 {
     public class DevolucionCompraHelp :IHelp<DevolucionCompra>
     {
-
-
         readonly InventarioDbContext _context;
-
-        protected IQueryable Queryable => throw new NotImplementedException();
-
         IQueryable<DevolucionCompra> IHelp<DevolucionCompra>.Queryable => throw new NotImplementedException();
-
         public DevolucionCompraHelp(InventarioDbContext context)
         {
             _context = context;

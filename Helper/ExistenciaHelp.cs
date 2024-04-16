@@ -18,11 +18,7 @@ namespace Helper
         {
             _context = context;
         }
-
-
-        protected  IQueryable Queryable => throw new NotImplementedException();
-
-        IQueryable<Existencia> IHelp<Existencia>.Queryable => throw new NotImplementedException();
+        public IQueryable<Existencia> Queryable => throw new NotImplementedException();
 
         public void Actualizar(int id, Existencia entity)
         {

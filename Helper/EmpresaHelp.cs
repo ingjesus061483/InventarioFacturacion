@@ -20,7 +20,7 @@ namespace Helper
         {
             _context = context;
         }
-       public IQueryable<EmpresaDTO> Queryable
+        public IQueryable<EmpresaDTO> Queryable
         {
             get
             {
@@ -28,18 +28,18 @@ namespace Helper
                         join tipoRegimen in _context.TipoRegimens  on empresa.TipoRegimenId  equals tipoRegimen .Id 
                         select new EmpresaDTO 
                         {
-                          Id = empresa. Id,
-                           Nit = empresa.Nit,
-                          Nombre = empresa. Nombre,
+                            Id = empresa. Id,
+                            Nit = empresa.Nit,
+                            Nombre = empresa. Nombre,
                             CamaraComercio = empresa.CamaraComercio ,
                             Direccion = empresa.Direccion ,
                             Telefono = empresa.Telefono ,
                             Email = empresa.Email ,
-                           Contacto = empresa.Contacto ,
-                           Logo = empresa.Logo,
-                           Slogan = empresa.Slogan ,
-                           TipoRegimenId = empresa.TipoRegimenId ,
-                          TipoRegimen= tipoRegimen
+                            Contacto = empresa.Contacto ,
+                            Logo = empresa.Logo,
+                            Slogan = empresa.Slogan ,
+                            TipoRegimenId = empresa.TipoRegimenId ,
+                            TipoRegimen= tipoRegimen
                         });
             }
         }
@@ -135,19 +135,6 @@ namespace Helper
             _context.Empresas.Remove(empresa);
             _context.SaveChanges();
         }
-    /*    public bool EmailBienEscrito(string email)
-        {
-            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(email, expresion))
-            {
-                if (Regex.Replace(email, expresion, string.Empty).Length == 0)
-                    return true;
-                else
-                    return false;
-            }
-            else
-                return false;
-        }*/
         bool Validar(EmpresaDTO empresa)
         {
 
@@ -208,8 +195,6 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false ;
             }
             return true;
-        }
-
-       
+        }      
     }
 }

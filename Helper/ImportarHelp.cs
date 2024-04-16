@@ -15,11 +15,7 @@ namespace Helper
         public ImportarHelp(InventarioDbContext context)
         {
             _context = context;
-        }
-   /*     public override void GetDatagrid(System.Windows.Forms.DataGridView gridView, string[,] columns)
-        {
-            throw new NotImplementedException();
-        }*/
+        } 
         void AddColumn(DataTable table , Excel.Worksheet sheet)
         {
             int col = 1;
@@ -74,7 +70,6 @@ namespace Helper
                 ExcelApp.Quit();
             }
         }
-
         string PrepararQueryInsert(DataTable table, out string[] param)
         {
             string query;
@@ -148,7 +143,6 @@ namespace Helper
                 throw ex;
             }
         }
-
         public void Importar(DataSet db)
         {
             try

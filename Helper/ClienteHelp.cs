@@ -43,26 +43,6 @@ namespace Helper
                         
             }
         }
-        
-
-        
-      /*  public Cliente GetCliente(int id)
-        {
-            return Queryable.Where (x =>x.Id== id).AsEnumerable().Select(x=>new Cliente {
-                Id = x.Id,
-                Identificacion = x.Identificacion,
-                Nombre = x.Nombre,
-                Apellido = x.Apellido,
-                Direccion = x.Direccion,
-                Telefono = x.Telefono,
-                Email = x.Email,
-                FechaNacimiento = x.FechaNacimiento,
-                PersonaNatural = x.PersonaNatural,
-                TipoIdentificacionId = x.TipoIdentificacionId,
-                TipoIdentificacion = x.TipoIdentificacion
-            }).FirstOrDefault() ;
-        }*/ 
-      
         public  void Guardar(ClienteDTO clienteDTO )
         {
             if (!Validar(clienteDTO ))
@@ -137,8 +117,7 @@ namespace Helper
             _context.Clientes.Remove(cliente);
             _context.SaveChanges();
 
-        }
-      
+        }      
         bool Validar(ClienteDTO collection )
         {
             if (string.IsNullOrEmpty(collection.Identificacion))
@@ -191,35 +170,7 @@ namespace Helper
                 return false ;
             }
             return true;
-        }
-
-        /*public  ClienteDTO Buscar(int id)
-        {
-            return 
-        }
-
-        public Cliente Buscar(string codigo)
-        {
-            return Queryable.Where(x => x.Identificacion .Contains (codigo )).AsEnumerable().Select(x => new Cliente
-            {
-                Id = x.Id,
-                Identificacion = x.Identificacion,
-                Nombre = x.Nombre,
-                Apellido = x.Apellido,
-                Direccion = x.Direccion,
-                Telefono = x.Telefono,
-                Email = x.Email,
-                FechaNacimiento = x.FechaNacimiento,
-                PersonaNatural = x.PersonaNatural,
-                TipoIdentificacionId = x.TipoIdentificacionId,
-                TipoIdentificacion = x.TipoIdentificacion
-            }).FirstOrDefault();
-        }*/
-
-        //public override void GetDatagrid(DataGridView gridView, string[,] columns)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        }        
     }
 
 }
