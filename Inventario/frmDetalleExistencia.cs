@@ -132,7 +132,7 @@ namespace Inventario
             }).ToList();           
             Db.Tables.Add(Utilities .GetTable(entradas));
             Db.Tables.Add(Utilities .GetTable(salidas));
-            _ImpExpHelp.Exportar(Db);
+            _ImpExpHelp.Create (Db);
             Db.Tables.Clear();
         }
     }

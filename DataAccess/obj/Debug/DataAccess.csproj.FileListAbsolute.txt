@@ -41,5 +41,5 @@ D:\Documents\GitHub\InventarioFacturacion\DataAccess\bin\Debug\EntityFramework.S
 D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
 D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.dll
 D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.pdb
-D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
-D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
+D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete

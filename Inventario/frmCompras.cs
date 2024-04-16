@@ -285,7 +285,7 @@ namespace Inventario
                 DataTable dt = Utilities .GetTable(Compras);
                 dt.TableName = "compras";
                 Db.Tables.Add(dt);
-                _ImpExpHelp.Exportar(Db);
+                _ImpExpHelp.Create (Db);
                 Db.Tables.Clear();
             }
             catch (Exception ex)

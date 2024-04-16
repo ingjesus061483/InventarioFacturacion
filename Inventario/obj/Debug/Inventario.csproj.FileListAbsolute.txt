@@ -297,6 +297,7 @@ D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.pdb
 D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\Newtonsoft.Json.dll
 D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\Newtonsoft.Json.xml
 D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.frmReporte.resources
-D:\Documents\GitHub\InventarioFacturacion\Inventario\bin\Debug\EnvDTE.xml
-D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.AssemblyReference.cache
-D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.Up2Date
+D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csprojAssemblyReference.cache
+D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\RdlCompile.cache
+D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\RdlCompile.compiled
+D:\Documents\GitHub\InventarioFacturacion\Inventario\obj\Debug\Inventario.csproj.CopyComplete

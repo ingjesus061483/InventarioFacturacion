@@ -407,7 +407,7 @@ namespace Inventario
                 dt.TableName = "FacturaEncabezadoes";
 
                 Db.Tables.Add( dt );
-                _ImpExpHelp.Exportar( Db);
+                _ImpExpHelp.Create( Db);
 
 
             }

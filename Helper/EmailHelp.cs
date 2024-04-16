@@ -73,14 +73,13 @@ namespace Helper
             get
             {             
                 NetworkCredential credenciales = new NetworkCredential(Remitente, Pwd);                
-                SmtpClient server = new SmtpClient(ConfigurationManager.AppSettings["Host"],
+                return new SmtpClient(ConfigurationManager.AppSettings["Host"],
                                     int.Parse(ConfigurationManager.AppSettings["Puerto"]))
-                {
-                  
+                {                  
                     Credentials = credenciales,                   
                     EnableSsl = true,
                 };                
-                return server;
+ 
             }
         }
         public List<string >Adjuntar()
@@ -91,24 +90,34 @@ namespace Helper
                 FileNames = openFileDialog.FileNames.ToList();
             return FileNames;            
         }
+        MailMessage GetMail(Array Destinatarios ,string body,string Subject)
+        {
+            MailMessage correo = new MailMessage { From = From, Body = body, Subject = Subject  };
+            for (int i = 0; i <= Destinatarios.Length - 1; i++)
+            {
+                correo.To.Add(Destinatarios.GetValue(i).ToString());
+            }
+            return correo;
+        }
+        void GetAttachment(MailMessage mail,List<string >files)
+        {
+            if (files != null)
+            {
+                foreach (string dato in files)
+                {
+                    FileStream fs = File.Open(dato, FileMode.Open);
+                    Attachment Datosadjuntos = new Attachment(fs, fs.Name);
+                    mail.Attachments.Add(Datosadjuntos);
+                }
+            }
+
+        }
         public void SendMail(Array Destinatarios, string asunto, string mensaje, List<string> datos)
         {
             try
             {
-                MailMessage correo = new MailMessage { From = From, Body = mensaje, Subject = asunto };
-                for (int i = 0; i <= Destinatarios.Length - 1; i++)
-                {
-                    correo.To.Add(Destinatarios.GetValue(i).ToString());
-                }
-                if (datos != null)
-                {
-                    foreach (string dato in datos)
-                    {
-                        FileStream fs = File.Open(dato, FileMode.Open);
-                        Attachment Datosadjuntos = new Attachment(fs, fs.Name);
-                        correo.Attachments.Add(Datosadjuntos);
-                    }
-                }               
+                MailMessage correo = GetMail(Destinatarios, mensaje, asunto);
+                GetAttachment(correo, datos);
                 Servidor.Send(correo);
                 correo.Dispose();
             }

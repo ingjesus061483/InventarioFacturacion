@@ -16,4 +16,3 @@ D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.vbpr
 D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.dll
 D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.xml
 D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.pdb
-D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.vbproj.AssemblyReference.cache

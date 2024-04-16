@@ -154,7 +154,7 @@ namespace Inventario
                 UnidadMedida = x.UnidadMedida.Nombre
             }).ToList();
             Db.Tables.Add(Utilities  .GetTable (productos ));
-            _impExpHelp .Exportar(Db);
+            _impExpHelp .Create (Db);
             Db.Clear();
 
         }

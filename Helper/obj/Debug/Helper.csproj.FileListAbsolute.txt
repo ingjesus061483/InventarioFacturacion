@@ -58,5 +58,5 @@ D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.dll
 D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.pdb
 D:\Documents\GitHub\InventarioFacturacion\Helper\bin\Debug\Newtonsoft.Json.dll
 D:\Documents\GitHub\InventarioFacturacion\Helper\bin\Debug\Newtonsoft.Json.xml
-D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.AssemblyReference.cache
-D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.Up2Date
+D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.csprojAssemblyReference.cache
+D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.CopyComplete
