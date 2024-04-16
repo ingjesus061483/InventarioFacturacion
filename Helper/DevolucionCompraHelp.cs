@@ -34,5 +34,10 @@ namespace Helper
         {
             throw new NotImplementedException();
         }
+
+        public bool Validar(DevolucionCompra entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -34,6 +34,10 @@ namespace Helper
             _context.DevolucionVentas.Add(devolucionVenta);
             _context.SaveChanges();
         }
-   
+
+        public bool Validar(DevolucionVenta entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

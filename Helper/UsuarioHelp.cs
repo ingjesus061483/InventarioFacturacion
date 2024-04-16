@@ -71,7 +71,7 @@ namespace Helper
             _context.Usuarios.Add(us);
             _context.SaveChanges();
         }
-        bool Validar(UsuarioDTO usuario )
+        public bool Validar(UsuarioDTO usuario )
         {
             if(string .IsNullOrEmpty (  usuario .Name ))
             {

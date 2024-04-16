@@ -57,8 +57,7 @@ namespace Helper
                         });
             }
         }
-
-        bool Validar(OrdenCompraDTO compra)
+        public bool Validar(OrdenCompraDTO compra)
         {
             if (compra .ProveedorId  == 0)
             {

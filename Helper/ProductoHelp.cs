@@ -128,7 +128,7 @@ namespace Helper
             _context.Productos.Remove(producto);
             _context.SaveChanges();
         }
-        bool Validar(ProductoDTO producto)
+        public bool Validar(ProductoDTO producto)
         {
             if (string.IsNullOrEmpty(producto . Codigo))
             {

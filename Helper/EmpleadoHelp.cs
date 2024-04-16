@@ -112,7 +112,7 @@ namespace Helper
             _context.Empleados.Add(empleado);
             _context.SaveChanges();
         }
-        bool Validar(EmpleadoDTO empleado)
+        public bool Validar(EmpleadoDTO empleado)
         {
             if ( string.IsNullOrEmpty ( empleado .Nombre))
             {

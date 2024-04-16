@@ -118,7 +118,7 @@ namespace Helper
             _context.SaveChanges();
 
         }      
-        bool Validar(ClienteDTO collection )
+        public bool Validar(ClienteDTO collection )
         {
             if (string.IsNullOrEmpty(collection.Identificacion))
             {

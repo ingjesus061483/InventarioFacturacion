@@ -12,7 +12,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Helper
 {
-    public class ExportarHelp 
+    public class ExportarHelp :IOperacion
     {
         InventarioDbContext _context;
         public DataTable Table
@@ -26,7 +26,7 @@ namespace Helper
         {
             _context = context;
         }
-        void AddHead(Excel.Worksheet worksheet ,DataTable table )
+        public void AddColumn(DataTable table, Excel.Worksheet worksheet)
         {
             int col = 1;
             foreach (DataColumn column in table.Columns)
@@ -35,7 +35,7 @@ namespace Helper
                 col += 1;
             }           
         }
-        void AddBody(Excel.Worksheet worksheet, DataTable table)
+        public   void AddRow( DataTable table, Excel.Worksheet worksheet)
         {     
             int iRowCnt = 2;
             foreach (DataRow row in table.Rows)
@@ -59,7 +59,7 @@ namespace Helper
         {            
             ExcelApp.Workbooks.Add();
         }
-        public void Exportar(DataSet db)
+        public void Create(DataSet db)
         {
             try
             {
@@ -70,8 +70,8 @@ namespace Helper
                 foreach (DataTable table in db.Tables)
                 {
                     Excel.Worksheet worksheet =GetSheet( ExcelApp,hoja  + cont.ToString(),table.TableName );                    
-                    AddHead(worksheet, table);
-                    AddBody(worksheet, table);
+                    AddColumn( table,worksheet);
+                    AddRow( table, worksheet);
                     //   ExcelApp.ActiveCell.Worksheet.Cells(1, 1).AutoFormat(ExcelAutoFormat.xlRangeAutoFormatList3)
                     cont += 1;
                     ExcelApp.Sheets.Add();

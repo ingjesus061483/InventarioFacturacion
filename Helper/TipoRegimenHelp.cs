@@ -38,5 +38,10 @@ namespace Helper
         {
             throw new NotImplementedException();
         }
+
+        public bool Validar(TipoRegimen entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

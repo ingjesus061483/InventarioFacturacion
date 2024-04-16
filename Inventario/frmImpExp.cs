@@ -76,7 +76,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Warning );
                 {
                     db.Tables.Add(dt);
                 }
-               _exportarHelp.Exportar(db);                
+               _exportarHelp.Create (db);                
             }
             catch(Exception ex)
             {
@@ -176,7 +176,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Error);
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                _importarHelp.Importar(db);
+                _importarHelp.Create (db);
             }
             catch(Exception ex)
             {

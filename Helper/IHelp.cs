@@ -14,9 +14,9 @@ namespace Helper
     public interface IHelp<TEntity>
     {
         IQueryable<TEntity> Queryable { get; }
-
         void Actualizar(int id, TEntity entity);
         void Eliminar(int id);
         void Guardar(TEntity entity);
+        bool Validar(TEntity entity);
     }
 }

@@ -36,5 +36,10 @@ namespace Helper
         {
             throw new NotImplementedException();
         }
+
+        public bool Validar(TipoIdentificacion entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

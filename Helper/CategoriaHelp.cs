@@ -26,12 +26,22 @@ namespace Helper
         }
         
 
-        public void Guardar( Categoria categoria )
-        {   _context.Categorias.Add(categoria);
+        public void Guardar( Categoria categoria )            
+        {
+            if (!Validar(categoria ))
+            {
+                return;
+            }
+            _context.Categorias.Add(categoria);
             _context.SaveChanges();
         }
         public  void Actualizar(int id, Categoria categoria )
         {
+            if (!Validar(categoria))
+            {
+                return;
+            }
+
             var category =Queryable.Where(x=>x.Id == id).FirstOrDefault();
             category.Nombre =categoria .Nombre;
             category.Descripcion = categoria .Descripcion;
@@ -43,6 +53,17 @@ namespace Helper
             var categoria = Queryable.Where(x => x.Id == id).FirstOrDefault();
             _context.Categorias.Remove(categoria);
             _context.SaveChanges();
-        }     
+        }
+
+        public bool Validar(Categoria entity)
+        {
+            if (string.IsNullOrEmpty(entity .Nombre ))
+            {
+                Utilities .GetDialogResult ("Este campo no puede ser vacio", "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false ;
+            }
+            return true;
+        }
     }
 }

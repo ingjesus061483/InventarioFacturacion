@@ -70,6 +70,7 @@
     <Compile Include="DTO\FacturaDTO.cs" />
     <Compile Include="ExportarHelp.cs" />
     <Compile Include="ImportarHelp.cs" />
+    <Compile Include="IOperacion.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="View\EmpresaView.cs" />
     <Compile Include="View\PersonaView.cs" />

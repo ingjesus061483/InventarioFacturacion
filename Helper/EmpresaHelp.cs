@@ -135,7 +135,7 @@ namespace Helper
             _context.Empresas.Remove(empresa);
             _context.SaveChanges();
         }
-        bool Validar(EmpresaDTO empresa)
+        public bool Validar(EmpresaDTO empresa)
         {
 
             if (string.IsNullOrEmpty(empresa.Nit))

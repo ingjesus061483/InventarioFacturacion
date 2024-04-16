@@ -30,11 +30,19 @@ namespace Helper
         }
         public void  Guardar(Role role)
         {
-            _context.Roles.Add(role);
+            if (!Validar (role))
+            {
+                return;
+            }
+                _context.Roles.Add(role);
             _context.SaveChanges();
         }
         public void  Actualizar(int id ,Role rol)
-        {
+        {            
+            if (!Validar(rol))
+            {
+                return;
+            }
             var role = BuscarRole(id);
             role.Nombre = rol.Nombre;
             role.Descripcion = rol.Descripcion;
@@ -45,6 +53,17 @@ namespace Helper
             var role = BuscarRole(id);
             _context.Roles.Remove(role);
             _context.SaveChanges();
+        }
+
+        public bool Validar(Role entity)
+        {
+            if (string.IsNullOrEmpty(entity .Nombre ))
+            {
+                Utilities.GetDialogResult("Este campo no puede ser vacio", "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false ;
+            }
+            return true;
         }
     }
 }

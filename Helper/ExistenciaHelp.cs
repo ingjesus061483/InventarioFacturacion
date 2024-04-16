@@ -48,7 +48,7 @@ namespace Helper
 
 
         }
-        bool Validar(Existencia existencia )
+        public bool Validar(Existencia existencia )
         {
             if (existencia.Cantidad == 0)
             {
@@ -58,5 +58,7 @@ namespace Helper
             }
             return true;
         }
+
+      
     }
 }

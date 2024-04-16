@@ -54,12 +54,7 @@ namespace Inventario
 
         private void btninsertar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNombre.Text))
-            {
-                Utilities .GetDialogResult ("Este campo no puede ser vacio", "",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+    
             if (id == 0)
             {
                 role = new Role

@@ -118,7 +118,7 @@ namespace Helper
             _context.SaveChanges();
 
         }
-        bool Validar(ProveedorDTO Proveedor)
+        public bool Validar(ProveedorDTO Proveedor)
         {
             if (string.IsNullOrEmpty(Proveedor.Identificacion))
             {

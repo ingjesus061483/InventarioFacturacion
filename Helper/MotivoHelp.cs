@@ -58,7 +58,7 @@ namespace Helper
             _context.Motivos.Remove(mot);
             _context.SaveChanges();
         }
-        bool Validar(Motivo motivo)
+        public bool Validar(Motivo motivo)
         {
             if (string .IsNullOrEmpty ( motivo.Codigo  ))
             {

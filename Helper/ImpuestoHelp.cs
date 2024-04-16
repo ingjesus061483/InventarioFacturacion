@@ -40,5 +40,10 @@ namespace Helper
             _context.Impuestos.Remove(imp);
             _context.SaveChanges();
         }
+
+        public bool Validar(Impuesto entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

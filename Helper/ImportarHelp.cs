@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 namespace Helper
 {
-    public class ImportarHelp 
+    public class ImportarHelp :IOperacion
     {
         InventarioDbContext _context;
         public ImportarHelp(InventarioDbContext context)
         {
             _context = context;
         } 
-        void AddColumn(DataTable table , Excel.Worksheet sheet)
+        public void AddColumn(DataTable table , Excel.Worksheet sheet)
         {
             int col = 1;
             while (!string.IsNullOrEmpty(sheet.Cells[ 1, col].value))
@@ -25,7 +25,7 @@ namespace Helper
                 col += 1;
             }
         }
-        void AddRow(DataTable table, Excel.Worksheet sheet)
+        public void AddRow(DataTable table, Excel.Worksheet sheet)
         {
             int iRowCnt = 2;
             while (!string.IsNullOrEmpty(Convert.ToString(sheet.Cells[iRowCnt, 1].value)))
@@ -143,7 +143,7 @@ namespace Helper
                 throw ex;
             }
         }
-        public void Importar(DataSet db)
+        public void Create(DataSet db)
         {
             try
             {

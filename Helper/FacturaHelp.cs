@@ -83,7 +83,7 @@ namespace Helper
             }). FirstOrDefault ();
             return factura;
         }
-        bool Validar(FacturaDTO factura )
+        public bool Validar(FacturaDTO factura )
         {
             if(factura.ClienteId ==0)
             {

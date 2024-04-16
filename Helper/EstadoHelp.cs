@@ -40,5 +40,10 @@ namespace Helper
         {
             throw new NotImplementedException();
         }
+
+        public bool Validar(Estado entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
