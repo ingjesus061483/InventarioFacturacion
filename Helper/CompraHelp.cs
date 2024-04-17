@@ -99,7 +99,17 @@ namespace Helper
             }
             OrdenCompra compra = new OrdenCompra
             {
-
+                Codigo =compraDTO .Codigo , 
+                Fecha =compraDTO .Fecha ,
+                FechaEntrega=compraDTO .FechaEntrega ,
+                UsuarioId =compraDTO .UsuarioId,
+                ProveedorId=compraDTO .ProveedorId ,
+                TipoDocumentoId=compraDTO .TipoDocumentoId  ,
+                FormapagoId =compraDTO .FormapagoId ,
+                Observaciones =compraDTO .Observaciones ,
+                Recibido =compraDTO.Recibido ,
+                Descuento=compraDTO .Descuento ,
+                EstadoId=compraDTO.EstadoId 
             }; 
             _context.OrdenCompras .Add(compra );
             _context.SaveChanges();
@@ -107,8 +117,15 @@ namespace Helper
                                  .FirstOrDefault();
             foreach (var item in compr .Detalles)
             {
-                item.OrdenCompraId  = compr .Id;
-                _context.OrdenCompraDetalles .Add(item);
+                OrdenCompraDetalle ordenCompraDetalle = new OrdenCompraDetalle
+                {
+                    OrdenCompraId = compr.Id,
+                    ProductoId = item.ProductoId,
+                    Cantidad = item.Cantidad,
+                    ValorUnitario = item.ValorUnitario,
+                };
+                
+                _context.OrdenCompraDetalles .Add(ordenCompraDetalle );
                 _context.SaveChanges();
             }
         }

@@ -77,6 +77,7 @@ namespace Inventario
                 return;
             }
             Compra.ProveedorId = proveedor.Id;
+            Compra.Proveedor = proveedor;
         }
 
         private void Producto_MostrarEvent(object sender, EventArgs e)

@@ -51,6 +51,9 @@ namespace Models
         [Column(TypeName = "decimal")]
         public override decimal Descuento { get; set; }
 
+        public override int EstadoId { get; set; }
+        public override Estado Estado { get; set; }
+
         public override List<Impuesto> Impuestos { get; set; }
 
         decimal _totalImpuesto;
@@ -114,8 +117,7 @@ namespace Models
                 return Recibido - TotalPagar;
             }
         }
-        public override int EstadoId { get; set; }
-        public override Estado Estado { get; set; }
+   
 
 
         public override void EliminarDetalles()

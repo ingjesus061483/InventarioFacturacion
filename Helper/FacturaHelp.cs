@@ -155,28 +155,43 @@ namespace Helper
                 return;
             }
             var detalles = facturaDTO.Detalles;
-            FacturaEncabezado factura = new FacturaEncabezado { };
+            FacturaEncabezado factura = new FacturaEncabezado {
+                Codigo = facturaDTO.Codigo,
+                Fecha = facturaDTO.Fecha,
+                UsuarioId = facturaDTO.UsuarioId,
+                ClienteId  = facturaDTO.ClienteId ,
+                TipoDocumentoId = facturaDTO.TipoDocumentoId ,
+                FormapagoId = facturaDTO.FormapagoId,
+                Observaciones = facturaDTO.Observaciones,
+                Recibido = facturaDTO.Recibido,
+                Descuento = facturaDTO.Descuento,
+                EstadoId = facturaDTO.EstadoId
+            };
             _context.FacturaEncabezados.Add(factura);
             _context.SaveChanges();
+            var fact = Queryable.Where(x => x.Codigo == facturaDTO.Codigo).FirstOrDefault();
          
             foreach(var item in  detalles)
-            {
-                var producto = item.Producto;
-                item.Producto = null;
-                item.FacturaId = factura.Id;
-                _context.FacturaDetalles.Add(item);
+            {                
+                FacturaDetalle facturaDetalle = new FacturaDetalle
+                {
+                    FacturaId=fact .Id ,
+                    ProductoId = item.ProductoId,
+                    Cantidad = item.Cantidad,
+                    ValorUnitario = item.ValorUnitario,
+                };
+                _context.FacturaDetalles.Add(facturaDetalle );
                 _context.SaveChanges();
                 Existencia existencia = new Existencia
                 {
                     Cantidad = item.Cantidad,
                     ProductoId = item.ProductoId,
-                    Concepto = "Salida " + producto.Nombre,
+                    Concepto = "Salida " +item .Producto.Nombre,
                     Entrada = false,
                     Fecha = DateTime.Now
                 };
                 _existenciaHelp.Guardar(existencia);
-            }
-           
+            }           
         }
         public void Actualizar(int id, FacturaDTO entity)
         {

@@ -33,3 +33,4 @@ D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.csproj.CoreCom
 D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.dll
 D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.pdb
 D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.csproj.CopyComplete
+D:\Documents\GitHub\InventarioFacturacion\Models\obj\Debug\Models.csprojAssemblyReference.cache
