@@ -10,7 +10,6 @@ namespace Inventario
     public partial class frmPrincipal : Form
     {
         UsuarioDTO Usuario;
-
         public frmPrincipal(ProductoHelp productContext,
                             CategoriaHelp categoriaHelp,
                             UnidaMedidaHelp unidaMedidaHelp,
@@ -67,17 +66,15 @@ namespace Inventario
 
         private void FrmPrincipal_CerrarForm(object sender, FormClosingEventArgs e)
         {
-            DialogResult resp = MessageBox.Show("Salir de la aplicacion", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resp == DialogResult.Yes)
+            DialogResult resp;
+            resp = MessageBox.Show("Desea salir de la aplicacion", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resp == DialogResult.No)
             {
-                e.Cancel = false;
-    //            this.Close();
-            }
-            else 
-            {
-
                 e.Cancel = true;
+                return;
             }
+            e.Cancel =false ;
+            
         }
 
         private void frmPrincipal_Shown(object sender, EventArgs e)
@@ -88,18 +85,17 @@ namespace Inventario
             _usuarioHelp.Usuario = Usuario;
             if (Usuario == null)
             {
-                this.Close();
+                Application.Exit();
                 return;
             }
           
             this.BackgroundImage = Usuario.Empresa.Logo == "" ? null : Image.FromFile(Usuario.Empresa.Logo); 
-            this.Show();
 
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            this.Hide();
+           
 
         }
         

@@ -109,7 +109,7 @@ namespace Inventario
             this.btnsalir.TabIndex = 3;
             this.btnsalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnsalir.UseVisualStyleBackColor = true;
-            this.btnsalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // frmLogin
             // 

@@ -27,23 +27,17 @@ namespace Inventario
         {
             this.Cursor = Cursors.WaitCursor;
             string pwd = Utilities.Encriptar(txtPassword.Text);
-            Usuario=_usuarioHelp.Queryable.Where (x=>x.Name .Contains ( txtUsuario.Text)&& x.Password .Contains (pwd)).FirstOrDefault ();
+            Usuario=_usuarioHelp.Queryable.Where (x=>x.Name == txtUsuario.Text&& x.Password == pwd).FirstOrDefault ();
             if( Usuario ==null)
             {
-                MessageBox.Show("Usuario o contraseña invalida","",MessageBoxButtons.OK ,MessageBoxIcon.Warning );
+           Utilities  .GetDialogResult("Usuario o contraseña invalida","",MessageBoxButtons.OK ,MessageBoxIcon.Warning );
+                txtUsuario.Focus();
                 this.Cursor = Cursors.Default;
                 return;
             }
-
-            this.Close();
             this.Cursor = Cursors.Default;
+            this.Close();            
         }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar ==Convert .ToChar(Keys.Enter))
@@ -51,6 +45,11 @@ namespace Inventario
                 btnLogin.PerformClick();
             }
 
+        }
+
+        private void btnsalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
