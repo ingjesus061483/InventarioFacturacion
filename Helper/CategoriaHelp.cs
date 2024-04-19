@@ -32,6 +32,8 @@ namespace Helper
             }
             _context.Categorias.Add(categoria);
             _context.SaveChanges();
+            Utilities.GetDialogResult("la categoria ha sido guardada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
         public  void Actualizar(int id, Categoria categoria )
         {
@@ -44,6 +46,7 @@ namespace Helper
             category.Nombre =categoria .Nombre;
             category.Descripcion = categoria .Descripcion;
             _context.SaveChanges();
+            Utilities.GetDialogResult("la categoria ha sido editada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
         public void  Eliminar(int id)

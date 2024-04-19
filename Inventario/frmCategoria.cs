@@ -18,7 +18,6 @@ namespace Inventario
     {
         readonly CategoriaHelp _context;
         int id;
-        string message = "";       
         private Categoria categoria;
         public frmCategoria(CategoriaHelp  context)
         {
@@ -40,12 +39,12 @@ namespace Inventario
 
         private void btninsertar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNombre .Text ))
+  /*          if (string.IsNullOrEmpty(txtNombre .Text ))
             {
                 MessageBox.Show("Este campo no puede ser vacio", "", 
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
+            }*/
                        
             if (id ==0)
             {
@@ -54,23 +53,14 @@ namespace Inventario
                     Nombre = txtNombre.Text,
                     Descripcion = txtDescripcion.Text
                 };
-                _context.Guardar(categoria);// Categorias.Add(categoria);
-                message = "la categoria ha sido guardada";
-                
+                _context.Guardar(categoria);// Categorias.Add(categoria);                
             }
             else
             {
                 categoria.Nombre = txtNombre.Text;
                 categoria.Descripcion = txtDescripcion.Text;
                 _context.Actualizar(id, categoria );
-            
-                message = "la categoria ha sido editada";
-
-
             }
-            Utilities.GetDialogResult(message, "",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             Nuevo();
 
         }
