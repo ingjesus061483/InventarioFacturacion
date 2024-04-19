@@ -24,8 +24,6 @@ namespace Helper
                 return _context.Categorias;
             }
         }
-        
-
         public void Guardar( Categoria categoria )            
         {
             if (!Validar(categoria ))
