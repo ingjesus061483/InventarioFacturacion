@@ -16,3 +16,13 @@ D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.vbpr
 D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.dll
 D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.xml
 D:\Documents\GitHub\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.pdb
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\bin\Debug\CodigoBarra.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\bin\Debug\CodigoBarra.pdb
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\bin\Debug\CodigoBarra.xml
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.vbproj.AssemblyReference.cache
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.Resources.resources
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.vbproj.GenerateResource.cache
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.vbproj.CoreCompileInputs.cache
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.xml
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\CodigoBarra\obj\Debug\CodigoBarra.pdb

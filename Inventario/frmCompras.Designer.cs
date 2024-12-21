@@ -32,7 +32,6 @@ namespace Inventario
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompras));
-            this.Panel1 = new System.Windows.Forms.Panel();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnexportar = new System.Windows.Forms.Button();
@@ -49,93 +48,83 @@ namespace Inventario
             this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Panel1.SuspendLayout();
+            this.customPanel1 = new Inventario.CustomPanel();
+            this.customPanel2 = new Inventario.CustomPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompras)).BeginInit();
+            this.customPanel1.SuspendLayout();
+            this.customPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Panel1
-            // 
-            this.Panel1.Controls.Add(this.btnBuscar);
-            this.Panel1.Controls.Add(this.btnNuevo);
-            this.Panel1.Controls.Add(this.btnexportar);
-            this.Panel1.Controls.Add(this.chkPeriodo);
-            this.Panel1.Controls.Add(this.Label3);
-            this.Panel1.Controls.Add(this.txtNofactura);
-            this.Panel1.Controls.Add(this.dtpFechaFin);
-            this.Panel1.Controls.Add(this.dtpFechaInicio);
-            this.Panel1.Controls.Add(this.Label1);
-            this.Panel1.Controls.Add(this.txtTotalVentas);
-            this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel1.Location = new System.Drawing.Point(0, 0);
-            this.Panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1924, 293);
-            this.Panel1.TabIndex = 107;
             // 
             // btnBuscar
             // 
+            this.btnBuscar.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Arial Narrow", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(1849, 194);
+            this.btnBuscar.Location = new System.Drawing.Point(727, 234);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(60, 60);
+            this.btnBuscar.Size = new System.Drawing.Size(40, 40);
             this.btnBuscar.TabIndex = 113;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnNuevo
             // 
+            this.btnNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.btnNuevo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNuevo.BackgroundImage")));
+            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
-            this.btnNuevo.Location = new System.Drawing.Point(1781, 195);
+            this.btnNuevo.Location = new System.Drawing.Point(656, 235);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(60, 60);
+            this.btnNuevo.Size = new System.Drawing.Size(40, 40);
             this.btnNuevo.TabIndex = 112;
             this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnexportar
             // 
+            this.btnexportar.BackColor = System.Drawing.Color.Transparent;
             this.btnexportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnexportar.BackgroundImage")));
             this.btnexportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnexportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnexportar.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexportar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnexportar.Location = new System.Drawing.Point(1713, 196);
+            this.btnexportar.Location = new System.Drawing.Point(588, 236);
             this.btnexportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnexportar.Name = "btnexportar";
-            this.btnexportar.Size = new System.Drawing.Size(60, 60);
+            this.btnexportar.Size = new System.Drawing.Size(40, 40);
             this.btnexportar.TabIndex = 110;
             this.btnexportar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnexportar.UseVisualStyleBackColor = true;
+            this.btnexportar.UseVisualStyleBackColor = false;
             this.btnexportar.Click += new System.EventHandler(this.btnexportar_Click);
             // 
             // chkPeriodo
             // 
             this.chkPeriodo.AutoSize = true;
+            this.chkPeriodo.BackColor = System.Drawing.Color.Transparent;
             this.chkPeriodo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkPeriodo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPeriodo.Location = new System.Drawing.Point(1245, 50);
+            this.chkPeriodo.Location = new System.Drawing.Point(63, 39);
             this.chkPeriodo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkPeriodo.Name = "chkPeriodo";
             this.chkPeriodo.Size = new System.Drawing.Size(214, 28);
             this.chkPeriodo.TabIndex = 109;
             this.chkPeriodo.Text = "Establecer periodo";
-            this.chkPeriodo.UseVisualStyleBackColor = true;
+            this.chkPeriodo.UseVisualStyleBackColor = false;
             this.chkPeriodo.CheckedChanged += new System.EventHandler(this.chkPeriodo_CheckedChanged);
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.BackColor = System.Drawing.SystemColors.Control;
+            this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(1303, 103);
+            this.Label3.Location = new System.Drawing.Point(121, 92);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(116, 24);
@@ -144,8 +133,10 @@ namespace Inventario
             // 
             // txtNofactura
             // 
+            this.txtNofactura.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNofactura.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNofactura.Location = new System.Drawing.Point(1440, 100);
+            this.txtNofactura.Location = new System.Drawing.Point(258, 89);
             this.txtNofactura.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNofactura.Name = "txtNofactura";
             this.txtNofactura.Size = new System.Drawing.Size(469, 30);
@@ -157,7 +148,7 @@ namespace Inventario
             this.dtpFechaFin.CustomFormat = "yyyy-MM-dd";
             this.dtpFechaFin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaFin.Location = new System.Drawing.Point(1722, 50);
+            this.dtpFechaFin.Location = new System.Drawing.Point(540, 39);
             this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(187, 30);
@@ -170,7 +161,7 @@ namespace Inventario
             this.dtpFechaInicio.CustomFormat = "yyyy-MM-dd";
             this.dtpFechaInicio.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(1492, 50);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(310, 39);
             this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(187, 30);
@@ -180,8 +171,9 @@ namespace Inventario
             // Label1
             // 
             this.Label1.AutoSize = true;
+            this.Label1.BackColor = System.Drawing.Color.Transparent;
             this.Label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(1290, 146);
+            this.Label1.Location = new System.Drawing.Point(108, 135);
             this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(127, 24);
@@ -190,8 +182,10 @@ namespace Inventario
             // 
             // txtTotalVentas
             // 
+            this.txtTotalVentas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotalVentas.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalVentas.Location = new System.Drawing.Point(1440, 143);
+            this.txtTotalVentas.Location = new System.Drawing.Point(258, 132);
             this.txtTotalVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTotalVentas.Name = "txtTotalVentas";
             this.txtTotalVentas.ReadOnly = true;
@@ -210,12 +204,12 @@ namespace Inventario
             this.Column4,
             this.Column5});
             this.dgCompras.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgCompras.Location = new System.Drawing.Point(0, 293);
+            this.dgCompras.Location = new System.Drawing.Point(0, 0);
             this.dgCompras.Name = "dgCompras";
             this.dgCompras.ReadOnly = true;
             this.dgCompras.RowHeadersWidth = 62;
             this.dgCompras.RowTemplate.Height = 28;
-            this.dgCompras.Size = new System.Drawing.Size(1924, 369);
+            this.dgCompras.Size = new System.Drawing.Size(769, 368);
             this.dgCompras.TabIndex = 114;
             this.dgCompras.DataSourceChanged += new System.EventHandler(this.dgCompras_DataSourceChanged);
             this.dgCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -275,27 +269,67 @@ namespace Inventario
             this.Column5.UseColumnTextForButtonValue = true;
             this.Column5.Width = 150;
             // 
+            // customPanel1
+            // 
+            this.customPanel1.BackColor = System.Drawing.Color.White;
+            this.customPanel1.BorderRadius = 30;
+            this.customPanel1.Controls.Add(this.chkPeriodo);
+            this.customPanel1.Controls.Add(this.Label1);
+            this.customPanel1.Controls.Add(this.dtpFechaFin);
+            this.customPanel1.Controls.Add(this.dtpFechaInicio);
+            this.customPanel1.Controls.Add(this.Label3);
+            this.customPanel1.Controls.Add(this.txtNofactura);
+            this.customPanel1.Controls.Add(this.txtTotalVentas);
+            this.customPanel1.ForeColor = System.Drawing.Color.Black;
+            this.customPanel1.GradientAngle = 90F;
+            this.customPanel1.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel1.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel1.Location = new System.Drawing.Point(40, 12);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(769, 205);
+            this.customPanel1.TabIndex = 115;
+            // 
+            // customPanel2
+            // 
+            this.customPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customPanel2.BackColor = System.Drawing.Color.White;
+            this.customPanel2.BorderRadius = 30;
+            this.customPanel2.Controls.Add(this.dgCompras);
+            this.customPanel2.ForeColor = System.Drawing.Color.Black;
+            this.customPanel2.GradientAngle = 90F;
+            this.customPanel2.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel2.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel2.Location = new System.Drawing.Point(40, 282);
+            this.customPanel2.Name = "customPanel2";
+            this.customPanel2.Size = new System.Drawing.Size(769, 368);
+            this.customPanel2.TabIndex = 116;
+            // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 662);
-            this.Controls.Add(this.dgCompras);
-            this.Controls.Add(this.Panel1);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(843, 662);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.customPanel2);
+            this.Controls.Add(this.customPanel1);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.btnexportar);
             this.Name = "frmCompras";
             this.Text = "frmCompras";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCompras_Load);
-            this.Panel1.ResumeLayout(false);
-            this.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompras)).EndInit();
+            this.customPanel1.ResumeLayout(false);
+            this.customPanel1.PerformLayout();
+            this.customPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.Button btnBuscar;
         internal System.Windows.Forms.Button btnNuevo;
         internal System.Windows.Forms.Button btnexportar;
@@ -325,5 +359,7 @@ namespace Inventario
         private System.Windows.Forms.DataGridViewButtonColumn Column3;
         private System.Windows.Forms.DataGridViewButtonColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
+        private CustomPanel customPanel1;
+        private CustomPanel customPanel2;
     }
 }

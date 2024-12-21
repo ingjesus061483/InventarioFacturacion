@@ -43,3 +43,18 @@ D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.dll
 D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.pdb
 D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
 D:\Documents\GitHub\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\Models.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\Models.pdb
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\Models.dll.config
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\DataAccess\obj\Debug\DataAccess.pdb

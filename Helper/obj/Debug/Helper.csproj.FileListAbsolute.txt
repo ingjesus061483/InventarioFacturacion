@@ -60,3 +60,26 @@ D:\Documents\GitHub\InventarioFacturacion\Helper\bin\Debug\Newtonsoft.Json.dll
 D:\Documents\GitHub\InventarioFacturacion\Helper\bin\Debug\Newtonsoft.Json.xml
 D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.csprojAssemblyReference.cache
 D:\Documents\GitHub\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.CopyComplete
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\Helper.dll.config
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\Helper.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\Helper.pdb
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\CodigoBarra.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\DataAccess.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\EntityFramework.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\Models.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\CodigoBarra.pdb
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\CodigoBarra.xml
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\DataAccess.pdb
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\DataAccess.dll.config
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\Models.pdb
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\Models.dll.config
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\EntityFramework.xml
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.AssemblyReference.cache
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.CoreCompileInputs.cache
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\obj\Debug\Helper.csproj.Up2Date
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\obj\Debug\Helper.dll
+C:\Users\jesus\OneDrive\Documentos\GitHub\Nueva carpeta\InventarioFacturacion\Helper\obj\Debug\Helper.pdb

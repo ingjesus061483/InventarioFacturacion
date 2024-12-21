@@ -173,4 +173,59 @@
   <metadata name="Column7.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABLklEQVRYR9WXzRGCMBBG0wIt0AIt0AIt
+        2AK15MbBQijAFujBuwfMt7AowfwwySLszBsFsnzPFWZAofRjHI+GglG0Uc0o/fluWOr1XBiGgej7nui6
+        O6FUs1AUBVGWJW2vMhilQIRAbLjVh/C6rt0CABKxAq5wrU3PDwGEN800kWQBX7hLAOFt26YLhMI5xO7D
+        fpZLFvCFuwRwHGuTBULh/D/bfViLviwCvnCXAPowvWSBUDjfanYfwnEB7xKgk30tQIXCWWBTuH1N7ZuA
+        ga96+gXzCVLZJXAo5xTAhSjJKssWwIKb+RSEbs2QAPZJEC0gVdcR4JHl5joTkKpoAR5Zbq4zAamKFuCR
+        5ebkE8AGOINAZfZJ4BXAATr4LwFAz3eHCuCRjWr7HCcFvytMKPUGwW4GrkWmu0AAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACcUlEQVRYR72Vu0sDQRDG77+xsrYRC7EQ
+        LBQbKxUUK20UwdJUgo2CrYUpLCUQEBUfGAVBfKCIgkUaxUoQ7CzX/WZu7ibrXnK3F1z4uL2Z3fl9+8gl
+        +u/WaDRM3A1uKBAsGKhUKugXa9Xqrkwy5vuZ9PP5aL4/7khfb7ekt9crUvPpkoTxjdXI1Ja6bKAIfH8l
+        MqvjXTaQFw4tj7AoFmiAJnM3CoKXNmCuExMd4bdrDJ8fYjC2v7yBE6saF2kHf1hnAy68vAELN1WrHS7k
+        wrUB2XrAITGDfLiBGG62WIhp+Mv9OcVk+/XqZwbyGaABWRKwscVJixwXuM8AhNVP9Xc2kJxxstXOijU4
+        0SwXBfzp5owBdow2IKvHblA+00AnsIZbsJm0GmNhvs9AkV9BaQN3V8d/DAhcLiLlMw3k3PIEPMrCXMC1
+        AXx69cohHAXlgy+hAzaDHAf4+uLQXJzu0zsM4I9HzhySi0j5Ngboe++TTbWANRxgEWJigOaYOj2x+om+
+        HAbQMg3EYNObwmXl2gC2PzWwQc88P8NOjcAa7q7+5IBXCzi0aY8M75DcA/TDDfSkBX3wem2PcmJAbj7A
+        chmRDzYAYTKePrhrQH+AurEDdDdcAxquDewupHC9E8iXMhB3qVCWXAN45v0zatu0gab9UEHmaJj1Xich
+        pw1A8g3oqgEXTLLvyAGuDeT5M6JEEblgMYMc4Ntz6erFCOTWIflWEhpDQW1ABCPI+Y4uSgp4ChaNuQbk
+        EgrcN5d3wAmGxgACfGu6deXt5qY7oIKhMW2gBe6M07HWI5C+vBeMaQMEzxgXj/3bfAOLxFBClDUOnLRF
+        0S/LRBBxV0EqdQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn7.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn8.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn9.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

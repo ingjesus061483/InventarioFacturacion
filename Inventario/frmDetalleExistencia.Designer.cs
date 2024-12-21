@@ -36,9 +36,7 @@ namespace Inventario
             this.Label5 = new System.Windows.Forms.Label();
             this.txtTotalExistencia = new System.Windows.Forms.TextBox();
             this.Label4 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pbImagen = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.lbltipo = new System.Windows.Forms.Label();
             this.txtUnidaMedida = new System.Windows.Forms.TextBox();
             this.lblcolor = new System.Windows.Forms.Label();
@@ -51,36 +49,39 @@ namespace Inventario
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCosto = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.Salidas = new Inventario.UserControls.Cuestas();
             this.Entradas = new Inventario.UserControls.Cuestas();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.btnexportar = new System.Windows.Forms.Button();
             this.btnsalir = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.customPanel1 = new Inventario.CustomPanel();
+            this.customPanel2 = new Inventario.CustomPanel();
+            this.customPanel3 = new Inventario.CustomPanel();
+            this.customPanel4 = new Inventario.CustomPanel();
+            this.customPanel5 = new Inventario.CustomPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
-            this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.customPanel1.SuspendLayout();
+            this.customPanel2.SuspendLayout();
+            this.customPanel3.SuspendLayout();
+            this.customPanel4.SuspendLayout();
+            this.customPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtToalSalida
             // 
+            this.txtToalSalida.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtToalSalida.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtToalSalida.Location = new System.Drawing.Point(1440, 66);
+            this.txtToalSalida.Location = new System.Drawing.Point(177, 55);
             this.txtToalSalida.Name = "txtToalSalida";
-            this.txtToalSalida.Size = new System.Drawing.Size(131, 30);
+            this.txtToalSalida.Size = new System.Drawing.Size(105, 30);
             this.txtToalSalida.TabIndex = 73;
             // 
             // Label6
             // 
             this.Label6.AutoSize = true;
+            this.Label6.BackColor = System.Drawing.Color.Transparent;
             this.Label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label6.Location = new System.Drawing.Point(1312, 70);
+            this.Label6.Location = new System.Drawing.Point(49, 59);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(118, 24);
             this.Label6.TabIndex = 72;
@@ -88,17 +89,20 @@ namespace Inventario
             // 
             // txtTotalEntrada
             // 
+            this.txtTotalEntrada.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotalEntrada.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalEntrada.Location = new System.Drawing.Point(1440, 19);
+            this.txtTotalEntrada.Location = new System.Drawing.Point(177, 19);
             this.txtTotalEntrada.Name = "txtTotalEntrada";
-            this.txtTotalEntrada.Size = new System.Drawing.Size(131, 30);
+            this.txtTotalEntrada.Size = new System.Drawing.Size(105, 30);
             this.txtTotalEntrada.TabIndex = 71;
             // 
             // Label5
             // 
             this.Label5.AutoSize = true;
+            this.Label5.BackColor = System.Drawing.Color.Transparent;
             this.Label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label5.Location = new System.Drawing.Point(1296, 23);
+            this.Label5.Location = new System.Drawing.Point(33, 23);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(135, 24);
             this.Label5.TabIndex = 70;
@@ -106,69 +110,42 @@ namespace Inventario
             // 
             // txtTotalExistencia
             // 
+            this.txtTotalExistencia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotalExistencia.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalExistencia.Location = new System.Drawing.Point(1440, 114);
+            this.txtTotalExistencia.Location = new System.Drawing.Point(177, 92);
             this.txtTotalExistencia.Name = "txtTotalExistencia";
-            this.txtTotalExistencia.Size = new System.Drawing.Size(131, 30);
+            this.txtTotalExistencia.Size = new System.Drawing.Size(105, 30);
             this.txtTotalExistencia.TabIndex = 69;
             // 
             // Label4
             // 
             this.Label4.AutoSize = true;
+            this.Label4.BackColor = System.Drawing.Color.Transparent;
             this.Label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(1373, 118);
+            this.Label4.Location = new System.Drawing.Point(110, 96);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(57, 24);
             this.Label4.TabIndex = 68;
             this.Label4.Text = "Total";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pbImagen);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(953, 226);
-            this.panel1.TabIndex = 74;
             // 
             // pbImagen
             // 
             this.pbImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbImagen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbImagen.Location = new System.Drawing.Point(1127, 0);
+            this.pbImagen.Location = new System.Drawing.Point(0, 0);
             this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(0, 226);
+            this.pbImagen.Size = new System.Drawing.Size(198, 212);
             this.pbImagen.TabIndex = 85;
             this.pbImagen.TabStop = false;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lbltipo);
-            this.panel4.Controls.Add(this.txtUnidaMedida);
-            this.panel4.Controls.Add(this.lblcolor);
-            this.panel4.Controls.Add(this.txtPrecio);
-            this.panel4.Controls.Add(this.Label3);
-            this.panel4.Controls.Add(this.txtCategoria);
-            this.panel4.Controls.Add(this.lblarticulo);
-            this.panel4.Controls.Add(this.txtCodigo);
-            this.panel4.Controls.Add(this.lblcodigo);
-            this.panel4.Controls.Add(this.txtNombre);
-            this.panel4.Controls.Add(this.Label2);
-            this.panel4.Controls.Add(this.txtCosto);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1127, 226);
-            this.panel4.TabIndex = 84;
             // 
             // lbltipo
             // 
             this.lbltipo.AutoSize = true;
             this.lbltipo.BackColor = System.Drawing.Color.Transparent;
             this.lbltipo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltipo.Location = new System.Drawing.Point(19, 18);
+            this.lbltipo.Location = new System.Drawing.Point(98, 43);
             this.lbltipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltipo.Name = "lbltipo";
             this.lbltipo.Size = new System.Drawing.Size(101, 24);
@@ -178,10 +155,10 @@ namespace Inventario
             // txtUnidaMedida
             // 
             this.txtUnidaMedida.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnidaMedida.Location = new System.Drawing.Point(790, 124);
+            this.txtUnidaMedida.Location = new System.Drawing.Point(208, 221);
             this.txtUnidaMedida.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUnidaMedida.Name = "txtUnidaMedida";
-            this.txtUnidaMedida.Size = new System.Drawing.Size(319, 30);
+            this.txtUnidaMedida.Size = new System.Drawing.Size(387, 30);
             this.txtUnidaMedida.TabIndex = 83;
             // 
             // lblcolor
@@ -189,7 +166,7 @@ namespace Inventario
             this.lblcolor.AutoSize = true;
             this.lblcolor.BackColor = System.Drawing.Color.Transparent;
             this.lblcolor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcolor.Location = new System.Drawing.Point(45, 127);
+            this.lblcolor.Location = new System.Drawing.Point(130, 115);
             this.lblcolor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcolor.Name = "lblcolor";
             this.lblcolor.Size = new System.Drawing.Size(70, 24);
@@ -199,10 +176,10 @@ namespace Inventario
             // txtPrecio
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(148, 124);
+            this.txtPrecio.Location = new System.Drawing.Point(208, 112);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(400, 30);
+            this.txtPrecio.Size = new System.Drawing.Size(388, 30);
             this.txtPrecio.TabIndex = 82;
             // 
             // Label3
@@ -210,7 +187,7 @@ namespace Inventario
             this.Label3.AutoSize = true;
             this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(579, 127);
+            this.Label3.Location = new System.Drawing.Point(21, 225);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(179, 24);
@@ -220,10 +197,10 @@ namespace Inventario
             // txtCategoria
             // 
             this.txtCategoria.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoria.Location = new System.Drawing.Point(148, 15);
+            this.txtCategoria.Location = new System.Drawing.Point(208, 39);
             this.txtCategoria.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(399, 30);
+            this.txtCategoria.Size = new System.Drawing.Size(387, 30);
             this.txtCategoria.TabIndex = 78;
             // 
             // lblarticulo
@@ -231,7 +208,7 @@ namespace Inventario
             this.lblarticulo.AutoSize = true;
             this.lblarticulo.BackColor = System.Drawing.Color.Transparent;
             this.lblarticulo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblarticulo.Location = new System.Drawing.Point(31, 75);
+            this.lblarticulo.Location = new System.Drawing.Point(116, 79);
             this.lblarticulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblarticulo.Name = "lblarticulo";
             this.lblarticulo.Size = new System.Drawing.Size(84, 24);
@@ -241,10 +218,10 @@ namespace Inventario
             // txtCodigo
             // 
             this.txtCodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(710, 15);
+            this.txtCodigo.Location = new System.Drawing.Point(208, 148);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(399, 30);
+            this.txtCodigo.Size = new System.Drawing.Size(387, 30);
             this.txtCodigo.TabIndex = 79;
             // 
             // lblcodigo
@@ -252,7 +229,7 @@ namespace Inventario
             this.lblcodigo.AutoSize = true;
             this.lblcodigo.BackColor = System.Drawing.Color.Transparent;
             this.lblcodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcodigo.Location = new System.Drawing.Point(613, 18);
+            this.lblcodigo.Location = new System.Drawing.Point(123, 148);
             this.lblcodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcodigo.Name = "lblcodigo";
             this.lblcodigo.Size = new System.Drawing.Size(77, 24);
@@ -262,10 +239,10 @@ namespace Inventario
             // txtNombre
             // 
             this.txtNombre.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(148, 69);
+            this.txtNombre.Location = new System.Drawing.Point(208, 76);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(399, 30);
+            this.txtNombre.Size = new System.Drawing.Size(387, 30);
             this.txtNombre.TabIndex = 80;
             // 
             // Label2
@@ -273,7 +250,7 @@ namespace Inventario
             this.Label2.AutoSize = true;
             this.Label2.BackColor = System.Drawing.Color.Transparent;
             this.Label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(624, 72);
+            this.Label2.Location = new System.Drawing.Point(134, 188);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(66, 24);
@@ -283,22 +260,11 @@ namespace Inventario
             // txtCosto
             // 
             this.txtCosto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCosto.Location = new System.Drawing.Point(710, 69);
+            this.txtCosto.Location = new System.Drawing.Point(208, 185);
             this.txtCosto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(399, 30);
+            this.txtCosto.Size = new System.Drawing.Size(387, 30);
             this.txtCosto.TabIndex = 81;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.Salidas);
-            this.panel2.Controls.Add(this.Entradas);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 226);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(953, 338);
-            this.panel2.TabIndex = 75;
             // 
             // Salidas
             // 
@@ -306,125 +272,176 @@ namespace Inventario
             this.Salidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Salidas.ExistenciaHelp = null;
             this.Salidas.FacturaHelp = null;
-            this.Salidas.Location = new System.Drawing.Point(789, 47);
+            this.Salidas.Location = new System.Drawing.Point(0, 0);
             this.Salidas.Name = "Salidas";
             this.Salidas.NameButtons = null;
             this.Salidas.ProductoHelp = null;
-            this.Salidas.Size = new System.Drawing.Size(164, 291);
+            this.Salidas.Size = new System.Drawing.Size(322, 200);
             this.Salidas.TabIndex = 1;
             this.Salidas.Load += new System.EventHandler(this.Salidas_Load);
             // 
             // Entradas
             // 
             this.Entradas.CompraHelp = null;
-            this.Entradas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Entradas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Entradas.ExistenciaHelp = null;
             this.Entradas.FacturaHelp = null;
-            this.Entradas.Location = new System.Drawing.Point(0, 47);
+            this.Entradas.Location = new System.Drawing.Point(0, 0);
             this.Entradas.Name = "Entradas";
             this.Entradas.NameButtons = null;
             this.Entradas.ProductoHelp = null;
-            this.Entradas.Size = new System.Drawing.Size(789, 291);
+            this.Entradas.Size = new System.Drawing.Size(493, 200);
             this.Entradas.TabIndex = 0;
             this.Entradas.Load += new System.EventHandler(this.Entradas_Load);
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.label1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(953, 47);
-            this.panel5.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(811, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 29);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Salidas";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Entradas";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnexportar);
-            this.panel3.Controls.Add(this.btnsalir);
-            this.panel3.Controls.Add(this.txtTotalEntrada);
-            this.panel3.Controls.Add(this.txtTotalExistencia);
-            this.panel3.Controls.Add(this.Label6);
-            this.panel3.Controls.Add(this.txtToalSalida);
-            this.panel3.Controls.Add(this.Label5);
-            this.panel3.Controls.Add(this.Label4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 564);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(953, 141);
-            this.panel3.TabIndex = 76;
-            // 
             // btnexportar
             // 
+            this.btnexportar.BackColor = System.Drawing.Color.Transparent;
             this.btnexportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnexportar.BackgroundImage")));
             this.btnexportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnexportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnexportar.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexportar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnexportar.Location = new System.Drawing.Point(1440, 158);
+            this.btnexportar.Location = new System.Drawing.Point(764, 679);
             this.btnexportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnexportar.Name = "btnexportar";
-            this.btnexportar.Size = new System.Drawing.Size(60, 60);
+            this.btnexportar.Size = new System.Drawing.Size(40, 40);
             this.btnexportar.TabIndex = 108;
             this.btnexportar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnexportar.UseVisualStyleBackColor = true;
+            this.btnexportar.UseVisualStyleBackColor = false;
             this.btnexportar.Click += new System.EventHandler(this.btnexportar_Click);
             // 
             // btnsalir
             // 
+            this.btnsalir.BackColor = System.Drawing.Color.Transparent;
+            this.btnsalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnsalir.BackgroundImage")));
+            this.btnsalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnsalir.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsalir.Image = ((System.Drawing.Image)(resources.GetObject("btnsalir.Image")));
-            this.btnsalir.Location = new System.Drawing.Point(1508, 158);
+            this.btnsalir.Location = new System.Drawing.Point(812, 679);
             this.btnsalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnsalir.Name = "btnsalir";
-            this.btnsalir.Size = new System.Drawing.Size(60, 60);
+            this.btnsalir.Size = new System.Drawing.Size(40, 40);
             this.btnsalir.TabIndex = 107;
             this.btnsalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnsalir.UseVisualStyleBackColor = true;
+            this.btnsalir.UseVisualStyleBackColor = false;
             this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
+            // 
+            // customPanel1
+            // 
+            this.customPanel1.BackColor = System.Drawing.Color.White;
+            this.customPanel1.BorderRadius = 30;
+            this.customPanel1.Controls.Add(this.lbltipo);
+            this.customPanel1.Controls.Add(this.txtUnidaMedida);
+            this.customPanel1.Controls.Add(this.customPanel2);
+            this.customPanel1.Controls.Add(this.txtCosto);
+            this.customPanel1.Controls.Add(this.lblcolor);
+            this.customPanel1.Controls.Add(this.Label2);
+            this.customPanel1.Controls.Add(this.txtPrecio);
+            this.customPanel1.Controls.Add(this.txtNombre);
+            this.customPanel1.Controls.Add(this.Label3);
+            this.customPanel1.Controls.Add(this.lblcodigo);
+            this.customPanel1.Controls.Add(this.txtCategoria);
+            this.customPanel1.Controls.Add(this.txtCodigo);
+            this.customPanel1.Controls.Add(this.lblarticulo);
+            this.customPanel1.ForeColor = System.Drawing.Color.Black;
+            this.customPanel1.GradientAngle = 90F;
+            this.customPanel1.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel1.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel1.Location = new System.Drawing.Point(19, 12);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(828, 294);
+            this.customPanel1.TabIndex = 86;
+            // 
+            // customPanel2
+            // 
+            this.customPanel2.BackColor = System.Drawing.Color.White;
+            this.customPanel2.BorderRadius = 30;
+            this.customPanel2.Controls.Add(this.pbImagen);
+            this.customPanel2.ForeColor = System.Drawing.Color.Black;
+            this.customPanel2.GradientAngle = 90F;
+            this.customPanel2.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel2.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel2.Location = new System.Drawing.Point(603, 39);
+            this.customPanel2.Name = "customPanel2";
+            this.customPanel2.Size = new System.Drawing.Size(198, 212);
+            this.customPanel2.TabIndex = 87;
+            // 
+            // customPanel3
+            // 
+            this.customPanel3.BackColor = System.Drawing.Color.White;
+            this.customPanel3.BorderRadius = 30;
+            this.customPanel3.Controls.Add(this.Entradas);
+            this.customPanel3.ForeColor = System.Drawing.Color.Black;
+            this.customPanel3.GradientAngle = 90F;
+            this.customPanel3.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel3.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel3.Location = new System.Drawing.Point(19, 320);
+            this.customPanel3.Name = "customPanel3";
+            this.customPanel3.Size = new System.Drawing.Size(493, 200);
+            this.customPanel3.TabIndex = 88;
+            // 
+            // customPanel4
+            // 
+            this.customPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customPanel4.BackColor = System.Drawing.Color.White;
+            this.customPanel4.BorderRadius = 30;
+            this.customPanel4.Controls.Add(this.Salidas);
+            this.customPanel4.ForeColor = System.Drawing.Color.Black;
+            this.customPanel4.GradientAngle = 90F;
+            this.customPanel4.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel4.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel4.Location = new System.Drawing.Point(530, 320);
+            this.customPanel4.Name = "customPanel4";
+            this.customPanel4.Size = new System.Drawing.Size(322, 200);
+            this.customPanel4.TabIndex = 89;
+            // 
+            // customPanel5
+            // 
+            this.customPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customPanel5.BackColor = System.Drawing.Color.White;
+            this.customPanel5.BorderRadius = 30;
+            this.customPanel5.Controls.Add(this.Label5);
+            this.customPanel5.Controls.Add(this.Label4);
+            this.customPanel5.Controls.Add(this.txtTotalEntrada);
+            this.customPanel5.Controls.Add(this.txtToalSalida);
+            this.customPanel5.Controls.Add(this.txtTotalExistencia);
+            this.customPanel5.Controls.Add(this.Label6);
+            this.customPanel5.ForeColor = System.Drawing.Color.Black;
+            this.customPanel5.GradientAngle = 90F;
+            this.customPanel5.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel5.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel5.Location = new System.Drawing.Point(544, 530);
+            this.customPanel5.Name = "customPanel5";
+            this.customPanel5.Size = new System.Drawing.Size(308, 141);
+            this.customPanel5.TabIndex = 90;
             // 
             // frmDetalleExistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(953, 705);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(869, 747);
+            this.Controls.Add(this.btnexportar);
+            this.Controls.Add(this.customPanel5);
+            this.Controls.Add(this.customPanel4);
+            this.Controls.Add(this.btnsalir);
+            this.Controls.Add(this.customPanel3);
+            this.Controls.Add(this.customPanel1);
             this.Name = "frmDetalleExistencia";
             this.Text = "frmDetalleExistencia";
             this.Load += new System.EventHandler(this.frmDetalleExistencia_Load);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.customPanel1.ResumeLayout(false);
+            this.customPanel1.PerformLayout();
+            this.customPanel2.ResumeLayout(false);
+            this.customPanel3.ResumeLayout(false);
+            this.customPanel4.ResumeLayout(false);
+            this.customPanel5.ResumeLayout(false);
+            this.customPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -437,9 +454,6 @@ namespace Inventario
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.TextBox txtTotalExistencia;
         internal System.Windows.Forms.Label Label4;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         internal System.Windows.Forms.Button btnexportar;
         internal System.Windows.Forms.Button btnsalir;
         internal System.Windows.Forms.Label lbltipo;
@@ -455,11 +469,12 @@ namespace Inventario
         internal System.Windows.Forms.TextBox txtNombre;
         internal System.Windows.Forms.TextBox txtCosto;
         private System.Windows.Forms.PictureBox pbImagen;
-        private System.Windows.Forms.Panel panel4;
         private UserControls.Cuestas Salidas;
         private UserControls.Cuestas Entradas;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label1;
+        private CustomPanel customPanel1;
+        private CustomPanel customPanel2;
+        private CustomPanel customPanel3;
+        private CustomPanel customPanel4;
+        private CustomPanel customPanel5;
     }
 }

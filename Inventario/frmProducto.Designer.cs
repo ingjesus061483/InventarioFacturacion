@@ -30,7 +30,6 @@ namespace Inventario
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProducto));
-            this.Panel1 = new System.Windows.Forms.Panel();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnAbrir = new System.Windows.Forms.Button();
             this.cmbUnidadMedida = new System.Windows.Forms.ComboBox();
@@ -51,24 +50,12 @@ namespace Inventario
             this.lblcodigo = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.Panel1.SuspendLayout();
+            this.customPanel1 = new Inventario.CustomPanel();
+            this.customPanel2 = new Inventario.CustomPanel();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.customPanel1.SuspendLayout();
+            this.customPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Panel1
-            // 
-            this.Panel1.Controls.Add(this.PictureBox1);
-            this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel1.Location = new System.Drawing.Point(654, 0);
-            this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(456, 505);
-            this.Panel1.TabIndex = 73;
             // 
             // PictureBox1
             // 
@@ -76,7 +63,7 @@ namespace Inventario
             this.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureBox1.Location = new System.Drawing.Point(0, 0);
             this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(456, 505);
+            this.PictureBox1.Size = new System.Drawing.Size(350, 410);
             this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox1.TabIndex = 50;
             this.PictureBox1.TabStop = false;
@@ -85,7 +72,7 @@ namespace Inventario
             // 
             this.btnAbrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAbrir.Image = ((System.Drawing.Image)(resources.GetObject("btnAbrir.Image")));
-            this.btnAbrir.Location = new System.Drawing.Point(880, 9);
+            this.btnAbrir.Location = new System.Drawing.Point(798, 431);
             this.btnAbrir.Name = "btnAbrir";
             this.btnAbrir.Size = new System.Drawing.Size(70, 60);
             this.btnAbrir.TabIndex = 8;
@@ -94,13 +81,15 @@ namespace Inventario
             // 
             // cmbUnidadMedida
             // 
+            this.cmbUnidadMedida.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbUnidadMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUnidadMedida.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUnidadMedida.FormattingEnabled = true;
-            this.cmbUnidadMedida.Location = new System.Drawing.Point(229, 273);
+            this.cmbUnidadMedida.Location = new System.Drawing.Point(216, 219);
             this.cmbUnidadMedida.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbUnidadMedida.Name = "cmbUnidadMedida";
-            this.cmbUnidadMedida.Size = new System.Drawing.Size(397, 31);
+            this.cmbUnidadMedida.Size = new System.Drawing.Size(371, 31);
             this.cmbUnidadMedida.TabIndex = 5;
             // 
             // Label3
@@ -108,7 +97,7 @@ namespace Inventario
             this.Label3.AutoSize = true;
             this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(25, 277);
+            this.Label3.Location = new System.Drawing.Point(27, 223);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(179, 24);
@@ -117,40 +106,48 @@ namespace Inventario
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(227, 20);
+            this.cmbCategoria.Location = new System.Drawing.Point(215, 38);
             this.cmbCategoria.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(399, 31);
+            this.cmbCategoria.Size = new System.Drawing.Size(373, 31);
             this.cmbCategoria.TabIndex = 0;
             // 
             // txtPrecio
             // 
+            this.txtPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrecio.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(229, 221);
+            this.txtPrecio.Location = new System.Drawing.Point(216, 183);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(399, 30);
+            this.txtPrecio.Size = new System.Drawing.Size(373, 30);
             this.txtPrecio.TabIndex = 4;
             // 
             // txtCosto
             // 
+            this.txtCosto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCosto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCosto.Location = new System.Drawing.Point(227, 170);
+            this.txtCosto.Location = new System.Drawing.Point(215, 147);
             this.txtCosto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(399, 30);
+            this.txtCosto.Size = new System.Drawing.Size(373, 30);
             this.txtCosto.TabIndex = 3;
             // 
             // txtExistencia
             // 
+            this.txtExistencia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtExistencia.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExistencia.Location = new System.Drawing.Point(228, 328);
+            this.txtExistencia.Location = new System.Drawing.Point(215, 257);
             this.txtExistencia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtExistencia.Name = "txtExistencia";
-            this.txtExistencia.Size = new System.Drawing.Size(400, 30);
+            this.txtExistencia.Size = new System.Drawing.Size(374, 30);
             this.txtExistencia.TabIndex = 6;
             // 
             // Label2
@@ -158,7 +155,7 @@ namespace Inventario
             this.Label2.AutoSize = true;
             this.Label2.BackColor = System.Drawing.Color.Transparent;
             this.Label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(132, 174);
+            this.Label2.Location = new System.Drawing.Point(135, 151);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(66, 24);
@@ -170,7 +167,7 @@ namespace Inventario
             this.Label1.AutoSize = true;
             this.Label1.BackColor = System.Drawing.Color.Transparent;
             this.Label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(96, 333);
+            this.Label1.Location = new System.Drawing.Point(98, 262);
             this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(107, 24);
@@ -182,7 +179,7 @@ namespace Inventario
             this.btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnsalir.Font = new System.Drawing.Font("Arial Narrow", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsalir.Image = ((System.Drawing.Image)(resources.GetObject("btnsalir.Image")));
-            this.btnsalir.Location = new System.Drawing.Point(1028, 8);
+            this.btnsalir.Location = new System.Drawing.Point(946, 430);
             this.btnsalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(60, 60);
@@ -196,7 +193,7 @@ namespace Inventario
             this.btninsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btninsertar.Font = new System.Drawing.Font("Arial Narrow", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btninsertar.Image = ((System.Drawing.Image)(resources.GetObject("btninsertar.Image")));
-            this.btninsertar.Location = new System.Drawing.Point(959, 9);
+            this.btninsertar.Location = new System.Drawing.Point(877, 431);
             this.btninsertar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btninsertar.Name = "btninsertar";
             this.btninsertar.Size = new System.Drawing.Size(60, 60);
@@ -210,7 +207,7 @@ namespace Inventario
             this.lbldescripcion.AutoSize = true;
             this.lbldescripcion.BackColor = System.Drawing.Color.Transparent;
             this.lbldescripcion.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldescripcion.Location = new System.Drawing.Point(81, 399);
+            this.lbldescripcion.Location = new System.Drawing.Point(83, 315);
             this.lbldescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbldescripcion.Name = "lbldescripcion";
             this.lbldescripcion.Size = new System.Drawing.Size(122, 24);
@@ -219,13 +216,15 @@ namespace Inventario
             // 
             // txtDescripcion
             // 
+            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescripcion.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(229, 377);
+            this.txtDescripcion.Location = new System.Drawing.Point(216, 293);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescripcion.Size = new System.Drawing.Size(397, 89);
+            this.txtDescripcion.Size = new System.Drawing.Size(371, 89);
             this.txtDescripcion.TabIndex = 7;
             // 
             // lblcolor
@@ -233,7 +232,7 @@ namespace Inventario
             this.lblcolor.AutoSize = true;
             this.lblcolor.BackColor = System.Drawing.Color.Transparent;
             this.lblcolor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcolor.Location = new System.Drawing.Point(131, 221);
+            this.lblcolor.Location = new System.Drawing.Point(133, 185);
             this.lblcolor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcolor.Name = "lblcolor";
             this.lblcolor.Size = new System.Drawing.Size(70, 24);
@@ -245,7 +244,7 @@ namespace Inventario
             this.lbltipo.AutoSize = true;
             this.lbltipo.BackColor = System.Drawing.Color.Transparent;
             this.lbltipo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltipo.Location = new System.Drawing.Point(102, 23);
+            this.lbltipo.Location = new System.Drawing.Point(105, 41);
             this.lbltipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltipo.Name = "lbltipo";
             this.lbltipo.Size = new System.Drawing.Size(101, 24);
@@ -257,7 +256,7 @@ namespace Inventario
             this.lblarticulo.AutoSize = true;
             this.lblarticulo.BackColor = System.Drawing.Color.Transparent;
             this.lblarticulo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblarticulo.Location = new System.Drawing.Point(117, 124);
+            this.lblarticulo.Location = new System.Drawing.Point(120, 116);
             this.lblarticulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblarticulo.Name = "lblarticulo";
             this.lblarticulo.Size = new System.Drawing.Size(84, 24);
@@ -269,7 +268,7 @@ namespace Inventario
             this.lblcodigo.AutoSize = true;
             this.lblcodigo.BackColor = System.Drawing.Color.Transparent;
             this.lblcodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcodigo.Location = new System.Drawing.Point(121, 73);
+            this.lblcodigo.Location = new System.Drawing.Point(127, 79);
             this.lblcodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcodigo.Name = "lblcodigo";
             this.lblcodigo.Size = new System.Drawing.Size(77, 24);
@@ -278,91 +277,96 @@ namespace Inventario
             // 
             // txtNombre
             // 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(227, 119);
+            this.txtNombre.Location = new System.Drawing.Point(215, 111);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(399, 30);
+            this.txtNombre.Size = new System.Drawing.Size(373, 30);
             this.txtNombre.TabIndex = 2;
             // 
             // txtCodigo
             // 
+            this.txtCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(227, 69);
+            this.txtCodigo.Location = new System.Drawing.Point(215, 75);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(399, 30);
+            this.txtCodigo.Size = new System.Drawing.Size(373, 30);
             this.txtCodigo.TabIndex = 1;
             // 
-            // panel2
+            // customPanel1
             // 
-            this.panel2.Controls.Add(this.Panel1);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1110, 505);
-            this.panel2.TabIndex = 74;
+            this.customPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customPanel1.BackColor = System.Drawing.Color.White;
+            this.customPanel1.BorderRadius = 30;
+            this.customPanel1.Controls.Add(this.lbltipo);
+            this.customPanel1.Controls.Add(this.Label2);
+            this.customPanel1.Controls.Add(this.lblcolor);
+            this.customPanel1.Controls.Add(this.txtExistencia);
+            this.customPanel1.Controls.Add(this.cmbCategoria);
+            this.customPanel1.Controls.Add(this.txtCodigo);
+            this.customPanel1.Controls.Add(this.Label3);
+            this.customPanel1.Controls.Add(this.Label1);
+            this.customPanel1.Controls.Add(this.txtDescripcion);
+            this.customPanel1.Controls.Add(this.txtNombre);
+            this.customPanel1.Controls.Add(this.lblarticulo);
+            this.customPanel1.Controls.Add(this.txtCosto);
+            this.customPanel1.Controls.Add(this.txtPrecio);
+            this.customPanel1.Controls.Add(this.lblcodigo);
+            this.customPanel1.Controls.Add(this.cmbUnidadMedida);
+            this.customPanel1.Controls.Add(this.lbldescripcion);
+            this.customPanel1.ForeColor = System.Drawing.Color.Black;
+            this.customPanel1.GradientAngle = 90F;
+            this.customPanel1.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel1.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel1.Location = new System.Drawing.Point(387, 12);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(619, 410);
+            this.customPanel1.TabIndex = 75;
             // 
-            // panel4
+            // customPanel2
             // 
-            this.panel4.Controls.Add(this.lbltipo);
-            this.panel4.Controls.Add(this.Label2);
-            this.panel4.Controls.Add(this.txtExistencia);
-            this.panel4.Controls.Add(this.txtCodigo);
-            this.panel4.Controls.Add(this.Label1);
-            this.panel4.Controls.Add(this.txtNombre);
-            this.panel4.Controls.Add(this.txtCosto);
-            this.panel4.Controls.Add(this.lblcodigo);
-            this.panel4.Controls.Add(this.lbldescripcion);
-            this.panel4.Controls.Add(this.cmbUnidadMedida);
-            this.panel4.Controls.Add(this.txtPrecio);
-            this.panel4.Controls.Add(this.lblarticulo);
-            this.panel4.Controls.Add(this.txtDescripcion);
-            this.panel4.Controls.Add(this.Label3);
-            this.panel4.Controls.Add(this.cmbCategoria);
-            this.panel4.Controls.Add(this.lblcolor);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(654, 505);
-            this.panel4.TabIndex = 74;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnsalir);
-            this.panel3.Controls.Add(this.btnAbrir);
-            this.panel3.Controls.Add(this.btninsertar);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 505);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1110, 74);
-            this.panel3.TabIndex = 75;
+            this.customPanel2.BackColor = System.Drawing.Color.White;
+            this.customPanel2.BorderRadius = 30;
+            this.customPanel2.Controls.Add(this.PictureBox1);
+            this.customPanel2.ForeColor = System.Drawing.Color.Black;
+            this.customPanel2.GradientAngle = 90F;
+            this.customPanel2.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel2.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel2.Location = new System.Drawing.Point(20, 12);
+            this.customPanel2.Name = "customPanel2";
+            this.customPanel2.Size = new System.Drawing.Size(350, 410);
+            this.customPanel2.TabIndex = 76;
             // 
             // frmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 579);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(1019, 508);
+            this.Controls.Add(this.btnsalir);
+            this.Controls.Add(this.btnAbrir);
+            this.Controls.Add(this.customPanel2);
+            this.Controls.Add(this.btninsertar);
+            this.Controls.Add(this.customPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Producto";
             this.Load += new System.EventHandler(this.frmArticulo_Load);
-            this.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.customPanel1.ResumeLayout(false);
+            this.customPanel1.PerformLayout();
+            this.customPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.Button btnAbrir;
         internal System.Windows.Forms.ComboBox cmbUnidadMedida;
         internal System.Windows.Forms.Label Label3;
@@ -382,10 +386,9 @@ namespace Inventario
         internal System.Windows.Forms.Label lblcodigo;
         internal System.Windows.Forms.TextBox txtNombre;
         internal System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
         internal System.Windows.Forms.PictureBox PictureBox1;
+        private CustomPanel customPanel1;
+        private CustomPanel customPanel2;
     }
 }
 

@@ -45,13 +45,17 @@ namespace Inventario
             this.txtNit = new System.Windows.Forms.TextBox();
             this.btnProducto = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.customPanel1 = new Inventario.CustomPanel();
+            this.customPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtConfirmarPassword
             // 
+            this.txtConfirmarPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConfirmarPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmarPassword.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtConfirmarPassword.Location = new System.Drawing.Point(230, 171);
+            this.txtConfirmarPassword.Location = new System.Drawing.Point(250, 132);
             this.txtConfirmarPassword.Margin = new System.Windows.Forms.Padding(6);
             this.txtConfirmarPassword.Name = "txtConfirmarPassword";
             this.txtConfirmarPassword.PasswordChar = '*';
@@ -64,7 +68,7 @@ namespace Inventario
             this.Label8.BackColor = System.Drawing.Color.Transparent;
             this.Label8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Label8.Location = new System.Drawing.Point(4, 174);
+            this.Label8.Location = new System.Drawing.Point(24, 135);
             this.Label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(216, 24);
@@ -73,10 +77,12 @@ namespace Inventario
             // 
             // cmbRole
             // 
+            this.cmbRole.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRole.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRole.FormattingEnabled = true;
-            this.cmbRole.Location = new System.Drawing.Point(230, 212);
+            this.cmbRole.Location = new System.Drawing.Point(250, 167);
             this.cmbRole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(332, 31);
@@ -84,9 +90,11 @@ namespace Inventario
             // 
             // txtUsuario
             // 
+            this.txtUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUsuario.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtUsuario.Location = new System.Drawing.Point(230, 88);
+            this.txtUsuario.Location = new System.Drawing.Point(250, 62);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(6);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(332, 30);
@@ -98,7 +106,7 @@ namespace Inventario
             this.Label6.BackColor = System.Drawing.Color.Transparent;
             this.Label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Label6.Location = new System.Drawing.Point(139, 92);
+            this.Label6.Location = new System.Drawing.Point(159, 66);
             this.Label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(83, 24);
@@ -107,9 +115,11 @@ namespace Inventario
             // 
             // txtEmail
             // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtEmail.Location = new System.Drawing.Point(230, 47);
+            this.txtEmail.Location = new System.Drawing.Point(250, 27);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(6);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(332, 30);
@@ -121,7 +131,7 @@ namespace Inventario
             this.Label5.BackColor = System.Drawing.Color.Transparent;
             this.Label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Label5.Location = new System.Drawing.Point(159, 51);
+            this.Label5.Location = new System.Drawing.Point(179, 31);
             this.Label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(61, 24);
@@ -133,7 +143,7 @@ namespace Inventario
             this.btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnsalir.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsalir.Image = ((System.Drawing.Image)(resources.GetObject("btnsalir.Image")));
-            this.btnsalir.Location = new System.Drawing.Point(528, 304);
+            this.btnsalir.Location = new System.Drawing.Point(562, 317);
             this.btnsalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(60, 60);
@@ -147,7 +157,7 @@ namespace Inventario
             this.btninsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btninsertar.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btninsertar.Image = ((System.Drawing.Image)(resources.GetObject("btninsertar.Image")));
-            this.btninsertar.Location = new System.Drawing.Point(462, 304);
+            this.btninsertar.Location = new System.Drawing.Point(496, 317);
             this.btninsertar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btninsertar.Name = "btninsertar";
             this.btninsertar.Size = new System.Drawing.Size(60, 60);
@@ -158,9 +168,11 @@ namespace Inventario
             // 
             // txtPassword
             // 
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPassword.Location = new System.Drawing.Point(231, 130);
+            this.txtPassword.Location = new System.Drawing.Point(251, 97);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(6);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -173,7 +185,7 @@ namespace Inventario
             this.Label4.BackColor = System.Drawing.Color.Transparent;
             this.Label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Label4.Location = new System.Drawing.Point(103, 133);
+            this.Label4.Location = new System.Drawing.Point(123, 100);
             this.Label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(119, 24);
@@ -186,7 +198,7 @@ namespace Inventario
             this.lblcargo.BackColor = System.Drawing.Color.Transparent;
             this.lblcargo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcargo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblcargo.Location = new System.Drawing.Point(168, 214);
+            this.lblcargo.Location = new System.Drawing.Point(188, 169);
             this.lblcargo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblcargo.Name = "lblcargo";
             this.lblcargo.Size = new System.Drawing.Size(52, 24);
@@ -196,7 +208,7 @@ namespace Inventario
             // txtNit
             // 
             this.txtNit.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNit.Location = new System.Drawing.Point(230, 256);
+            this.txtNit.Location = new System.Drawing.Point(250, 204);
             this.txtNit.Name = "txtNit";
             this.txtNit.Size = new System.Drawing.Size(134, 30);
             this.txtNit.TabIndex = 102;
@@ -206,7 +218,7 @@ namespace Inventario
             // 
             this.btnProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProducto.Location = new System.Drawing.Point(101, 251);
+            this.btnProducto.Location = new System.Drawing.Point(121, 199);
             this.btnProducto.Name = "btnProducto";
             this.btnProducto.Size = new System.Drawing.Size(119, 38);
             this.btnProducto.TabIndex = 101;
@@ -216,38 +228,58 @@ namespace Inventario
             // 
             // txtNombre
             // 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(372, 255);
+            this.txtNombre.Location = new System.Drawing.Point(392, 203);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(188, 30);
+            this.txtNombre.Size = new System.Drawing.Size(191, 30);
             this.txtNombre.TabIndex = 100;
+            // 
+            // customPanel1
+            // 
+            this.customPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customPanel1.BackColor = System.Drawing.Color.White;
+            this.customPanel1.BorderRadius = 30;
+            this.customPanel1.Controls.Add(this.Label5);
+            this.customPanel1.Controls.Add(this.txtNit);
+            this.customPanel1.Controls.Add(this.lblcargo);
+            this.customPanel1.Controls.Add(this.btnProducto);
+            this.customPanel1.Controls.Add(this.Label4);
+            this.customPanel1.Controls.Add(this.txtNombre);
+            this.customPanel1.Controls.Add(this.txtPassword);
+            this.customPanel1.Controls.Add(this.txtConfirmarPassword);
+            this.customPanel1.Controls.Add(this.txtEmail);
+            this.customPanel1.Controls.Add(this.Label8);
+            this.customPanel1.Controls.Add(this.Label6);
+            this.customPanel1.Controls.Add(this.cmbRole);
+            this.customPanel1.Controls.Add(this.txtUsuario);
+            this.customPanel1.ForeColor = System.Drawing.Color.Black;
+            this.customPanel1.GradientAngle = 90F;
+            this.customPanel1.GradientBottomColor = System.Drawing.Color.CadetBlue;
+            this.customPanel1.GradientTopColor = System.Drawing.Color.DodgerBlue;
+            this.customPanel1.Location = new System.Drawing.Point(12, 26);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.Size = new System.Drawing.Size(610, 260);
+            this.customPanel1.TabIndex = 103;
             // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 373);
-            this.Controls.Add(this.txtNit);
-            this.Controls.Add(this.btnProducto);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtConfirmarPassword);
-            this.Controls.Add(this.Label8);
-            this.Controls.Add(this.cmbRole);
-            this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.Label6);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.Label5);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(639, 386);
+            this.Controls.Add(this.customPanel1);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.btninsertar);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.Label4);
-            this.Controls.Add(this.lblcargo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmUsuario";
             this.Text = "frmUsuario";
             this.Load += new System.EventHandler(this.frmUsuario_Load);
+            this.customPanel1.ResumeLayout(false);
+            this.customPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -268,5 +300,6 @@ namespace Inventario
         internal System.Windows.Forms.TextBox txtNit;
         internal System.Windows.Forms.Button btnProducto;
         internal System.Windows.Forms.TextBox txtNombre;
+        private CustomPanel customPanel1;
     }
 }
